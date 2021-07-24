@@ -1,66 +1,61 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
+
 import {
     useConfigContext,
     useGlobalPerformanceContext,
 } from '@web/shared/context';
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
-
-import { NewsSubscribeCTA, LegacyContentNotice } from '@web/ui/molecules';
-
+import { NewsSubscribeCTA } from '@web/ui/molecules';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 
-import { ShowPage, ShowPageContext } from '../types';
 import { SingleShowProvider } from '../__context__';
-import { useShowStatus } from '../__hooks__';
+import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
-const SingleShowLanding: React.FC<PageProps<PageData, ShowPageContext>> = ({
-    data,
-    pageContext,
-    location,
-}) => {
-    const { sanityShow: show } = data;
-    const { slug, seasonSlug, seasonURL } = pageContext;
+import { Hero, ActionBar } from './components';
 
-    const url = useCurrentURL(location.pathname);
-    const metaImage = useGetMetaImage('season', show.seo.image);
+const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
+    ({ data, pageContext, location }) => {
+        const { sanityShow: show } = data;
+        const { slug, seasonSlug, seasonURL } = pageContext;
 
-    const { status } = useShowStatus(show.performances);
+        const url = useCurrentURL(location.pathname);
+        const metaImage = useGetMetaImage('show', show.seo.image);
 
-    return (
-        <>
-            <PageBasicSEO
-                url={url}
-                title={show.seo.title}
-                description={show.seo.description}
-                image={metaImage}
-                hideSEO={show.seo.hide}
-            />
-            {/* Do not output structured data if this page will be hidden from SEO */}
-            {show.seo.hide ? null : (
-                <StructuredData
-                    pageSchemaData={{
-                        pageURL: url,
-                        title: show.seo.title,
-                        description: show.seo.description,
-                        image: metaImage,
-                        datePublished: show.seo.publishedAt,
-                        dateModified: show._updatedAt,
-                    }}
+        return (
+            <SingleShowProvider
+                slug={slug}
+                openDate={show.openDate}
+                closeDate={show.closeDate}
+            >
+                <PageBasicSEO
+                    url={url}
+                    title={show.seo.title}
+                    description={show.seo.description}
+                    image={metaImage}
+                    hideSEO={show.seo.hide}
                 />
-            )}
-            <LegacyContentNotice
-                title={show.title}
-                subTitle={`by ${show.author.name}`}
-                contentType="show"
-                legacyURL={`https://theplaygroundtheatre.org/shows/${slug}`}
-                legacyURLText="see show on old website"
-            />
-
-            <NewsSubscribeCTA />
-        </>
-    );
-};
+                {/* Do not output structured data if this page will be hidden from SEO */}
+                {show.seo.hide ? null : (
+                    <StructuredData
+                        pageSchemaData={{
+                            pageURL: url,
+                            title: show.seo.title,
+                            description: show.seo.description,
+                            image: metaImage,
+                            datePublished: show.seo.publishedAt,
+                            dateModified: show._updatedAt,
+                        }}
+                    />
+                )}
+                <Hero
+                    bgImage={{ image: show.heroImage.asset }}
+                    actionBar={<ActionBar url={url} />}
+                />
+                <NewsSubscribeCTA />
+            </SingleShowProvider>
+        );
+    };
 
 export const showQuery = graphql`
     query showData($id: String!) {
@@ -77,24 +72,26 @@ export const showQuery = graphql`
             # }
 
             # # Core Info
-            # heroImage {
-            #     asset {
-            #         fluid(maxWidth: 1600) {
-            #             ...GatsbySanityImageFluid
-            #         }
-            #     }
-            # }
+            heroImage {
+                asset {
+                    _id
+                    gatsbyImageData(
+                        layout: FULL_WIDTH
+                        width: 1600
+                        placeholder: BLURRED
+                    )
+                }
+            }
             title
             author {
                 name
                 bioLink
                 scriptLink
             }
-
-            # Performance Details
             openDate
             closeDate
 
+            # Location Information
             # location {
             #     googleTitle
             #     address {
@@ -112,6 +109,7 @@ export const showQuery = graphql`
             #     _rawParking(resolveReferences: { maxDepth: 10 })
             # }
 
+            # Addition Performance Details
             # rating
             # runtimeHours
             # runtimeMinutes
@@ -164,7 +162,7 @@ export const showQuery = graphql`
  */
 
 interface PageData {
-    sanityShow: ShowPage;
+    sanityShow: ShowPageProps;
 }
 
 export default SingleShowLanding;

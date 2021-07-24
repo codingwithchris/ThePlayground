@@ -1,25 +1,26 @@
 import React, { createContext, useContext } from 'react';
 import { useGlobalPerformanceContext, ShowMapEntry } from '@web/shared/context';
-import { useShowStatus } from '../__hooks__';
+import { getShowStatus, ShowStatus } from '../__lib__';
 
 export const SingleShowContext = createContext({} as SingleShowContextProps);
 
 export const SingleShowProvider: React.FC<SingleShowProviderProps> = ({
     slug,
+    openDate,
+    closeDate,
     children,
 }) => {
     const { get } = useGlobalPerformanceContext();
     const [next, previous] = get.showNeighbors(slug);
-    // const {status} = useShowStatus()
-
-    // All of the show and season logic for our application should be done here.
 
     const context: SingleShowContextProps = {
-        current: get.show(slug),
-        // status,
-        next: next(),
-        previous: previous(),
+        currentShow: get.show(slug),
+        showStatus: getShowStatus(openDate, closeDate),
+        nextShow: next(),
+        previousShow: previous(),
     };
+
+    console.log(context);
 
     return (
         <SingleShowContext.Provider value={context}>
@@ -30,14 +31,16 @@ export const SingleShowProvider: React.FC<SingleShowProviderProps> = ({
 
 interface SingleShowProviderProps {
     slug: string;
+    openDate?: string;
+    closeDate?: string;
 }
 
 interface SingleShowContextProps {
-    current: ShowMapEntry | undefined;
-    status: any;
-    next: ShowMapEntry | undefined;
-    previous: ShowMapEntry | undefined;
+    currentShow: ShowMapEntry | undefined;
+    showStatus: ShowStatus;
+    nextShow: ShowMapEntry | undefined;
+    previousShow: ShowMapEntry | undefined;
 }
 
-export const useShowContext = (): SingleShowContextProps =>
+export const useSingleShowContext = (): SingleShowContextProps =>
     useContext(SingleShowContext);

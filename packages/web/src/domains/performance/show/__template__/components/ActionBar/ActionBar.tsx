@@ -3,13 +3,13 @@ import React from 'react';
 import { BodyText, Container, Icon } from '@web/ui/core';
 import { SocialShareModal, DateRange } from '@web/ui/molecules';
 
+import { useSingleShowContext } from '../../../__context__';
+
 import * as styled from './ActionBar.styles';
 
-export const ActionBar: React.FC<IActionBar> = ({
-    openDate,
-    closeDate,
-    url,
-}) => {
+export const ActionBar: React.FC<IActionBar> = ({ url }) => {
+    const { currentShow } = useSingleShowContext();
+
     return (
         <styled.ActionBar>
             <Container className="container">
@@ -17,15 +17,17 @@ export const ActionBar: React.FC<IActionBar> = ({
                     <BodyText color="light" size="l" weight="bold">
                         <DateRange
                             icon={<Icon name="Calendar" size="m" />}
-                            startDate={openDate}
-                            endDate={closeDate}
+                            startDate={currentShow?.openDate || 'tbd'}
+                            endDate={currentShow?.closeDate || 'tbd'}
                         />
                     </BodyText>
                 </div>
                 <div className="share">
                     <SocialShareModal
-                        url={url}
-                        shareText="Check out this show at The Nerve!"
+                        shareURL={url}
+                        socialShareText={`Check out "${
+                            currentShow?.title || 'this show'
+                        }" at The Nerve!`}
                     />
                 </div>
             </Container>
@@ -34,7 +36,5 @@ export const ActionBar: React.FC<IActionBar> = ({
 };
 
 export interface IActionBar {
-    openDate: string;
-    closeDate: string;
     url: string;
 }

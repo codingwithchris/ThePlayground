@@ -1,5 +1,5 @@
 import React from 'react';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import * as styled from './DateRange.styles';
 
 export const DateRange: React.FC<DateRangeProps> = ({

@@ -54,7 +54,8 @@ const getOtherShowsInSeason = (
  * @returns
  */
 const getPerformanceNeighbors =
-    (dataMap: GlobalShowMap | GlobalSeasonMap) => (startFromShow: string) => {
+    <T>(dataMap: Map<string, T>) =>
+    (startFromShow: string) => {
         const dataArray = [...dataMap];
         const currentIndex = dataArray.findIndex(
             ([slug]) => slug === startFromShow
