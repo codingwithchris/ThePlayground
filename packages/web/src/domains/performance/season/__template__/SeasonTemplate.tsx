@@ -8,6 +8,7 @@ import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 import { LegacyContentNotice } from '@web/ui/molecules';
 
 import { SeasonPage, SeasonPageContext } from '../types';
+import { SingleSeasonProvider } from '../__context__';
 
 const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
     data,
@@ -21,7 +22,7 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
     const { slug } = pageContext;
 
     return (
-        <>
+        <SingleSeasonProvider slug={slug}>
             <PageBasicSEO
                 url={url}
                 title={season.seo.title}
@@ -50,7 +51,7 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
                 legacyURLText="See season on old website"
             />
             {/* <SubscribeSection /> */}
-        </>
+        </SingleSeasonProvider>
     );
 };
 

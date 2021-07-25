@@ -49,9 +49,7 @@ const getOtherShowsInSeason = (
 };
 
 /**
- *
- * @param dataMap
- * @returns
+ * Get the previous and next references for seasons or shows
  */
 const getPerformanceNeighbors =
     <T>(dataMap: Map<string, T>) =>

@@ -15,6 +15,7 @@ export interface ShowCore {
     closeDate: string;
     // In some instances, we will want the full path to the show to be available so we can easily allow navigation directly to it
     path?: string;
+    status?: ShowStatus;
 }
 
 export interface ShowPosterImage {
@@ -52,3 +53,11 @@ export interface ShowPerformance {
     isPayWhatYouCan: boolean;
     hasTalkback: boolean;
 }
+
+export type ShowStatus =
+    | 'unknown'
+    | 'archived'
+    | 'active'
+    | 'coming-soon'
+    | 'future'
+    | 'cancelled';

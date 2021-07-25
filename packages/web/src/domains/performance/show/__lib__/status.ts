@@ -1,13 +1,55 @@
 import { parseISO, sub, isPast, isWithinInterval, isValid } from 'date-fns';
+import { ShowStatus } from '../types';
 
 enum STATUS {
     ACTIVE = 'active',
-    CANCELLED = 'cancelled',
     FUTURE = 'future',
     PAST = 'archived',
-    UPCOMING = 'upcoming',
+    COMING_SOON = 'coming-soon',
     DEFAULT = 'unknown',
 }
+
+const now = new Date();
+
+/**
+ * Determine if the show is in the past
+ *
+ * @param lastPerformance The date of the first performance
+ * @returns
+ */
+const isPastShow = (lastPerformance: Date) => {
+    return isPast(lastPerformance);
+};
+
+/**
+ * Determine if the show is active, meaning it is currently running ("now playing")
+ */
+const isActiveShow = (firstPerformance: Date, lastPerformance: Date) => {
+    const interval = {
+        start: firstPerformance,
+        end: lastPerformance,
+    };
+    return isWithinInterval(now, interval);
+};
+
+/**
+ * Determine if the show is "coming soon" meaning it will be opening soon
+ */
+const isComingSoonShow = (firstPerformance: Date, lastPerformance: Date) => {
+    // How many days before a show opens should we consider a show "upcoming"?
+    const COMING_SOON_WINDOW_DAYS = 30;
+    // How many hours before a show officially opens should we still consider it "opcoming"?
+    const COMING_SOON_CUTOFF_HOURS = 1;
+
+    const interval = {
+        start: sub(firstPerformance, {
+            days: COMING_SOON_WINDOW_DAYS,
+        }),
+        end: sub(lastPerformance, { hours: COMING_SOON_CUTOFF_HOURS }),
+    };
+
+    return isWithinInterval(now, interval);
+};
 
 /**
  * Determine the status of a show using the open and close dates
@@ -33,34 +75,21 @@ export const getShowStatus = (
         return STATUS.DEFAULT;
     }
 
-    // How long before a show opens should we consider a show "upcoming"?
-    const upcomingWindowStart = sub(firstPerformance, { days: 30 });
-    const now = new Date();
-
-    const INTERVALS = {
-        // The full date range of a production
-        PRODUCTION: {
-            start: firstPerformance,
-            end: lastPerformance,
-        },
-        // The window of time where a show should be considered "coming soon"
-        COMING_SOON: {
-            start: upcomingWindowStart,
-            end: sub(firstPerformance, { hours: 1 }),
-        },
-    };
-
-    if (isPast(lastPerformance)) return STATUS.PAST;
-    if (isWithinInterval(now, INTERVALS.PRODUCTION)) return STATUS.ACTIVE;
-    if (isWithinInterval(now, INTERVALS.COMING_SOON)) return STATUS.UPCOMING;
+    if (isPastShow(lastPerformance)) return STATUS.PAST;
+    if (isActiveShow(firstPerformance, lastPerformance)) return STATUS.ACTIVE;
+    if (isComingSoonShow(firstPerformance, lastPerformance))
+        return STATUS.COMING_SOON;
 
     return STATUS.FUTURE;
 };
 
-export type ShowStatus =
-    | 'unknown'
-    | 'archived'
-    | 'active'
-    | 'upcoming'
-    | 'future'
-    | 'cancelled';
+// TODO: Determine how to implement some of the following
+
+// consumer facing status language??
+const prettyStatuses = {
+    [STATUS.PAST]: 'Archived',
+    [STATUS.ACTIVE]: 'Now Playing',
+    [STATUS.COMING_SOON]: 'Coming Soon',
+    [STATUS.FUTURE]: 'Future',
+    [STATUS.DEFAULT]: 'TBD',
+};

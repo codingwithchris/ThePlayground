@@ -1,5 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { useConfigContext } from '@web/shared/context';
+import { getShowStatus } from '@web/domains/performance/show'
 import {
     RawPerformanceDataQuery,
     RawSeasonData,
@@ -78,6 +79,7 @@ export const useBuildPerformanceDataMap = (
         shows.set(show.slug.current, {
             ...show,
             path: links.getShow(show.season.slug.current, show.slug.current),
+            status: getShowStatus(show.openDate, show.closeDate),
             season: {
                 ...show.season,
                 path: links.getSeason(show.season.slug.current),

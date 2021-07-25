@@ -9,6 +9,7 @@ import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 
+import { SingleSeasonProvider } from '../../season/__context__';
 import { SingleShowProvider } from '../__context__';
 import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
@@ -23,37 +24,35 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
         const metaImage = useGetMetaImage('show', show.seo.image);
 
         return (
-            <SingleShowProvider
-                slug={slug}
-                openDate={show.openDate}
-                closeDate={show.closeDate}
-            >
-                <PageBasicSEO
-                    url={url}
-                    title={show.seo.title}
-                    description={show.seo.description}
-                    image={metaImage}
-                    hideSEO={show.seo.hide}
-                />
-                {/* Do not output structured data if this page will be hidden from SEO */}
-                {show.seo.hide ? null : (
-                    <StructuredData
-                        pageSchemaData={{
-                            pageURL: url,
-                            title: show.seo.title,
-                            description: show.seo.description,
-                            image: metaImage,
-                            datePublished: show.seo.publishedAt,
-                            dateModified: show._updatedAt,
-                        }}
+            <SingleSeasonProvider slug={seasonSlug}>
+                <SingleShowProvider slug={slug}>
+                    <PageBasicSEO
+                        url={url}
+                        title={show.seo.title}
+                        description={show.seo.description}
+                        image={metaImage}
+                        hideSEO={show.seo.hide}
                     />
-                )}
-                <Hero
-                    bgImage={{ image: show.heroImage.asset }}
-                    actionBar={<ActionBar url={url} />}
-                />
-                <NewsSubscribeCTA />
-            </SingleShowProvider>
+                    {/* Do not output structured data if this page will be hidden from SEO */}
+                    {show.seo.hide ? null : (
+                        <StructuredData
+                            pageSchemaData={{
+                                pageURL: url,
+                                title: show.seo.title,
+                                description: show.seo.description,
+                                image: metaImage,
+                                datePublished: show.seo.publishedAt,
+                                dateModified: show._updatedAt,
+                            }}
+                        />
+                    )}
+                    <Hero
+                        bgImage={{ image: show.heroImage.asset }}
+                        actionBar={<ActionBar url={url} />}
+                    />
+                    <NewsSubscribeCTA />
+                </SingleShowProvider>
+            </SingleSeasonProvider>
         );
     };
 
