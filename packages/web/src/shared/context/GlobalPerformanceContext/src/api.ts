@@ -12,6 +12,7 @@ import {
  * @returns
  */
 const getShow = (showsMap: GlobalShowMap) => (slug: string) => {
+    // TODO: Surface error for undefined scenario
     return showsMap.get(slug);
 };
 
@@ -21,6 +22,7 @@ const getShow = (showsMap: GlobalShowMap) => (slug: string) => {
  * @returns
  */
 const getSeason = (seasonsMap: GlobalSeasonMap) => (slug: string) => {
+    // TODO: Surface error for undefined scenario
     return seasonsMap.get(slug);
 };
 
