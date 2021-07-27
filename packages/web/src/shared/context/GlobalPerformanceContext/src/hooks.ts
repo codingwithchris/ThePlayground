@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { useConfigContext } from '@web/shared/context';
-import { getShowStatus } from '@web/domains/performance/show'
+import { getShowStatus } from '@web/domains/performance/show';
 import {
     RawPerformanceDataQuery,
     RawSeasonData,
@@ -94,7 +94,7 @@ export const useBuildPerformanceDataMap = (
      */
     rawSeasons.forEach((season) => {
         const showsThisSeason = [...shows].filter(
-            ([slug, showData]) => slug === season.slug.current
+            ([_, show]) => show.season.slug.current === season.slug.current
         );
 
         seasons.set(season.slug.current, {
