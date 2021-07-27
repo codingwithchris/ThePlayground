@@ -100,7 +100,7 @@ export const useBuildPerformanceDataMap = (
         seasons.set(season.slug.current, {
             ...season,
             path: links.getSeason(season.slug.current),
-            shows: showsThisSeason.map(([, show]) => show),
+            shows: showsThisSeason.map(([_, show]) => show),
         });
     });
 
