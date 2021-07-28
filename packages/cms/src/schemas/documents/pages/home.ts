@@ -15,5 +15,20 @@ export const schema: PageDocument = {
                 collapsed: true,
             },
         },
+        {
+            name: 'tempBurningBoyImage',
+            title: 'Temporary Dream of the Burning Boy Image',
+            type: 'imageWithAlt',
+        },
+        {
+            name: 'tempFriendArtImage',
+            title: 'Temporary Friend Art Image',
+            type: 'imageWithAlt',
+        },
+        {
+            name: 'tempPuffsImage',
+            title: 'Temporary Puffs Image',
+            type: 'imageWithAlt',
+        },
     ],
 };

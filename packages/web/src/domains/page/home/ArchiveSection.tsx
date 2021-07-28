@@ -4,9 +4,16 @@ import { breakpoints, spacing } from '@web/ui/tokens';
 
 import { useConfigContext } from '@web/shared/context';
 
-import { BodyText, Container, Heading, Icon, TextButton } from '@web/ui/core';
+import {
+    BodyText,
+    Container,
+    Heading,
+    Icon,
+    TextButton,
+    Section,
+} from '@web/ui/core';
 
-const StyledArchiveSection = styled.section`
+const StyledArchiveSection = styled(Section)`
     padding: ${spacing.layout.l} 0;
 
     ${breakpoints.m} {

@@ -1,7 +1,7 @@
 {
 	"name": "@nerve/cms",
 	"private": true,
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "CMS that powers The Nerve web app",
 	"main": "package.json",
 	"author": "Chris Hahn <chris+digital@chrishahn.me>",
