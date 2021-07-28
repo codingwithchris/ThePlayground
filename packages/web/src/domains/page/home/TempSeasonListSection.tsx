@@ -145,7 +145,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
         <StyledTempSeasonListSection bgColor="paperDark" className="">
             <Container>
                 <Heading size="xs" color="medium" className="tagline">
-                    [ Who the hell am I, anyway? ]
+                    Who the hell am I, anyway?
                 </Heading>
                 <GrittyHeading
                     size="m"
