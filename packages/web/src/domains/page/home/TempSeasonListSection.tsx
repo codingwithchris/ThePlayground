@@ -135,6 +135,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
             synopsis:
                 'A tale for anyone who has never been destined to save the world.',
             image: tempPuffsImage,
+            series: 'Alter Ego',
         },
     ];
 
@@ -217,6 +218,22 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
                                         {show.synopsis}
                                     </BodyText>
                                     <List itemSpacing="xxs">
+                                        {show.series && (
+                                            <ListItem>
+                                                <Icon
+                                                    name="Fire"
+                                                    size="xs"
+                                                    color="accent"
+                                                />
+                                                <BodyText
+                                                    color="accent"
+                                                    size="s"
+                                                >
+                                                    {show.title} is part of our{' '}
+                                                    {show.series} series
+                                                </BodyText>
+                                            </ListItem>
+                                        )}
                                         <ListItem>
                                             <Icon
                                                 name="Calendar"
