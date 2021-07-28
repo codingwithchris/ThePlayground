@@ -133,7 +133,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
             numberOfPerformances: '10',
             pwywPerformances: '2',
             synopsis:
-                'A tale for anyone who has never been destined to save the world',
+                'A tale for anyone who has never been destined to save the world.',
             image: tempPuffsImage,
         },
     ];
