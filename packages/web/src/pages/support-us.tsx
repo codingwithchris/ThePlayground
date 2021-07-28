@@ -19,7 +19,6 @@ import {
     AlternateGivingSection,
     DonateSection,
     TaxExemptSection,
-    WaysOfGivingSection,
 } from '@web/domains/page/support-us';
 
 const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({

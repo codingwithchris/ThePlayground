@@ -4,8 +4,10 @@ import {
     GatsbyPageContext,
     SanityDocument,
     SanityImageData,
+    SanityImageDataWithAlt,
 } from '@web/shared/types';
 
+import { Divider } from '@web/ui/core';
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import PageTemplate from '@web/domains/page/__template__';
@@ -13,7 +15,9 @@ import PageTemplate from '@web/domains/page/__template__';
 import {
     ArchiveSection,
     HeroSection,
+    LongDescriptionSection,
     RebrandSection,
+    TempSeasonListSection,
 } from '@web/domains/page/home';
 
 const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
@@ -39,6 +43,15 @@ const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
                 }}
             />
             <RebrandSection />
+            <LongDescriptionSection />
+            <Divider color="paperLight" />
+            <TempSeasonListSection
+                tempBurningBoyImage={page.tempBurningBoyImage}
+                tempFriendArtImage={page.tempFriendArtImage}
+                tempPuffsImage={page.tempPuffsImage}
+                auditionLink={page.hero.action.link.slug.current}
+            />
+            <Divider color="paperLight" />
             <ArchiveSection />
             <NewsSubscribeCTA />
         </PageTemplate>
@@ -89,6 +102,40 @@ export const query = graphql`
                     }
                 }
             }
+
+            # Temp Data for season announcement
+            tempBurningBoyImage {
+                asset {
+                    _id
+                    gatsbyImageData(
+                        placeholder: BLURRED
+                        layout: FULL_WIDTH
+                        width: 500
+                    )
+                }
+            }
+
+            tempFriendArtImage {
+                asset {
+                    _id
+                    gatsbyImageData(
+                        placeholder: BLURRED
+                        layout: FULL_WIDTH
+                        width: 500
+                    )
+                }
+            }
+
+            tempPuffsImage {
+                asset {
+                    _id
+                    gatsbyImageData(
+                        placeholder: BLURRED
+                        layout: FULL_WIDTH
+                        width: 500
+                    )
+                }
+            }
         }
     }
 `;
@@ -111,6 +158,9 @@ interface HomePageData extends SanityDocument {
         };
         image: SanityImageData;
     };
+    tempBurningBoyImage: SanityImageDataWithAlt;
+    tempFriendArtImage: SanityImageDataWithAlt;
+    tempPuffsImage: SanityImageDataWithAlt;
 }
 
 export default HomePage;

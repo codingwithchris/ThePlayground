@@ -36,10 +36,18 @@ const highlight: IconTheme = {
     },
 };
 
+const highlightExtra: IconTheme = {
+    color: {
+        default: palette.secondary.l2,
+        hover: palette.secondary.l1,
+    },
+};
+
 export const icons: IconThemes = {
     light,
     medium,
     dark,
     accent,
     highlight,
+    highlightExtra,
 };
