@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { SEASON_ROOT_SLUG } from '@web/domains/season';
+import { SEASON_ROOT_SLUG } from '@web/domains/performance/season';
 import { BLOG_ROOT_SLUG } from '@web/domains/blog';
 
 import { buildNestedSlugPath, normalizeSlug } from '@web/shared/utils';
@@ -48,11 +48,11 @@ export const useLinkMapConfig = (): LinkMapConfig => {
 };
 
 export interface LinkMapConfig {
-    blogPage: string | null;
-    archivePage: string | null;
-    supportUsPage: string | null;
+    blogPage: string | undefined;
+    archivePage: string | undefined;
+    supportUsPage: string | undefined;
     sitemap: string;
-    getShow: (season: string, show: string) => string | null;
-    getSeason: (season: string) => string | null;
+    getShow: (season: string, show: string) => string | undefined;
+    getSeason: (season: string) => string | undefined;
     getPost: (post: string) => string;
 }

@@ -14,6 +14,7 @@ import { Layout } from './src/domains/app/layout';
 import {
     ConfigProvider,
     EnvironmentProvider,
+    GlobalPerformanceProvider,
     UIProvider,
 } from './src/shared/context';
 
@@ -26,7 +27,9 @@ export const wrapRootElement = ({ element }) => (
     <EnvironmentProvider>
         <ConfigProvider>
             <ThemeProvider theme={theme}>
-                <UIProvider>{element}</UIProvider>
+                <GlobalPerformanceProvider>
+                    <UIProvider>{element}</UIProvider>
+                </GlobalPerformanceProvider>
             </ThemeProvider>
         </ConfigProvider>
     </EnvironmentProvider>

@@ -39,7 +39,7 @@ export const normalizeSlug = (slug: string, validate = true) => {
             'Slug failed validation. Slug will not be normalized: ',
             slug
         );
-        return null;
+        return;
     }
 
     const normalizedSlug = stripTrailingLeadingSlashes(slug);
@@ -57,7 +57,7 @@ export const buildNestedSlugPath = (slugs: string[]) => {
             'One or more slugs failed validation when attempting to build a nested slug path. No path can be built: ',
             slugs
         );
-        return null;
+        return;
     }
 
     const normalizedSlugs = slugs.map((slug) =>

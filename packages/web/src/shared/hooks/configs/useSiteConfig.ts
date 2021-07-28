@@ -1,5 +1,4 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import {} from '@web/shared/types';
 
 export const useSiteConfig = (): SiteConfig => {
     /**

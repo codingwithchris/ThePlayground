@@ -7,8 +7,8 @@
  */
 
 // import { redirects as blogRedirects } from '@web/domains/blog';
-// import { redirects as seasonRedirects } from '@web/domains/season';
-// import { redirects as showRedirects } from '@web/domains/show';
+// import { redirects as seasonRedirects } from '@web/domains/performance/season';
+// import { redirects as showRedirects } from '@web/domains/performance/show';
 
 import { GatsbyNetlifyRedirect } from './types';
 

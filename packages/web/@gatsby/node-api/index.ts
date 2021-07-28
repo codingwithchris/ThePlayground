@@ -12,7 +12,7 @@ import {
 
 import path from 'path';
 
-import { SEASON_ROOT_SLUG } from '@web/domains/season';
+import { SEASON_ROOT_SLUG } from '@web/domains/performance/season';
 import { redirects } from '../redirects';
 
 import {
@@ -210,7 +210,7 @@ const generateSeasonsAndShows = async ({
             url: `/${SEASON_ROOT_SLUG}/${season.slug.current}`,
             id: season._id,
             template: path.resolve(
-                `./src/domains/season/__template__/SeasonTemplate.tsx`
+                `./src/domains/performance/season/__template__/SeasonTemplate.tsx`
             ),
         };
 
@@ -241,7 +241,7 @@ const generateSeasonsAndShows = async ({
                 url: `${seasonConfig.url}/${show.slug.current}`,
                 id: show._id,
                 template: path.resolve(
-                    `./src/domains/show/__template__/ShowTemplate.tsx`
+                    `./src/domains/performance/show/__template__/ShowTemplate.tsx`
                 ),
                 season: seasonConfig,
             };

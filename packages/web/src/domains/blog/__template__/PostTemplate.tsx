@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { format, parseISO } from 'date-fns';
 
+import { useConfigContext } from '@web/shared/context';
 import { GatsbyPageContext } from '@web/shared/types';
 
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
@@ -39,16 +40,19 @@ const PostLanding: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
     const { authors } = post;
     const url = useCurrentURL(location.pathname);
     const metaImage = useGetMetaImage('post', post.seo.image);
+    const { company } = useConfigContext();
 
     // Format the posted-on date
     const rawPostedOnDate = parseISO(post.seo.publishedAt);
     const postedOnDate = format(rawPostedOnDate, 'PP');
 
+    const blogTitle = `${post.seo.title} | ${company.name}`;
+
     return (
         <>
             <PageBasicSEO
                 url={url}
-                title={post.seo.title}
+                title={blogTitle}
                 description={post.seo.description}
                 image={metaImage}
                 hideSEO={post.seo.hide}
@@ -58,7 +62,7 @@ const PostLanding: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
                 <StructuredData
                     pageSchemaData={{
                         pageURL: url,
-                        title: post.seo.title,
+                        title: blogTitle,
                         description: post.seo.description,
                         image: metaImage,
                         datePublished: post.seo.publishedAt,

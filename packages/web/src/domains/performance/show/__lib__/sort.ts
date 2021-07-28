@@ -1,15 +1,15 @@
 import { compareAsc, compareDesc, parseISO } from 'date-fns';
-import { ComparableShow } from '../types';
+import { ShowCore } from '../types';
 
 /**
  * Sort shows from newest to oldest based on their performance dates
  *
  * @param shows An array of shows to sort
  */
-export const sortShowsByDate = (
-    shows: ComparableShow[],
+export const sortShowsByDate = <AnyShowType extends ShowCore>(
+    shows: AnyShowType[],
     order = 'desc'
-): ComparableShow[] =>
+): AnyShowType[] =>
     shows.sort((a, b) => {
         const { closeDate: performanceA } = a;
         const { closeDate: performanceB } = b;

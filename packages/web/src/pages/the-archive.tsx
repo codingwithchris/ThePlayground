@@ -4,7 +4,10 @@ import { graphql, PageProps } from 'gatsby';
 import { GatsbyPageContext, SanityDocumentSEO } from '@web/shared/types';
 
 import { SimpleHero, NewsSubscribeCTA } from '@web/ui/molecules';
-import { ShowPosterGrid, ShowCoreWithPoster } from '@web/domains/show';
+import {
+    ShowPosterGrid,
+    ShowCoreWithPoster,
+} from '@web/domains/performance/show';
 
 import PageTemplate from '@web/domains/page/__template__';
 
