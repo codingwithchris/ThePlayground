@@ -11,8 +11,8 @@ const StyledLongDescriptionSection = styled(Section)`
 export const LongDescriptionSection: React.FC = () => {
     return (
         <StyledLongDescriptionSection bgColor="default" className="">
-            <Container maxWidth="m">
-                <BodyText size="l" color="light">
+            <Container maxWidth="s">
+                <BodyText size="m" color="light">
                     We are an ensemble theatre company that isn't afraid to cut
                     through the bullshit to uncover the messy parts of life. We
                     tell raw, real, and relevant stories that stick with you

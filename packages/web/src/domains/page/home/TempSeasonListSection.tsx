@@ -108,7 +108,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
             author: 'David West Read',
             dates: 'Oct. 20-31',
             year: '2021',
-            numberOfPerformances: '11',
+            numberOfPerformances: '10',
             pwywPerformances: '2',
             synopsis:
                 'A story about finding the strength to move on... and the courage to live without regret.',
@@ -119,7 +119,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
             author: 'Sophia Alvarez',
             dates: 'Dec. 8-19',
             year: '2021',
-            numberOfPerformances: '11',
+            numberOfPerformances: '10',
             pwywPerformances: '2',
             synopsis:
                 'How late is too late to give up on your dreams and when are you really a "grown up"?',
@@ -130,7 +130,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
             author: 'Matt Cox',
             dates: 'May 18-29',
             year: '2022',
-            numberOfPerformances: '11',
+            numberOfPerformances: '10',
             pwywPerformances: '2',
             synopsis:
                 'A tale for anyone who has never been destined to save the world',
@@ -145,7 +145,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
         <StyledTempSeasonListSection bgColor="paperDark" className="">
             <Container>
                 <Heading size="xs" color="medium" className="tagline">
-                    [ Who the hell are you, anyway? ]
+                    [ Who the hell am I, anyway? ]
                 </Heading>
                 <GrittyHeading
                     size="m"
