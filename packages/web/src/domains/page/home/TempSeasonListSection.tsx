@@ -224,7 +224,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
                                                 color="highlightExtra"
                                             />
                                             <BodyText color="medium" size="s">
-                                                Total Performances:{' '}
+                                                Ticketed Performances:{' '}
                                                 {show.numberOfPerformances}
                                             </BodyText>
                                         </ListItem>
