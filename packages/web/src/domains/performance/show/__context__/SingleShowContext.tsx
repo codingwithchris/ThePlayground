@@ -16,8 +16,6 @@ export const SingleShowProvider: React.FC<SingleShowProviderProps> = ({
         previousShow: previous(),
     };
 
-    console.log(context);
-
     return (
         <SingleShowContext.Provider value={context}>
             {children}

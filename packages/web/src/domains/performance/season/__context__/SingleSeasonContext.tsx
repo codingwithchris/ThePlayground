@@ -21,8 +21,6 @@ export const SingleSeasonProvider: React.FC<SingleSeasonProviderProps> = ({
         previousSeason: previous(),
     };
 
-    console.log(context);
-
     return (
         <SingleSeasonContext.Provider value={context}>
             {children}
