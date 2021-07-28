@@ -258,8 +258,8 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
             </Container>
             <Container maxWidth="s" className="footer">
                 <BodyText color="medium" size="m">
-                    * Ticket links & additional information for each show will
-                    be available soon.
+                    * Tickets & additional information for each show will be
+                    available soon.
                 </BodyText>
                 <OutlineButton
                     color="tertiary"
