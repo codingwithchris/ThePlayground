@@ -28,6 +28,7 @@ const StyledBrandImage = styled(Image)`
         left: 0%;
         top: 0%;
         background-image: url(${grain});
+        opacity: 0.7;
     }
 `;
 
