@@ -116,7 +116,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
         },
         {
             title: 'Friend Art',
-            author: 'Sophia Alvarez',
+            author: 'Sofia Alvarez',
             dates: 'Dec. 8-19',
             year: '2021',
             numberOfPerformances: '10',
