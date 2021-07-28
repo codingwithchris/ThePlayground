@@ -6,8 +6,9 @@ import {
     useGlobalPerformanceContext,
 } from '@web/shared/context';
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
-import { NewsSubscribeCTA } from '@web/ui/molecules';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
+
+import { NewsSubscribeCTA, LegacyContentNotice } from '@web/ui/molecules';
 
 import { SingleSeasonProvider } from '../../season/__context__';
 import { SingleShowProvider } from '../__context__';
@@ -46,10 +47,17 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             }}
                         />
                     )}
-                    <Hero
+                    <LegacyContentNotice
+                        contentType="show"
+                        title={`${show.title}`}
+                        subTitle={`by ${show.author.name}`}
+                        legacyURL={`https://theplaygroundtheatre.org/season/${slug}`}
+                        legacyURLText="See show on old website"
+                    />
+                    {/* <Hero
                         bgImage={{ image: show.heroImage.asset }}
                         actionBar={<ActionBar url={url} />}
-                    />
+                    /> */}
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
             </SingleSeasonProvider>
