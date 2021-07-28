@@ -7,9 +7,8 @@ import {
 } from './types';
 
 /**
+ * Get an individual Show
  *
- * @param showsMap
- * @returns
  */
 const getShow = (showsMap: GlobalShowMap) => (slug: string) => {
     // TODO: Surface error for undefined scenario
@@ -17,9 +16,7 @@ const getShow = (showsMap: GlobalShowMap) => (slug: string) => {
 };
 
 /**
- *
- * @param seasonsMap
- * @returns
+ * Get an individual Season
  */
 const getSeason = (seasonsMap: GlobalSeasonMap) => (slug: string) => {
     // TODO: Surface error for undefined scenario
@@ -27,19 +24,14 @@ const getSeason = (seasonsMap: GlobalSeasonMap) => (slug: string) => {
 };
 
 /**
- *
- * @param season
- * @returns
+ * Get all of the Shows that exist in a single Season
  */
 const getAllShowsInSeason = (season?: SeasonMapEntry) => {
     return season?.shows;
 };
 
 /**
- *
- * @param showsInSeason
- * @param showToExclude
- * @returns
+ * Get all the shows in a single Season with exception of the provided Show
  */
 const getOtherShowsInSeason = (
     showsInSeason?: ShowMapEntry[],
@@ -51,24 +43,38 @@ const getOtherShowsInSeason = (
 };
 
 /**
- * Get the previous and next references for seasons or shows
+ * Get the PREVIOUS or NEXT references of Seasons or Shows in relation
+ * to the provided Season or Show entry.
  */
 const getPerformanceNeighbors =
     <T>(dataMap: Map<string, T>) =>
-    (startFromShow: string) => {
+    (startingFromEntry: string) => {
         const dataArray = [...dataMap];
         const currentIndex = dataArray.findIndex(
-            ([slug]) => slug === startFromShow
+            ([slug]) => slug === startingFromEntry
         );
 
+        /**
+         * Because we sort our shows descending (from most recent show to oldest),
+         * we actually need to traverse UP the array by getting the previous array
+         * item to get the NEXT (more recent) show.
+         *
+         * * NOTE: because we are operating on a Map, the returned value will be
+         * *  a tuple of [key, data], so we use [1] to get the data.
+         */
         const next = () => {
-            // Because we sort our shows descending (from most recent show to oldest),
-            // we actually need to traverse UP the array to get the NEXT show.
             return getPreviousArrayItem(dataArray, currentIndex)?.[1];
         };
+
+        /**
+         * Because we sort our shows descending (from most recent show to oldest),
+         * we actually need to traverse DOWN the array by getting the next array
+         * item to get the PREVIOUS (older) show.
+         *
+         * * NOTE: because we are operating on a Map, the returned value will be
+         * * a tuple of [key, data], so we use [1] to get the data.
+         */
         const previous = () => {
-            // Because we sort our shows descending (from most recent show to oldest),
-            // we actually need to traverse DOWN the array to get the PREVIOUS show.
             return getNextArrayItem(dataArray, currentIndex)?.[1];
         };
 
@@ -78,9 +84,10 @@ const getPerformanceNeighbors =
 /**
  * Contains all publicly exposed methods of our API
  *
- * @param shows
- * @param seasons
- * @returns An object of publicly exposed methods for operating on our season and show data
+ * @param shows A javascript Map of every Show we've ever done with the key as the Show slug
+ * @param seasons A javascript Map of every Season we've ever done with the key as the Season slug
+ *
+ * @returns An object of publicly exposed methods for operating on our season and show data.
  */
 export const gettersFacade = (
     shows: GlobalShowMap,
@@ -90,8 +97,8 @@ export const gettersFacade = (
     showCount: shows.size,
     season: getSeason(seasons),
     seasonCount: seasons.size,
-    allShowsInSeason: (slug: string) =>
-        getAllShowsInSeason(getSeason(seasons)(slug)),
+    allShowsInSeason: (seasonSlug: string) =>
+        getAllShowsInSeason(getSeason(seasons)(seasonSlug)),
     otherShowsInSeason: (seasonSlug: string, showSlug: string) =>
         getOtherShowsInSeason(
             getSeason(seasons)(seasonSlug)?.shows,

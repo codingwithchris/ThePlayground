@@ -10,7 +10,8 @@ import {
 } from './types';
 
 /**
- * GraphQL Queries
+ * Query all publicly available Seasons and Shows along with core/essential data
+ * and sort the entries from newest to oldest (DESC),
  */
 export const useQueryAllPerformanceData: RawPerformanceDataQuery = () => {
     const {
@@ -58,10 +59,14 @@ export const useQueryAllPerformanceData: RawPerformanceDataQuery = () => {
 };
 
 /**
+ * Take the raw data from our global Season & Show queries and build well-considered
+ * data Maps with bidirectional references that include hydrated data such as
+ * full paths and show statuses (data that can is dynamically assembled on the client).
  *
- * @param shows
- * @param seasons
- * @returns
+ * @param shows The raw Shows query data
+ * @param seasons The raw Seasons query data
+ *
+ * @returns Season & Show Data Maps
  */
 export const useBuildPerformanceDataMap = (
     rawSeasons: RawSeasonData[],
