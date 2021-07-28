@@ -19,6 +19,7 @@ import {
     GrittyHeading,
     Container,
     Section,
+    Heading,
     SectionProps,
     OutlineButton,
 } from '@web/ui/core';
@@ -26,12 +27,17 @@ import {
 const StyledTempSeasonListSection = styled(Section)`
     padding: ${spacing.layout.l} 0;
 
-    .heading {
+    .intro-heading {
         margin-bottom: ${spacing.layout.l};
     }
 
-    .copy {
-        flex: 1;
+    .intro-copy {
+        margin-bottom: ${spacing.layout.l};
+        max-width: 700px;
+    }
+
+    .tagline {
+        margin-bottom: ${spacing.layout.xs};
     }
 
     .show-list {
@@ -138,15 +144,28 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
     return (
         <StyledTempSeasonListSection bgColor="paperDark" className="">
             <Container>
+                <Heading size="xs" color="medium" className="tagline">
+                    [ Who the hell are you, anyway? ]
+                </Heading>
                 <GrittyHeading
                     size="m"
-                    className="heading"
+                    className="intro-heading"
                     bgColor="neutralLight"
                     color="dark"
                     offset={-2}
                 >
                     Our 2021/2022 Season
                 </GrittyHeading>
+
+                <BodyText size="m" color="light" className="intro-copy">
+                    This season explores identity; A topic we are all intimately
+                    familiar with having gone through this pandemic. So many
+                    people have grappled with their identity, questioned their
+                    life choices, changed their path, or discovered a new part
+                    of themselves. All three plays this season feature
+                    characters who are either questioning who they are or
+                    discovering who they want to be.
+                </BodyText>
 
                 <ul className="show-list">
                     {shows.map((show) => (
