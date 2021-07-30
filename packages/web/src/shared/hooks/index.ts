@@ -1,4 +1,3 @@
-export * from './configs';
 export * from './useCopyToClipboard';
 export * from './useCurrentURL';
 export * from './useGetMetaImage';
@@ -7,4 +6,6 @@ export * from './useMailchimpSubscribe';
 export * from './useOnClickOutside';
 export * from './useOverlay';
 export * from './useScrollFreeze';
+export * from './useSocialShare';
+export * from './useSocialProfiles';
 export * from './useToggle';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOverlay, useSocialShareConfig } from '@web/shared/hooks';
+import { useOverlay, useSocialShare } from '@web/shared/hooks';
 import { Link } from '@web/domains/app/routing';
 import {
     BodyText,
@@ -18,7 +18,7 @@ export const SocialShareModal: React.FC<ISocialShare> = ({
     shareURL,
 }) => {
     const [isOpen, setIsOpen, toggle] = useOverlay();
-    const share = useSocialShareConfig(shareURL, socialShareText);
+    const share = useSocialShare(shareURL, socialShareText);
 
     // Create reusable hook that takes a ref, copies a given text, and then updates the text in the reffed div on a timeout
     const handleCopyURL = () => navigator.clipboard.writeText(shareURL);

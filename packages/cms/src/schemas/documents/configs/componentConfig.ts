@@ -7,8 +7,15 @@ export const schema: ConfigDocument = {
     disabledActions: ['create', 'delete'],
     fields: [
         {
+            name: 'headerNav',
+            type: 'headerNav',
+        },
+        {
+            name: 'footerNav',
+            type: 'footerNav',
+        },
+        {
             name: 'subscribe',
-            title: 'Subscribe Component',
             type: 'subscribe',
         },
     ],

@@ -1,10 +1,10 @@
 import { ConfigDocument } from '../../../types';
 
 export const schema: ConfigDocument = {
-    name: 'linkMapConfig',
-    title: 'Link Map Config',
+    name: 'linkManifestConfig',
+    title: 'Link Manifest Config',
     icon: '',
-    disabledActions: ['create', 'delete'],
+    // disabledActions: ['create', 'delete'],
     fields: [
         {
             name: 'showArchivePage',
@@ -27,7 +27,7 @@ export const schema: ConfigDocument = {
         {
             name: 'sitemap',
             title: 'Sitemap',
-            type: 'url',
+            type: 'string',
         },
     ],
 };
