@@ -1,7 +1,7 @@
 import { AvailableIconName } from '@web/ui/core';
 import { useConfigContext } from '@web/shared/context';
 
-export const useSocialProfilesConfig = (): SocialProfilesConfig[] => {
+export const useSocialProfiles = (): SocialProfile[] => {
     const { company } = useConfigContext();
 
     return [
@@ -38,7 +38,7 @@ export const useSocialProfilesConfig = (): SocialProfilesConfig[] => {
     ];
 };
 
-interface SocialProfilesConfig {
+interface SocialProfile {
     name: string;
     link: string;
     iconName: AvailableIconName;

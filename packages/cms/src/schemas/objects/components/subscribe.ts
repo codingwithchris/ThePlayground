@@ -2,10 +2,6 @@ export const subscribe = {
     name: 'subscribe',
     title: 'Subscribe Component',
     type: 'object',
-    options: {
-        collapsible: true,
-        collapsed: true,
-    },
     fields: [
         {
             name: 'title',

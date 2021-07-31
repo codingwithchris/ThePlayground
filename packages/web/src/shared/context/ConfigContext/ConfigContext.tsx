@@ -1,15 +1,12 @@
 import React, { createContext, useContext } from 'react';
 
+import { CompanyConfig, useCompanyConfig } from './configs/useCompanyConfig';
+import { SiteConfig, useSiteConfig } from './configs/useSiteConfig';
+import { SEOConfig, useSEOConfig } from './configs/useSEOConfig';
 import {
-    CompanyConfig,
-    useCompanyConfig,
-    SiteConfig,
-    useSiteConfig,
-    SEOConfig,
-    useSEOConfig,
-    LinkMapConfig,
-    useLinkMapConfig,
-} from '../hooks';
+    LinkManifestConfig,
+    useLinkManifestConfig,
+} from './configs/useLinkManifestConfig';
 
 export const ConfigContext = createContext({} as GlobalConfigs);
 
@@ -17,7 +14,7 @@ export const ConfigProvider: React.FC = ({ children }) => {
     const company = useCompanyConfig();
     const site = useSiteConfig();
     const seo = useSEOConfig();
-    const links = useLinkMapConfig();
+    const links = useLinkManifestConfig();
 
     return (
         <ConfigContext.Provider value={{ company, site, seo, links }}>
@@ -32,5 +29,5 @@ export interface GlobalConfigs {
     company: CompanyConfig;
     site: SiteConfig;
     seo: SEOConfig;
-    links: LinkMapConfig;
+    links: LinkManifestConfig;
 }

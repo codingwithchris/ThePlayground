@@ -5,13 +5,13 @@ import { BLOG_ROOT_SLUG } from '@web/domains/blog';
 
 import { buildNestedSlugPath, normalizeSlug } from '@web/shared/utils';
 
-export const useLinkMapConfig = (): LinkMapConfig => {
+export const useLinkManifestConfig = (): LinkManifestConfig => {
     /**
      * Query for all the configs our site might need to use for every page.
      */
-    const { sanityLinkMapConfig } = useStaticQuery(graphql`
-        query LinkMapConfigQuery {
-            sanityLinkMapConfig(_id: { eq: "linkMapConfig" }) {
+    const { sanityLinkManifestConfig } = useStaticQuery(graphql`
+        query LinkManifestConfigQuery {
+            sanityLinkManifestConfig(_id: { eq: "linkManifestConfig" }) {
                 blogPage {
                     slug {
                         current
@@ -32,7 +32,7 @@ export const useLinkMapConfig = (): LinkMapConfig => {
         }
     `);
 
-    const links = sanityLinkMapConfig;
+    const links = sanityLinkManifestConfig;
 
     return {
         blogPage: normalizeSlug(links?.blogPage?.slug?.current),
@@ -47,7 +47,7 @@ export const useLinkMapConfig = (): LinkMapConfig => {
     };
 };
 
-export interface LinkMapConfig {
+export interface LinkManifestConfig {
     blogPage: string | undefined;
     archivePage: string | undefined;
     supportUsPage: string | undefined;
