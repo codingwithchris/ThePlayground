@@ -4,7 +4,7 @@ export const schema: ConfigDocument = {
     name: 'linkManifestConfig',
     title: 'Link Manifest Config',
     icon: '',
-    // disabledActions: ['create', 'delete'],
+    disabledActions: ['create', 'delete'],
     fields: [
         {
             name: 'showArchivePage',
