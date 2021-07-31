@@ -7,9 +7,31 @@ export const schema: ConfigDocument = {
     disabledActions: ['create', 'delete'],
     fields: [
         {
+            name: 'headerNav',
+            title: 'Header Navigation',
+            type: 'headerNav',
+            options: {
+                collapsible: true,
+                collapsed: true,
+            },
+        },
+        {
+            name: 'footerNav',
+            title: 'Footer Navigation',
+            type: 'footerNav',
+            options: {
+                collapsible: true,
+                collapsed: true,
+            },
+        },
+        {
             name: 'subscribe',
-            title: 'Subscribe Component',
             type: 'subscribe',
+            title: 'Subscribe CTA',
+            options: {
+                collapsible: true,
+                collapsed: true,
+            },
         },
     ],
 };

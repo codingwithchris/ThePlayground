@@ -1,10 +1,10 @@
 import { AvailableIconName } from '@web/ui/core';
 import { useConfigContext } from '@web/shared/context';
 
-export const useSocialShareConfig = (
+export const useSocialShare = (
     shareURL: string,
     shareText: string
-): SocialShareConfig[] => {
+): SocialShare[] => {
     const { company, site } = useConfigContext();
     const encodedURL = encodeURIComponent(shareURL);
     const text = encodeURIComponent(shareText);
@@ -33,7 +33,7 @@ export const useSocialShareConfig = (
     ];
 };
 
-interface SocialShareConfig {
+interface SocialShare {
     text: string;
     url: string;
     iconName: AvailableIconName;

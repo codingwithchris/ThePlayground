@@ -86,7 +86,7 @@ const getBlogPostParentPage = async (
 
     const { data, errors } = await graphql<SanityBlogPageData>(`
         {
-            sanityLinkMapConfig(_id: { eq: "linkMapConfig" }) {
+            sanityLinkManifestConfig(_id: { eq: "linkManifestConfig" }) {
                 blogPage {
                     slug {
                         current

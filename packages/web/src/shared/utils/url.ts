@@ -35,7 +35,7 @@ const isValidSlug = (slug: string) =>
  */
 export const normalizeSlug = (slug: string, validate = true) => {
     if (validate && !isValidSlug(slug)) {
-        console.log(
+        console.error(
             'Slug failed validation. Slug will not be normalized: ',
             slug
         );
@@ -53,7 +53,7 @@ export const normalizeSlug = (slug: string, validate = true) => {
  */
 export const buildNestedSlugPath = (slugs: string[]) => {
     if (!slugs.every(isValidSlug)) {
-        console.log(
+        console.error(
             'One or more slugs failed validation when attempting to build a nested slug path. No path can be built: ',
             slugs
         );
