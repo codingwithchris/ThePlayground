@@ -94,7 +94,6 @@ export const query = graphql`
                 }
                 image {
                     asset {
-                        _id
                         gatsbyImageData(
                             placeholder: BLURRED
                             layout: FULL_WIDTH
@@ -105,8 +104,8 @@ export const query = graphql`
 
             # Temp Data for season announcement
             tempBurningBoyImage {
+                alt
                 asset {
-                    _id
                     gatsbyImageData(
                         placeholder: BLURRED
                         layout: FULL_WIDTH
@@ -116,8 +115,8 @@ export const query = graphql`
             }
 
             tempFriendArtImage {
+                alt
                 asset {
-                    _id
                     gatsbyImageData(
                         placeholder: BLURRED
                         layout: FULL_WIDTH
@@ -127,8 +126,8 @@ export const query = graphql`
             }
 
             tempPuffsImage {
+                alt
                 asset {
-                    _id
                     gatsbyImageData(
                         placeholder: BLURRED
                         layout: FULL_WIDTH
