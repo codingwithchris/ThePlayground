@@ -25,7 +25,7 @@ export interface SanityBlogPostData {
 }
 
 export interface SanityBlogPageData {
-    sanityLinkMapConfig: {
+    sanityLinkManifestConfig: {
         blogPage: {
             slug: {
                 current: string;
