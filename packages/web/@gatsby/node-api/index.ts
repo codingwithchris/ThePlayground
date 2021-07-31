@@ -111,7 +111,7 @@ const getBlogPostParentPage = async (
         return;
     }
 
-    const blogPage = data?.sanityLinkMapConfig?.blogPage?.slug?.current;
+    const blogPage = data?.sanityLinkManifestConfig?.blogPage?.slug?.current;
 
     if (!blogPage) {
         reporter.panicOnBuild(
