@@ -1,6 +1,6 @@
 import React from 'react';
 import { parseISO, format } from 'date-fns';
-import { cx } from 'classnames';
+import cx from 'classnames';
 
 import { BodyText, Icon, FillButton, Card, CardContent } from '@web/ui/core';
 import { isAvailablePerformance } from '../../../../../__lib__';
