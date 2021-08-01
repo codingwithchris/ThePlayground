@@ -47,14 +47,7 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             }}
                         />
                     )}
-                    <LegacyContentNotice
-                        contentType="show"
-                        title={`${show.title}`}
-                        subTitle={`by ${show.author.name}`}
-                        legacyURL={`https://theplaygroundtheatre.org/shows/${slug}`}
-                        legacyURLText="See show on old website"
-                    />
-                    {/* <Hero
+                    <Hero
                         bgImage={{ image: show.heroImage.asset }}
                         actionBar={<ActionBar url={url} />}
                     />
