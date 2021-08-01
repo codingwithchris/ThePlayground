@@ -8,13 +8,13 @@ import {
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 
-import { NewsSubscribeCTA, LegacyContentNotice } from '@web/ui/molecules';
+import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SingleSeasonProvider } from '../../season/__context__';
 import { SingleShowProvider } from '../__context__';
 import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
-import { Hero, ActionBar } from './components';
+import { Hero, ActionBar, Performances } from './components';
 
 const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
     ({ data, pageContext, location }) => {
@@ -47,17 +47,11 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             }}
                         />
                     )}
-                    <LegacyContentNotice
-                        contentType="show"
-                        title={`${show.title}`}
-                        subTitle={`by ${show.author.name}`}
-                        legacyURL={`https://theplaygroundtheatre.org/season/${slug}`}
-                        legacyURLText="See show on old website"
-                    />
-                    {/* <Hero
+                    <Hero
                         bgImage={{ image: show.heroImage.asset }}
                         actionBar={<ActionBar url={url} />}
-                    /> */}
+                    />
+                    <Performances performances={show.performances} />
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
             </SingleSeasonProvider>
@@ -142,6 +136,15 @@ export const showQuery = graphql`
             #     modalTriggerText
             #     _rawModalContent(resolveReferences: { maxDepth: 10 })
             # }
+
+            ## Performances & Tickets
+            performances {
+                datetime
+                hasTalkback
+                isPayWhatYouCan
+                isPreview
+                status
+            }
 
             ## SEO Settings
             _createdAt
