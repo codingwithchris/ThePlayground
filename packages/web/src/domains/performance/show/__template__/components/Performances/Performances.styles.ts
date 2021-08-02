@@ -5,7 +5,8 @@ import { breakpoints, spacing, grid } from '@web/ui/tokens';
 export const Performances = styled(Section)<{ performancesCount: number }>`
     --gutter-width: ${spacing.component.s};
     --scroll-padding: ${spacing.component.m};
-    --list-gutter: 3.5%;
+    --list-margin-correction: -3.5%;
+    --list-item-outer-margin: 3.5%;
     --totalPerformances: ${(props) => props.performancesCount};
 
     padding: ${spacing.layout.m} 0;
@@ -23,22 +24,19 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
     }
 
     .performances-list {
-        display: grid;
-        grid-gap: var(--gutter-width);
-        grid-template-columns:
-            var(--list-gutter) repeat(var(--totalPerformances), 200px)
-            var(--list-gutter);
+        display: flex;
         height: 100%;
         list-style: none;
-        margin-left: -3.5%;
-        margin-right: -3.5%;
+        margin-left: var(--list-margin-correction);
+        margin-right: var(--list-margin-correction);
         min-width: 100% !important;
-        overflow: auto clip;
-        scroll-snap-type: x mandatory;
+        overflow-x: auto;
         scroll-padding: var(--scroll-padding);
         -webkit-overflow-scrolling: touch;
 
         ${breakpoints.s} {
+            display: grid;
+            grid-gap: var(--gutter-width);
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-auto-flow: row;
         }
@@ -48,16 +46,19 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         }
 
         li {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
+            flex: 0 0 175px;
         }
-    }
-
-    .performances-list:before,
-    .performances-list:after {
-        content: '';
-        ${breakpoints.s} {
-            content: none;
+        li:not(:first-child) {
+            margin-left: calc(var(--gutter-width) / 2);
+        }
+        li:not(:last-child) {
+            margin-right: calc(var(--gutter-width) / 2);
+        }
+        li:first-child {
+            margin-left: var(--list-item-outer-margin);
+        }
+        li:last-child {
+            margin-right: var(--list-item-outer-margin);
         }
     }
 `;

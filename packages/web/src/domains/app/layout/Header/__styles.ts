@@ -7,6 +7,8 @@ import { HeaderProps } from './__types';
 export const Header = styled.header<HeaderProps>`
     display: block;
     padding: ${spacing.component.s} 0;
+    position: relative;
+    z-index: ${zIndex.nav};
 
     ${appNavBreakpoint} {
         left: 0;
@@ -14,7 +16,6 @@ export const Header = styled.header<HeaderProps>`
         position: absolute;
         top: 0;
         width: 100%;
-        z-index: ${zIndex.nav};
     }
 
     .container {
