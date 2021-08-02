@@ -2,7 +2,15 @@ import React from 'react';
 import { parseISO, format } from 'date-fns';
 import cx from 'classnames';
 
-import { BodyText, Icon, FillButton, Card, CardContent } from '@web/ui/core';
+import {
+    BodyText,
+    Divider,
+    Icon,
+    FillButton,
+    Card,
+    CardContent,
+    CardActions,
+} from '@web/ui/core';
 import { isAvailablePerformance } from '../../../../../__lib__';
 
 import * as styled from './Tile.styles';
@@ -29,6 +37,19 @@ export const Tile = ({
                     <BodyText color="light" size="s">
                         {curtain}
                     </BodyText>
+                    <div className="tickets">
+                        <BodyText color="medium" size="s" className="cost">
+                            $20/each
+                        </BodyText>
+                        <FillButton
+                            to="https://daytonlive.org/events"
+                            size="s"
+                            color="primary"
+                            className="action"
+                        >
+                            Get Tickets
+                        </FillButton>
+                    </div>
                 </CardContent>
             </Card>
         </styled.Tile>

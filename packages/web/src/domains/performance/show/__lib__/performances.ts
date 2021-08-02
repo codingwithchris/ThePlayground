@@ -5,10 +5,8 @@ export const isCancelledPerformance = (status: ShowPerformance['status']) => {
     return status === 'cancelled';
 };
 
-export const isAvailablePerformance = (
-    datetime: string,
-    status: ShowPerformance['status']
-) => {
+export const isAvailablePerformance = (performance: ShowPerformance) => {
+    const { status, datetime } = performance;
     const date = parseISO(datetime);
     return !isCancelledPerformance(status) && !isPast(date);
 };
