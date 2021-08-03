@@ -38,7 +38,7 @@ export const Tile = ({
                         {curtain}
                     </BodyText>
                     <div className="tickets">
-                        <BodyText color="medium" size="s" className="cost">
+                        <BodyText color="medium" size="xs" className="cost">
                             $20/each
                         </BodyText>
                         <FillButton

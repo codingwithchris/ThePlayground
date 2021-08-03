@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { Section } from '@web/ui/core';
-import { breakpoints, spacing, grid } from '@web/ui/tokens';
+import { breakpoints, spacing, containerGutter } from '@web/ui/tokens';
 
 export const Performances = styled(Section)<{ performancesCount: number }>`
     --gutter-width: ${spacing.component.s};
     --scroll-padding: ${spacing.component.m};
-    --list-margin-correction: -3.5%;
-    --list-item-outer-margin: 3.5%;
+    --list-margin-correction: -${containerGutter}%;
+    --list-item-outer-margin: ${containerGutter}%;
+    --list-item-width: 175px;
     --totalPerformances: ${(props) => props.performancesCount};
 
     padding: ${spacing.layout.m} 0;
@@ -25,11 +26,10 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
 
     .performances-list {
         display: flex;
-        height: 100%;
         list-style: none;
         margin-left: var(--list-margin-correction);
         margin-right: var(--list-margin-correction);
-        min-width: 100% !important;
+        min-width: 100%;
         overflow-x: auto;
         scroll-padding: var(--scroll-padding);
         -webkit-overflow-scrolling: touch;
@@ -37,16 +37,16 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         ${breakpoints.s} {
             display: grid;
             grid-gap: var(--gutter-width);
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             grid-auto-flow: row;
         }
 
         ${breakpoints.l} {
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(5, 1fr);
         }
 
         li {
-            flex: 0 0 175px;
+            flex: 0 0 var(--list-item-width);
         }
         li:not(:first-child) {
             margin-left: calc(var(--gutter-width) / 2);

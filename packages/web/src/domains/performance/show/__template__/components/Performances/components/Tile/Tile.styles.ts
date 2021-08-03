@@ -7,6 +7,6 @@ export const Tile = styled.li`
     }
 
     .tickets .action {
-        margin-top: ${spacing.component.s};
+        margin-top: ${spacing.component.xs};
     }
 `;
