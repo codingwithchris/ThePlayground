@@ -40,16 +40,14 @@ export const Icon: React.FC<IconProps> = ({
             color={color}
             size={size}
             responsive={responsive}
+            title={title}
+            desc={desc}
             aria-hidden="true"
-        >
-            <SVGElement
-                name={name}
-                path={selectedIcon.path}
-                viewBox={selectedIcon.viewBox}
-                title={title}
-                desc={desc}
-            />
-        </Styled.Icon>
+            role="presentation"
+            path={selectedIcon.path}
+            viewBox={selectedIcon.viewBox}
+            {...others}
+        />
     );
 };
 
