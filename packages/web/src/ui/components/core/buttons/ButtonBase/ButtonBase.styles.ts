@@ -32,33 +32,6 @@ const buttonClickScaleAmount = 0.96;
  * It aims to be a simple building block for creating a button.
  * It contains core styling. sizing, & hover logic
  */
-
-export const ButtonBaseContent = styled.span`
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-
-    .start-icon,
-    .end-icon {
-        align-items: center;
-        display: inline-flex;
-        position: relative;
-        transition: ${animation.buttonHover};
-    }
-
-    .start-icon {
-        margin-right: ${spacing.component.xs};
-    }
-    .end-icon {
-        margin-left: ${spacing.component.xs};
-    }
-
-    .loader {
-        line-height: 0;
-        flex: 1;
-    }
-`;
-
 export const ButtonBase = styled(Link)<ButtonBaseProps>`
     border-radius: ${borders.defaultRadius};
     cursor: pointer;
@@ -68,6 +41,32 @@ export const ButtonBase = styled(Link)<ButtonBaseProps>`
     transition: ${animation.buttonHover};
     width: auto;
     ${(props) => buttonSizes[props.size]}
+
+    > ._content {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+
+        .start-icon,
+        .end-icon {
+            align-items: center;
+            display: inline-flex;
+            position: relative;
+            transition: ${animation.buttonHover};
+        }
+
+        .start-icon {
+            margin-right: ${spacing.component.xs};
+        }
+        .end-icon {
+            margin-left: ${spacing.component.xs};
+        }
+
+        .loader {
+            line-height: 0;
+            flex: 1;
+        }
+    }
 
     &.--full {
         display: flex;

@@ -40,7 +40,7 @@ export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
             onClick={onClick}
             {...others}
         >
-            <styled.ButtonBaseContent>
+            <span className="_content">
                 {isLoading ? (
                     <div className="loader">
                         <CircularProgress size={loaderIconSize} />
@@ -54,7 +54,7 @@ export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
                         {endIcon && <div className="end-icon">{endIcon}</div>}
                     </>
                 )}
-            </styled.ButtonBaseContent>
+            </span>
         </styled.ButtonBase>
     );
 };
