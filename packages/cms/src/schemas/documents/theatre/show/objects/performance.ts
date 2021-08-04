@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 export const performance = {
     name: 'performance',
     title: 'Performance Occurrence',
+    description: 'A single performance of the show',
     type: 'object',
     preview: {
         select: {
@@ -25,7 +26,7 @@ export const performance = {
             name: 'datetime',
             title: 'Show date & time',
             type: 'datetime',
-            description: 'The starting date and time of the show.',
+            description: 'The starting date and time of the performance',
             validation: (Rule: any) => Rule.required(),
             options: {
                 dateFormat: 'MM-DD-YYYY',
@@ -47,13 +48,17 @@ export const performance = {
             },
         },
         {
+            name: 'Tickets',
+            type: 'tickets',
+        },
+        {
             name: 'isPreview',
             title: 'Preview Performance',
             type: 'boolean',
         },
         {
-            name: 'isPayWhatYouCan',
-            title: 'Pay What You Can',
+            name: 'isPWYW',
+            title: 'Pay What You Want',
             type: 'boolean',
         },
         {
@@ -62,4 +67,11 @@ export const performance = {
             type: 'boolean',
         },
     ],
+    initialValue: {
+        status: 'active',
+        tickets: {
+            type: 'externalLink',
+            price: 20,
+        },
+    },
 };
