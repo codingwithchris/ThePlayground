@@ -79,11 +79,12 @@ export const schema: DocumentCollection = {
     initialValue: {
         toggles: {
             isHiddenFromWebsite: false,
-            isHCollaboration: false,
+            isCollaboration: false,
         },
         selectors: {
             type: 'live',
             status: 'active',
+            series: 'core',
         },
         contentAdvisory: {
             hasModal: false,
