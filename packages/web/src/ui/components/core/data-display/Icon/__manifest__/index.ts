@@ -6,11 +6,13 @@ import { Calendar } from './defs/Calendar';
 import { Cancel } from './defs/Cancel';
 import { Checkmark } from './defs/Checkmark';
 import { Copy } from './defs/Copy';
+import { Conversation } from './defs/Conversation';
 import { CircleDown } from './defs/CircleDown';
 import { CircleLeft } from './defs/CircleLeft';
 import { CircleRight } from './defs/CircleRight';
 import { CircleUp } from './defs/CircleUp';
 import { Envelope } from './defs/Envelope';
+import { Eye } from './defs/Eye';
 import { Facebook } from './defs/Facebook';
 import { FacebookAlt } from './defs/FacebookAlt';
 import { Fire } from './defs/Fire';
@@ -39,12 +41,14 @@ export const availableIcons = {
     Calendar,
     Cancel,
     Copy,
+    Conversation,
     CircleDown,
     CircleLeft,
     CircleRight,
     CircleUp,
     Checkmark,
     Envelope,
+    Eye,
     Facebook,
     FacebookAlt,
     Fire,

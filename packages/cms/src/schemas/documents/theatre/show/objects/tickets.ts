@@ -33,4 +33,8 @@ export const tickets = {
             validation: (Rule: any) => Rule.integer().min(0),
         },
     ],
+    initialValue: {
+        price: 20,
+        type: { title: 'External Ticketing Service', value: 'external' },
+    },
 };

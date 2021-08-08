@@ -6,4 +6,5 @@ export * from './links';
 export * from './netlify';
 export * from './numbers';
 export * from './ssr';
+export * from './strings';
 export * from './url';

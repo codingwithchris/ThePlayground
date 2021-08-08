@@ -4,7 +4,7 @@ export default [
         title: 'Opening Date',
         description: 'The date of the first performance',
         type: 'datetime',
-        readOnly: true,
+        readOnly: false,
         options: {
             dateFormat: 'ddd » MMM Do, yyyy',
             timeFormat: 'h:mm:a',
@@ -15,7 +15,7 @@ export default [
         title: 'Closing Date',
         description: 'The date of the last performance',
         type: 'datetime',
-        readOnly: true,
+        readOnly: false,
         options: {
             dateFormat: 'ddd » MMM Do, yyyy',
             timeFormat: 'h:mm:a',

@@ -1,21 +1,19 @@
 import React from 'react';
 
+import { ShowPerformance } from '@web/domains/performance/show';
 import { Heading, BodyText, Container } from '@web/ui/core';
-
 import {
     getTotalPerformanceCount,
     getRemainingPerformanceCount,
 } from '../../../__lib__';
 
 import * as styled from './Performances.styles';
-import { PerformancesProps } from './Performances.types';
-
-import { Tile } from './components/Tile/Tile';
+import { TicketTile } from './TicketTile/TicketTile';
 
 export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
     const totalPerformances = getTotalPerformanceCount(performances);
     const remainingPerformances = getRemainingPerformanceCount(performances);
-    const chancesText = remainingPerformances === '1' ? 'chance' : 'chances';
+    const chancesText = remainingPerformances === 1 ? 'chance' : 'chances';
 
     return (
         <styled.Performances performancesCount={performances.length}>
@@ -32,7 +30,10 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
                 <ul className="performances-list">
                     {performances.map((performance) => {
                         return (
-                            <Tile {...performance} key={performance.datetime} />
+                            <TicketTile
+                                {...performance}
+                                key={performance.datetime}
+                            />
                         );
                     })}
                 </ul>
@@ -40,3 +41,7 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
         </styled.Performances>
     );
 };
+
+export interface PerformancesProps {
+    performances: ShowPerformance[];
+}

@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 import { Section } from '@web/ui/core';
-import { breakpoints, spacing, containerGutter } from '@web/ui/tokens';
+import {
+    breakpoints,
+    spacing,
+    containerGutter,
+    totalContainerGutter,
+} from '@web/ui/tokens';
 
 export const Performances = styled(Section)<{ performancesCount: number }>`
     --gutter-width: ${spacing.component.s};
     --scroll-padding: ${spacing.component.m};
+    --total-container-gutter: ${totalContainerGutter}%;
     --list-margin-correction: -${containerGutter}%;
     --list-item-outer-margin: ${containerGutter}%;
-    --list-item-width: 175px;
+    --list-item-width: 190px;
     --totalPerformances: ${(props) => props.performancesCount};
 
     padding: ${spacing.layout.m} 0;
@@ -25,6 +31,7 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
     }
 
     .performances-list {
+        align-items: center;
         display: flex;
         list-style: none;
         margin-left: var(--list-margin-correction);
@@ -46,7 +53,8 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         }
 
         li {
-            flex: 0 0 var(--list-item-width);
+            flex: 1 0 var(--list-item-width);
+            position: relative;
         }
         li:not(:first-child) {
             margin-left: calc(var(--gutter-width) / 2);
@@ -54,11 +62,18 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         li:not(:last-child) {
             margin-right: calc(var(--gutter-width) / 2);
         }
+
         li:first-child {
             margin-left: var(--list-item-outer-margin);
         }
-        li:last-child {
-            margin-right: var(--list-item-outer-margin);
+
+        li:last-child:after {
+            content: '';
+            height: 1px;
+            left: 100%;
+            position: absolute;
+            top: 0px;
+            width: var(--total-container-gutter);
         }
     }
 `;

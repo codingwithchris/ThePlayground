@@ -93,7 +93,7 @@ export const schema: DocumentCollection = {
             hasModal: false,
         },
         seo: {
-            hideDocument: false,
+            hide: false,
             publishedAt: new Date().toISOString(),
         },
     },

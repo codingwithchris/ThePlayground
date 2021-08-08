@@ -70,4 +70,10 @@ export const performance = {
             type: 'boolean',
         },
     ],
+    initialValue: {
+        status: { value: 'active', title: 'Active' },
+        isPreview: false,
+        isPWYW: false,
+        hasTalkback: false,
+    },
 };

@@ -46,12 +46,24 @@ export interface ShowAuthor {
     scriptLink?: string;
 }
 
+export type ShowTicketType =
+    | { title: 'External Ticketing Service'; value: 'external' }
+    | { title: 'Internal Ticketing Solution'; value: 'internal' }
+    | { title: 'Tickets Available at the Door'; value: 'door' };
+
+export interface ShowTickets {
+    type: ShowTicketType;
+    externalLink?: string;
+    price: number;
+}
+
 export interface ShowPerformance {
     datetime: string;
-    status: 'active' | 'cancelled';
+    status: 'active' | 'cancelled' | 'sold-out';
     isPreview: boolean;
-    isPayWhatYouCan: boolean;
+    isPWYW: boolean;
     hasTalkback: boolean;
+    tickets?: ShowTickets;
 }
 
 export type ShowStatus =

@@ -141,7 +141,7 @@ export const showQuery = graphql`
             performances {
                 datetime
                 hasTalkback
-                isPayWhatYouCan
+                isPWYW
                 isPreview
                 status
             }

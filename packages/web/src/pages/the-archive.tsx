@@ -59,7 +59,10 @@ export const query = graphql`
             }
         }
 
-        allSanityShow(sort: { order: DESC, fields: closeDate }) {
+        allSanityShow(
+            filter: { toggles: { isHiddenFromWebsite: { eq: false } } }
+            sort: { order: DESC, fields: closeDate }
+        ) {
             nodes {
                 title
                 slug {
