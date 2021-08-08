@@ -5,12 +5,19 @@ import { spacing } from '@web/ui/tokens';
 
 import { ShowPerformance } from '../../../../types';
 import {
+    isGeneralAdmissionPerformance,
     isPreviewPerformance,
     hasTalkbackAfterPerformance,
     isPWYWPerformance,
 } from '../../../../__lib__';
 
 const performanceFeatures = [
+    {
+        condition: isGeneralAdmissionPerformance,
+        message: 'General admission',
+        icon: <Icon name="Ticket" color="highlightExtra" size="xs" />,
+    },
+
     {
         condition: isPWYWPerformance,
         message: 'Pay What You Want',
@@ -29,18 +36,9 @@ const performanceFeatures = [
 ];
 
 const getAvailableFeatures = (performance: ShowPerformance) => {
-    const availableFeatures = performanceFeatures.filter(({ condition }) =>
+    return performanceFeatures.filter(({ condition }) =>
         condition(performance)
     );
-
-    return availableFeatures.length > 0
-        ? availableFeatures
-        : [
-              {
-                  message: 'General Admission',
-                  icon: <Icon name="Ticket" color="highlightExtra" size="xs" />,
-              },
-          ];
 };
 
 const StyledFeatures = styled.div`

@@ -65,6 +65,13 @@ export const isPreviewPerformance = (performance: ShowPerformance) => {
 };
 
 /**
+ * Checks to see if the performance is a general admission performance
+ */
+export const isGeneralAdmissionPerformance = (performance: ShowPerformance) => {
+    return !performance.isPWYW;
+};
+
+/**
  * Get the total number of performance occurrences for a single show
  */
 export const getTotalPerformanceCount = (performances: ShowPerformance[]) => {
