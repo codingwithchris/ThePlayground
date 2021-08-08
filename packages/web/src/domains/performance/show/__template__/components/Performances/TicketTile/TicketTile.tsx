@@ -95,6 +95,7 @@ export const TicketTile = (performance: TicketTileProps) => {
                 variant="outlined"
                 bgColor="default"
                 borderColor="paperLight"
+                className="tile"
                 spacing={{ desktop: 'm', mobile: 's' }}
             >
                 <CardContent verticalSpacing="m">
@@ -109,11 +110,12 @@ export const TicketTile = (performance: TicketTileProps) => {
                             {curtain}
                         </BodyText>
                     </div>
+                    {/* Turning thise off until I can find a way of displaying this data that doesn't ruin layout :/ */}
                     <PerformanceFeatures {...performance} />
                 </CardContent>
                 {/* // Disabling non-null assertions because the assumption is, if tickets are visible the necessary data has already been checked and it exists */}
                 {isTicketOfferVisible ? (
-                    <CardActions>
+                    <CardActions className="action">
                         <TicketOffer
                             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                             url={tickets?.externalLink!}

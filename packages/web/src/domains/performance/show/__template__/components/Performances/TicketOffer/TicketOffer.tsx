@@ -12,18 +12,13 @@ const StyledTicketOffer = styled.div`
 /**
  * Ticket price grouped with a ticket button
  */
-export const TicketOffer = ({
-    url,
-    price,
-    className,
-    text,
-}: TicketButtonProps) => {
+export const TicketOffer = ({ url, price, text }: TicketButtonProps) => {
     return (
         <StyledTicketOffer>
             <BodyText color="medium" size="xs" className="cost">
                 ${price}/each
             </BodyText>
-            <FillButton to={url} size="s" color="primary" className={className}>
+            <FillButton to={url} size="s" color="primary" fullWidth>
                 {text}
             </FillButton>
         </StyledTicketOffer>
@@ -34,5 +29,4 @@ interface TicketButtonProps {
     url: string;
     text: string;
     price: number;
-    className?: string;
 }

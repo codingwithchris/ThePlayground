@@ -22,6 +22,7 @@ import { Instagram } from './defs/Instagram';
 import { LinkedInAlt } from './defs/LinkedInAlt';
 import { Location } from './defs/Location';
 import { Lock } from './defs/Lock';
+import { MoneyComment } from './defs/MoneyComment';
 import { NewTab } from './defs/NewTab';
 import { Next } from './defs/Next';
 import { Previous } from './defs/Previous';
@@ -58,6 +59,7 @@ export const availableIcons = {
     LinkedInAlt,
     Location,
     Lock,
+    MoneyComment,
     NewTab,
     Next,
     Previous,

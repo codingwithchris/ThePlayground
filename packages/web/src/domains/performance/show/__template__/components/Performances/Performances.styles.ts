@@ -13,7 +13,7 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
     --total-container-gutter: ${totalContainerGutter}%;
     --list-margin-correction: -${containerGutter}%;
     --list-item-outer-margin: ${containerGutter}%;
-    --list-item-width: 190px;
+    --list-item-width: 200px;
     --totalPerformances: ${(props) => props.performancesCount};
 
     padding: ${spacing.layout.m} 0;
@@ -31,21 +31,29 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
     }
 
     .performances-list {
-        align-items: center;
+        align-items: flex-start;
         display: flex;
         list-style: none;
         margin-left: var(--list-margin-correction);
         margin-right: var(--list-margin-correction);
         min-width: 100%;
-        overflow-x: auto;
-        scroll-padding: var(--scroll-padding);
+        overflow: auto hidden;
         -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+
+        /* Chrome, Safari, Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         ${breakpoints.s} {
             display: grid;
             grid-gap: var(--gutter-width);
             grid-template-columns: repeat(4, 1fr);
             grid-auto-flow: row;
+            margin-left: 0;
+            margin-right: 0;
         }
 
         ${breakpoints.l} {
@@ -53,18 +61,29 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         }
 
         li {
-            flex: 1 0 var(--list-item-width);
+            flex: 0 0 var(--list-item-width);
+            height: 100%;
             position: relative;
+            width: 100%;
         }
         li:not(:first-child) {
             margin-left: calc(var(--gutter-width) / 2);
+            ${breakpoints.s} {
+                margin-left: 0;
+            }
         }
         li:not(:last-child) {
             margin-right: calc(var(--gutter-width) / 2);
+            ${breakpoints.s} {
+                margin-right: 0;
+            }
         }
 
         li:first-child {
             margin-left: var(--list-item-outer-margin);
+            ${breakpoints.s} {
+                margin-left: 0;
+            }
         }
 
         li:last-child:after {
@@ -74,6 +93,9 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
             position: absolute;
             top: 0px;
             width: var(--total-container-gutter);
+            ${breakpoints.s} {
+                display: none;
+            }
         }
     }
 `;

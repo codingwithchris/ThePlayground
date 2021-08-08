@@ -14,7 +14,7 @@ const performanceFeatures = [
     {
         condition: isPWYWPerformance,
         message: 'Pay What You Want',
-        icon: <Icon name="Info" size="xs" color="highlightExtra" />,
+        icon: <Icon name="MoneyComment" color="highlightExtra" size="xs" />,
     },
     {
         condition: hasTalkbackAfterPerformance,
@@ -29,9 +29,18 @@ const performanceFeatures = [
 ];
 
 const getAvailableFeatures = (performance: ShowPerformance) => {
-    return performanceFeatures.filter(({ condition }) =>
+    const availableFeatures = performanceFeatures.filter(({ condition }) =>
         condition(performance)
     );
+
+    return availableFeatures.length > 0
+        ? availableFeatures
+        : [
+              {
+                  message: 'General Admission',
+                  icon: <Icon name="Ticket" color="highlightExtra" size="xs" />,
+              },
+          ];
 };
 
 const StyledFeatures = styled.div`
@@ -43,7 +52,7 @@ const StyledFeatures = styled.div`
     }
 
     > .feature > svg {
-        margin-right: ${spacing.component.s};
+        margin-right: ${spacing.component.xs};
     }
 
     > .feature:not(:last-child) {
