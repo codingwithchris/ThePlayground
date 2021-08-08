@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { spacing } from '@web/ui/tokens';
+import styled from 'styled-components';
 
 export const TicketTile = styled.li<{ isAvailable: boolean }>`
     .tile {

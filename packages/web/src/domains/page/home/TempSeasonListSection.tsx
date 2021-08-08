@@ -176,7 +176,7 @@ export const TempSeasonListSection: React.FC<TempSeasonProps> = ({
                                 bgColor="default"
                                 variant="outlined"
                                 borderColor="paper"
-                                spacing="l"
+                                spacing={{ desktop: 'l', mobile: 'm' }}
                                 className="show"
                             >
                                 <CardMedia>

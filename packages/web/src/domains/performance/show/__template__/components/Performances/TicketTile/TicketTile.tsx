@@ -7,6 +7,7 @@ import {
     Card,
     CardContent,
     CardActions,
+    Tag,
 } from '@web/ui/core';
 
 import {
@@ -86,7 +87,7 @@ export const TicketTile = (performance: TicketTileProps) => {
     const date = format(rawDate, 'iii, MMM dd');
     const curtain = format(rawDate, 'h:mm a');
 
-    const isTicketOfferVisible = !hasAvailableTicketOffer(performance);
+    const isTicketOfferVisible = hasAvailableTicketOffer(performance);
     const ticketButtonMessage = getTicketButtonMessaging(performance);
 
     return (
@@ -113,9 +114,9 @@ export const TicketTile = (performance: TicketTileProps) => {
                     {/* Turning thise off until I can find a way of displaying this data that doesn't ruin layout :/ */}
                     <PerformanceFeatures {...performance} />
                 </CardContent>
-                {/* // Disabling non-null assertions because the assumption is, if tickets are visible the necessary data has already been checked and it exists */}
-                {isTicketOfferVisible ? (
-                    <CardActions className="action">
+                <CardActions className="action">
+                    {/* // Disabling non-null assertions because the assumption is, if tickets are visible the necessary data has already been checked and it exists */}
+                    {isTicketOfferVisible ? (
                         <TicketOffer
                             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                             url={tickets?.externalLink!}
@@ -123,10 +124,10 @@ export const TicketTile = (performance: TicketTileProps) => {
                             price={tickets?.price!}
                             text={ticketButtonMessage}
                         />
-                    </CardActions>
-                ) : (
-                    <></>
-                )}
+                    ) : (
+                        <Tag text={ticketButtonMessage} />
+                    )}
+                </CardActions>
             </Card>
         </styled.TicketTile>
     );
