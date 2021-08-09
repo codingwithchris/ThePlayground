@@ -1,7 +1,12 @@
-import { AvailableSurface } from '@web/ui/themes';
+import { AvailableSurface, AvailableTypographyTheme } from '@web/ui/themes';
 
 export interface TagProps {
     text: string;
     media?: JSX.Element;
-    size: 's' | 'm';
+    size: 'xs' | 's' | 'm';
+    bgColor: AvailableSurface;
+    borderColor: AvailableSurface;
+    color: AvailableTypographyTheme;
+    className?: string;
+    isFullWidth?: boolean;
 }

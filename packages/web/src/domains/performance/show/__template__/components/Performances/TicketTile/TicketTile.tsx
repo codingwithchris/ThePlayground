@@ -94,7 +94,7 @@ export const TicketTile = (performance: TicketTileProps) => {
         <styled.TicketTile isAvailable={isAvailable} {...props}>
             <Card
                 variant="outlined"
-                bgColor="default"
+                bgColor="paperDark"
                 borderColor="paperLight"
                 className="tile"
                 spacing={{ desktop: 'm', mobile: 's' }}
@@ -119,13 +119,20 @@ export const TicketTile = (performance: TicketTileProps) => {
                     {isTicketOfferVisible ? (
                         <TicketOffer
                             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                            url={tickets?.externalLink!}
+                            url={tickets!.externalLink!}
                             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                            price={tickets?.price!}
+                            price={tickets!.price!}
                             text={ticketButtonMessage}
                         />
                     ) : (
-                        <Tag text={ticketButtonMessage} />
+                        <Tag
+                            text={ticketButtonMessage}
+                            color="medium"
+                            bgColor="paper"
+                            borderColor="paperLight"
+                            size="s"
+                            isFullWidth
+                        />
                     )}
                 </CardActions>
             </Card>

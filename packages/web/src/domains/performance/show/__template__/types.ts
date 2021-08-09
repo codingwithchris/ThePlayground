@@ -18,6 +18,7 @@ export interface ShowPageProps extends SanityDocument {
     thumbnailImage: SanityImageDataWithAlt;
     performances: ShowPerformance[];
     season: SeasonReference;
+    _rawDescription: any[];
     openDate: string;
     closeDate: string;
 }

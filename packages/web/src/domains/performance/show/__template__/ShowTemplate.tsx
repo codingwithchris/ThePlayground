@@ -1,20 +1,17 @@
 import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 
-import {
-    useConfigContext,
-    useGlobalPerformanceContext,
-} from '@web/shared/context';
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 
+import { Divider } from '@web/ui/core';
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SingleSeasonProvider } from '../../season/__context__';
 import { SingleShowProvider } from '../__context__';
 import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
-import { Hero, ActionBar, Performances } from './components';
+import { Hero, ActionBar, Performances, TheStory } from './components';
 
 const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
     ({ data, pageContext, location }) => {
@@ -51,6 +48,8 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         bgImage={{ image: show.heroImage.asset }}
                         actionBar={<ActionBar url={url} />}
                     />
+                    <TheStory rawContent={show._rawDescription} />
+                    <Divider color="paperLight" />
                     <Performances performances={show.performances} />
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
@@ -91,6 +90,9 @@ export const showQuery = graphql`
             }
             openDate
             closeDate
+
+            ## Messaging
+            _rawDescription(resolveReferences: { maxDepth: 10 })
 
             # Location Information
             # location {
