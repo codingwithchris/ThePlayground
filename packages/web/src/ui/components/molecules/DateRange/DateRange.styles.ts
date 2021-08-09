@@ -6,6 +6,6 @@ export const DateRange = styled.span`
     display: flex;
 
     > svg {
-        margin-right: ${spacing.component.s};
+        margin-right: ${spacing.component.xs};
     }
 `;
