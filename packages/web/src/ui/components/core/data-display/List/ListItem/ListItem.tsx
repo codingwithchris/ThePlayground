@@ -16,6 +16,7 @@ export const StyledListItem = styled.li`
 
     svg {
         margin-right: var(--list-item-icon-spacing);
+        flex-shrink: 0;
     }
 `;
 
