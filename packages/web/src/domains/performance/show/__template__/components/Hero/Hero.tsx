@@ -10,9 +10,9 @@ export const Hero: React.FC<HeroProps> = ({ bgImage, actionBar }) => {
     const { currentShow } = useSingleShowContext();
 
     return (
-        <styled.Hero bgImage={bgImage} overlay="black45">
+        <styled.Hero bgImage={bgImage} overlay="black65">
             <Container className="container">
-                <Heading className="title" size="xl" color="light">
+                <Heading className="title" size="l" color="light">
                     {currentShow?.title || 'N/A'}
                 </Heading>
                 <BodyText
