@@ -5,9 +5,13 @@ import { animation, appNavBreakpoint, spacing, zIndex } from '@web/ui/tokens';
 import { HeaderProps } from './__types';
 
 export const Header = styled.header<HeaderProps>`
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: saturate(180%) blur(5px);
+    border-bottom: 1px solid ${({ theme }) => theme.surfaces.paperDark};
     display: block;
     padding: ${spacing.component.s} 0;
     position: relative;
+    width: 100%;
     z-index: ${zIndex.nav};
 
     ${appNavBreakpoint} {
