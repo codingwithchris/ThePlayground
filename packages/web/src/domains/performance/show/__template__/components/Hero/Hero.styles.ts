@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { Section } from '@web/ui/core';
-import { rgba } from 'polished';
-
 import { breakpoints, spacing } from '@web/ui/tokens';
 
 export const Hero = styled(Section)`

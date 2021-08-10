@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ bgImage, actionBar }) => {
                 <BodyText
                     className="author"
                     size="xl"
-                    color="light"
+                    color="medium"
                     weight="bold"
                 >
                     by {currentShow?.author.name || 'n/a'}

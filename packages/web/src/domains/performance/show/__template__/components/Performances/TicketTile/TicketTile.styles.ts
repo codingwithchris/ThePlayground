@@ -7,6 +7,7 @@ export const TicketTile = styled.li<{ isAvailable: boolean }>`
 
     .action {
         display: block;
+        margin-top: auto;
         width: 100%;
     }
 `;

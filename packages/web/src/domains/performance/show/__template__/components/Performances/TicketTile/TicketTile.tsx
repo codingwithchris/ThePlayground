@@ -1,14 +1,6 @@
 import React from 'react';
 import { parseISO, format } from 'date-fns';
-import {
-    BodyText,
-    Divider,
-    Icon,
-    Card,
-    CardContent,
-    CardActions,
-    Tag,
-} from '@web/ui/core';
+import { BodyText, Card, CardContent, CardActions, Tag } from '@web/ui/core';
 
 import {
     isAvailablePerformance,
@@ -28,7 +20,7 @@ import * as styled from './TicketTile.styles';
 import { TicketTileProps } from './TicketTile.types';
 
 const TICKET_MESSAGING = {
-    UNAVAILABLE: 'Tix Unavailable',
+    UNAVAILABLE: 'Unavailable',
     AVAILABLE_SOON: 'Available Soon',
 };
 

@@ -61,8 +61,8 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         }
 
         li {
+            align-self: stretch;
             flex: 0 0 var(--list-item-width);
-            height: 100%;
             position: relative;
             width: 100%;
         }
