@@ -2,6 +2,7 @@ import { ArrowDown } from './defs/ArrowDown';
 import { ArrowLeft } from './defs/ArrowLeft';
 import { ArrowRight } from './defs/ArrowRight';
 import { ArrowUp } from './defs/ArrowUp';
+import { Brain } from './defs/Brain';
 import { Calendar } from './defs/Calendar';
 import { Cancel } from './defs/Cancel';
 import { Checkmark } from './defs/Checkmark';
@@ -17,6 +18,7 @@ import { Facebook } from './defs/Facebook';
 import { FacebookAlt } from './defs/FacebookAlt';
 import { Fire } from './defs/Fire';
 import { Github } from './defs/Github';
+import { Handshake } from './defs/Handshake';
 import { Info } from './defs/Info';
 import { Instagram } from './defs/Instagram';
 import { LinkedInAlt } from './defs/LinkedInAlt';
@@ -39,6 +41,7 @@ export const availableIcons = {
     ArrowLeft,
     ArrowRight,
     ArrowUp,
+    Brain,
     Calendar,
     Cancel,
     Copy,
@@ -54,6 +57,7 @@ export const availableIcons = {
     FacebookAlt,
     Fire,
     Github,
+    Handshake,
     Info,
     Instagram,
     LinkedInAlt,

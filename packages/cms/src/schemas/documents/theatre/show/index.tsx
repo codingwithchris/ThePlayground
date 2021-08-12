@@ -17,6 +17,7 @@ import season from './fields/season';
 import selectors from './fields/selectors';
 import sponsors from './fields/sponsors';
 import toggles from './fields/toggles';
+import series from './fields/series';
 
 import * as showObjects from './objects';
 
@@ -66,6 +67,7 @@ export const schema: DocumentCollection = {
             validation: (Rule: any) => Rule.required(),
         },
         season,
+        series,
         author,
         toggles,
         selectors,

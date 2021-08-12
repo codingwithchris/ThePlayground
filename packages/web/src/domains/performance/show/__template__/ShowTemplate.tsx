@@ -11,7 +11,13 @@ import { SingleSeasonProvider } from '../../season/__context__';
 import { SingleShowProvider } from '../__context__';
 import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
-import { Hero, ActionBar, Performances, TheStory } from './components';
+import {
+    Hero,
+    ActionBar,
+    Performances,
+    TheStory,
+    Information,
+} from './components';
 
 const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
     ({ data, pageContext, location }) => {
@@ -50,6 +56,10 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                     />
                     <TheStory rawContent={show._rawDescription} />
                     <Divider color="paperLight" />
+                    <Information
+                        location={show.location}
+                        series={show.series}
+                    />
                     <Performances performances={show.performances} />
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
@@ -71,7 +81,7 @@ export const showQuery = graphql`
             #     status
             # }
 
-            # # Core Info
+            # CORE SHOW INFO
             heroImage {
                 asset {
                     _id
@@ -91,28 +101,35 @@ export const showQuery = graphql`
             openDate
             closeDate
 
-            ## Messaging
-            _rawDescription(resolveReferences: { maxDepth: 10 })
+            ## PERFORMANCE INFORMATION
+
+            # Series Information
+            series {
+                title
+                identifier
+                description
+            }
 
             # Location Information
-            # location {
-            #     googleTitle
-            #     address {
-            #         city
-            #         state
-            #         stateCode
-            #         street
-            #         zipcode
-            #     }
-            #     Geolocation {
-            #         lat
-            #         lng
-            #     }
-            #     _rawDirections(resolveReferences: { maxDepth: 10 })
-            #     _rawParking(resolveReferences: { maxDepth: 10 })
-            # }
+            location {
+                googleTitle
+                title
+                address {
+                    city
+                    state
+                    stateCode
+                    street
+                    zipcode
+                }
+                geolocation {
+                    lat
+                    lng
+                }
+                # _rawDirections(resolveReferences: { maxDepth: 10 })
+                # _rawParking(resolveReferences: { maxDepth: 10 })
+            }
 
-            # Addition Performance Details
+            # Additional Performance Information
             # rating
             # runtimeHours
             # runtimeMinutes
@@ -139,7 +156,7 @@ export const showQuery = graphql`
             #     _rawModalContent(resolveReferences: { maxDepth: 10 })
             # }
 
-            ## Performances & Tickets
+            ## PERFORMANCE AND TICKETS
             performances {
                 datetime
                 hasTalkback
@@ -147,6 +164,9 @@ export const showQuery = graphql`
                 isPreview
                 status
             }
+
+            ## MESSAGING
+            _rawDescription(resolveReferences: { maxDepth: 10 })
 
             ## SEO Settings
             _createdAt
