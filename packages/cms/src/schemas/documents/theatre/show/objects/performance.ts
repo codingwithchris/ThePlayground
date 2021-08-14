@@ -11,13 +11,29 @@ export const performance = {
     preview: {
         select: {
             title: 'datetime',
-            status: 'status',
+            tickets: 'tickets',
+            isPWYW: 'isPWYW',
+            hasTalkback: 'hasTalkback',
+            isPreview: 'isPreview',
         },
         prepare(selection: any) {
-            const { title, status } = selection;
+            const { title, tickets, isPWYW, hasTalkback, isPreview } =
+                selection;
+
+            const showFeatures = [
+                isPreview ? 'preview' : '',
+                isPWYW ? 'pwyw' : '',
+                hasTalkback ? 'talkback' : '',
+            ];
+
+            const featuresDisplay = showFeatures.filter(Boolean).join(', ');
+            const price = tickets.price ? `$${tickets.price}` : 'not set';
+
+            const subtitle = `ticketing: ${tickets.type} • price: ${price} • features: ${featuresDisplay}`;
+
             return {
                 title: format(new Date(title), 'cccc » MMM dd, yyyy @ h:mm a'),
-                subtitle: status,
+                subtitle,
             };
         },
     },
@@ -48,7 +64,7 @@ export const performance = {
             },
         },
         {
-            name: 'Tickets',
+            name: 'tickets',
             type: 'tickets',
         },
         {
@@ -71,7 +87,6 @@ export const performance = {
         },
     ],
     initialValue: {
-        status: { value: 'active', title: 'Active' },
         isPreview: false,
         isPWYW: false,
         hasTalkback: false,

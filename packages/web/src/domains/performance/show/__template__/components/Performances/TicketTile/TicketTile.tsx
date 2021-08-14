@@ -47,7 +47,7 @@ const getTicketButtonMessaging = (performance: ShowPerformance) => {
     }
 
     // If we made it this far, get our specific "type" messaging
-    return TICKET_TYPE_MESSAGING[tickets.type.value];
+    return TICKET_TYPE_MESSAGING[tickets.type];
 };
 
 // Boolean function to determine if we should be displaying ticket buttons or a tag with text

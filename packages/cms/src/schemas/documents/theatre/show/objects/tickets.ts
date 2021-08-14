@@ -35,6 +35,5 @@ export const tickets = {
     ],
     initialValue: {
         price: 20,
-        type: { title: 'External Ticketing Service', value: 'external' },
     },
 };

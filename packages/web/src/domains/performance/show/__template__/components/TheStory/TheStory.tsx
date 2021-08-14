@@ -15,7 +15,7 @@ const StyledStorySection = styled(Section)`
         padding: ${spacing.layout.l} 0;
     }
     .title {
-        margin-bottom: ${spacing.layout.m};
+        margin-bottom: ${spacing.layout.s};
     }
 `;
 

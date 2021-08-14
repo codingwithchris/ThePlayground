@@ -23,7 +23,7 @@ export const SeriesInfo = ({
                 color="light"
                 as="p"
                 weight="bold"
-                className="title"
+                className="series-title"
             >
                 Part of our {title} series
             </BodyText>

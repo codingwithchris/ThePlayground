@@ -46,10 +46,7 @@ export interface ShowAuthor {
     scriptLink?: string;
 }
 
-export type ShowTicketType =
-    | { title: 'External Ticketing Service'; value: 'external' }
-    | { title: 'Internal Ticketing Solution'; value: 'internal' }
-    | { title: 'Tickets Available at the Door'; value: 'door' };
+export type ShowTicketType = 'external' | 'internal' | 'door';
 
 export interface ShowTickets {
     type: ShowTicketType;
@@ -73,3 +70,5 @@ export type ShowStatus =
     | 'coming-soon'
     | 'future'
     | 'cancelled';
+
+export type ShowRating = 'pg' | 'pg13' | 'r';

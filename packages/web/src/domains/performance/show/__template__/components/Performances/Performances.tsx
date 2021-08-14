@@ -2,23 +2,19 @@ import React from 'react';
 
 import { ShowPerformance } from '@web/domains/performance/show';
 import { Heading, BodyText, Container } from '@web/ui/core';
-import {
-    getTotalPerformanceCount,
-    getRemainingPerformanceCount,
-} from '../../../__lib__';
+import { getRemainingPerformanceCount } from '../../../__lib__';
 
 import * as styled from './Performances.styles';
 import { TicketTile } from './TicketTile/TicketTile';
 
 export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
-    const totalPerformances = getTotalPerformanceCount(performances);
     const remainingPerformances = getRemainingPerformanceCount(performances);
 
     const chancesText = remainingPerformances === 1 ? 'chance' : 'chances';
 
     const performancesTitleText = remainingPerformances
-        ? 'Choose from available performances'
-        : 'No available performances';
+        ? 'Choose from available showtimes'
+        : 'No available showtimes';
 
     const performanceSubtitleText = remainingPerformances ? (
         <>

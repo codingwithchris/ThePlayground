@@ -7,9 +7,11 @@ import { SimpleHero, NewsSubscribeCTA } from '@web/ui/molecules';
 import {
     ShowPosterGrid,
     ShowCoreWithPoster,
+    isPastShow,
 } from '@web/domains/performance/show';
 
 import PageTemplate from '@web/domains/page/__template__';
+import { parseISO } from 'date-fns/esm';
 
 const ArchivePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
     data,
@@ -19,6 +21,11 @@ const ArchivePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
     const { sanityArchivePage: page } = data;
     const { nodes: shows } = data.allSanityShow;
 
+    const pastShows = shows.filter((show) => {
+        const _closingDate = parseISO(show.closeDate);
+        return isPastShow(_closingDate);
+    });
+
     return (
         <PageTemplate
             seo={page.seo}
@@ -26,7 +33,7 @@ const ArchivePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
             currentLocation={location.pathname}
         >
             <SimpleHero title={page.hero.title} subTitle={page.hero.subtitle} />
-            <ShowPosterGrid shows={shows} />
+            <ShowPosterGrid shows={pastShows} />
             <NewsSubscribeCTA />
         </PageTemplate>
     );

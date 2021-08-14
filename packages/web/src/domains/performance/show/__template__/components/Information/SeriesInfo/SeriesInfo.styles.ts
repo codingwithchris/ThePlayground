@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { spacing } from '@web/ui/tokens';
 
 export const SeriesInfo = styled.div`
-    max-width: 300px;
+    max-width: 350px;
 
     svg {
-        margin-bottom: ${spacing.component.s};
+        margin-bottom: ${spacing.component.xxs};
     }
 
-    > .title {
+    > .series-title {
         margin-bottom: ${spacing.component.xxs};
     }
 `;

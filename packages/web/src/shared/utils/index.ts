@@ -1,5 +1,6 @@
 export * from './arrays';
 export * from './async';
+export * from './date';
 export * from './fetch';
 export * from './forms';
 export * from './links';

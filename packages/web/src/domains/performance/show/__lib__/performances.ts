@@ -3,6 +3,7 @@ import { ShowPerformance } from '../types';
 import {
     hasValidExternalTickets,
     hasInternalTickets,
+    hasExternalTickets,
     hasTicketPrice,
 } from './tickets';
 
@@ -72,11 +73,70 @@ export const isGeneralAdmissionPerformance = (performance: ShowPerformance) => {
 };
 
 /**
+ *
+ */
+export const isTicketedPerformance = (performance: ShowPerformance) => {
+    const { tickets } = performance || {};
+
+    return (
+        hasTicketPrice(tickets) &&
+        (hasExternalTickets(tickets) || hasInternalTickets(tickets))
+    );
+};
+
+/**
+ * Checks to see if the current performance has an available ticket offer.
+ *
+ * Checks the following:
+ * - The availability of the performance as a whole
+ * - Ticket data exists
+ * - An explicitly defined ticket price
+ * - A valid external ticket url (if type is external)
+ * - A ticket type of "internal"
+ */
+export const hasAvailableTicketOffer = (performance: ShowPerformance) => {
+    const { tickets } = performance || {};
+
+    return (
+        isAvailablePerformance(performance) &&
+        tickets &&
+        hasTicketPrice(tickets) &&
+        (hasValidExternalTickets(tickets) || hasInternalTickets(tickets))
+    );
+};
+
+/**
  * Get the total number of performance occurrences for a single show
  */
 export const getTotalPerformanceCount = (performances: ShowPerformance[]) => {
     const total = performances.filter(
         (performance) => !isCancelledPerformance(performance)
+    );
+
+    return total.length;
+};
+
+/**
+ * Get total ticketed performance count
+ */
+export const getTotalTicketedPerformanceCount = (
+    performances: ShowPerformance[]
+) => {
+    const total = performances.filter((performance) =>
+        isTicketedPerformance(performance)
+    );
+
+    return total.length;
+};
+
+/**
+ * Get total pay what you want performance count
+ */
+export const getTotalPWYWPerformanceCount = (
+    performances: ShowPerformance[]
+) => {
+    const total = performances.filter((performance) =>
+        isPWYWPerformance(performance)
     );
 
     return total.length;
@@ -94,25 +154,4 @@ export const getRemainingPerformanceCount = (
     );
 
     return remaining.length;
-};
-
-/**
- * Checks to see if the current performance has an available ticket offer.
- *
- * Checks the following:
- * - The availability of the performance as a whole
- * - Ticket data exists
- * - An explicitly defined ticket price
- * - A valid external ticket url (if type is external)
- * - A ticket type of "internal"
- */
-export const hasAvailableTicketOffer = (performance: ShowPerformance) => {
-    const { tickets } = performance;
-
-    return (
-        isAvailablePerformance(performance) &&
-        tickets &&
-        hasTicketPrice(tickets) &&
-        (hasValidExternalTickets(tickets) || hasInternalTickets(tickets))
-    );
 };

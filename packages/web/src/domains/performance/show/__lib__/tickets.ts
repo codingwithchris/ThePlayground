@@ -7,17 +7,17 @@ import { PERFORMANCE_TICKET_TYPE } from '../constants';
  */
 export const hasTicketsAtDoor = (tickets?: ShowTickets) => {
     const { type } = tickets || {};
-    return type?.value === PERFORMANCE_TICKET_TYPE.DOOR;
+    return type === PERFORMANCE_TICKET_TYPE.DOOR;
 };
 
 export const hasInternalTickets = (tickets?: ShowTickets) => {
     const { type } = tickets || {};
-    return type?.value === PERFORMANCE_TICKET_TYPE.INTERNAL;
+    return type === PERFORMANCE_TICKET_TYPE.INTERNAL;
 };
 
 export const hasExternalTickets = (tickets?: ShowTickets) => {
     const { type } = tickets || {};
-    return type?.value === PERFORMANCE_TICKET_TYPE.EXTERNAL;
+    return type === PERFORMANCE_TICKET_TYPE.EXTERNAL;
 };
 
 export const hasExternalTicketLink = (tickets?: ShowTickets) => {

@@ -12,6 +12,12 @@ import { SingleShowProvider } from '../__context__';
 import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
 import {
+    getTotalPerformanceCount,
+    getTotalTicketedPerformanceCount,
+    getTotalPWYWPerformanceCount,
+} from '../__lib__';
+
+import {
     Hero,
     ActionBar,
     Performances,
@@ -26,6 +32,12 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
 
         const url = useCurrentURL(location.pathname);
         const metaImage = useGetMetaImage('show', show.seo.image);
+
+        const performanceCount = {
+            total: getTotalPerformanceCount(show.performances),
+            ticketed: getTotalTicketedPerformanceCount(show.performances),
+            pwyw: getTotalPWYWPerformanceCount(show.performances),
+        };
 
         return (
             <SingleSeasonProvider slug={seasonSlug}>
@@ -51,14 +63,21 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         />
                     )}
                     <Hero
-                        bgImage={{ image: show.heroImage.asset }}
+                        bgImage={{ image: show?.heroImage?.asset }}
                         actionBar={<ActionBar url={url} />}
                     />
                     <TheStory rawContent={show._rawDescription} />
                     <Divider color="paperLight" />
                     <Information
+                        rating={show.rating}
+                        runtime={{
+                            hours: show.runtimeHours,
+                            minutes: show.runtimeMinutes,
+                        }}
+                        intermissionCount={show.intermissionCount}
                         location={show.location}
                         series={show.series}
+                        performanceCount={performanceCount}
                     />
                     <Performances performances={show.performances} />
                     <NewsSubscribeCTA />
@@ -130,10 +149,10 @@ export const showQuery = graphql`
             }
 
             # Additional Performance Information
-            # rating
-            # runtimeHours
-            # runtimeMinutes
-            # intermissionCount
+            rating
+            runtimeHours
+            runtimeMinutes
+            intermissionCount
 
             # contentAdvisory {
             #     _rawModalContent(resolveReferences: { maxDepth: 10 })
@@ -163,6 +182,11 @@ export const showQuery = graphql`
                 isPWYW
                 isPreview
                 status
+                tickets {
+                    type
+                    price
+                    externalLink
+                }
             }
 
             ## MESSAGING
