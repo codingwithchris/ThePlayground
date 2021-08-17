@@ -18,7 +18,7 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
 
     const performanceSubtitleText = remainingPerformances ? (
         <>
-            <span aria-hidden="true">[ </span>You have
+            <span aria-hidden="true">[ </span>You have{' '}
             <strong>{remainingPerformances}</strong> more {chancesText} to catch
             the show<span aria-hidden="true"> ]</span>
         </>

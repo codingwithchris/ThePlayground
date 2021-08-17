@@ -26,12 +26,10 @@ export const isSoldOutPerformance = (performance: ShowPerformance) => {
 
 /**
  * Is the starting time of this performance past the current date and time?
-
  */
 export const isPastPerformance = (performance: ShowPerformance) => {
     const { datetime } = performance;
     const date = parseISO(datetime);
-
     return isValid(date) && isPast(date);
 };
 
@@ -66,14 +64,15 @@ export const isPreviewPerformance = (performance: ShowPerformance) => {
 };
 
 /**
- * Checks to see if the performance is a general admission performance
+ * Checks to see if the performance is a general admission performance.
+ * * Currently any performance other than Pay What You Want
  */
 export const isGeneralAdmissionPerformance = (performance: ShowPerformance) => {
     return !performance.isPWYW;
 };
 
 /**
- *
+ * This performance has some kind of "official" ticketing associated with it (not at the door)
  */
 export const isTicketedPerformance = (performance: ShowPerformance) => {
     const { tickets } = performance || {};

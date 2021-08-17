@@ -30,12 +30,18 @@ export const Information: React.FC<InformationProps> = ({
     return (
         <styled.Information bgColor="paperDark">
             <Container>
-                <Heading size="xs" color="light" className="section-title">
-                    Info About This Show
-                </Heading>
+                <BodyText
+                    size="s"
+                    color="light"
+                    weight="bold"
+                    className="section-title"
+                    as="h2"
+                >
+                    GENERAL PERFORMANCE INFO
+                </BodyText>
                 <div className="info-wrapper">
                     <div className="info-grid">
-                        <SeriesInfo {...series} />
+                        <SeriesInfo {...series} className="info-series" />
                     </div>
                     <div className="info-tickets">
                         <TicketInfoCard

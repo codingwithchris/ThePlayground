@@ -7,6 +7,7 @@ import {
     List,
     ListItem,
 } from '@web/ui/core';
+import { DateRange } from '@web/ui/molecules';
 import { formatDateString } from '@web/shared/utils';
 
 import * as styled from './TicketInfoCard.styles';
@@ -17,48 +18,18 @@ export const TicketInfoCard = ({
     closeDate,
     className,
 }: TicketInfoCardProps) => {
-    const DATE_FORMAT = 'MMMM dd, yyyy';
-
     const items = [
         {
-            text: (
-                <>
-                    <strong>Opening Date: </strong>
-                    {formatDateString(openDate, DATE_FORMAT)}
-                </>
-            ),
+            prefix: 'Total Performances:',
+            count: performanceCount.total,
         },
         {
-            text: (
-                <>
-                    <strong>Closing Date: </strong>
-                    {formatDateString(closeDate, DATE_FORMAT)}
-                </>
-            ),
+            prefix: 'Ticketed Performances:',
+            count: performanceCount.ticketed,
         },
         {
-            text: (
-                <>
-                    <strong>Total Performances Performances: </strong>
-                    {performanceCount.total}
-                </>
-            ),
-        },
-        {
-            text: (
-                <>
-                    <strong>Ticketed Performances: </strong>
-                    {performanceCount.ticketed}
-                </>
-            ),
-        },
-        {
-            text: (
-                <>
-                    <strong>PWYW Performances: </strong>
-                    {performanceCount.pwyw}
-                </>
-            ),
+            prefix: 'PWYW Performances:',
+            count: performanceCount.pwyw,
         },
     ];
 
@@ -66,19 +37,42 @@ export const TicketInfoCard = ({
         <styled.TicketInfoCard
             className={className}
             bgColor="paperDark"
-            borderColor="neutral"
+            borderColor="neutralDark"
             variant="outlined"
+            spacing={{ desktop: 'xl', mobile: 'l' }}
         >
             <CardContent>
-                <List itemSpacing="xxs">
-                    {items.map(({ text }, index) => (
-                        <ListItem key={`info-${index}`}>
-                            <BodyText size="s" color="medium">
-                                {text}
-                            </BodyText>
-                        </ListItem>
-                    ))}
-                </List>
+                <BodyText
+                    size="m"
+                    color="light"
+                    weight="bold"
+                    className="outer-title"
+                >
+                    Breakdown + Tickets
+                </BodyText>
+                <BodyText size="xs" color="medium" className="outer-subtitle">
+                    PWYW = Pay What You Want
+                </BodyText>
+                <Card bgColor="default" variant="outlined" borderColor="paper">
+                    <CardContent>
+                        <List itemSpacing="xxs">
+                            {items.map(({ prefix, count }, index) => (
+                                <ListItem key={`info-${index}`}>
+                                    <BodyText
+                                        size="s"
+                                        color="light"
+                                        className="info-item-prefix"
+                                    >
+                                        {prefix}
+                                    </BodyText>
+                                    <BodyText size="s" color="light">
+                                        {count}
+                                    </BodyText>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </CardContent>
+                </Card>
             </CardContent>
         </styled.TicketInfoCard>
     );

@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ bgImage, actionBar }) => {
     return (
         <styled.Hero bgImage={bgImage} overlay="black65">
             <Container className="container">
-                <Heading className="title" size="l" color="light">
+                <Heading className="title" size="l" color="light" as="h1">
                     {currentShow?.title || 'N/A'}
                 </Heading>
                 <BodyText

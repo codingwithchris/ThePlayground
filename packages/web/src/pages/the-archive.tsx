@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { GatsbyPageContext, SanityDocumentSEO } from '@web/shared/types';
@@ -7,7 +7,7 @@ import { SimpleHero, NewsSubscribeCTA } from '@web/ui/molecules';
 import {
     ShowPosterGrid,
     ShowCoreWithPoster,
-    isPastShow,
+    filterForPastShows,
 } from '@web/domains/performance/show';
 
 import PageTemplate from '@web/domains/page/__template__';
@@ -21,10 +21,9 @@ const ArchivePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
     const { sanityArchivePage: page } = data;
     const { nodes: shows } = data.allSanityShow;
 
-    const pastShows = shows.filter((show) => {
-        const _closingDate = parseISO(show.closeDate);
-        return isPastShow(_closingDate);
-    });
+    const pastShows = useMemo(() => {
+        return filterForPastShows(shows);
+    }, [shows]);
 
     return (
         <PageTemplate
