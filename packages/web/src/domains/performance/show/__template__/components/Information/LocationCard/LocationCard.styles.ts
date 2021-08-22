@@ -1,12 +1,9 @@
-import { Card } from '@web/ui/core';
 import { spacing } from '@web/ui/tokens';
 import styled from 'styled-components';
 
-export const LocationCard = styled(Card)`
-    .label {
-        margin-bottom: ${spacing.component.m};
-    }
+import { InfoCard } from '../InfoCard/InfoCard';
 
+export const LocationCard = styled(InfoCard)`
     .header {
         align-items: center;
         display: flex;

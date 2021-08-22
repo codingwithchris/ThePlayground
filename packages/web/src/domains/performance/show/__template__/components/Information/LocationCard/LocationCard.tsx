@@ -22,31 +22,8 @@ export const LocationCard = ({ location, className }: LocationCardProps) => {
     );
 
     return (
-        <styled.LocationCard bgColor="paperDark" withGutter>
-            <CardContent disableSpacing>
-                <BodyText
-                    color="medium"
-                    size="xs"
-                    weight="bold"
-                    textTransform="uppercase"
-                    className="label"
-                >
-                    Location
-                </BodyText>
-                <div className="header">
-                    <Icon name="MapMarker" size="s" color="light" />
-                    <BodyText color="light" size="m" weight="bold">
-                        {location.title}
-                    </BodyText>
-                </div>
-                <div className="address">
-                    <BodyText size="s" color="light">
-                        {location.address.street} {location.address.city},{' '}
-                        {location.address.state}, {location.address.zipcode}
-                    </BodyText>
-                </div>
-            </CardContent>
-            <CardActions disableSpacing>
+        <styled.LocationCard
+            actions={[
                 <TextButton
                     to={directionsURL}
                     size="s"
@@ -54,8 +31,21 @@ export const LocationCard = ({ location, className }: LocationCardProps) => {
                     endIcon={<Icon name="NewTab" size="xxs" />}
                 >
                     Get Directions
-                </TextButton>
-            </CardActions>
+                </TextButton>,
+            ]}
+        >
+            <div className="header">
+                <Icon name="MapMarker" size="s" color="light" />
+                <BodyText color="light" size="m" weight="bold">
+                    {location.title}
+                </BodyText>
+            </div>
+            <div className="address">
+                <BodyText size="s" color="light">
+                    {location.address.street} {location.address.city},{' '}
+                    {location.address.state}, {location.address.zipcode}
+                </BodyText>
+            </div>
         </styled.LocationCard>
     );
 };
