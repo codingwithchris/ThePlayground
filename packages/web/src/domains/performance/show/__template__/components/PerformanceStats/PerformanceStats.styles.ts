@@ -48,9 +48,6 @@ export const PerformanceStats = styled(Section)`
     }
 
     .item > .label {
-        margin-top: ${spacing.component.xs};
-        ${breakpoint} {
-            margin-top: ${spacing.component.s};
-        }
+        margin-top: ${spacing.component.xxs};
     }
 `;
