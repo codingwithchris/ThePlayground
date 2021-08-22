@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import { InfoCard } from '../InfoCard/InfoCard';
 
 export const DatesCard = styled(InfoCard)`
-    .content {
+    .date {
         align-items: center;
         display: flex;
     }
 
-    .dates {
+    .date > svg {
+        margin-right: ${spacing.component.s};
     }
 
     .content > svg {
