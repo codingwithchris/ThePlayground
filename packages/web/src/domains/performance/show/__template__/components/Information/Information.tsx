@@ -2,17 +2,12 @@ import React from 'react';
 
 import { Series as SeriesType } from '@web/domains/performance/series';
 import { Location } from '@web/domains/performance/location';
-import { Heading, BodyText, Container, Divider } from '@web/ui/core';
+import { BodyText, Container } from '@web/ui/core';
 
-import {
-    getTotalPerformanceCount,
-    getTotalTicketedPerformanceCount,
-    getTotalPWYWPerformanceCount,
-} from '../../../__lib__';
-import { ShowPerformance } from '../../../types';
 import { useSingleShowContext } from '../../../__context__';
 
 import { SeriesInfo } from './SeriesInfo/SeriesInfo';
+import { LocationCard } from './LocationCard/LocationCard';
 import * as styled from './Information.styles';
 
 export const Information: React.FC<InformationProps> = ({
@@ -37,8 +32,32 @@ export const Information: React.FC<InformationProps> = ({
                     GENERAL PERFORMANCE INFO
                 </BodyText>
                 <div className="info-wrapper">
+                    <SeriesInfo {...series} className="info-series" />
                     <div className="info-grid">
-                        <SeriesInfo {...series} className="info-series" />
+                        <LocationCard
+                            location={location}
+                            className="info-location"
+                        />
+                        <LocationCard
+                            location={location}
+                            className="info-location"
+                        />
+                        <LocationCard
+                            location={location}
+                            className="info-location"
+                        />
+                        <LocationCard
+                            location={location}
+                            className="info-location"
+                        />
+                        <LocationCard
+                            location={location}
+                            className="info-location"
+                        />
+                        <LocationCard
+                            location={location}
+                            className="info-location"
+                        />
                     </div>
                     <div className="info-tickets" />
                 </div>

@@ -19,15 +19,14 @@ export const Information = styled(Section)`
         margin-bottom: ${spacing.layout.s};
     }
 
-    .info-wrapper {
-        display: flex;
+    .info-series {
+        display: block;
     }
 
     .info-grid {
-        flex: 1;
-    }
-
-    .info-tickets {
-        flex: 0 1 500px;
+        display: grid;
+        grid-gap: ${spacing.component.m};
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: ${spacing.layout.s};
     }
 `;

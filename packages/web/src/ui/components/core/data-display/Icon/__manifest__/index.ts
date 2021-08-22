@@ -25,6 +25,7 @@ import { LinkedInAlt } from './defs/LinkedInAlt';
 import { Location } from './defs/Location';
 import { Lock } from './defs/Lock';
 import { MoneyComment } from './defs/MoneyComment';
+import { MapMarker } from './defs/MapMarker';
 import { NewTab } from './defs/NewTab';
 import { Next } from './defs/Next';
 import { Previous } from './defs/Previous';
@@ -63,7 +64,7 @@ export const availableIcons = {
     LinkedInAlt,
     Location,
     Lock,
-    MoneyComment,
+    MapMarker,
     NewTab,
     Next,
     Previous,
