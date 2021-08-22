@@ -4,8 +4,9 @@ import { BodyText, CardContent, CardActions } from '@web/ui/core';
 import * as styled from './InfoCard.styles';
 
 export const InfoCard: React.FC<InfoCardProps> = ({
-    children,
+    label,
     actions,
+    children,
     className,
 }) => {
     return (
@@ -18,7 +19,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
                     textTransform="uppercase"
                     className="label"
                 >
-                    Location
+                    {label}
                 </BodyText>
                 {children}
             </CardContent>
@@ -29,5 +30,6 @@ export const InfoCard: React.FC<InfoCardProps> = ({
 
 interface InfoCardProps {
     className?: string;
+    label: string;
     actions?: JSX.Element[];
 }

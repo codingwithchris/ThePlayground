@@ -23,6 +23,7 @@ export const LocationCard = ({ location, className }: LocationCardProps) => {
 
     return (
         <styled.LocationCard
+            label="location"
             actions={[
                 <TextButton
                     to={directionsURL}
