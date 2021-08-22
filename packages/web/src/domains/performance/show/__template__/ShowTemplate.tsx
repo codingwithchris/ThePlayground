@@ -68,6 +68,7 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         actionBar={<ActionBar url={url} />}
                     />
                     <TheStory rawContent={show._rawDescription} />
+                    <Divider color="paper" />
                     <Information
                         rating={show.rating}
                         runtime={{

@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-    Avatar,
-    BodyText,
-    TextButton,
-    CardHeader,
-    CardContent,
-    CardActions,
-    Icon,
-} from '@web/ui/core';
+import { BodyText, TextButton, Icon } from '@web/ui/core';
 import {
     Location,
     getGoogleMapsDirectionsURL,
@@ -24,11 +16,13 @@ export const LocationCard = ({ location, className }: LocationCardProps) => {
     return (
         <styled.LocationCard
             label="location"
+            className={className}
             actions={[
                 <TextButton
                     to={directionsURL}
                     size="s"
                     color="tertiary"
+                    key="directions"
                     endIcon={<Icon name="NewTab" size="xxs" />}
                 >
                     Get Directions

@@ -6,6 +6,7 @@ import { Brain } from './defs/Brain';
 import { Calendar } from './defs/Calendar';
 import { Cancel } from './defs/Cancel';
 import { Checkmark } from './defs/Checkmark';
+import { Clock } from './defs/Clock';
 import { Copy } from './defs/Copy';
 import { Conversation } from './defs/Conversation';
 import { CircleDown } from './defs/CircleDown';
@@ -45,13 +46,14 @@ export const availableIcons = {
     Brain,
     Calendar,
     Cancel,
-    Copy,
-    Conversation,
+    Checkmark,
     CircleDown,
     CircleLeft,
     CircleRight,
     CircleUp,
-    Checkmark,
+    Clock,
+    Copy,
+    Conversation,
     Envelope,
     Eye,
     Facebook,
@@ -64,6 +66,7 @@ export const availableIcons = {
     LinkedInAlt,
     Location,
     Lock,
+    MoneyComment,
     MapMarker,
     NewTab,
     Next,

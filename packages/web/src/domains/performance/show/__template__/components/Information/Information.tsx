@@ -6,8 +6,10 @@ import { BodyText, Container } from '@web/ui/core';
 
 import { useSingleShowContext } from '../../../__context__';
 
-import { SeriesInfo } from './SeriesInfo/SeriesInfo';
+import { SeriesInfoCard } from './SeriesInfoCard/SeriesInfoCard';
+import { DatesCard } from './DatesCard/DatesCard';
 import { LocationCard } from './LocationCard/LocationCard';
+import { RuntimeCard } from './RuntimeCard/RuntimeCard';
 import * as styled from './Information.styles';
 
 export const Information: React.FC<InformationProps> = ({
@@ -32,34 +34,21 @@ export const Information: React.FC<InformationProps> = ({
                     GENERAL PERFORMANCE INFO
                 </BodyText>
                 <div className="info-wrapper">
-                    <SeriesInfo {...series} className="info-series" />
-                    <div className="info-grid">
-                        <LocationCard
-                            location={location}
-                            className="info-location"
+                    <div className="performance-info">
+                        <DatesCard
+                            dates={{ open: openDate, close: closeDate }}
                         />
-                        <LocationCard
-                            location={location}
-                            className="info-location"
-                        />
-                        <LocationCard
-                            location={location}
-                            className="info-location"
-                        />
-                        <LocationCard
-                            location={location}
-                            className="info-location"
-                        />
-                        <LocationCard
-                            location={location}
-                            className="info-location"
-                        />
-                        <LocationCard
-                            location={location}
-                            className="info-location"
+                        <LocationCard location={location} />
+                        <RuntimeCard
+                            runtime={runtime}
+                            intermissionCount={intermissionCount}
                         />
                     </div>
-                    <div className="info-tickets" />
+                    <div className="content-info">
+                        <SeriesInfoCard {...series} className="info-series" />
+                        <LocationCard location={location} />
+                        <LocationCard location={location} />
+                    </div>
                 </div>
             </Container>
         </styled.Information>

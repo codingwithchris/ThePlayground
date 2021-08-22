@@ -12,15 +12,17 @@ export const InfoCard: React.FC<InfoCardProps> = ({
     return (
         <styled.InfoCard bgColor="paperDark" className={className} withGutter>
             <CardContent disableSpacing>
-                <BodyText
-                    color="medium"
-                    size="xs"
-                    weight="bold"
-                    textTransform="uppercase"
-                    className="label"
-                >
-                    {label}
-                </BodyText>
+                {label && (
+                    <BodyText
+                        color="medium"
+                        size="xs"
+                        weight="bold"
+                        textTransform="uppercase"
+                        className="label"
+                    >
+                        {label}
+                    </BodyText>
+                )}
                 {children}
             </CardContent>
             {actions && <CardActions disableSpacing>{actions}</CardActions>}
@@ -30,6 +32,6 @@ export const InfoCard: React.FC<InfoCardProps> = ({
 
 interface InfoCardProps {
     className?: string;
-    label: string;
+    label?: string;
     actions?: JSX.Element[];
 }

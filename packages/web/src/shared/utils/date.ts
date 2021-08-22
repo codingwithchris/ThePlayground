@@ -1,7 +1,7 @@
 import { parseISO, format, isValid } from 'date-fns';
 
 export const formatDateString = (
-    dateString: string,
+    dateString = '',
     formatShape: string,
     fallback?: 'tbd'
 ) => {
