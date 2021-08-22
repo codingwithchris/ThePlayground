@@ -66,6 +66,11 @@ export const typography = {
             ${fontSizes.size0};
             line-height: 1.4;
         `,
+        xs: css`
+            ${fonts.bodyBold};
+            ${fontSizes['size-1']};
+            line-height: 1.4;
+        `,
     },
 
     // Heading » Standard

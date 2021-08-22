@@ -21,6 +21,7 @@ import {
     Hero,
     ActionBar,
     Performances,
+    PerformanceStats,
     TheStory,
     Information,
 } from './components';
@@ -77,8 +78,8 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         intermissionCount={show.intermissionCount}
                         location={show.location}
                         series={show.series}
-                        performanceCount={performanceCount}
                     />
+                    <PerformanceStats performanceCount={performanceCount} />
                     <Performances performances={show.performances} />
                     <NewsSubscribeCTA />
                 </SingleShowProvider>

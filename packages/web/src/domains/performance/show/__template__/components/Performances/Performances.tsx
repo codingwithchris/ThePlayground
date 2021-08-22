@@ -33,7 +33,12 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
         >
             <Container>
                 <div className="lead-in">
-                    <Heading size="xs" color="light" className="heading">
+                    <Heading
+                        size="xs"
+                        color="light"
+                        className="heading"
+                        as="h2"
+                    >
                         {performancesTitleText}
                     </Heading>
                     <BodyText size="s" color="medium" className="remaining">

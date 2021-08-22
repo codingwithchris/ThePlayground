@@ -13,8 +13,6 @@ import { ShowPerformance } from '../../../types';
 import { useSingleShowContext } from '../../../__context__';
 
 import { SeriesInfo } from './SeriesInfo/SeriesInfo';
-import { TicketInfoCard } from './TicketInfoCard/TicketInfoCard';
-
 import * as styled from './Information.styles';
 
 export const Information: React.FC<InformationProps> = ({
@@ -23,7 +21,6 @@ export const Information: React.FC<InformationProps> = ({
     rating,
     intermissionCount,
     runtime,
-    performanceCount,
 }) => {
     const { openDate, closeDate } = useSingleShowContext().currentShow || {};
 
@@ -43,13 +40,7 @@ export const Information: React.FC<InformationProps> = ({
                     <div className="info-grid">
                         <SeriesInfo {...series} className="info-series" />
                     </div>
-                    <div className="info-tickets">
-                        <TicketInfoCard
-                            performanceCount={performanceCount}
-                            openDate={openDate || ''}
-                            closeDate={closeDate || ''}
-                        />
-                    </div>
+                    <div className="info-tickets" />
                 </div>
             </Container>
         </styled.Information>
@@ -64,10 +55,5 @@ export interface InformationProps {
     runtime: {
         hours: number;
         minutes: number;
-    };
-    performanceCount: {
-        total: number;
-        ticketed: number;
-        pwyw: number;
     };
 }
