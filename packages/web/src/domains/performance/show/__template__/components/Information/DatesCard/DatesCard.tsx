@@ -19,10 +19,14 @@ export const DatesCard = ({ dates, className }: DatesCardProps) => {
                         weight="bold"
                         className="date"
                     >
-                        <Icon name="Calendar" size="s" />
                         {openDate}
                     </BodyText>
-                    <BodyText color="medium" size="xs" as="span">
+                    <BodyText
+                        color="medium"
+                        size="xs"
+                        as="span"
+                        className="through"
+                    >
                         through
                     </BodyText>
                     <BodyText
@@ -31,7 +35,6 @@ export const DatesCard = ({ dates, className }: DatesCardProps) => {
                         weight="bold"
                         className="date"
                     >
-                        <Icon name="Calendar" size="s" />
                         {closeDate}
                     </BodyText>
                 </div>

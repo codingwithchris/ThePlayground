@@ -150,22 +150,26 @@ export const showQuery = graphql`
             }
 
             # Additional Performance Information
-            rating
             runtimeHours
             runtimeMinutes
             intermissionCount
 
-            # contentAdvisory {
-            #     _rawModalContent(resolveReferences: { maxDepth: 10 })
-            #     copy
-            #     hasModal
-            # }
+            # Content-related ratings & advisories
+            rating
+            triggerWarning
+            contentAdvisory {
+                _rawModalContent(resolveReferences: { maxDepth: 10 })
+                copy
+                hasModal
+                modalTriggerText
+            }
 
-            # effectsAdvisory {
-            #     _rawModalContent(resolveReferences: { maxDepth: 10 })
-            #     copy
-            #     hasModal
-            # }
+            effectsAdvisory {
+                _rawModalContent(resolveReferences: { maxDepth: 10 })
+                copy
+                hasModal
+                modalTriggerText
+            }
 
             # additionalDetails {
             #     title
