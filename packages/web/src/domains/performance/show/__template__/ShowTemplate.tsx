@@ -70,7 +70,6 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                     <TheStory rawContent={show._rawDescription} />
                     <Divider color="paper" />
                     <Information
-                        rating={show.rating}
                         runtime={{
                             hours: show.runtimeHours,
                             minutes: show.runtimeMinutes,
@@ -78,6 +77,10 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         intermissionCount={show.intermissionCount}
                         location={show.location}
                         series={show.series}
+                        rating={show.rating}
+                        triggerWarning={show.triggerWarning}
+                        contentAdvisory={show.contentAdvisory}
+                        effectsAdvisory={show.effectsAdvisory}
                     />
                     <PerformanceStats performanceCount={performanceCount} />
                     <Performances performances={show.performances} />

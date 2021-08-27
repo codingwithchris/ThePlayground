@@ -108,12 +108,12 @@ export const TicketTile = (performance: TicketTileProps) => {
                 </CardContent>
                 <CardActions className="action">
                     {/* // Disabling non-null assertions because the assumption is, if tickets are visible the necessary data has already been checked and it exists */}
-                    {isTicketOfferVisible ? (
+                    {tickets && isTicketOfferVisible ? (
                         <TicketOffer
                             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                            url={tickets!.externalLink!}
+                            url={tickets.externalLink!}
                             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                            price={tickets!.price!}
+                            price={tickets.price!}
                             text={ticketButtonMessage}
                         />
                     ) : (

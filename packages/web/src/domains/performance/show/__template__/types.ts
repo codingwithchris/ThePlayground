@@ -8,7 +8,7 @@ import { SeasonReference } from '@web/domains/performance/season';
 import { Series } from '@web/domains/performance/series';
 import { Location } from '@web/domains/performance/location';
 
-import { ShowAuthor, ShowPerformance, ShowRating } from '../types';
+import { ShowAuthor, ShowPerformance, ShowRating, ShowDetail } from '../types';
 
 /**
  * Types for our Single Show Page Template
@@ -27,8 +27,11 @@ export interface ShowPageProps extends SanityDocument {
     closeDate: string;
     runtimeHours: number;
     runtimeMinutes: number;
-    rating: ShowRating;
     intermissionCount: number;
+    rating: ShowRating;
+    triggerWarning?: string;
+    contentAdvisory?: ShowDetail;
+    effectsAdvisory?: ShowDetail;
 }
 
 export interface ShowPageGatsbyContext extends GatsbyPageContext {

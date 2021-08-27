@@ -51,7 +51,7 @@ export type ShowTicketType = 'external' | 'internal' | 'door';
 export interface ShowTickets {
     type: ShowTicketType;
     externalLink?: string;
-    price: number;
+    price?: number;
 }
 
 export interface ShowPerformance {
@@ -61,6 +61,13 @@ export interface ShowPerformance {
     isPWYW: boolean;
     hasTalkback: boolean;
     tickets?: ShowTickets;
+}
+
+export interface ShowDetail {
+    copy: string;
+    hasModal: boolean;
+    modalTriggerText?: string;
+    _rawModalContent?: any[];
 }
 
 export type ShowStatus =
