@@ -1,7 +1,7 @@
 import React from 'react';
-import { BodyText, Heading, Icon, Tag } from '@web/ui/core';
+import { BodyText, Tag } from '@web/ui/core';
 
-import { ShowRating, ShowDetail, SHOW_RATINGS } from '../../../../types';
+import { ShowRating, ShowDetail } from '../../../../types';
 import * as styled from './ContentAdvisoryCard.styles';
 
 export const ContentAdvisoryCard = ({

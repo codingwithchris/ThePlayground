@@ -13,7 +13,4 @@ export const RuntimeCard = styled(InfoCard)`
     .runtime > svg {
         margin-right: ${spacing.component.m};
     }
-
-    .intermissions {
-    }
 `;

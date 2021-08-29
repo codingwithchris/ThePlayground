@@ -18,11 +18,7 @@ export const Information = styled(Section)`
 
     .info-wrapper {
         ${breakpoint} {
-            /* display: grid;
-            grid-gap: ${spacing.component.m};
-            grid-template-columns: repeat(2, 1fr); */
             display: flex;
-            //            justify-content: flex-end;
         }
     }
 
