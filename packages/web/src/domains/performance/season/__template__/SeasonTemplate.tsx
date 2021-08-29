@@ -11,7 +11,12 @@ import { SeasonPageProps, SeasonPageGatsbyContext } from './types';
 import { SingleSeasonProvider } from '../__context__';
 import { hasShowsInSeason } from '../__lib__';
 
-import { ShowsThisSeason, NeighboringSeasons } from './components';
+import {
+    ComingSoon,
+    Hero,
+    ShowsThisSeason,
+    NeighboringSeasons,
+} from './components';
 
 const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
     data,
@@ -46,7 +51,7 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
                     }}
                 />
             )}
-            <SimpleHero title={season.title} subTitle={season.tagline} />
+            <Hero title={season.title} tagline={season.tagline} />
             {hasShowsInSeason(season.shows) ? (
                 <ShowsThisSeason>
                     {season.shows!.map((show) => (
