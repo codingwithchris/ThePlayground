@@ -5,14 +5,15 @@ import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 
 // import { SubscribeSection } from '@web/ui/molecules';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
-import { NewsSubscribeCTA } from '@web/ui/molecules';
+import { NewsSubscribeCTA, SimpleHero } from '@web/ui/molecules';
 
-import { SeasonPage, SeasonPageContext } from '../types';
+import { SeasonPageProps, SeasonPageGatsbyContext } from './types';
 import { SingleSeasonProvider } from '../__context__';
+import { hasShowsInSeason } from '../__lib__';
 
-import { Shows, NeighboringSeasons } from './components';
+import { ShowsThisSeason, NeighboringSeasons } from './components';
 
-const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
+const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
     data,
     pageContext,
     location,
@@ -45,7 +46,17 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
                     }}
                 />
             )}
-            <Shows />
+            <SimpleHero title={season.title} subTitle={season.tagline} />
+            {hasShowsInSeason(season.shows) ? (
+                <ShowsThisSeason>
+                    {season.shows!.map((show) => (
+                        <div>{show.title}</div>
+                    ))}
+                </ShowsThisSeason>
+            ) : (
+                <ComingSoon />
+            )}
+
             <NeighboringSeasons />
             <NewsSubscribeCTA />
         </SingleSeasonProvider>
@@ -55,12 +66,34 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
 export const seasonQuery = graphql`
     query seasonData($id: String!) {
         sanitySeason(_id: { eq: $id }) {
-            _updatedAt
+            ## Season Setup
             title
             slug {
                 current
             }
             tagline
+
+            # ShowsThisSeason this season
+            shows {
+                title
+                cardImage {
+                    asset {
+                        gatsbyImageData
+                    }
+                }
+                openDate
+                closeDate
+                author {
+                    name
+                }
+                series {
+                    title
+                    identifier
+                }
+            }
+
+            # SEO
+            _updatedAt
             seo {
                 title
                 hide
@@ -83,7 +116,7 @@ export const seasonQuery = graphql`
  */
 
 interface PageData {
-    sanitySeason: SeasonPage;
+    sanitySeason: SeasonPageProps;
 }
 
 export default SeasonLanding;

@@ -1,5 +1,6 @@
 import { SanityImageDataWithAlt } from '@web/shared/types';
 import { SeasonReference } from '@web/domains/performance/season';
+import { Series } from '@web/domains/performance/series';
 
 /**
  * Core data for a show that we may want to use for any component

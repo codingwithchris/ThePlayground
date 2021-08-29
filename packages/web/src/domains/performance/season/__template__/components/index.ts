@@ -1,2 +1,2 @@
 export * from './NeighboringSeasons/NeighboringSeasons';
-export * from './Shows/Shows';
+export * from './ShowsThisSeason/ShowsThisSeason';
