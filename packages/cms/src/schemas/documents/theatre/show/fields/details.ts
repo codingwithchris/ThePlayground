@@ -61,7 +61,7 @@ export default [
             direction: 'horizontal',
             list: [
                 { title: 'R', value: 'r' },
-                { title: 'PG-13', value: 'pg13' },
+                { title: 'PG-13', value: 'pg-13' },
                 { title: 'PG', value: 'pg' },
             ],
         },

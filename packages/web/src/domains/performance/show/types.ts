@@ -64,8 +64,8 @@ export interface ShowPerformance {
 }
 
 export interface ShowDetail {
-    copy: string;
-    hasModal: boolean;
+    copy?: string;
+    hasModal?: boolean;
     modalTriggerText?: string;
     _rawModalContent?: any[];
 }
@@ -78,4 +78,10 @@ export type ShowStatus =
     | 'future'
     | 'cancelled';
 
-export type ShowRating = 'pg' | 'pg13' | 'r';
+export enum SHOW_RATINGS {
+    PG = 'pg',
+    PG13 = 'pg-13',
+    R = 'r',
+}
+
+export type ShowRating = SHOW_RATINGS.PG | SHOW_RATINGS.PG13 | SHOW_RATINGS.R;

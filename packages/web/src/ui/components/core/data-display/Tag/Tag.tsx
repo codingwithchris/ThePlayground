@@ -15,6 +15,7 @@ export const Tag = ({
     size,
     className,
     isFullWidth,
+    textWeight = 'regular',
     ...props
 }: TagProps) => {
     const classes = cx(className, { '--full-width': isFullWidth });
@@ -29,7 +30,7 @@ export const Tag = ({
             {...props}
         >
             {media && <div className="media">{media}</div>}
-            <BodyText size={size} color={color}>
+            <BodyText size={size} color={color} weight={textWeight}>
                 {text}
             </BodyText>
         </styled.Tag>

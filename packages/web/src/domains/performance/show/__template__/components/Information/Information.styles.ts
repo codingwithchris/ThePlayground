@@ -18,17 +18,49 @@ export const Information = styled(Section)`
 
     .info-wrapper {
         ${breakpoint} {
-            display: grid;
+            /* display: grid;
             grid-gap: ${spacing.component.m};
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); */
+            display: flex;
+            //            justify-content: flex-end;
         }
     }
 
-    .performance-info > *,
-    .content-info > * {
-        margin-bottom: ${spacing.component.l};
+    .performance-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: ${spacing.component.m};
+        max-width: 475px;
+        margin-bottom: ${spacing.layout.s};
+        margin-left: auto;
+        margin-right: auto;
+
         ${breakpoint} {
-            margin-bottom: ${spacing.component.xl};
+            flex: 0 1 300px;
+            margin-bottom: 0px;
+            margin-left: 0;
+            margin-right: ${spacing.layout.xs};
+            max-width: 100%;
+        }
+    }
+
+    .content-info {
+        max-width: 475px;
+        margin-left: auto;
+        margin-right: auto;
+
+        ${breakpoint} {
+            flex: 0 1 475px;
+            margin-left: auto;
+            margin-right: 0;
+            align-self: center;
+            max-width: 100%;
+        }
+
+        .info-items {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: ${spacing.component.m};
         }
     }
 `;

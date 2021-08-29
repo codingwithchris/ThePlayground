@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { spacing } from '@web/ui/tokens';
-import { InfoCard } from '../InfoCard/InfoCard';
 
-export const SeriesInfoCard = styled(InfoCard)`
+export const SeriesInfo = styled.div`
     max-width: 350px;
 
     svg {

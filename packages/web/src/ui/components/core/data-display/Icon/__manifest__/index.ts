@@ -30,6 +30,7 @@ import { MapMarker } from './defs/MapMarker';
 import { NewTab } from './defs/NewTab';
 import { Next } from './defs/Next';
 import { Previous } from './defs/Previous';
+import { Radiation } from './defs/Radiation';
 import { Rocket } from './defs/Rocket';
 import { Share } from './defs/Share';
 import { Spotify } from './defs/Spotify';
@@ -72,6 +73,7 @@ export const availableIcons = {
     Next,
     Previous,
     Rocket,
+    Radiation,
     Share,
     Spotify,
     Ticket,

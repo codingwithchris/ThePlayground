@@ -1,5 +1,5 @@
 import React from 'react';
-import { BodyText, CardContent, CardActions } from '@web/ui/core';
+import { BodyText, CardContent, CardActions, CardProps } from '@web/ui/core';
 
 import * as styled from './InfoCard.styles';
 
@@ -8,20 +8,23 @@ export const InfoCard: React.FC<InfoCardProps> = ({
     actions,
     children,
     className,
+    ...props
 }) => {
     return (
-        <styled.InfoCard bgColor="paperDark" className={className} withGutter>
+        <styled.InfoCard className={className} withGutter {...props}>
             <CardContent disableSpacing>
                 {label && (
-                    <BodyText
-                        color="medium"
-                        size="xs"
-                        weight="bold"
-                        textTransform="uppercase"
-                        className="label"
-                    >
-                        {label}
-                    </BodyText>
+                    <div className="label">
+                        <BodyText
+                            color="medium"
+                            size="xs"
+                            weight="bold"
+                            className="text"
+                        >
+                            {label}
+                        </BodyText>
+                        <div className="separator" />
+                    </div>
                 )}
                 {children}
             </CardContent>
@@ -30,7 +33,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
     );
 };
 
-interface InfoCardProps {
+interface InfoCardProps extends CardProps {
     className?: string;
     label?: string;
     actions?: JSX.Element[];

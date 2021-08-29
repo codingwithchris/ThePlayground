@@ -2,12 +2,15 @@ import React from 'react';
 
 import { Series as SeriesType } from '@web/domains/performance/series';
 import { Location } from '@web/domains/performance/location';
-import { BodyText, Container } from '@web/ui/core';
+import { BodyText, Card, CardContent, Container } from '@web/ui/core';
 
 import { useSingleShowContext } from '../../../__context__';
 import { ShowDetail, ShowRating } from '../../../types';
 
-import { SeriesInfoCard } from './SeriesInfoCard/SeriesInfoCard';
+import { ContentAdvisoryCard } from './ContentAdvisoryCard/ContentAdvisoryCard';
+import { TriggerWarningCard } from './TriggerWarningCard/TriggerWarningCard';
+import { EffectsAdvisoryCard } from './EffectsAdvisoryCard/EffectsAdvisoryCard';
+import { SeriesInfo } from './SeriesInfo/SeriesInfo';
 import { DatesCard } from './DatesCard/DatesCard';
 import { LocationCard } from './LocationCard/LocationCard';
 import { RuntimeCard } from './RuntimeCard/RuntimeCard';
@@ -27,7 +30,7 @@ export const Information: React.FC<InformationProps> = ({
 
     return (
         <styled.Information bgColor="paperDark">
-            <Container>
+            <Container maxWidth="m">
                 <BodyText
                     size="s"
                     color="light"
@@ -48,11 +51,29 @@ export const Information: React.FC<InformationProps> = ({
                             intermissionCount={intermissionCount}
                         />
                     </div>
-                    <div className="content-info">
-                        <SeriesInfoCard {...series} className="info-series" />
-                        <LocationCard location={location} />
-                        <LocationCard location={location} />
-                    </div>
+                    <Card
+                        className="content-info"
+                        variant="outlined"
+                        borderColor="neutralDark"
+                    >
+                        <CardContent verticalSpacing="l" className="info-items">
+                            <SeriesInfo {...series} className="info-series" />
+                            {contentAdvisory?.copy && (
+                                <ContentAdvisoryCard
+                                    rating={rating}
+                                    {...contentAdvisory}
+                                />
+                            )}
+                            {triggerWarning && (
+                                <TriggerWarningCard
+                                    triggerWarning={triggerWarning}
+                                />
+                            )}
+                            {effectsAdvisory?.copy && (
+                                <EffectsAdvisoryCard {...effectsAdvisory} />
+                            )}
+                        </CardContent>
+                    </Card>
                 </div>
             </Container>
         </styled.Information>

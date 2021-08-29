@@ -7,6 +7,7 @@ export interface TagProps {
     bgColor: AvailableSurface;
     borderColor: AvailableSurface;
     color: AvailableTypographyTheme;
+    textWeight?: 'regular' | 'bold';
     className?: string;
     isFullWidth?: boolean;
 }

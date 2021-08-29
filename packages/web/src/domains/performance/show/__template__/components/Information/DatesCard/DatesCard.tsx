@@ -1,13 +1,12 @@
 import React from 'react';
-import { parseISO, format, isValid } from 'date-fns';
-import { BodyText, Icon } from '@web/ui/core';
+import { BodyText } from '@web/ui/core';
 import { formatDateString } from '@web/shared/utils';
 
 import * as styled from './DatesCard.styles';
 
 export const DatesCard = ({ dates, className }: DatesCardProps) => {
-    const openDate = formatDateString(dates.open, 'MMMM dd, yyyy');
-    const closeDate = formatDateString(dates.close, 'MMMM dd, yyyy');
+    const openDate = formatDateString(dates.open, 'MM.dd.yyyy');
+    const closeDate = formatDateString(dates.close, 'MM.dd.yyyy');
 
     return (
         <styled.DatesCard label="dates" className={className}>

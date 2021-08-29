@@ -37,7 +37,9 @@ export const LocationCard = ({ location, className }: LocationCardProps) => {
             </div>
             <div className="address">
                 <BodyText size="s" color="light">
-                    {location.address.street} {location.address.city},{' '}
+                    {location.address.street} {location.address.city}
+                </BodyText>
+                <BodyText size="s" color="light">
                     {location.address.state}, {location.address.zipcode}
                 </BodyText>
             </div>

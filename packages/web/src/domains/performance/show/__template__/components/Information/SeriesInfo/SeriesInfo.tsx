@@ -2,16 +2,16 @@ import React from 'react';
 import { Icon, BodyText } from '@web/ui/core';
 import { getSeriesIconName, Series } from '@web/domains/performance/series';
 
-import * as styled from './SeriesInfoCard.styles';
+import * as styled from './SeriesInfo.styles';
 
-export const SeriesInfoCard = ({
+export const SeriesInfo = ({
     title,
     identifier,
     description,
     className,
-}: SeriesInfoCardProps) => {
+}: SeriesInfoProps) => {
     return (
-        <styled.SeriesInfoCard className={className}>
+        <styled.SeriesInfo className={className}>
             <Icon
                 name={getSeriesIconName(identifier)}
                 size="l"
@@ -30,10 +30,10 @@ export const SeriesInfoCard = ({
             <BodyText size="s" color="medium" as="p">
                 {description}
             </BodyText>
-        </styled.SeriesInfoCard>
+        </styled.SeriesInfo>
     );
 };
 
-interface SeriesInfoCardProps extends Series {
+interface SeriesInfoProps extends Series {
     className?: string;
 }
