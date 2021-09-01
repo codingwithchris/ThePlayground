@@ -58,8 +58,13 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
             )}
             <Hero title={season.title} tagline={season.tagline} />
             <Divider color="paper" />
-            <Description description={season.description} />
-            <Divider color="paper" />
+
+            {season.description && (
+                <>
+                    <Description description={season.description} />
+                    <Divider color="paper" />
+                </>
+            )}
             {hasShowsInSeason(season.shows) ? (
                 <ShowsThisSeason>
                     {season.shows!.map(

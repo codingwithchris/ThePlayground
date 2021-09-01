@@ -6,6 +6,7 @@ import { useSingleShowContext } from '../../../__context__';
 
 import * as styled from './Hero.styles';
 
+// TODO: Swap out the standard BG image here for a branded bg image
 export const Hero: React.FC<HeroProps> = ({ bgImage, actionBar }) => {
     const { currentShow } = useSingleShowContext();
 
