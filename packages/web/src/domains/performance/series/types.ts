@@ -1,4 +1,4 @@
-export type AvailableSeries = 'nerve' | 'co-act' | 'alter-ego';
+export type AvailableSeries = 'nerve' | 'coact' | 'alter-ego';
 
 export interface Series {
     title?: string;

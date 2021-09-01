@@ -1,5 +1,5 @@
 export enum SERIES_ID {
     NERVE = 'nerve',
-    CO_ACT = 'co-act',
+    COACT = 'coact',
     ALTER_EGO = 'alter-ego',
 }

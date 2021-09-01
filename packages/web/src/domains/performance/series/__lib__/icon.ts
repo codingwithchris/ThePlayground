@@ -4,7 +4,7 @@ import { SERIES_ID } from '../constants';
 
 const seriesIconMap: Record<AvailableSeries, AvailableIconName> = {
     [SERIES_ID.NERVE]: 'Fire',
-    [SERIES_ID.CO_ACT]: 'Handshake',
+    [SERIES_ID.COACT]: 'Handshake',
     [SERIES_ID.ALTER_EGO]: 'Brain',
 };
 
