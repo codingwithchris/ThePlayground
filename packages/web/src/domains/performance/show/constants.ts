@@ -11,7 +11,7 @@ export const SHOW_STATUS_MESSAGE = {
     [SHOW_STATUS.ACTIVE]: 'Now Playing',
     [SHOW_STATUS.COMING_SOON]: 'Coming Soon',
     [SHOW_STATUS.FUTURE]: 'Future Show',
-    [SHOW_STATUS.DEFAULT]: 'TBD',
+    [SHOW_STATUS.DEFAULT]: 'Status TBD',
 };
 
 export enum SHOW_RATING {

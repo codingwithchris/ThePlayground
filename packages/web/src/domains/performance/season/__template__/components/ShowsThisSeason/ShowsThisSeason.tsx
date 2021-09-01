@@ -11,7 +11,7 @@ export const ShowsThisSeason: React.FC<ShowsThisSeasonProps> = ({
         <styled.ShowsThisSeason className={className}>
             <Container maxWidth="l" className="container">
                 <BodyText color="medium" size="m">
-                    Select a show for more info + tickets
+                    Select a show for detailed info + tickets
                 </BodyText>
                 {children}
             </Container>

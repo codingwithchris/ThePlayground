@@ -4,7 +4,10 @@ import { graphql, PageProps } from 'gatsby';
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
-import { ShowFeatureCard } from '@web/domains/performance/show';
+import {
+    ShowFeatureCard,
+    SingleShowProvider,
+} from '@web/domains/performance/show';
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SeasonPageProps, SeasonPageGatsbyContext } from './types';
@@ -58,8 +61,7 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
                         ({ heroImage, slug: showSlug, ...show }) => (
                             <ShowFeatureCard
                                 image={heroImage}
-                                seasonSlug={season.slug.current}
-                                slug={showSlug.current}
+                                showSlug={showSlug.current}
                                 {...show}
                             />
                         )

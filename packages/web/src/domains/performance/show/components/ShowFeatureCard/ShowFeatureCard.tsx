@@ -10,9 +10,14 @@ import {
     BackgroundOverlay,
     Tag,
 } from '@web/ui/core';
-import { useConfigContext } from '@web/shared/context';
+import { formatDateString } from '@web/shared/utils';
+import {
+    useConfigContext,
+    useGlobalPerformanceContext,
+} from '@web/shared/context';
 
 import { Series } from '@web/domains/performance/series';
+import { useSingleShowContext } from '@web/domains/performance/show';
 
 import { getShowStatus } from '../../__lib__';
 import { SHOW_STATUS, SHOW_STATUS_MESSAGE } from '../../constants';
@@ -22,23 +27,28 @@ import * as styled from './ShowFeatureCard.styles';
 
 export const ShowFeatureCard = ({
     image,
-    seasonSlug,
-    slug,
     title,
     openDate,
     closeDate,
     author,
     series,
+    showSlug,
 }: ShowFeatureCardProps) => {
-    const { links } = useConfigContext();
-    const status = getShowStatus(openDate, closeDate);
-    const statusMessage = SHOW_STATUS_MESSAGE[status];
+    const { get } = useGlobalPerformanceContext();
+    const { path, status } = get.show(showSlug) || {};
+
+    const statusMessage = status
+        ? SHOW_STATUS_MESSAGE[status]
+        : SHOW_STATUS_MESSAGE.unknown;
 
     const isArchived = status === SHOW_STATUS.PAST;
 
+    const formattedOpenDate = formatDateString(openDate, 'MMM dd');
+    const formattedCloseDate = formatDateString(closeDate, 'MMM dd, yyyy');
+
     return (
         <styled.ShowFeatureCard isArchived={isArchived}>
-            <Link to={links.getShow(seasonSlug, slug)} className="wrapper">
+            <Link to={path} className="wrapper">
                 {image?.asset && (
                     <BrandImage
                         image={image.asset}
@@ -53,14 +63,24 @@ export const ShowFeatureCard = ({
                     className="overlay"
                 />
                 <div className="content">
-                    <div>
+                    <div className="meta">
                         <Tag
-                            text={statusMessage}
+                            text={`${formattedOpenDate} - ${formattedCloseDate} `}
                             color="dark"
                             bgColor="neutralLight"
-                            borderColor="neutral"
+                            borderColor="paper"
                             size="s"
                             textWeight="bold"
+                            className="tag"
+                        />
+                        <Tag
+                            text={statusMessage}
+                            color="light"
+                            bgColor="paper"
+                            borderColor="neutral"
+                            size="xs"
+                            textWeight="bold"
+                            className="tag"
                         />
                     </div>
                     <div className="title-group">
@@ -83,9 +103,8 @@ export const ShowFeatureCard = ({
 };
 
 interface ShowFeatureCardProps {
+    showSlug: string;
     image?: SanityImageDataWithAlt;
-    slug: string;
-    seasonSlug: string;
     title: string;
     openDate?: string;
     closeDate?: string;

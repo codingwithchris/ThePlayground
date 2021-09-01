@@ -43,6 +43,12 @@ export const ShowFeatureCard = styled.article<{ isArchived: boolean }>`
         }
     }
 
+    .meta {
+        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+    }
+
     .title-group {
         margin-bottom: 0;
         margin-top: auto;
@@ -51,6 +57,8 @@ export const ShowFeatureCard = styled.article<{ isArchived: boolean }>`
 
     .title {
         text-transform: uppercase;
-        margin-bottom: ${spacing.component.xxs};
+        ${breakpoints.m} {
+            margin-bottom: ${spacing.component.xxs};
+        }
     }
 `;
