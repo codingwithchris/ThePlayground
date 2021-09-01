@@ -5,10 +5,15 @@ import { spacing, breakpoints, appNavBreakpoint } from '@web/ui/tokens';
 export const Hero = styled(Section)`
     padding: ${spacing.layout.m} 0;
     ${appNavBreakpoint} {
-        padding: ${spacing.layout.xl} 0 ${spacing.layout.m};
+        padding: calc(${spacing.layout.l} + ${spacing.appHeaderOffset}) 0
+            ${spacing.layout.xl};
+    }
+
+    .season-count {
+        margin-bottom: ${spacing.component.l};
     }
 
     .tagline {
-        margin-bottom: ${spacing.layout.xs};
+        margin-top: ${spacing.component.xl};
     }
 `;

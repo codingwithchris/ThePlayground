@@ -4,6 +4,7 @@ import { graphql, PageProps } from 'gatsby';
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
+import { Divider } from '@web/ui/core';
 import {
     ShowFeatureCard,
     SingleShowProvider,
@@ -16,6 +17,7 @@ import { hasShowsInSeason } from '../__lib__';
 
 import {
     ComingSoon,
+    Description,
     Hero,
     ShowsThisSeason,
     NeighboringSeasons,
@@ -55,6 +57,9 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
                 />
             )}
             <Hero title={season.title} tagline={season.tagline} />
+            <Divider color="paper" />
+            <Description description={season.description} />
+            <Divider color="paper" />
             {hasShowsInSeason(season.shows) ? (
                 <ShowsThisSeason>
                     {season.shows!.map(
@@ -86,6 +91,7 @@ export const seasonQuery = graphql`
                 current
             }
             tagline
+            description
 
             # Shows this season
             shows {

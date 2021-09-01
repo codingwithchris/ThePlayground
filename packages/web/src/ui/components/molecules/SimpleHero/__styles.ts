@@ -5,7 +5,8 @@ import { breakpoints, spacing } from '@web/ui/tokens';
 export const SimpleHero = styled.section`
     padding: ${spacing.layout.m} 0;
     ${breakpoints.m} {
-        padding: ${spacing.layout.xl} 0;
+        /* We are temporarily accounting for header offset here on desktop until we find a better solution */
+        padding: calc(${spacing.layout.xl} + ${spacing.appHeaderOffset}) 0;
     }
     text-align: left;
 

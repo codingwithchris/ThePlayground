@@ -19,6 +19,7 @@ type ShowsInSeason = ShowCoreWithCard & {
 export interface SeasonPageProps extends SanityDocument {
     shows?: ShowsInSeason[];
     tagline?: string;
+    description?: string;
 }
 
 export interface SeasonPageGatsbyContext extends GatsbyPageContext {
