@@ -1,7 +1,8 @@
 import React from 'react';
 import { BodyText, Tag } from '@web/ui/core';
 
-import { ShowRating, ShowDetail } from '../../../../types';
+import { SHOW_RATING } from '../../../../constants';
+import { ShowDetail } from '../../../../types';
 import * as styled from './ContentAdvisoryCard.styles';
 
 export const ContentAdvisoryCard = ({
@@ -44,5 +45,5 @@ export const ContentAdvisoryCard = ({
 
 interface ContentAdvisoryCardProps extends ShowDetail {
     className?: string;
-    rating: ShowRating;
+    rating: SHOW_RATING;
 }

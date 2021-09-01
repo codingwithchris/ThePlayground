@@ -1,13 +1,5 @@
 import { parseISO, sub, isPast, isWithinInterval, isValid } from 'date-fns';
-import { ShowStatus } from '../types';
-
-enum STATUS {
-    ACTIVE = 'active',
-    FUTURE = 'future',
-    PAST = 'archived',
-    COMING_SOON = 'coming-soon',
-    DEFAULT = 'unknown',
-}
+import { SHOW_STATUS } from '../constants';
 
 const now = new Date();
 
@@ -40,15 +32,15 @@ export const isComingSoonShow = (
     lastPerformance: Date
 ) => {
     // How many days before a show opens should we consider a show "upcoming"?
-    const COMING_SOON_WINDOW_DAYS = 30;
-    // How many hours before a show officially opens should we still consider it "opcoming"?
-    const COMING_SOON_CUTOFF_HOURS = 1;
+    const COMING_SOON_WINDOW_DAYS = 60;
+    // How many hours before a show officially opens should we still consider it "upcoming" instead of "now playing"?
+    const COMING_SOON_CUTOFF_HOURS = 12;
 
     const interval = {
         start: sub(firstPerformance, {
             days: COMING_SOON_WINDOW_DAYS,
         }),
-        end: sub(lastPerformance, { hours: COMING_SOON_CUTOFF_HOURS }),
+        end: sub(lastPerformance, { days: COMING_SOON_CUTOFF_HOURS }),
     };
 
     return isWithinInterval(now, interval);
@@ -60,13 +52,10 @@ export const isComingSoonShow = (
  * @param openDate The opening performance datetime
  * @param closeDate The closing performance datetime
  */
-export const getShowStatus = (
-    openDate?: string,
-    closeDate?: string
-): ShowStatus => {
+export const getShowStatus = (openDate?: string, closeDate?: string) => {
     // If no performances are passed in, bail.
     if (!openDate || !closeDate) {
-        return STATUS.DEFAULT;
+        return SHOW_STATUS.DEFAULT;
     }
 
     // Format the open & closing date string as Date objects
@@ -75,24 +64,14 @@ export const getShowStatus = (
 
     // Check to see if our parsed Date objects are valid
     if (!isValid(firstPerformance) || !isValid(lastPerformance)) {
-        return STATUS.DEFAULT;
+        return SHOW_STATUS.DEFAULT;
     }
 
-    if (isPastShow(lastPerformance)) return STATUS.PAST;
-    if (isActiveShow(firstPerformance, lastPerformance)) return STATUS.ACTIVE;
+    if (isPastShow(lastPerformance)) return SHOW_STATUS.PAST;
+    if (isActiveShow(firstPerformance, lastPerformance))
+        return SHOW_STATUS.ACTIVE;
     if (isComingSoonShow(firstPerformance, lastPerformance))
-        return STATUS.COMING_SOON;
+        return SHOW_STATUS.COMING_SOON;
 
-    return STATUS.FUTURE;
-};
-
-// TODO: Determine how to implement some of the following
-
-// consumer facing status language??
-const prettyStatuses = {
-    [STATUS.PAST]: 'Archived',
-    [STATUS.ACTIVE]: 'Now Playing',
-    [STATUS.COMING_SOON]: 'Coming Soon',
-    [STATUS.FUTURE]: 'Future',
-    [STATUS.DEFAULT]: 'TBD',
+    return SHOW_STATUS.FUTURE;
 };

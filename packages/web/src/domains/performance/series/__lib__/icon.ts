@@ -1,15 +1,12 @@
 import { AvailableIconName } from '@web/ui/core';
-import { AvailableSeries } from '../types';
 import { SERIES_ID } from '../constants';
 
-const seriesIconMap: Record<AvailableSeries, AvailableIconName> = {
+const seriesIconMap: Record<SERIES_ID, AvailableIconName> = {
     [SERIES_ID.NERVE]: 'Fire',
     [SERIES_ID.COACT]: 'Handshake',
     [SERIES_ID.ALTER_EGO]: 'Brain',
 };
 
-export const getSeriesIconName = (
-    seriesID: AvailableSeries
-): AvailableIconName => {
+export const getSeriesIconName = (seriesID: SERIES_ID): AvailableIconName => {
     return seriesIconMap[seriesID];
 };

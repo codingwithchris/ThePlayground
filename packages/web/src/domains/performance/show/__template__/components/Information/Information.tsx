@@ -5,7 +5,8 @@ import { Location } from '@web/domains/performance/location';
 import { BodyText, Card, CardContent, Container } from '@web/ui/core';
 
 import { useSingleShowContext } from '../../../__context__';
-import { ShowDetail, ShowRating } from '../../../types';
+import { SHOW_RATING } from '../../../constants';
+import { ShowDetail } from '../../../types';
 
 import { ContentAdvisoryCard } from './ContentAdvisoryCard/ContentAdvisoryCard';
 import { TriggerWarningCard } from './TriggerWarningCard/TriggerWarningCard';
@@ -88,7 +89,7 @@ export interface InformationProps {
         hours: number;
         minutes: number;
     };
-    rating: ShowRating;
+    rating: SHOW_RATING;
     triggerWarning?: string;
     contentAdvisory?: ShowDetail;
     effectsAdvisory?: ShowDetail;

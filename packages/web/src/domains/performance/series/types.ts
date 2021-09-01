@@ -1,7 +1,7 @@
-export type AvailableSeries = 'nerve' | 'coact' | 'alter-ego';
+import { SERIES_ID } from './constants';
 
 export interface Series {
     title?: string;
-    identifier: AvailableSeries;
+    identifier: SERIES_ID;
     description?: string;
 }

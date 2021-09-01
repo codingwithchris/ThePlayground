@@ -3,9 +3,9 @@ import { graphql, PageProps } from 'gatsby';
 
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 
-// import { SubscribeSection } from '@web/ui/molecules';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
-import { NewsSubscribeCTA, SimpleHero } from '@web/ui/molecules';
+import { ShowFeatureCard } from '@web/domains/performance/show';
+import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SeasonPageProps, SeasonPageGatsbyContext } from './types';
 import { SingleSeasonProvider } from '../__context__';
@@ -54,9 +54,16 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
             <Hero title={season.title} tagline={season.tagline} />
             {hasShowsInSeason(season.shows) ? (
                 <ShowsThisSeason>
-                    {season.shows!.map((show) => (
-                        <div>{show.title}</div>
-                    ))}
+                    {season.shows!.map(
+                        ({ heroImage, slug: showSlug, ...show }) => (
+                            <ShowFeatureCard
+                                image={heroImage}
+                                seasonSlug={season.slug.current}
+                                slug={showSlug.current}
+                                {...show}
+                            />
+                        )
+                    )}
                 </ShowsThisSeason>
             ) : (
                 <ComingSoon />
@@ -78,13 +85,20 @@ export const seasonQuery = graphql`
             }
             tagline
 
-            # ShowsThisSeason this season
+            # Shows this season
             shows {
                 title
-                cardImage {
+                # TODO: Generate card images for each show and use cardImage for query
+                heroImage {
                     asset {
-                        gatsbyImageData
+                        gatsbyImageData(
+                            width: 1200
+                            placeholder: BLURRED
+                            height: 900
+                            fit: FILL
+                        )
                     }
+                    # alt
                 }
                 openDate
                 closeDate
@@ -94,6 +108,9 @@ export const seasonQuery = graphql`
                 series {
                     title
                     identifier
+                }
+                slug {
+                    current
                 }
             }
 

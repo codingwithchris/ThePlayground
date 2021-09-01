@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@web/ui/core';
+import { BodyText, Container } from '@web/ui/core';
 
 import * as styled from './ShowsThisSeason.styles';
 
@@ -9,7 +9,10 @@ export const ShowsThisSeason: React.FC<ShowsThisSeasonProps> = ({
 }) => {
     return (
         <styled.ShowsThisSeason className={className}>
-            <Container maxWidth="m" className="container">
+            <Container maxWidth="l" className="container">
+                <BodyText color="medium" size="m">
+                    Select a show for more info + tickets
+                </BodyText>
                 {children}
             </Container>
         </styled.ShowsThisSeason>

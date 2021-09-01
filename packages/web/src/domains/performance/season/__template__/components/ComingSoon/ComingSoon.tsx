@@ -1,5 +1,5 @@
 import React from 'react';
-import { BodyText, Container } from '@web/ui/core';
+import { BodyText, Heading, Container } from '@web/ui/core';
 
 import * as styled from './ComingSoon.styles';
 

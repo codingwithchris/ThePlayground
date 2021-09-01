@@ -1,6 +1,10 @@
 import { SanityImageDataWithAlt } from '@web/shared/types';
 import { SeasonReference } from '@web/domains/performance/season';
-import { Series } from '@web/domains/performance/series';
+import {
+    SHOW_STATUS,
+    PERFORMANCE_TICKET_TYPE,
+    PERFORMANCE_STATUS,
+} from './constants';
 
 /**
  * Core data for a show that we may want to use for any component
@@ -16,7 +20,7 @@ export interface ShowCore {
     closeDate: string;
     // In some instances, we will want the full path to the show to be available so we can easily allow navigation directly to it
     path?: string;
-    status?: ShowStatus;
+    status?: SHOW_STATUS;
 }
 
 export interface ShowPosterImage {
@@ -47,17 +51,15 @@ export interface ShowAuthor {
     scriptLink?: string;
 }
 
-export type ShowTicketType = 'external' | 'internal' | 'door';
-
 export interface ShowTickets {
-    type: ShowTicketType;
+    type: PERFORMANCE_TICKET_TYPE;
     externalLink?: string;
     price?: number;
 }
 
 export interface ShowPerformance {
     datetime: string;
-    status: 'active' | 'cancelled' | 'sold-out';
+    status: PERFORMANCE_STATUS;
     isPreview: boolean;
     isPWYW: boolean;
     hasTalkback: boolean;
@@ -70,19 +72,3 @@ export interface ShowDetail {
     modalTriggerText?: string;
     _rawModalContent?: any[];
 }
-
-export type ShowStatus =
-    | 'unknown'
-    | 'archived'
-    | 'active'
-    | 'coming-soon'
-    | 'future'
-    | 'cancelled';
-
-export enum SHOW_RATINGS {
-    PG = 'pg',
-    PG13 = 'pg-13',
-    R = 'r',
-}
-
-export type ShowRating = SHOW_RATINGS.PG | SHOW_RATINGS.PG13 | SHOW_RATINGS.R;

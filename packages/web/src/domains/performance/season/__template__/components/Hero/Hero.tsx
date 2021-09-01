@@ -6,7 +6,7 @@ import * as styled from './Hero.styles';
 export const Hero = ({ title, tagline, className }: HeroProps) => {
     return (
         <styled.Hero className={className}>
-            <Container maxWidth="m" className="container">
+            <Container maxWidth="l" className="container">
                 <Heading size="xs" color="medium" className="tagline" as="p">
                     [ {tagline} ]
                 </Heading>

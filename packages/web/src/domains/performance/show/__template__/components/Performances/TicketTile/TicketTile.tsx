@@ -10,7 +10,10 @@ import {
     hasAvailableTicketOffer,
 } from '../../../../__lib__';
 
-import { TICKET_TYPE_MESSAGING } from '../../../../constants';
+import {
+    TICKET_TYPE_MESSAGE,
+    TICKET_AVAILABILITY_MESSAGE,
+} from '../../../../constants';
 import { ShowPerformance } from '../../../../types';
 
 import { TicketOffer } from '../TicketOffer/TicketOffer';
@@ -18,11 +21,6 @@ import { PerformanceFeatures } from '../PerformanceFeatures/PerformanceFeatures'
 
 import * as styled from './TicketTile.styles';
 import { TicketTileProps } from './TicketTile.types';
-
-const TICKET_MESSAGING = {
-    UNAVAILABLE: 'Unavailable',
-    AVAILABLE_SOON: 'Available Soon',
-};
 
 /**
  * Get the appropriate messaging for ticket buttons based on many possible
@@ -33,21 +31,21 @@ const getTicketButtonMessaging = (performance: ShowPerformance) => {
 
     // This performance is no longer available
     if (!isAvailablePerformance(performance)) {
-        return TICKET_MESSAGING.UNAVAILABLE;
+        return TICKET_AVAILABILITY_MESSAGE.UNAVAILABLE;
     }
 
     // Ticket either has no data or ticket types are not properly defined/set up
     if (!tickets || !hasTicketTypeDefined(tickets)) {
-        return TICKET_MESSAGING.UNAVAILABLE;
+        return TICKET_AVAILABILITY_MESSAGE.UNAVAILABLE;
     }
 
     // External ticket type is defined but no URL to tickets is provided
     if (hasExternalTickets(tickets) && !hasExternalTicketLink(tickets)) {
-        return TICKET_MESSAGING.AVAILABLE_SOON;
+        return TICKET_AVAILABILITY_MESSAGE.AVAILABLE_SOON;
     }
 
     // If we made it this far, get our specific "type" messaging
-    return TICKET_TYPE_MESSAGING[tickets.type];
+    return TICKET_TYPE_MESSAGE[tickets.type];
 };
 
 // Boolean function to determine if we should be displaying ticket buttons or a tag with text
