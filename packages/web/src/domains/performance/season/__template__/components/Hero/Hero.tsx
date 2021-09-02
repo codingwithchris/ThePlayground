@@ -11,7 +11,6 @@ import { useSingleSeasonContext } from '../../../__context__';
 import * as styled from './Hero.styles';
 
 export const Hero = ({ title, tagline, className }: HeroProps) => {
-    // TODO: Build this method -- what number season is this out of the total?
     const { currentSeason } = useSingleSeasonContext();
 
     const seasonNumberDisplay = String(currentSeason?.number).padStart(2, '0');
