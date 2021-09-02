@@ -17,6 +17,8 @@ export interface SeasonCore {
     tagline: string;
     // In some instances, we will want the full path to the season to be available
     path?: string;
+    // what number season is it?
+    number?: number;
 }
 
 export interface SeasonPage extends SanityDocument {

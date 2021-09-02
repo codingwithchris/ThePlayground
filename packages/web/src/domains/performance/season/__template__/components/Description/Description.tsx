@@ -19,7 +19,7 @@ export const Description = ({ description, className }: DescriptionProps) => {
                     className="label"
                     weight="bold"
                 >
-                    ABOUT THIS SEASON
+                    ABOUT
                 </BodyText>
                 <BodyText color="light" size="m">
                     {description}

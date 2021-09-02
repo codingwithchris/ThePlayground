@@ -78,13 +78,29 @@ export const useBuildPerformanceDataMap = (
     const seasons: GlobalSeasonMap = new Map();
 
     /**
+     * Because the seasons and shows are sorted with the "newest" entry higher in the array,
+     * we need to reverse the order it to get the proper "number" position later on.
+     */
+    const reversedShows = rawShows.reverse();
+    const reversedSeasons = rawSeasons.reverse();
+
+    /**
      * Build a data map of all of the shows that exist on our site
      */
-    rawShows.forEach((show) => {
+    rawShows.forEach((show, index) => {
+        /**
+         * Because the seasons are sorted with the "newest" show higher in the array,
+         * we need to reverse the order it to get the season's proper "number" count.
+         * We add 1 to the end to represent starting at a non-zero index for human readability
+         */
+        const showNumber =
+            reversedShows.findIndex((_, _index) => _index === index) + 1;
+
         shows.set(show.slug.current, {
             ...show,
             path: links.getShow(show.season.slug.current, show.slug.current),
             status: getShowStatus(show.openDate, show.closeDate),
+            number: showNumber,
             season: {
                 ...show.season,
                 path: links.getSeason(show.season.slug.current),
@@ -97,14 +113,23 @@ export const useBuildPerformanceDataMap = (
      * For each season, we are also including a data map of
      * shows from this season. Essentially we want to do this calculation
      */
-    rawSeasons.forEach((season) => {
+    rawSeasons.forEach((season, index) => {
         const showsThisSeason = [...shows].filter(
             ([_, show]) => show.season.slug.current === season.slug.current
         );
 
+        /**
+         * Because the seasons are sorted with the "newest" show higher in the array,
+         * we need to reverse the order it to get the season's proper "number" count.
+         * We add 1 to the end to represent starting at a non-zero index for human readability
+         */
+        const seasonNumber =
+            reversedSeasons.findIndex((_, _index) => _index === index) + 1;
+
         seasons.set(season.slug.current, {
             ...season,
             path: links.getSeason(season.slug.current),
+            number: seasonNumber,
             shows: showsThisSeason.map(([_, show]) => show),
         });
     });

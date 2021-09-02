@@ -84,15 +84,37 @@ export const ShowFeatureCard = ({
                         />
                     </div>
                     <div className="title-group">
+                        {/* TODO" Come up with a better way to set text sizes based on device size */}
                         <Heading
                             className="title"
                             size="s"
                             color="light"
                             as="h2"
+                            data-device-scope="desktop"
                         >
                             {title}
                         </Heading>
-                        <BodyText size="l" color="medium">
+                        <Heading
+                            className="title"
+                            size="xs"
+                            color="light"
+                            as="h2"
+                            data-device-scope="mobile"
+                        >
+                            {title}
+                        </Heading>
+                        <BodyText
+                            size="l"
+                            color="medium"
+                            data-device-scope="desktop"
+                        >
+                            by {author.name}
+                        </BodyText>
+                        <BodyText
+                            size="m"
+                            color="medium"
+                            data-device-scope="mobile"
+                        >
                             by {author.name}
                         </BodyText>
                     </div>

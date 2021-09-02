@@ -10,9 +10,11 @@ import { useSingleSeasonContext } from '../../../__context__';
 
 import * as styled from './Hero.styles';
 
-export const Hero = ({ title, tagline, description, className }: HeroProps) => {
+export const Hero = ({ title, tagline, className }: HeroProps) => {
     // TODO: Build this method -- what number season is this out of the total?
-    const { seasonPosition } = useSingleSeasonContext();
+    const { currentSeason } = useSingleSeasonContext();
+
+    const seasonNumberDisplay = String(currentSeason?.number).padStart(2, '0');
 
     return (
         <styled.Hero className={className}>
@@ -23,7 +25,7 @@ export const Hero = ({ title, tagline, description, className }: HeroProps) => {
                     color="medium"
                     className="season-count"
                 >
-                    [ 07. ]
+                    [ S.{seasonNumberDisplay} ]
                 </BodyText>
                 <GrittyHeading
                     bgColor="neutralLight"

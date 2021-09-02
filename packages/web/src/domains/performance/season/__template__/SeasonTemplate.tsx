@@ -70,6 +70,7 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
                     {season.shows!.map(
                         ({ heroImage, slug: showSlug, ...show }) => (
                             <ShowFeatureCard
+                                key={showSlug.current}
                                 image={heroImage}
                                 showSlug={showSlug.current}
                                 {...show}

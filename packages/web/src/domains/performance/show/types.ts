@@ -21,6 +21,7 @@ export interface ShowCore {
     // In some instances, we will want the full path to the show to be available so we can easily allow navigation directly to it
     path?: string;
     status?: SHOW_STATUS;
+    number?: number;
 }
 
 export interface ShowPosterImage {

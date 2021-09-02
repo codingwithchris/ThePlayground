@@ -13,13 +13,15 @@ export const SingleSeasonProvider: React.FC<SingleSeasonProviderProps> = ({
     children,
 }) => {
     const { get } = useGlobalPerformanceContext();
-    const [next, previous] = get.seasonNeighbors(slug);
+    const { next, previous } = get.seasonNeighbors(slug);
 
     const context: SingleSeasonContextProps = {
         currentSeason: get.season(slug),
         nextSeason: next(),
         previousSeason: previous(),
     };
+
+    console.log(context);
 
     return (
         <SingleSeasonContext.Provider value={context}>

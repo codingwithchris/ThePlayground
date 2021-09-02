@@ -63,7 +63,7 @@ const getPerformanceNeighbors =
          * *  a tuple of [key, data], so we use [1] to get the data.
          */
         const next = () => {
-            return getPreviousArrayItem(dataArray, currentIndex)?.[1];
+            return getNextArrayItem(dataArray, currentIndex)?.[1];
         };
 
         /**
@@ -75,10 +75,10 @@ const getPerformanceNeighbors =
          * * a tuple of [key, data], so we use [1] to get the data.
          */
         const previous = () => {
-            return getNextArrayItem(dataArray, currentIndex)?.[1];
+            return getPreviousArrayItem(dataArray, currentIndex)?.[1];
         };
 
-        return [next, previous];
+        return { next, previous };
     };
 
 /**

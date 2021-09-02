@@ -8,6 +8,8 @@ import {
     zIndex,
 } from '@web/ui/tokens';
 
+const breakpoint = breakpoints.s;
+
 export const ShowFeatureCard = styled.article<{ isArchived: boolean }>`
     position: relative;
 
@@ -38,7 +40,7 @@ export const ShowFeatureCard = styled.article<{ isArchived: boolean }>`
         width: 100%;
         z-index: ${zIndex.front};
 
-        ${breakpoints.m} {
+        ${breakpoint} {
             padding: ${spacing.layout.s};
         }
     }
@@ -53,6 +55,20 @@ export const ShowFeatureCard = styled.article<{ isArchived: boolean }>`
         margin-bottom: 0;
         margin-top: auto;
         max-width: 700px;
+
+        [data-device-scope='desktop'] {
+            display: none;
+            ${breakpoint} {
+                display: block;
+            }
+        }
+
+        [data-device-scope='mobile'] {
+            display: block;
+            ${breakpoint} {
+                display: none;
+            }
+        }
     }
 
     .title {
