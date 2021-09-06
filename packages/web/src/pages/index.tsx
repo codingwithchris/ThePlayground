@@ -7,6 +7,8 @@ import {
     SanityImageDataWithAlt,
 } from '@web/shared/types';
 
+import { useConfigContext } from '@web/shared/context';
+
 import { Divider } from '@web/ui/core';
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 
@@ -27,6 +29,33 @@ const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
 }) => {
     const { sanityHomePage: page } = data;
 
+    /**
+     * TODO: Extract this hero action resolver logic into a re-usable set of functions, removing it from this component scope.
+     */
+    const { links } = useConfigContext();
+    const heroActionType = page.hero.action.link._type;
+    const getHeroActionPath = (type: 'show' | 'season' | 'post') => {
+        switch (type) {
+            case 'show':
+                return links.getShow(
+                    page.hero.action.link.season?.slug?.current,
+                    page.hero.action.link.slug?.current
+                );
+                break;
+            case 'season':
+                return links.getSeason(page.hero.action.link.slug?.current);
+                break;
+
+            case 'post':
+                return links.getPost(page.hero.action.link.slug?.current);
+                break;
+
+            default:
+                return page.hero.action.link.slug?.current;
+                break;
+        }
+    };
+
     return (
         <PageTemplate
             seo={page.seo}
@@ -36,8 +65,10 @@ const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
             <HeroSection
                 title={page.hero.title}
                 copy={page.hero.copy}
-                rebrandLink={page.hero.action.link.slug.current}
-                rebrandLinkText={page.hero.action.text}
+                action={{
+                    link: getHeroActionPath(heroActionType),
+                    text: page.hero.action.text,
+                }}
                 bgImage={{
                     image: page.hero.image.asset,
                 }}
@@ -84,10 +115,30 @@ export const query = graphql`
                 copy
                 action {
                     text
+                    # We need to make sure this link is set up to work with any allowed data source
                     link {
                         ... on SanityPost {
+                            _type
                             slug {
                                 current
+                            }
+                        }
+                        ... on SanitySeason {
+                            _type
+                            slug {
+                                current
+                            }
+                        }
+                        # If we are querying a show, we also want to query the season so we can build dynamic links
+                        ... on SanityShow {
+                            _type
+                            slug {
+                                current
+                            }
+                            season {
+                                slug {
+                                    current
+                                }
                             }
                         }
                     }
@@ -150,8 +201,14 @@ interface HomePageData extends SanityDocument {
         action: {
             text: string;
             link: {
+                _type: 'season' | 'show' | 'post';
                 slug: {
                     current: string;
+                };
+                season?: {
+                    slug: {
+                        current: string;
+                    };
                 };
             };
         };

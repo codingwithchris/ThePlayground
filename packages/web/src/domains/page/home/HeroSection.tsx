@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import { breakpoints, grid, spacing } from '@web/ui/tokens';
 
-import { useConfigContext } from '@web/shared/context';
-
 import {
     BodyText,
     Container,
@@ -39,12 +37,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     title,
     copy,
     bgImage,
-    rebrandLink,
-    rebrandLinkText,
+    action,
 }) => {
-    const { links } = useConfigContext();
-    const blogLink = links.getPost(rebrandLink);
-
     return (
         <StyledHeroSection bgImage={bgImage} overlay="dark55">
             <Container>
@@ -60,17 +54,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <BodyText color="light" size="l" className="copy">
                     {copy}
                 </BodyText>
-                <FillButton
-                    to={blogLink}
-                    color="primary"
-                    size="m"
-                    className="action"
-                    endIcon={<Icon name="ArrowRight" size="xs" />}
-                    animateIconOnHover
-                    animateOnClick
-                >
-                    {rebrandLinkText}
-                </FillButton>
+                {
+                    (action?.link,
+                    action?.text && (
+                        <FillButton
+                            to={action.link}
+                            color="primary"
+                            size="m"
+                            className="action"
+                            endIcon={<Icon name="ArrowRight" size="xs" />}
+                            animateIconOnHover
+                            animateOnClick
+                        >
+                            {action.text}
+                        </FillButton>
+                    ))
+                }
             </Container>
         </StyledHeroSection>
     );
@@ -79,6 +78,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 interface HeroSectionProps extends SectionProps {
     title: string;
     copy: string;
-    rebrandLinkText: string;
-    rebrandLink: string;
+    action: {
+        link?: string;
+        text?: string;
+    };
 }
