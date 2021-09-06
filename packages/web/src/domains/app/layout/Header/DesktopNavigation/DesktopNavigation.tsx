@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useConfigContext } from '@web/shared/context';
-import { BodyText, FillButton, Icon } from '@web/ui/core';
+import { BodyText, OutlineButton, Icon } from '@web/ui/core';
 
 import { Link } from '@web/domains/app/routing';
 
@@ -56,16 +56,16 @@ export const DesktopNavigation: React.FC = () => {
                 {/* <LinkItem slug={about} text="about" key="about" />
                 <LinkItem slug={contact} text="connect" key="connect" /> */}
                 <li className="highlight">
-                    <FillButton
+                    <OutlineButton
                         size="s"
-                        color="primary"
+                        color="tertiary"
                         to={supportUsPage!}
                         key="support us"
                         className="button"
                         animateOnClick
                     >
                         support us
-                    </FillButton>
+                    </OutlineButton>
                 </li>
             </ul>
         </styled.DesktopNavigation>

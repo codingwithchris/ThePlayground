@@ -40,6 +40,8 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
             pwyw: getTotalPWYWPerformanceCount(show.performances),
         };
 
+        const ticketSectionRef = useRef<HTMLDivElement>(null);
+
         return (
             <SingleSeasonProvider slug={seasonSlug}>
                 <SingleShowProvider slug={slug}>
@@ -64,8 +66,15 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         />
                     )}
                     <Hero
+                        title={show.title}
+                        author={show.author?.name}
                         bgImage={{ image: show?.heroImage?.asset }}
-                        actionBar={<ActionBar url={url} />}
+                        actionBar={
+                            <ActionBar
+                                url={url}
+                                ticketSectionRef={ticketSectionRef}
+                            />
+                        }
                     />
                     <TheStory rawContent={show._rawDescription} />
                     <Divider color="paper" />
@@ -83,7 +92,9 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         effectsAdvisory={show.effectsAdvisory}
                     />
                     <PerformanceStats performanceCount={performanceCount} />
-                    <Performances performances={show.performances} />
+                    <div ref={ticketSectionRef}>
+                        <Performances performances={show.performances} />
+                    </div>
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
             </SingleSeasonProvider>

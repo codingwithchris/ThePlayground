@@ -5,7 +5,7 @@ import { spacing, breakpoints, appNavBreakpoint } from '@web/ui/tokens';
 export const Hero = styled(Section)`
     padding: ${spacing.layout.m} 0;
     ${appNavBreakpoint} {
-        padding: calc(${spacing.layout.l} + ${spacing.appHeaderOffset}) 0
+        padding: calc(${spacing.layout.l} + ${spacing.appHeaderDesktopOffset}) 0
             ${spacing.layout.xl};
     }
 

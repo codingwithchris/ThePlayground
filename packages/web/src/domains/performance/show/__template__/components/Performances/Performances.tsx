@@ -2,7 +2,10 @@ import React from 'react';
 
 import { ShowPerformance } from '@web/domains/performance/show';
 import { Heading, BodyText, Container } from '@web/ui/core';
-import { getRemainingPerformanceCount } from '../../../__lib__';
+import {
+    getRemainingPerformanceCount,
+    sortPastPerformancesToEnd,
+} from '../../../__lib__';
 
 import * as styled from './Performances.styles';
 import { TicketTile } from './TicketTile/TicketTile';
@@ -26,6 +29,10 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
         `This one is in the books. You missed your chance to see it :/`
     );
 
+    const sortedPerformances = sortPastPerformancesToEnd([...performances]);
+
+    console.log(sortedPerformances);
+
     return (
         <styled.Performances
             performancesCount={performances.length}
@@ -46,7 +53,7 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
                     </BodyText>
                 </div>
                 <ul className="performances-list">
-                    {performances.map((performance) => {
+                    {sortedPerformances.map((performance) => {
                         return (
                             <TicketTile
                                 {...performance}

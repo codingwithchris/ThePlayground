@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const TicketTile = styled.li<{ isAvailable: boolean }>`
+export const TicketTile = styled.li`
     .tile {
         height: 100%;
     }
@@ -9,5 +9,11 @@ export const TicketTile = styled.li<{ isAvailable: boolean }>`
         display: block;
         margin-top: auto;
         width: 100%;
+    }
+
+    &[data-status='unavailable'] {
+        filter: blur(1px) grayscale(1);
+        transform: scale(0.95);
+        cursor: not-allowed;
     }
 `;

@@ -81,7 +81,10 @@ export const TicketTile = (performance: TicketTileProps) => {
     const ticketButtonMessage = getTicketButtonMessaging(performance);
 
     return (
-        <styled.TicketTile isAvailable={isAvailable} {...props}>
+        <styled.TicketTile
+            data-status={isAvailable ? 'available' : 'unavailable'}
+            {...props}
+        >
             <Card
                 variant="outlined"
                 bgColor="paperDark"

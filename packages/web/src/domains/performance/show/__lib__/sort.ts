@@ -1,5 +1,5 @@
-import { compareAsc, compareDesc, parseISO } from 'date-fns';
-import { ShowCore } from '../types';
+import { compareAsc, compareDesc, parseISO, isPast } from 'date-fns';
+import { ShowCore, ShowPerformance } from '../types';
 
 /**
  * Sort shows from newest to oldest based on their performance dates
@@ -28,7 +28,26 @@ export const sortShowsByDate = <AnyShowType extends ShowCore>(
 
 /**
  * Sort performances
+ *
+ * Sort past performances to the end of the array
  */
+export const sortPastPerformancesToEnd = (
+    performances: ShowPerformance[]
+): ShowPerformance[] =>
+    performances.sort((a, b) => {
+        const { datetime: performanceA } = a;
+        const { datetime: performanceB } = b;
+
+        const dateA = parseISO(performanceA);
+        const dateB = parseISO(performanceB);
+
+        // If the first date is not in the past, but the second date is, sort the past date last (moving them to the end of the array)
+        if (!isPast(dateA) && isPast(dateB)) {
+            return -1;
+        }
+
+        return 0;
+    });
 
 /**
  * Filter out active shows from archive

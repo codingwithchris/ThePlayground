@@ -27,7 +27,8 @@ export const spacing = {
     },
     // We are temporarily accounting for header offset here on desktop until we find a better solution
     // * Idea... create a provider that tracks the height of the header and header UI state
-    appHeaderOffset: '91px',
+    appHeaderDesktopOffset: '91px',
+    appHeaderMobileOffset: '66px',
 };
 
 export type Spacing = typeof spacing;

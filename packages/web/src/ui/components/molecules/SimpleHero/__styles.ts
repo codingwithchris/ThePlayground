@@ -6,7 +6,8 @@ export const SimpleHero = styled.section`
     padding: ${spacing.layout.m} 0;
     ${breakpoints.m} {
         /* We are temporarily accounting for header offset here on desktop until we find a better solution */
-        padding: calc(${spacing.layout.xl} + ${spacing.appHeaderOffset}) 0;
+        padding: calc(${spacing.layout.xl} + ${spacing.appHeaderDeasktopOffset})
+            0;
     }
     text-align: left;
 
