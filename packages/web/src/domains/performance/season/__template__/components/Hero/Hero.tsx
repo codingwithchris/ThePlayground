@@ -18,14 +18,16 @@ export const Hero = ({ title, tagline, className }: HeroProps) => {
     return (
         <styled.Hero className={className}>
             <Container maxWidth="l" className="container">
-                <BodyText
-                    size="m"
-                    weight="bold"
-                    color="medium"
-                    className="season-count"
-                >
-                    [ S.{seasonNumberDisplay} ]
-                </BodyText>
+                {currentSeason?.number && (
+                    <BodyText
+                        size="m"
+                        weight="bold"
+                        color="medium"
+                        className="season-count"
+                    >
+                        [ S.{seasonNumberDisplay} ]
+                    </BodyText>
+                )}
                 <GrittyHeading
                     bgColor="neutralLight"
                     size="m"
