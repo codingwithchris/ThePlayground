@@ -11,6 +11,7 @@ export const TicketTile = styled.li`
         width: 100%;
     }
 
+    /* Stylings for performances that are in the past or otherwise unavailable */
     &[data-status='unavailable'] {
         filter: blur(1px) grayscale(1);
         transform: scale(0.95);

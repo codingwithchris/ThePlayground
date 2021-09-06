@@ -34,18 +34,11 @@ export const ActionBar: React.FC<IActionBar> = ({ ticketSectionRef }) => {
                         />
                     </BodyText>
                 </div>
-                {/* <SocialShareModal
-                    shareURL={url}
-                    socialShareText={`Check out "${
-                        currentShow?.title || 'this show'
-                    }" at The Nerve!`}
-                /> */}
             </Container>
         </styled.ActionBar>
     );
 };
 
 export interface IActionBar {
-    url: string;
     ticketSectionRef: React.RefObject<HTMLDivElement>;
 }

@@ -70,15 +70,13 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         author={show.author?.name}
                         bgImage={{ image: show?.heroImage?.asset }}
                         actionBar={
-                            <ActionBar
-                                url={url}
-                                ticketSectionRef={ticketSectionRef}
-                            />
+                            <ActionBar ticketSectionRef={ticketSectionRef} />
                         }
                     />
                     <TheStory rawContent={show._rawDescription} />
                     <Divider color="paper" />
                     <Information
+                        url={url}
                         runtime={{
                             hours: show.runtimeHours,
                             minutes: show.runtimeMinutes,

@@ -3,6 +3,7 @@ import React from 'react';
 import { Series as SeriesType } from '@web/domains/performance/series';
 import { Location } from '@web/domains/performance/location';
 import { BodyText, Card, CardContent, Container } from '@web/ui/core';
+import { SocialShareModal } from '@web/ui/molecules';
 
 import { useSingleShowContext } from '../../../__context__';
 import { SHOW_RATING } from '../../../constants';
@@ -18,6 +19,7 @@ import { RuntimeCard } from './RuntimeCard/RuntimeCard';
 import * as styled from './Information.styles';
 
 export const Information: React.FC<InformationProps> = ({
+    url,
     location,
     series,
     intermissionCount,
@@ -27,7 +29,8 @@ export const Information: React.FC<InformationProps> = ({
     triggerWarning,
     effectsAdvisory,
 }) => {
-    const { openDate, closeDate } = useSingleShowContext().currentShow || {};
+    const { openDate, closeDate, title } =
+        useSingleShowContext().currentShow || {};
 
     return (
         <styled.Information bgColor="paperDark">
@@ -73,6 +76,12 @@ export const Information: React.FC<InformationProps> = ({
                             {effectsAdvisory?.copy && (
                                 <EffectsAdvisoryCard {...effectsAdvisory} />
                             )}
+                            <SocialShareModal
+                                shareURL={url}
+                                socialShareText={`Check out "${
+                                    title || 'this show'
+                                }" at The Nerve!`}
+                            />
                         </CardContent>
                     </Card>
                 </div>
@@ -82,6 +91,7 @@ export const Information: React.FC<InformationProps> = ({
 };
 
 export interface InformationProps {
+    url: string;
     series: SeriesType;
     location: Location;
     intermissionCount: number;

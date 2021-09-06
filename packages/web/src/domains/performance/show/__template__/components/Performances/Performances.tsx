@@ -29,9 +29,8 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
         `This one is in the books. You missed your chance to see it :/`
     );
 
+    // TODO: Could be optimized to only run if there are performances remaining
     const sortedPerformances = sortPastPerformancesToEnd([...performances]);
-
-    console.log(sortedPerformances);
 
     return (
         <styled.Performances
