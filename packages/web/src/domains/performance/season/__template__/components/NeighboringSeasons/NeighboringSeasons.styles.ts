@@ -2,86 +2,98 @@ import styled from 'styled-components';
 import { Section } from '@web/ui/core';
 import { animation, spacing, breakpoints } from '@web/ui/tokens';
 
+// Common breakpoint for this component
+const breakpoint = breakpoints.m;
+
 export const NeighboringSeasons = styled(Section)`
     .container {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        ${breakpoints.m} {
+        ${breakpoint} {
             flex-direction: row;
         }
     }
 
+    /* wrappers */
     .previous,
-    .no-more-previous,
-    .next,
-    .coming-soon {
+    .next {
         display: flex;
         align-items: center;
         flex: 1;
         justify-content: center;
-        padding: ${spacing.layout.s} ${spacing.layout.xs};
         width: 100%;
-        ${breakpoints.m} {
+        transition: ${animation.linkHover};
+    }
+
+    .next-link,
+    .previous-link,
+    .unavailable {
+        padding: ${spacing.layout.s} ${spacing.layout.xs};
+        ${breakpoint} {
             padding: ${spacing.layout.l} ${spacing.layout.xs};
         }
     }
 
-    .previous,
-    .no-more-previous {
+    .unavailable {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .previous {
         border-bottom: dashed 1px ${({ theme }) => theme.surfaces.neutralDark};
-        ${breakpoints.m} {
+        ${breakpoint} {
             border-bottom: none;
             border-right: dashed 1px
                 ${({ theme }) => theme.surfaces.neutralDark};
         }
     }
 
-    .no-more-previous,
-    .coming-soon {
-        flex-direction: column;
-    }
+    /**
+     * Link-specific styling
+     */
 
-    .next,
-    .previous {
-        transition: ${animation.linkHover};
-    }
-
-    .next {
-        text-align: right;
-    }
-
-    .next svg,
-    .previous svg {
-        ${breakpoints.m} {
-            transition: ${animation.linkHover};
+    .next-link,
+    .previous-link {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        svg {
+            ${breakpoint} {
+                transition: ${animation.linkHover};
+            }
         }
     }
 
-    .next svg {
-        margin-left: ${spacing.component.l};
+    .next-link {
+        text-align: right;
+        svg {
+            margin-left: ${spacing.component.l};
+        }
     }
 
-    .previous svg {
-        margin-right: ${spacing.component.l};
+    .previous-link {
+        svg {
+            margin-right: ${spacing.component.l};
+        }
     }
 
-    /* Hover effects for links */
-    .previous:hover,
-    .previous:active {
+    .previous-link:hover,
+    .previous-link:active {
         opacity: 0.8;
-        ${breakpoints.m} {
+        ${breakpoint} {
             svg {
                 transform: translateX(-5px);
             }
         }
     }
 
-    .next:hover,
-    .next:active {
+    .next-link:hover,
+    .next-link:active {
         opacity: 0.8;
-        ${breakpoints.m} {
+        ${breakpoint} {
             svg {
                 transform: translateX(5px);
             }
