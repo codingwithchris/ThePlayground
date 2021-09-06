@@ -21,8 +21,11 @@ export const NeighboringSeasons = styled(Section)`
         align-items: center;
         flex: 1;
         justify-content: center;
-        padding: ${spacing.layout.l} ${spacing.layout.xs};
+        padding: ${spacing.layout.s} ${spacing.layout.xs};
         width: 100%;
+        ${breakpoints.m} {
+            padding: ${spacing.layout.l} ${spacing.layout.xs};
+        }
     }
 
     .previous,

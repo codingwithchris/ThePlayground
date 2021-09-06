@@ -60,7 +60,7 @@ export const headerNav = {
             type: 'array',
             title: 'Primary Navigation Items',
             description:
-                'These nav items are the most important and will be visible whenever possible.',
+                'These nav items are the most important and will be visible whenever possible (top -> bottom = left -> right)',
             of: [{ type: 'navItem' }],
         },
         {
@@ -68,7 +68,7 @@ export const headerNav = {
             type: 'array',
             title: 'Secondary Navigation Items',
             description:
-                'These nav items are lower in priority and could be hidden when needed.',
+                'These nav items are lower in priority and could be hidden when needed. (top -> bottom = left -> right)',
             of: [{ type: 'navItem' }],
         },
     ],

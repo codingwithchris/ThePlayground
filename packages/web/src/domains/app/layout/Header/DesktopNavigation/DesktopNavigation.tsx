@@ -19,7 +19,7 @@ const LinkItem: React.FC<{ slug: string; text: string }> = ({ slug, text }) => (
 
 export const DesktopNavigation: React.FC = () => {
     const {
-        links: { archivePage, supportUsPage },
+        links: { featuredSeason, archivePage, supportUsPage },
     } = useConfigContext();
 
     return (
@@ -38,6 +38,14 @@ export const DesktopNavigation: React.FC = () => {
                         key="currentSeason"
                     />
                 )} */}
+
+                {featuredSeason && (
+                    <LinkItem
+                        slug={featuredSeason}
+                        text="this season"
+                        key="season"
+                    />
+                )}
 
                 <LinkItem
                     slug={archivePage!}

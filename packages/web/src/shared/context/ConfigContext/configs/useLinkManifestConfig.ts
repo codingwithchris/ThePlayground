@@ -12,6 +12,11 @@ export const useLinkManifestConfig = (): LinkManifestConfig => {
     const { sanityLinkManifestConfig } = useStaticQuery(graphql`
         query LinkManifestConfigQuery {
             sanityLinkManifestConfig(_id: { eq: "linkManifestConfig" }) {
+                featuredSeason {
+                    slug {
+                        current
+                    }
+                }
                 blogPage {
                     slug {
                         current
@@ -35,6 +40,10 @@ export const useLinkManifestConfig = (): LinkManifestConfig => {
     const links = sanityLinkManifestConfig;
 
     return {
+        featuredSeason: buildNestedSlugPath([
+            SEASON_ROOT_SLUG,
+            links?.featuredSeason?.slug?.current,
+        ]),
         blogPage: normalizeSlug(links?.blogPage?.slug?.current),
         archivePage: normalizeSlug(links?.showArchivePage?.slug?.current),
         supportUsPage: normalizeSlug(links?.supportUsPage?.slug?.current),
@@ -48,6 +57,7 @@ export const useLinkManifestConfig = (): LinkManifestConfig => {
 };
 
 export interface LinkManifestConfig {
+    featuredSeason: string | undefined;
     blogPage: string | undefined;
     archivePage: string | undefined;
     supportUsPage: string | undefined;

@@ -10,7 +10,8 @@ export const NeighboringSeasons = () => {
 
     return (
         <styled.NeighboringSeasons bgColor="paperDark">
-            <Container className="container" type="full">
+            <div className="gradient" />
+            <Container className="container" type="full" maxWidth="fluid">
                 {previousSeason ? (
                     <Link to={previousSeason.path} className="previous">
                         <Icon name="ArrowLeft" color="accent" size="m" />
