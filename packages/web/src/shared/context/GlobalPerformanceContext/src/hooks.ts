@@ -80,9 +80,11 @@ export const useBuildPerformanceDataMap = (
     /**
      * Because the seasons and shows are sorted with the "newest" entry higher in the array,
      * we need to reverse the order it to get the proper "number" position later on.
+     *
+     * ! We are making a new array before reversing because `reverse()` mutates the original array and causes issues.
      */
-    const reversedShows = rawShows.reverse();
-    const reversedSeasons = rawSeasons.reverse();
+    const reversedShows = [...rawShows].reverse();
+    const reversedSeasons = [...rawSeasons].reverse();
 
     /**
      * Build a data map of all of the shows that exist on our site
