@@ -7,10 +7,10 @@ import { useSingleShowContext } from '../../../__context__';
 
 import * as styled from './ActionBar.styles';
 
-const scrollToRef = (ref) =>
-    window.scroll({ top: ref.current.offsetTop, behavior: 'smooth' });
+const scrollToRef = (ref: React.RefObject<HTMLDivElement>) =>
+    window.scroll({ top: ref?.current?.offsetTop, behavior: 'smooth' });
 
-export const ActionBar: React.FC<IActionBar> = ({ url, ticketSectionRef }) => {
+export const ActionBar: React.FC<IActionBar> = ({ ticketSectionRef }) => {
     const { currentShow } = useSingleShowContext();
 
     return (
