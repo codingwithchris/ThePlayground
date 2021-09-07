@@ -18,7 +18,13 @@ export const TicketOffer = ({ url, price, text }: TicketButtonProps) => {
             <BodyText color="medium" size="xs" className="cost">
                 ${price}/each
             </BodyText>
-            <FillButton to={url} size="s" color="primary" fullWidth>
+            <FillButton
+                to={url}
+                size="s"
+                color="primary"
+                fullWidth
+                animateOnClick
+            >
                 {text}
             </FillButton>
         </StyledTicketOffer>
