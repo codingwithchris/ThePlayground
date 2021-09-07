@@ -62,13 +62,13 @@ export const Information: React.FC<InformationProps> = ({
                     >
                         <CardContent verticalSpacing="l" className="info-items">
                             <SeriesInfo {...series} className="info-series" />
-                            <SocialShareModal
+                            {/* <SocialShareModal
                                 shareURL={url}
                                 shareButtonText="Share This Show"
                                 socialShareText={`Check out "${
                                     title || 'this show'
                                 }" at The Nerve!`}
-                            />
+                            /> */}
                             {contentAdvisory?.copy && (
                                 <ContentAdvisoryCard
                                     rating={rating}
