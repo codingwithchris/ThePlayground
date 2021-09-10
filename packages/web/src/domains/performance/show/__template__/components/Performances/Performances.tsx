@@ -2,6 +2,9 @@ import React from 'react';
 
 import { ShowPerformance } from '@web/domains/performance/show';
 import { Heading, BodyText, Container } from '@web/ui/core';
+import { TicketProvider } from '@web/domains/performance/ticketProvider';
+import { Link } from '@web/domains/app/routing';
+
 import {
     getRemainingPerformanceCount,
     sortPastPerformancesToEnd,
@@ -10,7 +13,11 @@ import {
 import * as styled from './Performances.styles';
 import { TicketTile } from './TicketTile/TicketTile';
 
-export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
+export const Performances: React.FC<PerformancesProps> = ({
+    performances,
+    ticketProvider,
+    ticketLink,
+}) => {
     const remainingPerformances = getRemainingPerformanceCount(performances);
 
     const chancesText = remainingPerformances === 1 ? 'chance' : 'chances';
@@ -61,6 +68,25 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
                         );
                     })}
                 </ul>
+                {ticketProvider?.name && ticketLink && (
+                    <div className="ticket-provider">
+                        <BodyText color="medium" size="xs">
+                            <em>
+                                * Tickets provided by {ticketProvider.name}. You
+                                can purchase tickets for an individual
+                                performance above, but if for any reason you run
+                                into an issue, you can use the general ticket
+                                link (<Link to={ticketLink}>{ticketLink}</Link>)
+                                or call the box office at{' '}
+                                {/* TODO: fix phone urls in links */}
+                                <Link to={`tel=${ticketProvider.phone}`}>
+                                    {ticketProvider.phone}
+                                </Link>
+                                .
+                            </em>
+                        </BodyText>
+                    </div>
+                )}
             </Container>
         </styled.Performances>
     );
@@ -68,4 +94,6 @@ export const Performances: React.FC<PerformancesProps> = ({ performances }) => {
 
 export interface PerformancesProps {
     performances: ShowPerformance[];
+    ticketProvider?: TicketProvider;
+    ticketLink?: string;
 }

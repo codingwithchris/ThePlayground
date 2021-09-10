@@ -6,6 +6,7 @@ import {
 } from '@web/shared/types';
 import { SeasonReference } from '@web/domains/performance/season';
 import { Series } from '@web/domains/performance/series';
+import { TicketProvider } from '@web/domains/performance/ticketProvider';
 import { Location } from '@web/domains/performance/location';
 
 import { ShowAuthor, ShowPerformance, ShowDetail } from '../types';
@@ -33,6 +34,8 @@ export interface ShowPageProps extends SanityDocument {
     triggerWarning?: string;
     contentAdvisory?: ShowDetail;
     effectsAdvisory?: ShowDetail;
+    ticketProvider?: TicketProvider;
+    generalTicketLink?: string;
 }
 
 export interface ShowPageGatsbyContext extends GatsbyPageContext {

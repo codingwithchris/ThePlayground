@@ -1,29 +1,33 @@
 import React from 'react';
 
 import { FillButton, BodyText, Container, Icon } from '@web/ui/core';
-import { SocialShareModal, DateRange } from '@web/ui/molecules';
+import { DateRange } from '@web/ui/molecules';
 
 import { useSingleShowContext } from '../../../__context__';
-
 import * as styled from './ActionBar.styles';
 
 const scrollToRef = (ref: React.RefObject<HTMLDivElement>) =>
     window.scroll({ top: ref?.current?.offsetTop, behavior: 'smooth' });
 
-export const ActionBar: React.FC<IActionBar> = ({ ticketSectionRef }) => {
+export const ActionBar: React.FC<IActionBar> = ({
+    ticketSectionRef,
+    hasRemainingPerformances,
+}) => {
     const { currentShow } = useSingleShowContext();
 
     return (
         <styled.ActionBar>
             <Container className="container">
                 <div className="tickets">
-                    <FillButton
-                        onClick={() => scrollToRef(ticketSectionRef)}
-                        size="s"
-                        color="primary"
-                    >
-                        Showtimes + Tix
-                    </FillButton>
+                    {hasRemainingPerformances && (
+                        <FillButton
+                            onClick={() => scrollToRef(ticketSectionRef)}
+                            size="s"
+                            color="primary"
+                        >
+                            Showtimes + Tix
+                        </FillButton>
+                    )}
                 </div>
                 <div className="dates">
                     <BodyText color="light" size="s" weight="bold">
@@ -41,4 +45,5 @@ export const ActionBar: React.FC<IActionBar> = ({ ticketSectionRef }) => {
 
 export interface IActionBar {
     ticketSectionRef: React.RefObject<HTMLDivElement>;
+    hasRemainingPerformances: boolean;
 }

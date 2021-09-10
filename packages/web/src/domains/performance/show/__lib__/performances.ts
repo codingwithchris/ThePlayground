@@ -154,3 +154,10 @@ export const getRemainingPerformanceCount = (
 
     return remaining.length;
 };
+
+/**
+ * The show has performances remaining
+ */
+export const hasRemainingPerformances = (performances: ShowPerformance[]) => {
+    return getRemainingPerformanceCount(performances) > 0;
+};

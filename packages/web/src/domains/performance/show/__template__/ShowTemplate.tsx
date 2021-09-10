@@ -15,6 +15,7 @@ import {
     getTotalPerformanceCount,
     getTotalTicketedPerformanceCount,
     getTotalPWYWPerformanceCount,
+    hasRemainingPerformances,
 } from '../__lib__';
 
 import {
@@ -38,6 +39,7 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
             total: getTotalPerformanceCount(show.performances),
             ticketed: getTotalTicketedPerformanceCount(show.performances),
             pwyw: getTotalPWYWPerformanceCount(show.performances),
+            hasRemaining: hasRemainingPerformances(show.performances),
         };
 
         const ticketSectionRef = useRef<HTMLDivElement>(null);
@@ -70,7 +72,12 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                         author={show.author?.name}
                         bgImage={{ image: show?.heroImage?.asset }}
                         actionBar={
-                            <ActionBar ticketSectionRef={ticketSectionRef} />
+                            <ActionBar
+                                ticketSectionRef={ticketSectionRef}
+                                hasRemainingPerformances={
+                                    performanceCount.hasRemaining
+                                }
+                            />
                         }
                     />
                     <TheStory rawContent={show._rawDescription} />
@@ -91,7 +98,11 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                     />
                     <PerformanceStats performanceCount={performanceCount} />
                     <div ref={ticketSectionRef}>
-                        <Performances performances={show.performances} />
+                        <Performances
+                            performances={show.performances}
+                            ticketProvider={show.ticketProvider}
+                            ticketLink={show.generalTicketLink}
+                        />
                     </div>
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
@@ -159,6 +170,14 @@ export const showQuery = graphql`
                 }
                 # _rawDirections(resolveReferences: { maxDepth: 10 })
                 # _rawParking(resolveReferences: { maxDepth: 10 })
+            }
+
+            # Ticket Provider Info
+            generalTicketLink
+            ticketProvider {
+                url
+                phone
+                name
             }
 
             # Additional Performance Information

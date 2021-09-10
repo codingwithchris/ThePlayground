@@ -98,4 +98,10 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
             }
         }
     }
+
+    .ticket-provider {
+        margin: ${spacing.layout.l} auto 0;
+        max-width: 575px;
+        text-align: center;
+    }
 `;
