@@ -67,6 +67,19 @@ export default [
         },
     },
     {
+        name: 'ticketProvider',
+        title: 'Ticket Provider',
+        type: 'reference',
+        to: [{ type: 'ticketProvider' }],
+    },
+    {
+        name: 'generalTicketLink',
+        title: 'General Ticket Link',
+        description:
+            'The link to the page where tickets can be selected/purchased for this show (not specific to performance dates and times)',
+        type: 'string',
+    },
+    {
         name: 'contentAdvisory',
         description:
             'Detailed content disclaimers and warnings with relevant info (why did the show receive the age rating it did?)',

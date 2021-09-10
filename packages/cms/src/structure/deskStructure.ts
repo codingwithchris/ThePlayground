@@ -80,6 +80,7 @@ export default () =>
                             S.documentTypeListItem('series'),
                             S.documentTypeListItem('artist'),
                             S.documentTypeListItem('location'),
+                            S.documentTypeListItem('ticketProvider'),
                             S.documentTypeListItem('organization'),
                         ])
                 ),
