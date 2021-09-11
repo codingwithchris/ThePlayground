@@ -8,6 +8,7 @@ export interface CardHeaderProps {
     action?: JSX.Element;
     verticalSpacing?: AvailableComponentSpacing;
     disableSpacing?: true;
+    className?: string;
 }
 
 // STYLES
@@ -39,11 +40,13 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
     disableSpacing,
     avatar,
     action,
+    className,
     children,
 }) => (
     <StyledCardHeader
         verticalSpacing={verticalSpacing}
         disableSpacing={disableSpacing}
+        className={className}
     >
         {avatar && <div className="avatar">{avatar}</div>}
         <div className="copy">{children}</div>

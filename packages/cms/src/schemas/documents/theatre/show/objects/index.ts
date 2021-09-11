@@ -2,6 +2,7 @@ export { contentAdvisory, effectsAdvisory } from './advisories';
 export { artists } from './artists';
 export { collaboration } from './collaboration';
 export { detailItem } from './details';
+export { healthNotice } from './notices';
 export { performance } from './performance';
 export { scriptAuthor } from './scriptAuthor';
 export { tickets } from './tickets';

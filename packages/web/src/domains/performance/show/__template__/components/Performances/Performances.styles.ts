@@ -22,6 +22,11 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         padding: ${spacing.layout.l} 0;
     }
 
+    .health-notice {
+        max-width: 900px;
+        margin: 0 auto ${spacing.layout.l};
+    }
+
     .lead-in {
         margin-bottom: ${spacing.layout.s};
     }

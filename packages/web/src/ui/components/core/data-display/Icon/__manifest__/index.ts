@@ -7,12 +7,13 @@ import { Calendar } from './defs/Calendar';
 import { Cancel } from './defs/Cancel';
 import { Checkmark } from './defs/Checkmark';
 import { Clock } from './defs/Clock';
-import { Copy } from './defs/Copy';
-import { Conversation } from './defs/Conversation';
 import { CircleDown } from './defs/CircleDown';
 import { CircleLeft } from './defs/CircleLeft';
 import { CircleRight } from './defs/CircleRight';
 import { CircleUp } from './defs/CircleUp';
+import { Copy } from './defs/Copy';
+import { Conversation } from './defs/Conversation';
+import { Covid } from './defs/Covid';
 import { Envelope } from './defs/Envelope';
 import { Eye } from './defs/Eye';
 import { Facebook } from './defs/Facebook';
@@ -25,6 +26,7 @@ import { Instagram } from './defs/Instagram';
 import { LinkedInAlt } from './defs/LinkedInAlt';
 import { Location } from './defs/Location';
 import { Lock } from './defs/Lock';
+import { Mask } from './defs/Mask';
 import { MoneyComment } from './defs/MoneyComment';
 import { MapMarker } from './defs/MapMarker';
 import { NewTab } from './defs/NewTab';
@@ -55,6 +57,7 @@ export const availableIcons = {
     Clock,
     Copy,
     Conversation,
+    Covid,
     Envelope,
     Eye,
     Facebook,
@@ -67,6 +70,7 @@ export const availableIcons = {
     LinkedInAlt,
     Location,
     Lock,
+    Mask,
     MoneyComment,
     MapMarker,
     NewTab,

@@ -16,4 +16,8 @@ export const surfaces: Surfaces = {
     neutralLight: palette.neutral[200],
     neutral: palette.neutral[500],
     neutralDark: palette.neutral[700],
+
+    dangerLight: palette.danger.l2,
+    danger: palette.danger.base,
+    dangerDark: palette.danger.d2,
 };

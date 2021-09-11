@@ -71,6 +71,13 @@ export const schema: DocumentCollection = {
         author,
         toggles,
         selectors,
+        // TODO: Make this part of a flexible notices feature
+        {
+            name: 'healthNotice',
+            type: 'healthNotice',
+            description: 'An important health and safety notice for this show',
+            options: { collapsible: true, collapsed: true },
+        },
         ...bindFieldsToFieldset('images', images),
         ...bindFieldsToFieldset('messaging', messaging),
         ...bindFieldsToFieldset('details', details),
@@ -124,6 +131,7 @@ export const schema: DocumentCollection = {
 
 export const objects = [
     showObjects.artists,
+    showObjects.healthNotice,
     showObjects.collaboration,
     showObjects.effectsAdvisory,
     showObjects.contentAdvisory,

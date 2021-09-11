@@ -20,6 +20,7 @@ import {
 
 import {
     Hero,
+    HealthNotice,
     ActionBar,
     Performances,
     PerformanceStats,
@@ -99,6 +100,16 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                     <PerformanceStats performanceCount={performanceCount} />
                     <div ref={ticketSectionRef}>
                         <Performances
+                            healthNotice={
+                                show.healthNotice?.shouldDisplay && (
+                                    <HealthNotice
+                                        title={show.healthNotice.title}
+                                        rawContent={
+                                            show.healthNotice?._rawContent
+                                        }
+                                    />
+                                )
+                            }
                             performances={show.performances}
                             ticketProvider={show.ticketProvider}
                             ticketLink={show.generalTicketLink}
@@ -210,6 +221,13 @@ export const showQuery = graphql`
             #     modalTriggerText
             #     _rawModalContent(resolveReferences: { maxDepth: 10 })
             # }
+
+            # HEALTH & SAFETY NOTICE
+            healthNotice {
+                shouldDisplay
+                title
+                _rawContent(resolveReferences: { maxDepth: 10 })
+            }
 
             ## PERFORMANCE AND TICKETS
             performances {

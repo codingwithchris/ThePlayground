@@ -17,6 +17,7 @@ export const Performances: React.FC<PerformancesProps> = ({
     performances,
     ticketProvider,
     ticketLink,
+    healthNotice,
 }) => {
     const remainingPerformances = getRemainingPerformanceCount(performances);
 
@@ -45,6 +46,9 @@ export const Performances: React.FC<PerformancesProps> = ({
             bgColor="paperDark"
         >
             <Container>
+                {healthNotice && (
+                    <div className="health-notice">{healthNotice}</div>
+                )}
                 <div className="lead-in">
                     <Heading
                         size="xs"
@@ -93,6 +97,7 @@ export const Performances: React.FC<PerformancesProps> = ({
 };
 
 export interface PerformancesProps {
+    healthNotice?: JSX.Element | false;
     performances: ShowPerformance[];
     ticketProvider?: TicketProvider;
     ticketLink?: string;

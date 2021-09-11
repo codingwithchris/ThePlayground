@@ -73,3 +73,9 @@ export interface ShowDetail {
     modalTriggerText?: string;
     _rawModalContent?: any[];
 }
+
+export interface ShowNotice {
+    shouldDisplay: boolean;
+    title: string;
+    _rawContent: any[];
+}
