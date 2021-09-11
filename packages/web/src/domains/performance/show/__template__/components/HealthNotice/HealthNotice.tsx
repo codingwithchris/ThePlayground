@@ -24,7 +24,7 @@ export const HealthNotice = ({ title, rawContent }: HealthNoticeProps) => {
                     {title}
                 </BodyText>
             </CardHeader>
-            <Divider color="neutralDark" />
+            <Divider color="dangerLight" />
             <CardContent className="content">
                 <PortableText
                     content={rawContent}

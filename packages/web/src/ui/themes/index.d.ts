@@ -111,6 +111,7 @@ export interface TypographyThemes {
     accentDark: string;
     highlight: string;
     danger: string;
+    dangerLight: string;
     success: string;
 }
 
