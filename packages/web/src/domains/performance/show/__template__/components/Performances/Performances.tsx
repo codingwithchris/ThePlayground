@@ -76,14 +76,23 @@ export const Performances: React.FC<PerformancesProps> = ({
                     <div className="ticket-provider">
                         <BodyText color="medium" size="xs">
                             <em>
-                                * Tickets provided by {ticketProvider.name}. You
-                                can purchase tickets for an individual
-                                performance above, but if for any reason you run
-                                into an issue, you can use the general ticket
-                                link (<Link to={ticketLink}>{ticketLink}</Link>)
-                                or call the box office at{' '}
-                                {/* TODO: fix phone urls in links */}
-                                <Link to={`tel=${ticketProvider.phone}`}>
+                                * Ticket service provided by{' '}
+                                {ticketProvider.name}. You can purchase tickets
+                                for an individual performance above, but if for
+                                any reason you run into an issue, you can use
+                                their general ticket link (
+                                <Link
+                                    to={ticketLink}
+                                    className="general-ticket-link"
+                                >
+                                    {ticketLink}
+                                </Link>
+                                ) or call the box office at{' '}
+                                <Link
+                                    to={`tel:${ticketProvider.phone}`}
+                                    className="provider-phone"
+                                    noNewTab
+                                >
                                     {ticketProvider.phone}
                                 </Link>
                                 .

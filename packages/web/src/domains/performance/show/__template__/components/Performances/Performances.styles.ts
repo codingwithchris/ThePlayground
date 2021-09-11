@@ -108,5 +108,11 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         margin: ${spacing.layout.l} auto 0;
         max-width: 575px;
         text-align: center;
+
+        .general-ticket-link,
+        .provider-phone {
+            color: ${({ theme }) => theme.typography.light};
+            text-decoration: underline;
+        }
     }
 `;
