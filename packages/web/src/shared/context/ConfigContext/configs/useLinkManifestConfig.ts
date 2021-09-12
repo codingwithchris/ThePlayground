@@ -40,6 +40,7 @@ export const useLinkManifestConfig = (): LinkManifestConfig => {
     const links = sanityLinkManifestConfig;
 
     return {
+        featuredSeasonRawSlug: links?.featuredSeason?.slug?.current,
         featuredSeason: buildNestedSlugPath([
             SEASON_ROOT_SLUG,
             links?.featuredSeason?.slug?.current,
@@ -49,20 +50,25 @@ export const useLinkManifestConfig = (): LinkManifestConfig => {
         supportUsPage: normalizeSlug(links?.supportUsPage?.slug?.current),
         sitemap: links?.sitemap,
         getShow: (season, show) =>
+            season &&
+            show &&
             buildNestedSlugPath([SEASON_ROOT_SLUG, season, show]),
-        getSeason: (season) => buildNestedSlugPath([SEASON_ROOT_SLUG, season]),
+        getSeason: (season) =>
+            season && buildNestedSlugPath([SEASON_ROOT_SLUG, season]),
         getPost: (post) =>
-            buildNestedSlugPath([BLOG_ROOT_SLUG, post]) ?? BLOG_ROOT_SLUG,
+            (post && buildNestedSlugPath([BLOG_ROOT_SLUG, post])) ??
+            BLOG_ROOT_SLUG,
     };
 };
 
 export interface LinkManifestConfig {
+    featuredSeasonRawSlug: string | undefined;
     featuredSeason: string | undefined;
     blogPage: string | undefined;
     archivePage: string | undefined;
     supportUsPage: string | undefined;
     sitemap: string;
-    getShow: (season: string, show: string) => string | undefined;
-    getSeason: (season: string) => string | undefined;
-    getPost: (post: string) => string;
+    getShow: (season?: string, show?: string) => string | undefined;
+    getSeason: (season?: string) => string | undefined;
+    getPost: (post?: string) => string | undefined;
 }

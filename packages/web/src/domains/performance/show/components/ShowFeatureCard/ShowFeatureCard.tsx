@@ -25,6 +25,11 @@ import { ShowAuthor } from '../../types';
 
 import * as styled from './ShowFeatureCard.styles';
 
+/**
+ * Presents minimal information about a show but pairs it with a prominent image.
+ * In this way it feels like this show is "featured" in some way.
+ */
+
 export const ShowFeatureCard = ({
     image,
     title,

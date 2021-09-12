@@ -1,5 +1,5 @@
-import { ShowCore } from '@web/domains/performance/show';
+import { Show } from '@web/domains/performance/show';
 
-export const hasShowsInSeason = (shows?: ShowCore[]) => {
+export const hasShowsInSeason = (shows?: Show[]) => {
     return shows && shows.length > 0;
 };

@@ -19,15 +19,19 @@ import {
     HeroSection,
     LongDescriptionSection,
     RebrandSection,
+    SeasonOverviewSection,
     TempSeasonListSection,
 } from '@web/domains/page/home';
+import { SeasonWithShows } from '@web/domains/performance/shared';
 
 const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
     data,
     pageContext,
     location,
 }) => {
-    const { sanityHomePage: page } = data;
+    const { sanityHomePage: page, sanityLinkManifestConfig } = data;
+
+    const { featuredSeason } = sanityLinkManifestConfig;
 
     /**
      * TODO: Extract this hero action resolver logic into a re-usable set of functions, removing it from this component scope.
@@ -39,7 +43,7 @@ const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
             case 'show':
                 return links.getShow(
                     page.hero.action.link.season?.slug?.current,
-                    page.hero.action.link.slug?.current
+                    page.hero.action.link.slug.current
                 );
                 break;
             case 'season':
@@ -76,12 +80,7 @@ const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
             <RebrandSection />
             <LongDescriptionSection />
             <Divider color="paperLight" />
-            <TempSeasonListSection
-                tempBurningBoyImage={page.tempBurningBoyImage}
-                tempFriendArtImage={page.tempFriendArtImage}
-                tempPuffsImage={page.tempPuffsImage}
-                auditionLink={page.hero.action.link.slug.current}
-            />
+            <SeasonOverviewSection season={featuredSeason} />
             <Divider color="paperLight" />
             <ArchiveSection />
             <NewsSubscribeCTA />
@@ -187,11 +186,56 @@ export const query = graphql`
                 }
             }
         }
+        # TODO: This data needs to get moved off of sanityLinkManifestConfig to a more sensibly named configs for seasons/shows
+        sanityLinkManifestConfig(
+            featuredSeason: {
+                shows: {
+                    elemMatch: {
+                        toggles: { isHiddenFromWebsite: { eq: false } }
+                    }
+                }
+            }
+        ) {
+            featuredSeason {
+                title
+                tagline
+                description
+                shows {
+                    title
+                    slug {
+                        current
+                    }
+                    teaser
+                    rating
+                    series {
+                        identifier
+                        title
+                    }
+                    author {
+                        name
+                    }
+                    closeDate
+                    openDate
+                    performances {
+                        isPWYW
+                    }
+                    cardImage {
+                        asset {
+                            gatsbyImageData
+                        }
+                        alt
+                    }
+                }
+            }
+        }
     }
 `;
 
 interface PageData {
     sanityHomePage: HomePageData;
+    sanityLinkManifestConfig: {
+        featuredSeason: SeasonWithShows;
+    };
 }
 
 interface HomePageData extends SanityDocument {

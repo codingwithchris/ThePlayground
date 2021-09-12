@@ -5,19 +5,13 @@ import {
     SanityImageDataWithAlt,
 } from '@web/shared/types';
 
-import { Series } from '@web/domains/performance/series';
-import { ShowCoreWithCard } from '@web/domains/performance/show';
+import { Show } from '@web/domains/performance/show';
 
 /**
- * Types for our Single Show Page Template
+ * Types for our Single Season Page Template
  */
-
-type ShowsInSeason = ShowCoreWithCard & {
-    series: Series;
-};
-
 export interface SeasonPageProps extends SanityDocument {
-    shows?: ShowsInSeason[];
+    shows?: Show[];
     tagline?: string;
     description?: string;
 }

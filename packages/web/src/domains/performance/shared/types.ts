@@ -1,11 +1,15 @@
-import { ShowCore } from '../show/types';
-import { SeasonCore } from '../season/types';
+import { DecoratedShow, Show } from '../show/types';
+import { DecoratedSeason, Season } from '../season/types';
 
 /**
  * ==============================================================
  * SHARED PERFORMANCE TYPES
  * ==============================================================
  */
-export interface SeasonCoreWithShows extends SeasonCore {
-    shows: ShowCore[];
+export interface SeasonWithShows extends Season {
+    shows: Show[];
+}
+
+export interface DecoratedSeasonWithShows extends DecoratedSeason {
+    shows: DecoratedShow[];
 }

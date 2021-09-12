@@ -5,10 +5,7 @@ import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 import { Divider } from '@web/ui/core';
-import {
-    ShowFeatureCard,
-    SingleShowProvider,
-} from '@web/domains/performance/show';
+import { ShowFeatureCard } from '@web/domains/performance/show';
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SeasonPageProps, SeasonPageGatsbyContext } from './types';

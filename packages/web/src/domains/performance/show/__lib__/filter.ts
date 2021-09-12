@@ -1,7 +1,7 @@
 import { isFuture, isPast, parseISO } from 'date-fns';
-import { ShowCore } from '../types';
+import { Show } from '../types';
 
-export const filterForFutureShows = <AnyShowType extends ShowCore>(
+export const filterForFutureShows = <AnyShowType extends Show>(
     shows: AnyShowType[]
 ): AnyShowType[] =>
     shows.filter(({ closeDate }) => {
@@ -9,7 +9,7 @@ export const filterForFutureShows = <AnyShowType extends ShowCore>(
         return isFuture(date);
     });
 
-export const filterForPastShows = <AnyShowType extends ShowCore>(
+export const filterForPastShows = <AnyShowType extends Show>(
     shows: AnyShowType[]
 ): AnyShowType[] =>
     shows.filter(({ closeDate }) => {

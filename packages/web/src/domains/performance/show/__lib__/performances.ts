@@ -107,7 +107,11 @@ export const hasAvailableTicketOffer = (performance: ShowPerformance) => {
 /**
  * Get the total number of performance occurrences for a single show
  */
-export const getTotalPerformanceCount = (performances: ShowPerformance[]) => {
+export const getTotalPerformanceCount = (performances?: ShowPerformance[]) => {
+    if (!performances) {
+        return 0;
+    }
+
     const total = performances.filter(
         (performance) => !isCancelledPerformance(performance)
     );
@@ -119,8 +123,12 @@ export const getTotalPerformanceCount = (performances: ShowPerformance[]) => {
  * Get total ticketed performance count
  */
 export const getTotalTicketedPerformanceCount = (
-    performances: ShowPerformance[]
+    performances?: ShowPerformance[]
 ) => {
+    if (!performances) {
+        return 0;
+    }
+
     const total = performances.filter((performance) =>
         isTicketedPerformance(performance)
     );
@@ -132,8 +140,12 @@ export const getTotalTicketedPerformanceCount = (
  * Get total pay what you want performance count
  */
 export const getTotalPWYWPerformanceCount = (
-    performances: ShowPerformance[]
+    performances?: ShowPerformance[]
 ) => {
+    if (!performances) {
+        return 0;
+    }
+
     const total = performances.filter((performance) =>
         isPWYWPerformance(performance)
     );
@@ -146,8 +158,12 @@ export const getTotalPWYWPerformanceCount = (
  * could buy a ticket to.
  */
 export const getRemainingPerformanceCount = (
-    performances: ShowPerformance[]
+    performances?: ShowPerformance[]
 ) => {
+    if (!performances) {
+        return 0;
+    }
+
     const remaining = performances.filter((performance) =>
         isAvailablePerformance(performance)
     );
