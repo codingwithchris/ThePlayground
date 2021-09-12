@@ -26,6 +26,11 @@ const isDev = environment === 'development';
 const isDeployPreview = environment === 'deploy-preview';
 const isProd = environment === 'production';
 
+// Loads a special tracking ID for Dev environments to make sure our data on prod isn't tainted
+const googleAnalyticsTrackingID = isProd
+    ? process.env.GOOGLE_ANALYTICS_TRACKING_ID
+    : process.env.GOOGLE_ANALYTICS_DEV_TRACKING_ID;
+
 //  Todo: isNetlifyPreview (for deploy-preview and branch-deploy)
 //  Todo: isStaging (one we get a staging environment set up)
 
@@ -80,7 +85,8 @@ module.exports = {
             options: {
                 dsn: process.env.SENTRY_DSN,
                 environment,
-                release: `nerve.web@${appVersion}`,
+                // TODO: One day it would be nice to make this a more transparent reference
+                release: commitRef,
                 // A rate of 1 means all traces will be sent, so it's good for testing.
                 // In production, you'll likely want to either choose a lower rate or use `tracesSampler` instead (see below).
                 tracesSampleRate: 0.5,
@@ -89,17 +95,29 @@ module.exports = {
         },
 
         /**
-         * @link https://www.gatsbyjs.com/plugins/gatsby-plugin-gtag
+         * @link https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
          */
         {
-            resolve: `gatsby-plugin-gtag`,
+            resolve: `gatsby-plugin-google-gtag`,
             options: {
-                // your google analytics tracking id
-                trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-                // Puts tracking script in the head instead of the body
-                head: false,
-                // enable ip anonymization
-                anonymize: false,
+                // your google analytics tracking ids
+                trackingIds: [googleAnalyticsTrackingID],
+                // This object gets passed directly to the gtag config command
+                // This config will be shared across all trackingIds
+                gtagConfig: {
+                    // optimize_id: 'OPT_CONTAINER_ID',
+                    // anonymize_ip: false,
+                    cookie_expires: 0,
+                },
+                // This object is used for configuration specific to this plugin
+                pluginConfig: {
+                    // Puts tracking script in the head instead of the body
+                    head: false,
+                    // Setting this parameter is also optional
+                    // respectDNT: true,
+                    // Avoids sending pageview hits from custom paths
+                    // exclude: [],
+                },
             },
         },
 
