@@ -1,17 +1,17 @@
-import { ShowCore } from '@web/domains/performance/show';
-import { SeasonCore } from '@web/domains/performance/season';
-import { SeasonCoreWithShows } from '@web/domains/performance/shared';
+import { DecoratedShow } from '@web/domains/performance/show';
+import { Season } from '@web/domains/performance/season';
+import { DecoratedSeasonWithShows } from '@web/domains/performance/shared';
 
-export type RawShowData = ShowCore;
-export type RawSeasonData = SeasonCore;
+export type RawShowData = DecoratedShow;
+export type RawSeasonData = Season;
 
 export type RawPerformanceDataQuery = () => {
     rawSeasonsData: RawSeasonData[];
     rawShowsData: RawShowData[];
 };
 
-export type ShowMapEntry = ShowCore;
-export type SeasonMapEntry = SeasonCoreWithShows;
+export type ShowMapEntry = DecoratedShow;
+export type SeasonMapEntry = DecoratedSeasonWithShows;
 
-export type GlobalShowMap = Map<string, ShowCore>;
-export type GlobalSeasonMap = Map<string, SeasonCoreWithShows>;
+export type GlobalShowMap = Map<string, DecoratedShow>;
+export type GlobalSeasonMap = Map<string, DecoratedSeasonWithShows>;

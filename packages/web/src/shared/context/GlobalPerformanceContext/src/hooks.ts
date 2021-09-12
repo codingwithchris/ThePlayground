@@ -78,6 +78,15 @@ export const useBuildPerformanceDataMap = (
     const seasons: GlobalSeasonMap = new Map();
 
     /**
+     * Because the seasons and shows are sorted with the "newest" entry higher in the array,
+     * we need to reverse the order it to get the proper "number" position later on.
+     *
+     * ! We are making a new array before reversing because `reverse()` mutates the original array and causes issues.
+     */
+    const reversedShows = [...rawShows].reverse();
+    const reversedSeasons = [...rawSeasons].reverse();
+
+    /**
      * Build a data map of all of the shows that exist on our site
      */
     rawShows.forEach((show) => {
@@ -85,6 +94,18 @@ export const useBuildPerformanceDataMap = (
             ...show,
             path: links.getShow(show.season.slug.current, show.slug.current),
             status: getShowStatus(show.openDate, show.closeDate),
+            /**
+             * What number season out of the total season count is this?
+             *
+             * Because the seasons are sorted with the "newest" show higher in the array,
+             * we need to reverse the order in to get the show's proper "number" count.
+             * We add 1 to the end to represent starting at a non-zero index for human readability
+             */
+
+            number:
+                reversedShows.findIndex(
+                    (_show) => _show.slug.current === show.slug.current
+                ) + 1,
             season: {
                 ...show.season,
                 path: links.getSeason(show.season.slug.current),
@@ -105,6 +126,17 @@ export const useBuildPerformanceDataMap = (
         seasons.set(season.slug.current, {
             ...season,
             path: links.getSeason(season.slug.current),
+            /**
+             * What number season out of the total season count is this?
+             *
+             * Because the seasons are sorted with the "newest" show higher in the array,
+             * we need to reverse the order in to get the season's proper "number" count.
+             * We add 1 to the end to represent starting at a non-zero index for human readability
+             */
+            number:
+                reversedSeasons.findIndex(
+                    (_season) => _season.slug.current === season.slug.current
+                ) + 1,
             shows: showsThisSeason.map(([_, show]) => show),
         });
     });

@@ -10,5 +10,6 @@ export const typography: TypographyThemes = {
     accentDark: palette.primary.d1,
     highlight: palette.secondary.l2,
     danger: palette.danger.base,
+    dangerLight: palette.danger.l2,
     success: palette.success.base,
 };

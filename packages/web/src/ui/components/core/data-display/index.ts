@@ -6,3 +6,5 @@ export * from './Heading/Heading';
 export * from './Icon/Icon';
 export * from './List/List';
 export * from './Logo/Logo';
+export * from './Tag/Tag';
+export * from './Video/YoutubeVideo';

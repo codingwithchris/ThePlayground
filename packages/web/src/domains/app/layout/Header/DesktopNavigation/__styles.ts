@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { animation, spacing } from '@web/ui/tokens';
 
-export const DesktopNavBar = styled.nav`
+export const DesktopNavigation = styled.nav`
     ul {
         align-items: center;
         display: flex;
@@ -11,12 +11,17 @@ export const DesktopNavBar = styled.nav`
 
         /* Standard link items (not button links) */
         a:not(.button) {
-            display: block;
+            align-items: center;
+            display: flex;
             padding: ${spacing.component.s} ${spacing.component.s};
             position: relative;
 
             span {
                 transition: ${animation.linkHover};
+            }
+
+            svg {
+                margin-right: ${spacing.component.xs};
             }
         }
 

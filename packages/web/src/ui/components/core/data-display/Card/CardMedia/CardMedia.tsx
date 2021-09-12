@@ -1,10 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { borders, spacing, AvailableComponentSpacing } from '@web/ui/tokens';
+import styled from 'styled-components';
+import { borders } from '@web/ui/tokens';
 import { Image } from '@web/ui/core';
-
-// TYPES
-export interface CardMediaProps {}
 
 // STYLES
 export const StyledCardMedia = styled.div<CardMediaProps>`
@@ -17,6 +14,12 @@ export const StyledCardMedia = styled.div<CardMediaProps>`
 `;
 
 // COMPONENT DEFINITION
-export const CardMedia: React.FC<CardMediaProps> = ({ children }) => (
-    <StyledCardMedia>{children}</StyledCardMedia>
-);
+export const CardMedia: React.FC<CardMediaProps> = ({
+    className,
+    children,
+}) => <StyledCardMedia className={className}>{children}</StyledCardMedia>;
+
+// TYPES
+export interface CardMediaProps {
+    className?: string;
+}

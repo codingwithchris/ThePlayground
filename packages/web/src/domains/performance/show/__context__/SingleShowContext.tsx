@@ -8,7 +8,7 @@ export const SingleShowProvider: React.FC<SingleShowProviderProps> = ({
     children,
 }) => {
     const { get } = useGlobalPerformanceContext();
-    const [next, previous] = get.showNeighbors(slug);
+    const { next, previous } = get.showNeighbors(slug);
 
     const context: SingleShowContextProps = {
         currentShow: get.show(slug),

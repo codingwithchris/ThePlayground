@@ -2,26 +2,43 @@ import React from 'react';
 
 import { BodyText, Container, Heading, SectionProps } from '@web/ui/core';
 
-import { useSingleShowContext } from '../../../__context__';
-
 import * as styled from './Hero.styles';
 
-export const Hero: React.FC<HeroProps> = ({ bgImage, actionBar }) => {
-    const { currentShow } = useSingleShowContext();
-
+// TODO: Swap out the standard BG image here for a branded bg image
+export const Hero: React.FC<HeroProps> = ({
+    title,
+    author,
+    bgImage,
+    actionBar,
+}) => {
     return (
-        <styled.Hero bgImage={bgImage} overlay="black45">
+        <styled.Hero bgImage={bgImage} overlay="black65">
             <Container className="container">
-                <Heading className="title" size="xl" color="light">
-                    {currentShow?.title || 'N/A'}
+                <Heading
+                    className="title"
+                    size="l"
+                    color="light"
+                    as="h1"
+                    data-device-scope="desktop"
+                >
+                    {title || 'N/A'}
+                </Heading>
+                <Heading
+                    className="title"
+                    size="m"
+                    color="light"
+                    as="h1"
+                    data-device-scope="mobile"
+                >
+                    {title || 'N/A'}
                 </Heading>
                 <BodyText
                     className="author"
                     size="xl"
-                    color="light"
+                    color="medium"
                     weight="bold"
                 >
-                    by {currentShow?.author.name || 'n/a'}
+                    by {author || 'n/a'}
                 </BodyText>
             </Container>
             {actionBar && actionBar}
@@ -31,4 +48,6 @@ export const Hero: React.FC<HeroProps> = ({ bgImage, actionBar }) => {
 
 interface HeroProps extends SectionProps {
     actionBar?: JSX.Element;
+    title: string;
+    author?: string;
 }

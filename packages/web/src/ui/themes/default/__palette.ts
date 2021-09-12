@@ -18,11 +18,11 @@ export const palette: Palette = {
         d2: brandColors.blue.d2,
     },
     danger: {
-        l2: '#FB562D',
-        l1: '#FA4214',
-        base: '#F23405',
-        d1: '#D72E04',
-        d2: '#BE2904',
+        l2: '#FF242A',
+        l1: '#F50004',
+        base: '#DB0007',
+        d1: '#C20006',
+        d2: '#A80005',
     },
     success: {
         l2: '#FB562D',

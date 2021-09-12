@@ -55,7 +55,7 @@ const getPerformanceNeighbors =
         );
 
         /**
-         * Because we sort our shows descending (from most recent show to oldest),
+         * Because we sort our shows & seasons descending (from most recent show to oldest),
          * we actually need to traverse UP the array by getting the previous array
          * item to get the NEXT (more recent) show.
          *
@@ -67,7 +67,7 @@ const getPerformanceNeighbors =
         };
 
         /**
-         * Because we sort our shows descending (from most recent show to oldest),
+         * Because we sort our shows & seasons descending (from most recent show to oldest),
          * we actually need to traverse DOWN the array by getting the next array
          * item to get the PREVIOUS (older) show.
          *
@@ -78,7 +78,7 @@ const getPerformanceNeighbors =
             return getNextArrayItem(dataArray, currentIndex)?.[1];
         };
 
-        return [next, previous];
+        return { next, previous };
     };
 
 /**

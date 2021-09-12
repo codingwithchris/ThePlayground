@@ -4,7 +4,7 @@ export default [
         title: 'Opening Date',
         description: 'The date of the first performance',
         type: 'datetime',
-        readOnly: true,
+        readOnly: false,
         options: {
             dateFormat: 'ddd » MMM Do, yyyy',
             timeFormat: 'h:mm:a',
@@ -15,7 +15,7 @@ export default [
         title: 'Closing Date',
         description: 'The date of the last performance',
         type: 'datetime',
-        readOnly: true,
+        readOnly: false,
         options: {
             dateFormat: 'ddd » MMM Do, yyyy',
             timeFormat: 'h:mm:a',
@@ -61,20 +61,41 @@ export default [
             direction: 'horizontal',
             list: [
                 { title: 'R', value: 'r' },
-                { title: 'PG-13', value: 'pg13' },
+                { title: 'PG-13', value: 'pg-13' },
                 { title: 'PG', value: 'pg' },
             ],
         },
     },
     {
+        name: 'ticketProvider',
+        title: 'Ticket Provider',
+        type: 'reference',
+        to: [{ type: 'ticketProvider' }],
+    },
+    {
+        name: 'generalTicketLink',
+        title: 'General Ticket Link',
+        description:
+            'The link to the page where tickets can be selected/purchased for this show (not specific to performance dates and times)',
+        type: 'string',
+    },
+    {
         name: 'contentAdvisory',
         description:
-            'Detailed content disclaimers and warnings with relevant info',
+            'Detailed content disclaimers and warnings with relevant info (why did the show receive the age rating it did?)',
         type: 'contentAdvisory',
         options: {
             collapsible: true,
             collapsed: true,
         },
+    },
+    {
+        name: 'triggerWarning',
+        title: 'Trigger Warning',
+        description:
+            'Special content considerations that could trigger some patrons',
+        type: 'text',
+        rows: 2,
     },
     {
         name: 'effectsAdvisory',

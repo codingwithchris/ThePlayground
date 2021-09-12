@@ -88,9 +88,15 @@ export interface Surfaces {
     paperLight: string;
     paper: string;
     paperDark: string;
+    accentLight: string;
+    accent: string;
+    accentDark: string;
     neutralLight: string;
     neutral: string;
     neutralDark: string;
+    dangerLight: string;
+    danger: string;
+    dangerDark: string;
 }
 
 /**
@@ -105,6 +111,7 @@ export interface TypographyThemes {
     accentDark: string;
     highlight: string;
     danger: string;
+    dangerLight: string;
     success: string;
 }
 
@@ -123,6 +130,8 @@ export interface AppTheme {
         accent: IconTheme;
         highlight: IconTheme;
         highlightExtra: IconTheme;
+        danger: IconTheme;
+        dangerLight: IconTheme;
     };
     inputs: {
         light: InputTheme;

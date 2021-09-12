@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { GatsbyPageContext, SanityDocumentSEO } from '@web/shared/types';
@@ -6,7 +6,8 @@ import { GatsbyPageContext, SanityDocumentSEO } from '@web/shared/types';
 import { SimpleHero, NewsSubscribeCTA } from '@web/ui/molecules';
 import {
     ShowPosterGrid,
-    ShowCoreWithPoster,
+    Show,
+    filterForPastShows,
 } from '@web/domains/performance/show';
 
 import PageTemplate from '@web/domains/page/__template__';
@@ -19,6 +20,10 @@ const ArchivePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
     const { sanityArchivePage: page } = data;
     const { nodes: shows } = data.allSanityShow;
 
+    const pastShows = useMemo(() => {
+        return filterForPastShows(shows);
+    }, [shows]);
+
     return (
         <PageTemplate
             seo={page.seo}
@@ -26,7 +31,7 @@ const ArchivePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
             currentLocation={location.pathname}
         >
             <SimpleHero title={page.hero.title} subTitle={page.hero.subtitle} />
-            <ShowPosterGrid shows={shows} />
+            <ShowPosterGrid shows={pastShows} />
             <NewsSubscribeCTA />
         </PageTemplate>
     );
@@ -59,7 +64,10 @@ export const query = graphql`
             }
         }
 
-        allSanityShow(sort: { order: DESC, fields: closeDate }) {
+        allSanityShow(
+            filter: { toggles: { isHiddenFromWebsite: { eq: false } } }
+            sort: { order: DESC, fields: closeDate }
+        ) {
             nodes {
                 title
                 slug {
@@ -108,7 +116,7 @@ interface PageData {
         };
     };
     allSanityShow: {
-        nodes: ShowCoreWithPoster[];
+        nodes: Show[];
     };
 }
 

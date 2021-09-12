@@ -28,13 +28,15 @@ export const ShowPoster: React.FC<ShowPosterProps> = ({
                 className="wrapper"
                 to={links.getShow(season.slug, slug) ?? '/'}
             >
-                <BrandImage
-                    image={image.asset}
-                    alt={image.alt ?? ''}
-                    objectFit="cover"
-                    objectPosition="center center"
-                    className="image"
-                />
+                {image?.asset && (
+                    <BrandImage
+                        image={image.asset}
+                        alt={image.alt ?? ''}
+                        objectFit="cover"
+                        objectPosition="center center"
+                        className="image"
+                    />
+                )}
                 <BackgroundOverlay
                     variant="verticalGradientDark"
                     className="overlay"
@@ -69,7 +71,7 @@ export interface ShowPosterProps {
         slug: string;
         title: string;
     };
-    image: SanityImageDataWithAlt;
+    image?: SanityImageDataWithAlt;
     openingDate: string;
     closingDate: string;
 }

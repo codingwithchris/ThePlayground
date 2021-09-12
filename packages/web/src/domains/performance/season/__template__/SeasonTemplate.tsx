@@ -3,14 +3,24 @@ import { graphql, PageProps } from 'gatsby';
 
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 
-// import { SubscribeSection } from '@web/ui/molecules';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
-import { LegacyContentNotice } from '@web/ui/molecules';
+import { Divider } from '@web/ui/core';
+import { ShowFeatureCard } from '@web/domains/performance/show';
+import { NewsSubscribeCTA } from '@web/ui/molecules';
 
-import { SeasonPage, SeasonPageContext } from '../types';
+import { SeasonPageProps, SeasonPageGatsbyContext } from './types';
 import { SingleSeasonProvider } from '../__context__';
+import { hasShowsInSeason } from '../__lib__';
 
-const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
+import {
+    ComingSoon,
+    Description,
+    Hero,
+    ShowsThisSeason,
+    NeighboringSeasons,
+} from './components';
+
+const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
     data,
     pageContext,
     location,
@@ -43,14 +53,34 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
                     }}
                 />
             )}
-            <LegacyContentNotice
-                contentType="season"
-                title={`${season.title} Season`}
-                subTitle={season.tagline}
-                legacyURL={`https://theplaygroundtheatre.org/season/${slug}`}
-                legacyURLText="See season on old website"
-            />
-            {/* <SubscribeSection /> */}
+            <Hero title={season.title} tagline={season.tagline} />
+            <Divider color="paper" />
+
+            {season.description && (
+                <>
+                    <Description description={season.description} />
+                    <Divider color="paper" />
+                </>
+            )}
+            {hasShowsInSeason(season.shows) ? (
+                <ShowsThisSeason>
+                    {season.shows!.map(
+                        ({ cardImage, slug: showSlug, ...show }) => (
+                            <ShowFeatureCard
+                                key={showSlug.current}
+                                image={cardImage}
+                                showSlug={showSlug.current}
+                                {...show}
+                            />
+                        )
+                    )}
+                </ShowsThisSeason>
+            ) : (
+                <ComingSoon />
+            )}
+            <Divider color="paper" />
+            <NeighboringSeasons />
+            <NewsSubscribeCTA />
         </SingleSeasonProvider>
     );
 };
@@ -58,12 +88,45 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
 export const seasonQuery = graphql`
     query seasonData($id: String!) {
         sanitySeason(_id: { eq: $id }) {
-            _updatedAt
+            ## Season Setup
             title
             slug {
                 current
             }
             tagline
+            description
+
+            # Shows this season
+            shows {
+                title
+                # TODO: Generate card images for each show and use cardImage for query
+                cardImage {
+                    asset {
+                        gatsbyImageData(
+                            width: 1200
+                            placeholder: BLURRED
+                            height: 900
+                            fit: FILL
+                        )
+                    }
+                    alt
+                }
+                openDate
+                closeDate
+                author {
+                    name
+                }
+                series {
+                    title
+                    identifier
+                }
+                slug {
+                    current
+                }
+            }
+
+            # SEO
+            _updatedAt
             seo {
                 title
                 hide
@@ -86,7 +149,7 @@ export const seasonQuery = graphql`
  */
 
 interface PageData {
-    sanitySeason: SeasonPage;
+    sanitySeason: SeasonPageProps;
 }
 
 export default SeasonLanding;

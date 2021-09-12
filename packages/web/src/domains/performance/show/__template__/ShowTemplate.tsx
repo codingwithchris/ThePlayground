@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { graphql, PageProps } from 'gatsby';
 
-import {
-    useConfigContext,
-    useGlobalPerformanceContext,
-} from '@web/shared/context';
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 
-import { NewsSubscribeCTA, LegacyContentNotice } from '@web/ui/molecules';
+import { Divider } from '@web/ui/core';
+import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SingleSeasonProvider } from '../../season/__context__';
 import { SingleShowProvider } from '../__context__';
 import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
-import { Hero, ActionBar } from './components';
+import {
+    getTotalPerformanceCount,
+    getTotalTicketedPerformanceCount,
+    getTotalPWYWPerformanceCount,
+    hasRemainingPerformances,
+} from '../__lib__';
+
+import {
+    Hero,
+    HealthNotice,
+    ActionBar,
+    Performances,
+    PerformanceStats,
+    TheStory,
+    TheTrailer,
+    Information,
+} from './components';
 
 const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
     ({ data, pageContext, location }) => {
@@ -23,6 +36,15 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
 
         const url = useCurrentURL(location.pathname);
         const metaImage = useGetMetaImage('show', show.seo.image);
+
+        const performanceCount = {
+            total: getTotalPerformanceCount(show.performances),
+            ticketed: getTotalTicketedPerformanceCount(show.performances),
+            pwyw: getTotalPWYWPerformanceCount(show.performances),
+            hasRemaining: hasRemainingPerformances(show.performances),
+        };
+
+        const ticketSectionRef = useRef<HTMLDivElement>(null);
 
         return (
             <SingleSeasonProvider slug={seasonSlug}>
@@ -47,17 +69,60 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             }}
                         />
                     )}
-                    <LegacyContentNotice
-                        contentType="show"
-                        title={`${show.title}`}
-                        subTitle={`by ${show.author.name}`}
-                        legacyURL={`https://theplaygroundtheatre.org/shows/${slug}`}
-                        legacyURLText="See show on old website"
+                    <Hero
+                        title={show.title}
+                        author={show.author?.name}
+                        bgImage={{ image: show?.heroImage?.asset }}
+                        actionBar={
+                            <ActionBar
+                                ticketSectionRef={ticketSectionRef}
+                                hasRemainingPerformances={
+                                    performanceCount.hasRemaining
+                                }
+                            />
+                        }
                     />
-                    {/* <Hero
-                        bgImage={{ image: show.heroImage.asset }}
-                        actionBar={<ActionBar url={url} />}
-                    /> */}
+                    <TheStory rawContent={show._rawDescription} />
+                    <Divider color="paper" />
+                    <Information
+                        url={url}
+                        runtime={{
+                            hours: show.runtimeHours,
+                            minutes: show.runtimeMinutes,
+                        }}
+                        intermissionCount={show.intermissionCount}
+                        location={show.location}
+                        series={show.series}
+                        rating={show.rating}
+                        triggerWarning={show.triggerWarning}
+                        contentAdvisory={show.contentAdvisory}
+                        effectsAdvisory={show.effectsAdvisory}
+                    />
+                    <PerformanceStats performanceCount={performanceCount} />
+                    <div ref={ticketSectionRef}>
+                        <Performances
+                            healthNotice={
+                                show.healthNotice?.shouldDisplay && (
+                                    <HealthNotice
+                                        title={show.healthNotice.title}
+                                        rawContent={
+                                            show.healthNotice?._rawContent
+                                        }
+                                    />
+                                )
+                            }
+                            performances={show.performances}
+                            ticketProvider={show.ticketProvider}
+                            ticketLink={show.generalTicketLink}
+                        />
+                    </div>
+                    {show.promo?.trailer?.videoID && (
+                        <TheTrailer
+                            videoID={show.promo?.trailer?.videoID}
+                            credit={show.promo?.trailer?.credit}
+                            creditRole={show.promo.trailer.creditRole}
+                        />
+                    )}
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
             </SingleSeasonProvider>
@@ -78,7 +143,7 @@ export const showQuery = graphql`
             #     status
             # }
 
-            # # Core Info
+            # CORE SHOW INFO
             heroImage {
                 asset {
                     _id
@@ -98,41 +163,63 @@ export const showQuery = graphql`
             openDate
             closeDate
 
+            ## PERFORMANCE INFORMATION
+
+            # Series Information
+            series {
+                title
+                identifier
+                description
+            }
+
             # Location Information
-            # location {
-            #     googleTitle
-            #     address {
-            #         city
-            #         state
-            #         stateCode
-            #         street
-            #         zipcode
-            #     }
-            #     Geolocation {
-            #         lat
-            #         lng
-            #     }
-            #     _rawDirections(resolveReferences: { maxDepth: 10 })
-            #     _rawParking(resolveReferences: { maxDepth: 10 })
-            # }
+            location {
+                googleTitle
+                title
+                address {
+                    city
+                    state
+                    stateCode
+                    street
+                    zipcode
+                }
+                geolocation {
+                    lat
+                    lng
+                }
+                # _rawDirections(resolveReferences: { maxDepth: 10 })
+                # _rawParking(resolveReferences: { maxDepth: 10 })
+            }
 
-            # Addition Performance Details
-            # rating
-            # runtimeHours
-            # runtimeMinutes
-            # intermissionCount
+            # Ticket Provider Info
+            generalTicketLink
+            ticketProvider {
+                url
+                phone
+                name
+            }
 
-            # contentAdvisory {
-            #     _rawModalContent(resolveReferences: { maxDepth: 10 })
-            #     copy
-            #     hasModal
-            # }
+            # Additional Performance Information
+            runtimeHours
+            runtimeMinutes
+            intermissionCount
 
-            # effectsAdvisory {
-            #     _rawModalContent(resolveReferences: { maxDepth: 10 })
-            #     copy
-            #     hasModal
-            # }
+            # Content-related ratings & advisories
+            rating
+            triggerWarning
+            contentAdvisory {
+                _rawModalContent(resolveReferences: { maxDepth: 10 })
+                copy
+                hasModal
+                modalTriggerText
+            }
+
+            effectsAdvisory {
+                _rawModalContent(resolveReferences: { maxDepth: 10 })
+                copy
+                hasModal
+                modalTriggerText
+            }
 
             # additionalDetails {
             #     title
@@ -142,6 +229,43 @@ export const showQuery = graphql`
             #     modalTriggerText
             #     _rawModalContent(resolveReferences: { maxDepth: 10 })
             # }
+
+            # HEALTH & SAFETY NOTICE
+            healthNotice {
+                shouldDisplay
+                title
+                _rawContent(resolveReferences: { maxDepth: 10 })
+            }
+
+            ## PERFORMANCE AND TICKETS
+            performances {
+                datetime
+                hasTalkback
+                isPWYW
+                isPreview
+                status
+                tickets {
+                    type
+                    price
+                    externalLink
+                }
+            }
+
+            ## MESSAGING
+            _rawDescription(resolveReferences: { maxDepth: 10 })
+
+            ## PROMO
+            promo {
+                trailer {
+                    platform
+                    videoID
+                    credit {
+                        title
+                        website
+                    }
+                    creditRole
+                }
+            }
 
             ## SEO Settings
             _createdAt

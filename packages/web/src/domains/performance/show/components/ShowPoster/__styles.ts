@@ -8,6 +8,10 @@ import {
     zIndex,
 } from '@web/ui/tokens';
 
+/**
+ * Presents very minimal information about a show in a layout that's reminiscent
+ * of a "poster" you might get printed.
+ */
 export const ShowPoster = styled.article`
     position: relative;
     transition: ${animation.cardHover};

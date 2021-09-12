@@ -31,7 +31,7 @@ export const pageSEO = {
             title: 'Meta Description',
             type: 'text',
             rows: 3,
-            validation: (Rule: any) => Rule.required().min(50).max(170),
+            validation: (Rule: any) => Rule.required().min(50).max(200),
         },
         {
             name: 'image',

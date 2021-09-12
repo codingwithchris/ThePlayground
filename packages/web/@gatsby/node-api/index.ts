@@ -12,7 +12,11 @@ import {
 
 import path from 'path';
 
-import { SEASON_ROOT_SLUG } from '@web/domains/performance/season';
+// ! I have no idea why, but importing from `@web/domains/performance/season` breaks with `SyntaxError: Unexpected token '<'`
+// ! when any JSX components are exported from the root index.ts file. It took me forever to find the issue,
+// ! but adding `/constants` to the below path and directly accessing the constant seems to fix this issue. WTF.
+
+import { SEASON_ROOT_SLUG } from '@web/domains/performance/season/constants';
 import { redirects } from '../redirects';
 
 import {

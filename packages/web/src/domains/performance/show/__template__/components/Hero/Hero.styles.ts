@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import { Section } from '@web/ui/core';
-import { rgba } from 'polished';
-
-import { spacing } from '@web/ui/tokens';
+import { breakpoints, spacing } from '@web/ui/tokens';
 
 export const Hero = styled(Section)`
     align-items: stretch;
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - ${spacing.appHeaderMobileOffset});
     position: relative;
+    ${breakpoints.m} {
+        min-height: 100vh;
+    }
 
-    .content {
+    > .content {
         align-items: center;
         display: flex;
         flex: 1;
@@ -19,6 +20,18 @@ export const Hero = styled(Section)`
 
     .title {
         text-transform: uppercase;
+        &[data-device-scope='mobile'] {
+            display: block;
+            ${breakpoints.m} {
+                display: none;
+            }
+        }
+        &[data-device-scope='desktop'] {
+            display: none;
+            ${breakpoints.m} {
+                display: block;
+            }
+        }
     }
 
     .author {

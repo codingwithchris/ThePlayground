@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BodyText } from '@web/ui/core';
 
-import { ShowCoreWithPoster } from '../../types';
+import { Show } from '../../types';
 import { ShowPoster } from '../ShowPoster/ShowPoster';
 
 import * as styled from './__styles';
@@ -42,5 +42,5 @@ export const ShowPosterGrid: React.FC<ShowPosterGridProps> = ({ shows }) => {
 };
 
 export interface ShowPosterGridProps {
-    shows: ShowCoreWithPoster[];
+    shows: Show[];
 }

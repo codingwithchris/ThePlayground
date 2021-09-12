@@ -43,6 +43,20 @@ const highlightExtra: IconTheme = {
     },
 };
 
+const danger: IconTheme = {
+    color: {
+        default: palette.danger.base,
+        hover: palette.danger.l2,
+    },
+};
+
+const dangerLight: IconTheme = {
+    color: {
+        default: palette.danger.l2,
+        hover: palette.danger.base,
+    },
+};
+
 export const icons: IconThemes = {
     light,
     medium,
@@ -50,4 +64,6 @@ export const icons: IconThemes = {
     accent,
     highlight,
     highlightExtra,
+    danger,
+    dangerLight,
 };

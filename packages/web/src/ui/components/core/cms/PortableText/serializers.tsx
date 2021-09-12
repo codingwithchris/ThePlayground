@@ -1,15 +1,14 @@
-import React from 'react';
-
-import { DefaultBlock, Figure } from './typesComponents';
+import { defaultBlockWithConfig, Figure } from './typesComponents';
 import { ExternalLink } from './marksComponents';
+import { PortableTextComponentConfig } from './types';
 
-export const serializers = {
+export const serializers = (config?: PortableTextComponentConfig) => ({
     types: {
-        block: DefaultBlock,
+        block: defaultBlockWithConfig(config?.block),
         imageWithFullMeta: Figure,
         imageWithAlt: Figure,
     },
     marks: {
         externalLink: ExternalLink,
     },
-};
+});
