@@ -9,7 +9,13 @@ import { Series } from '@web/domains/performance/series';
 import { TicketProvider } from '@web/domains/performance/ticketProvider';
 import { Location } from '@web/domains/performance/location';
 
-import { ShowAuthor, ShowPerformance, ShowDetail, ShowNotice } from '../types';
+import {
+    ShowAuthor,
+    ShowPerformance,
+    ShowDetail,
+    ShowNotice,
+    ShowPromo,
+} from '../types';
 import { SHOW_RATING } from '../constants';
 
 /**
@@ -37,6 +43,7 @@ export interface ShowPageProps extends SanityDocument {
     ticketProvider?: TicketProvider;
     generalTicketLink?: string;
     healthNotice?: ShowNotice;
+    promo?: ShowPromo;
 }
 
 export interface ShowPageGatsbyContext extends GatsbyPageContext {

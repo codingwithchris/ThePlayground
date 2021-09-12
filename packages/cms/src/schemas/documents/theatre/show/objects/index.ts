@@ -4,6 +4,7 @@ export { collaboration } from './collaboration';
 export { detailItem } from './details';
 export { healthNotice } from './notices';
 export { performance } from './performance';
+export { trailer, promo } from './promo';
 export { scriptAuthor } from './scriptAuthor';
 export { tickets } from './tickets';
 export { toggles } from './toggles';

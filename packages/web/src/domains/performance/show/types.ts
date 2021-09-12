@@ -45,6 +45,18 @@ export interface ShowNotice {
     _rawContent: any[];
 }
 
+export interface ShowPromo {
+    trailer?: {
+        videoID: string;
+        // might expand
+        platform: 'youtube';
+        credit: {
+            title: string;
+            website: string;
+        };
+    };
+}
+
 /**
  * Core show structure
  */

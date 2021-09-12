@@ -25,6 +25,7 @@ import {
     Performances,
     PerformanceStats,
     TheStory,
+    TheTrailer,
     Information,
 } from './components';
 
@@ -115,6 +116,12 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             ticketLink={show.generalTicketLink}
                         />
                     </div>
+                    {show.promo?.trailer && (
+                        <TheTrailer
+                            videoID={show.promo?.trailer?.videoID}
+                            credit={show.promo?.trailer?.credit}
+                        />
+                    )}
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
             </SingleSeasonProvider>
@@ -245,6 +252,18 @@ export const showQuery = graphql`
 
             ## MESSAGING
             _rawDescription(resolveReferences: { maxDepth: 10 })
+
+            ## PROMO
+            promo {
+                trailer {
+                    platform
+                    videoID
+                    credit {
+                        title
+                        website
+                    }
+                }
+            }
 
             ## SEO Settings
             _createdAt

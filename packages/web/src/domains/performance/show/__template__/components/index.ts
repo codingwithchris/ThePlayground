@@ -5,3 +5,4 @@ export * from './Information/Information';
 export * from './Performances/Performances';
 export * from './PerformanceStats/PerformanceStats';
 export * from './TheStory/TheStory';
+export * from './TheTrailer/TheTrailer';

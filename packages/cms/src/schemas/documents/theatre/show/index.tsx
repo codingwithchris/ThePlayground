@@ -83,6 +83,7 @@ export const schema: DocumentCollection = {
         ...bindFieldsToFieldset('details', details),
         collaboration,
         artists,
+        promo,
         performances,
     ],
     initialValue: {
@@ -141,4 +142,6 @@ export const objects = [
     showObjects.scriptAuthor,
     showObjects.selectors,
     showObjects.toggles,
+    showObjects.trailer,
+    showObjects.promo,
 ];
