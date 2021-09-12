@@ -10,8 +10,9 @@ import {
 
 const breakpoint = breakpoints.s;
 
-export const ShowFeatureCard = styled.article<{ isArchived: boolean }>`
+export const ShowFeatureCard = styled.article`
     position: relative;
+    transition: ${animation.cardHover};
 
     .wrapper {
         display: block;
@@ -75,6 +76,13 @@ export const ShowFeatureCard = styled.article<{ isArchived: boolean }>`
         text-transform: uppercase;
         ${breakpoints.m} {
             margin-bottom: ${spacing.component.xxs};
+        }
+    }
+
+    &:hover,
+    &:active {
+        .overlay {
+            opacity: 0.5;
         }
     }
 `;

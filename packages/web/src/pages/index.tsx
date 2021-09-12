@@ -187,9 +187,8 @@ export const query = graphql`
                     cardImage {
                         asset {
                             gatsbyImageData(
-                                width: 1200
                                 placeholder: BLURRED
-                                height: 900
+                                width: 600
                                 fit: FILL
                             )
                         }

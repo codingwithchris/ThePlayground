@@ -72,7 +72,7 @@ export const ShowSnapshotCard = ({
             className={className}
         >
             {cardImage?.asset && (
-                <CardMedia>
+                <CardMedia className="media-wrapper">
                     <CardActionArea to={path}>
                         <BrandImage
                             image={cardImage.asset}

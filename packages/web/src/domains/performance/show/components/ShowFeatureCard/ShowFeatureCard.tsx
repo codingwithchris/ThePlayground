@@ -51,7 +51,7 @@ export const ShowFeatureCard = ({
     const formattedCloseDate = formatDateString(closeDate, 'MMM dd, yyyy');
 
     return (
-        <styled.ShowFeatureCard isArchived={isArchived}>
+        <styled.ShowFeatureCard data-archived={isArchived}>
             <Link to={path} className="wrapper">
                 {image?.asset && (
                     <BrandImage

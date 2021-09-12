@@ -19,6 +19,13 @@ export const ShowSnapshotCard = styled(Card)`
         margin-bottom: ${spacing.component.xxl};
     }
 
+    .media-wrapper {
+        height: 200px;
+        ${breakpoints.xs} {
+            height: 300px;
+        }
+    }
+
     &[data-archived='true'] {
         filter: grayscale(1);
     }
