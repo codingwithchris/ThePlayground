@@ -17,6 +17,7 @@ import {
     ListItem,
     Icon,
     FillButton,
+    OutlineButton,
 } from '@web/ui/core';
 import { formatDateString } from '@web/shared/utils';
 import {
@@ -112,7 +113,6 @@ export const ShowSnapshotCard = ({
                     media={<Icon name="Calendar" size="xs" />}
                     className="dates"
                 />
-
                 <BodyText
                     className="title"
                     size="l"
@@ -147,23 +147,6 @@ export const ShowSnapshotCard = ({
                             </BodyText>
                         </ListItem>
                     )}
-                    <ListItem>
-                        <Icon name="Ticket" size="xs" color="highlightExtra" />
-                        <BodyText color="medium" size="s">
-                            Remaining Performances: {remainingPerformances}
-                        </BodyText>
-                    </ListItem>
-                    <ListItem>
-                        <Icon
-                            name="MoneyComment"
-                            size="xs"
-                            color="highlightExtra"
-                        />
-                        <BodyText color="medium" size="s">
-                            Pay What You Want Performances:{' '}
-                            {totalPWYWPerformances}
-                        </BodyText>
-                    </ListItem>
                     {rating && (
                         <ListItem>
                             <Icon
@@ -176,13 +159,43 @@ export const ShowSnapshotCard = ({
                             </BodyText>
                         </ListItem>
                     )}
+                    <ListItem>
+                        <Icon name="Ticket" size="xs" color="highlightExtra" />
+                        <BodyText color="medium" size="s">
+                            Remaining Performances: {remainingPerformances}
+                        </BodyText>
+                    </ListItem>
+                    {!isArchived && (
+                        <ListItem>
+                            <Icon
+                                name="MoneyComment"
+                                size="xs"
+                                color="highlightExtra"
+                            />
+                            <BodyText color="medium" size="s">
+                                Pay What You Want Performances:{' '}
+                                {totalPWYWPerformances}
+                            </BodyText>
+                        </ListItem>
+                    )}
                 </List>
             </CardContent>
             <Divider color="paper" />
             <CardActions>
-                <FillButton size="s" color="primary" to={path} animateOnClick>
-                    More Info + Tickets
-                </FillButton>
+                {isArchived ? (
+                    <OutlineButton size="s" color="tertiary" to={path}>
+                        See What You Missed
+                    </OutlineButton>
+                ) : (
+                    <FillButton
+                        size="s"
+                        color="primary"
+                        to={path}
+                        animateOnClick
+                    >
+                        More Info + Tickets
+                    </FillButton>
+                )}
             </CardActions>
         </styled.ShowSnapshotCard>
     );

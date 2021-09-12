@@ -18,4 +18,8 @@ export const ShowSnapshotCard = styled(Card)`
     .teaser {
         margin-bottom: ${spacing.component.xxl};
     }
+
+    &[data-archived='true'] {
+        filter: grayscale(1);
+    }
 `;
