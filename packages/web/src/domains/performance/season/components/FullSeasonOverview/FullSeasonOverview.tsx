@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Heading, BodyText, GrittyHeading } from '@web/ui/core';
+
+import { Heading, BodyText, GrittyHeading } from '@web/ui/core';
 import { ShowSnapshotCard } from '@web/domains/performance/show';
 import { SeasonWithShows } from '@web/domains/performance/shared';
 

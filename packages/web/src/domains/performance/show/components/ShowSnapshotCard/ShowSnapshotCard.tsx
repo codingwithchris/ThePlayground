@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { Link } from '@web/domains/app/routing';
-import { SanityImageDataWithAlt } from '@web/shared/types';
-
 import {
     BodyText,
     BrandImage,
@@ -19,32 +16,20 @@ import {
     FillButton,
     OutlineButton,
 } from '@web/ui/core';
+
+import { useGlobalPerformanceContext } from '@web/shared/context';
+
 import { formatDateString } from '@web/shared/utils';
-import {
-    useConfigContext,
-    useGlobalPerformanceContext,
-} from '@web/shared/context';
 
-import {
-    Series,
-    getSeriesIconName,
-    SERIES_ID,
-} from '@web/domains/performance/series';
-import {
-    Show,
-    ShowPerformance,
-    SHOW_RATING,
-    useSingleShowContext,
-} from '@web/domains/performance/show';
+import { getSeriesIconName, SERIES_ID } from '@web/domains/performance/series';
 
+import { Show } from '../../types';
 import {
     getRemainingPerformanceCount,
     getTotalPWYWPerformanceCount,
 } from '../../__lib__';
 
-import { SHOW_STATUS, SHOW_STATUS_MESSAGE } from '../../constants';
-
-import { ShowAuthor } from '../../types';
+import { SHOW_STATUS } from '../../constants';
 
 import * as styled from './ShowSnapshotCard.styles';
 
@@ -68,10 +53,6 @@ export const ShowSnapshotCard = ({
 }: ShowSnapshotCardProps) => {
     const { get } = useGlobalPerformanceContext();
     const { path, status } = get.show(slug.current) || {};
-
-    const statusMessage = status
-        ? SHOW_STATUS_MESSAGE[status]
-        : SHOW_STATUS_MESSAGE.unknown;
 
     const isArchived = status === SHOW_STATUS.PAST;
 

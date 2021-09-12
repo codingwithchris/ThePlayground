@@ -65,10 +65,10 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
             {hasShowsInSeason(season.shows) ? (
                 <ShowsThisSeason>
                     {season.shows!.map(
-                        ({ heroImage, slug: showSlug, ...show }) => (
+                        ({ cardImage, slug: showSlug, ...show }) => (
                             <ShowFeatureCard
                                 key={showSlug.current}
-                                image={heroImage}
+                                image={cardImage}
                                 showSlug={showSlug.current}
                                 {...show}
                             />
@@ -100,7 +100,7 @@ export const seasonQuery = graphql`
             shows {
                 title
                 # TODO: Generate card images for each show and use cardImage for query
-                heroImage {
+                cardImage {
                     asset {
                         gatsbyImageData(
                             width: 1200
@@ -109,7 +109,7 @@ export const seasonQuery = graphql`
                             fit: FILL
                         )
                     }
-                    # alt
+                    alt
                 }
                 openDate
                 closeDate

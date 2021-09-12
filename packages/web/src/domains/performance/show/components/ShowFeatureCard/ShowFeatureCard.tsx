@@ -36,7 +36,6 @@ export const ShowFeatureCard = ({
     openDate,
     closeDate,
     author,
-    series,
     showSlug,
 }: ShowFeatureCardProps) => {
     const { get } = useGlobalPerformanceContext();
@@ -136,5 +135,4 @@ interface ShowFeatureCardProps {
     openDate?: string;
     closeDate?: string;
     author: ShowAuthor;
-    series: Series;
 }

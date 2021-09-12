@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import {
     GatsbyPageContext,
     SanityDocument,
     SanityImageData,
-    SanityImageDataWithAlt,
 } from '@web/shared/types';
 
 import { useConfigContext } from '@web/shared/context';
@@ -20,13 +19,13 @@ import {
     LongDescriptionSection,
     RebrandSection,
     SeasonOverviewSection,
-    TempSeasonListSection,
 } from '@web/domains/page/home';
+
 import { SeasonWithShows } from '@web/domains/performance/shared';
 
 const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
     data,
-    pageContext,
+    // pageContext,
     location,
 }) => {
     const { sanityHomePage: page, sanityLinkManifestConfig } = data;
@@ -151,40 +150,6 @@ export const query = graphql`
                     }
                 }
             }
-
-            # Temp Data for season announcement
-            tempBurningBoyImage {
-                alt
-                asset {
-                    gatsbyImageData(
-                        placeholder: BLURRED
-                        layout: FULL_WIDTH
-                        width: 500
-                    )
-                }
-            }
-
-            tempFriendArtImage {
-                alt
-                asset {
-                    gatsbyImageData(
-                        placeholder: BLURRED
-                        layout: FULL_WIDTH
-                        width: 500
-                    )
-                }
-            }
-
-            tempPuffsImage {
-                alt
-                asset {
-                    gatsbyImageData(
-                        placeholder: BLURRED
-                        layout: FULL_WIDTH
-                        width: 500
-                    )
-                }
-            }
         }
         # TODO: This data needs to get moved off of sanityLinkManifestConfig to a more sensibly named configs for seasons/shows
         sanityLinkManifestConfig(
@@ -221,7 +186,12 @@ export const query = graphql`
                     }
                     cardImage {
                         asset {
-                            gatsbyImageData
+                            gatsbyImageData(
+                                width: 1200
+                                placeholder: BLURRED
+                                height: 900
+                                fit: FILL
+                            )
                         }
                         alt
                     }
@@ -258,9 +228,6 @@ interface HomePageData extends SanityDocument {
         };
         image: SanityImageData;
     };
-    tempBurningBoyImage: SanityImageDataWithAlt;
-    tempFriendArtImage: SanityImageDataWithAlt;
-    tempPuffsImage: SanityImageDataWithAlt;
 }
 
 export default HomePage;

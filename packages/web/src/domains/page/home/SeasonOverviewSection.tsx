@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { borders, breakpoints, grid, spacing } from '@web/ui/tokens';
 
-import { BodyText, Container, Section, SectionProps } from '@web/ui/core';
+import { Container, Section, SectionProps } from '@web/ui/core';
 import {
     FullSeasonOverview,
     FullSeasonOverviewProps,

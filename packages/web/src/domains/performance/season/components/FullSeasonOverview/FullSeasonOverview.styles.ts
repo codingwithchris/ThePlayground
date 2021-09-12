@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { Section } from '@web/ui/core';
 
 import { breakpoints, spacing } from '@web/ui/tokens';
 
-export const FullSeasonOverview = styled(Section)`
+export const FullSeasonOverview = styled.div`
     .intro-heading {
         margin-bottom: ${spacing.layout.l};
     }
