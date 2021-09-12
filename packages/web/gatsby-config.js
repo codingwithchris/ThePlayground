@@ -80,7 +80,8 @@ module.exports = {
             options: {
                 dsn: process.env.SENTRY_DSN,
                 environment,
-                release: `nerve.web@${appVersion}`,
+                // TODO: One day it would be nice to make this a more transparent reference
+                release: commitRef,
                 // A rate of 1 means all traces will be sent, so it's good for testing.
                 // In production, you'll likely want to either choose a lower rate or use `tracesSampler` instead (see below).
                 tracesSampleRate: 0.5,
