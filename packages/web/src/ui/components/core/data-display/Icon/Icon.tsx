@@ -18,6 +18,7 @@ export const Icon: React.FC<IconProps> = ({
     responsive,
     title,
     desc,
+    className,
     ...others
 }) => {
     const selectedIcon: IconDefinition = availableIcons[name];

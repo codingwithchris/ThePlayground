@@ -11,12 +11,17 @@ export const DesktopNavigation = styled.nav`
 
         /* Standard link items (not button links) */
         a:not(.button) {
-            display: block;
+            align-items: center;
+            display: flex;
             padding: ${spacing.component.s} ${spacing.component.s};
             position: relative;
 
             span {
                 transition: ${animation.linkHover};
+            }
+
+            svg {
+                margin-right: ${spacing.component.xs};
             }
         }
 

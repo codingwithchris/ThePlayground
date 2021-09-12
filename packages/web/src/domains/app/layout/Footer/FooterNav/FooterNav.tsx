@@ -14,10 +14,10 @@ export const FooterNav = (): JSX.Element => {
     const activeClass = '--is-active';
 
     const menuItems = [
-        // {
-        //     text: 'current season',
-        //     link: links.currentSeasonPage,
-        // },
+        {
+            text: 'current season',
+            link: links.featuredSeason,
+        },
         {
             text: 'the archive',
             link: links.archivePage,
@@ -34,17 +34,13 @@ export const FooterNav = (): JSX.Element => {
             text: 'our wsywat response',
             link: links.getPost('our-wsywat-response-plan'),
         },
-        {
-            text: '2021/2022 auditions',
-            link: links.getPost('2021-2022-season-casting-call'),
-        },
+        // {
+        //     text: '2021/2022 auditions',
+        //     link: links.getPost('2021-2022-season-casting-call'),
+        // },
         // {
         //     text: 'about us',
         //     link: links.about,
-        // },
-        // {
-        //     text: 'support us',
-        //     link: links.supportUsPage,
         // },
     ];
 

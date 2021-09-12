@@ -1,15 +1,20 @@
 import React from 'react';
 
 import { useConfigContext } from '@web/shared/context';
-import { BodyText, OutlineButton, Icon } from '@web/ui/core';
+import { BodyText, OutlineButton, Icon, AvailableIconName } from '@web/ui/core';
 
 import { Link } from '@web/domains/app/routing';
 
 import * as styled from './__styles';
 
-const LinkItem: React.FC<{ slug: string; text: string }> = ({ slug, text }) => (
+const LinkItem: React.FC<{
+    slug: string;
+    text: string;
+    icon?: AvailableIconName;
+}> = ({ slug, text, icon }) => (
     <li>
         <Link to={slug} activeClassName="--is-active">
+            {icon && <Icon name={icon} size="xs" color="accent" />}
             <BodyText as="span" size="s" weight="bold" color="medium">
                 {text}
             </BodyText>
@@ -42,16 +47,17 @@ export const DesktopNavigation: React.FC = () => {
                 {featuredSeason && (
                     <LinkItem
                         slug={featuredSeason}
+                        icon="Fire"
                         text="this season"
                         key="season"
                     />
                 )}
 
-                <LinkItem
+                {/* <LinkItem
                     slug={archivePage!}
                     text="the archive"
                     key="archive"
-                />
+                /> */}
 
                 {/* <LinkItem slug={about} text="about" key="about" />
                 <LinkItem slug={contact} text="connect" key="connect" /> */}

@@ -11,6 +11,7 @@ export interface IconProps extends Omit<SVGElementProps, 'path' | 'viewBox'> {
         size: AvailableIconSize;
         breakpoint: AvailableBreakpoint;
     };
+    className?: string;
 }
 
 export type { AvailableIconName } from './__manifest__';
