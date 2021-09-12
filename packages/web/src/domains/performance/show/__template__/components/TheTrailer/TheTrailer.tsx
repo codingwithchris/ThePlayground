@@ -7,40 +7,55 @@ import {
     Container,
     PortableText,
     YoutubeVideo,
+    Divider,
 } from '@web/ui/core';
 import { spacing, breakpoints } from '@web/ui/tokens';
+import { Link } from '@web/domains/app/routing';
 
 const StyledTrailerSection = styled(Section)`
-    padding: ${spacing.layout.s};
-    ${breakpoints.m} {
-        padding: ${spacing.layout.l} 0;
-    }
-    .title {
-        margin-bottom: ${spacing.layout.s};
+    .credit {
+        padding: ${spacing.component.l} 0;
+        text-align: center;
+
+        a {
+            text-decoration: underline;
+            color: ${({ theme }) => theme.typography.light};
+        }
     }
 `;
 
-export const TheTrailer = ({ videoID, credit }: TheTrailerProps) => {
+export const TheTrailer = ({
+    videoID,
+    credit,
+    creditRole,
+}: TheTrailerProps) => {
     return (
-        <StyledTrailerSection>
-            <Container maxWidth="fluid">
-                {credit.title && (
-                    <BodyText color="medium" size="s">
-                        Thanks to {credit.title} for helping to make this
-                        trailer happen
-                    </BodyText>
-                )}
-
+        <StyledTrailerSection bgColor="paperDark">
+            <Container type="full" maxWidth="fluid">
                 <YoutubeVideo videoID={videoID} />
             </Container>
+            {credit?.title && (
+                <Container maxWidth="s">
+                    <BodyText color="medium" size="xs" className="credit">
+                        [ {creditRole} by{' '}
+                        {credit.website ? (
+                            <Link to={credit.website}>{credit.title}</Link>
+                        ) : (
+                            credit.title
+                        )}{' '}
+                        ]
+                    </BodyText>
+                </Container>
+            )}
         </StyledTrailerSection>
     );
 };
 
 interface TheTrailerProps {
     videoID: string;
-    credit: {
+    credit?: {
         title: string;
         website: string;
     };
+    creditRole?: string;
 }

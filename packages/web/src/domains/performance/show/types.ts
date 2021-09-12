@@ -50,10 +50,11 @@ export interface ShowPromo {
         videoID: string;
         // might expand
         platform: 'youtube';
-        credit: {
+        credit?: {
             title: string;
             website: string;
         };
+        creditRole?: string;
     };
 }
 

@@ -116,10 +116,11 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             ticketLink={show.generalTicketLink}
                         />
                     </div>
-                    {show.promo?.trailer && (
+                    {show.promo?.trailer?.videoID && (
                         <TheTrailer
                             videoID={show.promo?.trailer?.videoID}
                             credit={show.promo?.trailer?.credit}
+                            creditRole={show.promo.trailer.creditRole}
                         />
                     )}
                     <NewsSubscribeCTA />
@@ -262,6 +263,7 @@ export const showQuery = graphql`
                         title
                         website
                     }
+                    creditRole
                 }
             }
 
