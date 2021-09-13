@@ -33,6 +33,11 @@ export const schema: DocumentCollection = {
             type: 'geopoint',
         },
         {
+            name: 'website',
+            title: 'Website',
+            type: 'url',
+        },
+        {
             name: 'directions',
             title: 'Directions',
             type: 'array',

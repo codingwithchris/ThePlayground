@@ -1,6 +1,7 @@
 import { SanityImageDataWithAlt, SanityImageData } from '@web/shared/types';
 import { SeasonReference } from '@web/domains/performance/season';
 import { Series } from '@web/domains/performance/series';
+import { Location } from '@web/domains/performance/location';
 import {
     SHOW_STATUS,
     SHOW_RATING,
@@ -70,6 +71,7 @@ export interface Show {
     author: ShowAuthor;
     openDate: string;
     closeDate: string;
+    location?: Location;
     series?: Series;
     teaser?: string;
     rating?: SHOW_RATING;
