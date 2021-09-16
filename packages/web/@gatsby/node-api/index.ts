@@ -10,6 +10,8 @@ import {
     BuildArgs as GatsbyNodeBuildArgs,
 } from 'gatsby';
 
+import { normalizeSlug, buildNestedSlugPath } from '@web/shared/utils';
+
 import path from 'path';
 
 // ! I have no idea why, but importing from `@web/domains/performance/season` breaks with `SyntaxError: Unexpected token '<'`
@@ -211,7 +213,7 @@ const generateSeasonsAndShows = async ({
     data.allSanitySeason.nodes.forEach((season) => {
         const seasonConfig: SeasonPageConfig = {
             slug: season.slug.current,
-            url: `/${SEASON_ROOT_SLUG}/${season.slug.current}/`,
+            url: buildNestedSlugPath([SEASON_ROOT_SLUG, season.slug.current])!,
             id: season._id,
             template: path.resolve(
                 `./src/domains/performance/season/__template__/SeasonTemplate.tsx`
@@ -242,7 +244,10 @@ const generateSeasonsAndShows = async ({
 
             const showConfig: ShowPageConfig = {
                 slug: show.slug.current,
-                url: `${seasonConfig.url}/${show.slug.current}/`,
+                url: buildNestedSlugPath([
+                    seasonConfig.url,
+                    show.slug.current,
+                ])!,
                 id: show._id,
                 template: path.resolve(
                     `./src/domains/performance/show/__template__/ShowTemplate.tsx`
@@ -307,7 +312,7 @@ const generateBlogPosts = async ({
     data.allSanityPost.nodes.forEach((post) => {
         const blogConfig: BlogPostConfig = {
             slug: post.slug.current,
-            url: `/${blogParentPage}/${post.slug.current}/`,
+            url: buildNestedSlugPath([blogParentPage!, post.slug.current])!,
             id: post._id,
             template: path.resolve(
                 `./src/domains/blog/__template__/PostTemplate.tsx`
