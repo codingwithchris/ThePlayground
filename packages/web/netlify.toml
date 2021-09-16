@@ -17,6 +17,9 @@
 
   [plugins.inputs]
   buildDir = "public"
+  prettyURLs = true
+  # Append missing trailing slash to pretty URL
+  trailingSlash = true
 
   exclude = [
     # Never sitemap 404
