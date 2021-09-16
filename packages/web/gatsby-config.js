@@ -75,11 +75,11 @@ module.exports = {
         },
 
         /**
-         * Normalize our paths to not use trailing slashes
+         * Normalize our paths to use trailing slashes
          *
          * @link https://www.gatsbyjs.com/plugins/gatsby-plugin-remove-trailing-slashes
          */
-        `gatsby-plugin-remove-trailing-slashes`,
+        `gatsby-plugin-force-trailing-slashes`,
 
         /**
          * The official Sentry implementation for Gatsby
