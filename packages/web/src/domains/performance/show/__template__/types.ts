@@ -44,6 +44,7 @@ export interface ShowPageProps extends SanityDocument {
     generalTicketLink?: string;
     healthNotice?: ShowNotice;
     promo?: ShowPromo;
+    teaser?: string;
 }
 
 export interface ShowPageGatsbyContext extends GatsbyPageContext {

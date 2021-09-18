@@ -67,6 +67,7 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                                 datePublished: show.seo.publishedAt,
                                 dateModified: show._updatedAt,
                             }}
+                            showSchemaData={show}
                         />
                     )}
                     <Hero
@@ -187,6 +188,7 @@ export const showQuery = graphql`
                     lat
                     lng
                 }
+                website
                 # _rawDirections(resolveReferences: { maxDepth: 10 })
                 # _rawParking(resolveReferences: { maxDepth: 10 })
             }
@@ -253,6 +255,7 @@ export const showQuery = graphql`
 
             ## MESSAGING
             _rawDescription(resolveReferences: { maxDepth: 10 })
+            teaser
 
             ## PROMO
             promo {
