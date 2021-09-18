@@ -47,7 +47,6 @@ export const DesktopNavigation: React.FC = () => {
                 {featuredSeason && (
                     <LinkItem
                         slug={featuredSeason}
-                        icon="Fire"
                         text="this season"
                         key="season"
                     />
