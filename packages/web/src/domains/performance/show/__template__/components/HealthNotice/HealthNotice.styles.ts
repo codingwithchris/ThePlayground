@@ -6,4 +6,8 @@ export const HealthNotice = styled(Card)`
     .content .p {
         margin-bottom: ${spacing.component.m};
     }
+
+    .content a {
+        text-decoration: underline;
+    }
 `;
