@@ -33,7 +33,7 @@ enum SHOW_SCHEDULE_DAYS {
 }
 
 const buildEventSchedule = (
-    currentShow,
+    showURL: string,
     performances: ShowPerformance[],
     duration: string,
     runtime: {
@@ -50,8 +50,9 @@ const buildEventSchedule = (
             'EEEE'
         ).toUpperCase() as keyof typeof SHOW_SCHEDULE_DAYS;
 
+        // Each scheduled "event" will end 30 minutes after the specified duration time
         const endDateBufferMinutes = runtime.minutes + 30;
-        const endDateLength = add(zonedDate, {
+        const endDateWithBuffer = add(zonedDate, {
             hours: runtime.hours,
             minutes: endDateBufferMinutes,
         });
@@ -62,11 +63,11 @@ const buildEventSchedule = (
             duration,
             repeatFrequency: 1,
             startDate: formatISO(zonedDate),
-            endDate: formatISO(endDateLength),
+            endDate: formatISO(endDateWithBuffer),
             scheduleTimezone: timeZone,
             image: {
                 '@type': 'ImageObject',
-                '@id': `${currentShow?.path}/#image`,
+                '@id': `${showURL}/#primaryimage`,
             },
         };
     });
@@ -82,6 +83,7 @@ export const theaterEventSchema =
     (companyConfig: GlobalConfigs['company']): string => {
         const { currentShow } = useSingleShowContext();
 
+        const showURL = `${companyConfig.website}${currentShow?.path}`;
         const eventStatus = show.selectors?.status
             ? SHOW_SCHEMA_STATUS[show.selectors.status]
             : {};
@@ -113,7 +115,7 @@ export const theaterEventSchema =
             : {};
 
         const eventSchedule = buildEventSchedule(
-            currentShow,
+            showURL,
             show.performances,
             duration,
             {
@@ -125,11 +127,12 @@ export const theaterEventSchema =
         const schema = {
             '@context': 'https://schema.org',
             '@type': 'TheaterEvent',
+            mainEntityOfPage: showURL,
             name: show.seo.title,
             url: currentShow?.path,
             image: {
                 '@type': 'ImageObject',
-                '@id': `${currentShow?.path}/#image`,
+                '@id': `${showURL}/#primaryimage`,
                 url: show.seo.image.asset.url,
             },
             ...{ eventStatus },
@@ -154,8 +157,6 @@ export const theaterEventSchema =
             sameAs: show.generalTicketLink,
             ...{ eventSchedule },
         };
-
-        console.log(JSON.stringify(schema));
 
         return JSON.stringify(schema);
     };
