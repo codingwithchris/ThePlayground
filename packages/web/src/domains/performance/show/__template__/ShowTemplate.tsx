@@ -205,6 +205,7 @@ export const showQuery = graphql`
             runtimeHours
             runtimeMinutes
             intermissionCount
+            maxAttendanceCapacity
 
             # Content-related ratings & advisories
             rating
@@ -255,6 +256,8 @@ export const showQuery = graphql`
 
             ## MESSAGING
             _rawDescription(resolveReferences: { maxDepth: 10 })
+
+            ### shortened description
             teaser
 
             ## PROMO
@@ -268,6 +271,12 @@ export const showQuery = graphql`
                     }
                     creditRole
                 }
+            }
+
+            ## SELECTORS
+            selectors {
+                status
+                type
             }
 
             ## SEO Settings

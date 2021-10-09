@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useConfigContext } from '@web/shared/context';
+import { ShowPageProps } from '@web/domains/performance/show/__template__/types';
 import {
     organizationSchema,
     webSiteSchema,
@@ -45,8 +46,8 @@ export const StructuredData: React.FC<StructuredDataProps> = ({
 
     const schemas = [
         ...defaultSchemas,
-        ...(showSchemaData ? showSchemaData(company) : {}),
-    ];
+        showSchemaData && contentTypeSchemas.show(showSchemaData)(company),
+    ].filter(Boolean);
 
     const data = `{
 		"@context": "https://schema.org/",
@@ -62,5 +63,5 @@ export const StructuredData: React.FC<StructuredDataProps> = ({
 
 export interface StructuredDataProps {
     pageSchemaData: WebPageSchemaProps;
-    showSchemaData?: typeof theaterEventSchema;
+    showSchemaData?: ShowPageProps;
 }
