@@ -61,7 +61,7 @@ const buildEventSchedule = (
             '@type': 'Schedule',
             byDay: SHOW_SCHEDULE_DAYS[day],
             duration,
-            repeatFrequency: 1,
+            repeatFrequency: 0,
             startDate: formatISO(zonedDate),
             endDate: formatISO(endDateWithBuffer),
             scheduleTimezone: timeZone,
