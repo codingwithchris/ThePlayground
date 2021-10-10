@@ -1,12 +1,20 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useConfigContext } from '@web/shared/context';
+import { ShowPageProps } from '@web/domains/performance/show/__template__/types';
 import {
     organizationSchema,
     webSiteSchema,
     webPageSchema,
     WebPageSchemaProps,
+    theaterEventSchema,
 } from './schemas';
+
+const contentTypeSchemas = {
+    show: theaterEventSchema,
+    // season: seasonSchema,
+    // post: postSchema,
+};
 
 /**
  * This robust component handles assembling and generating JSON-LD structured data
@@ -25,7 +33,7 @@ import {
  */
 export const StructuredData: React.FC<StructuredDataProps> = ({
     pageSchemaData,
-    otherSchemas = [],
+    showSchemaData,
 }) => {
     const { company } = useConfigContext();
 
@@ -36,7 +44,10 @@ export const StructuredData: React.FC<StructuredDataProps> = ({
         webPageSchema(company.website, { ...pageSchemaData }),
     ];
 
-    const schemas = [...defaultSchemas, ...otherSchemas];
+    const schemas = [
+        ...defaultSchemas,
+        showSchemaData && contentTypeSchemas.show(showSchemaData)(company),
+    ].filter(Boolean);
 
     const data = `{
 		"@context": "https://schema.org/",
@@ -52,5 +63,5 @@ export const StructuredData: React.FC<StructuredDataProps> = ({
 
 export interface StructuredDataProps {
     pageSchemaData: WebPageSchemaProps;
-    otherSchemas?: CallableFunction[];
+    showSchemaData?: ShowPageProps;
 }

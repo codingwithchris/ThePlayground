@@ -80,6 +80,13 @@ export default [
         type: 'string',
     },
     {
+        name: 'maxAttendanceCapacity',
+        title: 'Maximum Attendance Capacity)',
+        description: 'number of seats',
+        type: 'number',
+        validation: (Rule: any) => Rule.integer().positive().greaterThan(0),
+    },
+    {
         name: 'contentAdvisory',
         description:
             'Detailed content disclaimers and warnings with relevant info (why did the show receive the age rating it did?)',

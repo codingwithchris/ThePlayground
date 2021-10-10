@@ -67,6 +67,7 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                                 datePublished: show.seo.publishedAt,
                                 dateModified: show._updatedAt,
                             }}
+                            showSchemaData={show}
                         />
                     )}
                     <Hero
@@ -187,6 +188,7 @@ export const showQuery = graphql`
                     lat
                     lng
                 }
+                website
                 # _rawDirections(resolveReferences: { maxDepth: 10 })
                 # _rawParking(resolveReferences: { maxDepth: 10 })
             }
@@ -203,6 +205,7 @@ export const showQuery = graphql`
             runtimeHours
             runtimeMinutes
             intermissionCount
+            maxAttendanceCapacity
 
             # Content-related ratings & advisories
             rating
@@ -254,6 +257,9 @@ export const showQuery = graphql`
             ## MESSAGING
             _rawDescription(resolveReferences: { maxDepth: 10 })
 
+            ### shortened description
+            teaser
+
             ## PROMO
             promo {
                 trailer {
@@ -265,6 +271,12 @@ export const showQuery = graphql`
                     }
                     creditRole
                 }
+            }
+
+            ## SELECTORS
+            selectors {
+                status
+                type
             }
 
             ## SEO Settings

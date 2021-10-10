@@ -1,3 +1,13 @@
+export enum SHOW_TYPE {
+    LIVE = 'live',
+    VIRTUAL = 'virtual',
+}
+
+export enum SHOW_EVENT_STATUS {
+    ACTIVE = 'active',
+    CANCELLED = 'cancelled',
+}
+
 export enum SHOW_STATUS {
     ACTIVE = 'active',
     FUTURE = 'future',

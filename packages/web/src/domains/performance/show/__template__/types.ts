@@ -17,6 +17,7 @@ import {
     ShowPromo,
 } from '../types';
 import { SHOW_RATING } from '../constants';
+import { SHOW_TYPE, SHOW_EVENT_STATUS } from '..';
 
 /**
  * Types for our Single Show Page Template
@@ -36,6 +37,7 @@ export interface ShowPageProps extends SanityDocument {
     runtimeHours: number;
     runtimeMinutes: number;
     intermissionCount: number;
+    maxAttendanceCapacity: number;
     rating: SHOW_RATING;
     triggerWarning?: string;
     contentAdvisory?: ShowDetail;
@@ -44,6 +46,11 @@ export interface ShowPageProps extends SanityDocument {
     generalTicketLink?: string;
     healthNotice?: ShowNotice;
     promo?: ShowPromo;
+    teaser?: string;
+    selectors?: {
+        status: SHOW_EVENT_STATUS;
+        type: SHOW_TYPE;
+    };
 }
 
 export interface ShowPageGatsbyContext extends GatsbyPageContext {
