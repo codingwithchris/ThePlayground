@@ -3,14 +3,20 @@ import { SeasonReference } from '@web/domains/performance/season';
 import { Series } from '@web/domains/performance/series';
 import { Artist, ARTIST_GROUP } from '@web/domains/performance/artist';
 
-import { ShowAuthor, ShowPerformance, ShowPromo } from '../../types';
+import {
+    ShowAuthor,
+    ShowPerformance,
+    ShowPromo,
+    ShowDetail,
+} from '../../types';
+
 import { SHOW_RATING } from '../../constants';
 
 /**
  * Types for our Digital Program View
  */
 
-interface ArtistBio {
+export interface ArtistBio {
     role: string;
     artist: Artist;
     bio: any[];
@@ -19,18 +25,20 @@ interface ArtistBio {
 
 export interface DigitalProgramPageProps extends SanityDocument {
     author: ShowAuthor;
-    performances: ShowPerformance[];
-    season: SeasonReference;
     series: Series;
     runtimeHours: number;
     runtimeMinutes: number;
     intermissionCount: number;
-    promo?: ShowPromo;
+    rating: SHOW_RATING;
+    triggerWarning?: string;
+    contentAdvisory?: ShowDetail;
+    _rawDirectorsNote: any[];
     artists: {
         actors: ArtistBio[];
-        designers: ArtistBio[];
-        shadows: ArtistBio[];
         crewMembers: ArtistBio[];
+        designers: ArtistBio[];
+        directors: ArtistBio[];
+        shadows: ArtistBio[];
     };
 }
 

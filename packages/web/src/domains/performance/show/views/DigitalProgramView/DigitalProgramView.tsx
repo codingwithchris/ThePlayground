@@ -31,8 +31,12 @@ export const DigitalProgramView = ({
 }: DigitalProgramViewProps) => {
     return (
         <>
-            <Header />
-            <DirectorNote />
+            <Header
+                title={show.title}
+                directors={show.artists.directors}
+                author={show.author}
+            />
+            <DirectorNote content={show._rawDirectorsNote} />
             <TeamBioGallery />
             <AlsoThisSeason />
         </>

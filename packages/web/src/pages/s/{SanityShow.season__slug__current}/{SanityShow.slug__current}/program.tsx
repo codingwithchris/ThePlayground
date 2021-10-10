@@ -73,6 +73,29 @@ export const showQuery = graphql`
             author {
                 name
             }
+
+            _rawDirectorsNote(resolveReferences: { maxDepth: 10 })
+
+            # Warnings & Advisories
+            triggerWarning
+            contentAdvisory {
+                copy
+            }
+            rating
+
+            # Additional Performance Information
+            runtimeHours
+            runtimeMinutes
+            intermissionCount
+
+            # Series Information
+            series {
+                title
+                identifier
+                description
+            }
+
+            # Get all artist info for the show
             artists {
                 directors {
                     role

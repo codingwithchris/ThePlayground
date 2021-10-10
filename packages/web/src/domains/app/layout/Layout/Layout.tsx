@@ -10,17 +10,39 @@ import { StylesGlobal, FontDefinitions } from '../styles';
 // CSS Reset
 import '@web/assets/reset.css';
 
-export const Layout: React.FC = ({ children }) => (
-    <>
-        <GlobalSEO />
+const PROGRAM_PATH_SLUG = 'program';
 
-        <StylesGlobal />
-        <Helmet>
-            <style>{FontDefinitions}</style>
-        </Helmet>
+/**
+ * Determine if we are on a digital program page.
+ * TODO: Come up with a more global way to register & manage layouts and layout context across different pages/views
+ */
+const isProgram = (path: string) => {
+    if (!path) {
+        return false;
+    }
 
-        <Header />
-        <main>{children}</main>
-        <Footer />
-    </>
-);
+    const splitPathArray = path.split('/');
+    const lastPathItem = splitPathArray[splitPathArray.length - 1];
+
+    if (!lastPathItem) {
+        return false;
+    }
+
+    return lastPathItem === PROGRAM_PATH_SLUG;
+};
+
+export const Layout: React.FC = ({ children, ...props }) => {
+    return (
+        <>
+            <GlobalSEO />
+
+            <StylesGlobal />
+            <Helmet>
+                <style>{FontDefinitions}</style>
+            </Helmet>
+            {!isProgram(props.location?.pathname) && <Header />}
+            <main>{children}</main>
+            <Footer />
+        </>
+    );
+};

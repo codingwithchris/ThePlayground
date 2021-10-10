@@ -20,7 +20,6 @@ import {
 
 // Persist our core layout across the entire app
 export const wrapPageElement = ({ element, props }) => {
-    console.log(props);
     return <Layout {...props}> {element} </Layout>;
 };
 
