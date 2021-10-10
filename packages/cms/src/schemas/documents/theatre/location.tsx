@@ -16,6 +16,11 @@ export const schema: DocumentCollection = {
             validation: (Rule: any) => Rule.required(),
         },
         {
+            name: 'website',
+            title: 'Website',
+            type: 'url',
+        },
+        {
             name: 'googleTitle',
             title: 'Location Google Title',
             description:

@@ -15,6 +15,7 @@ import {
 } from './links';
 
 import { pageSEO } from './seo';
+import { pageLayout } from './layout';
 
 import { contentBlock } from './blocks';
 
@@ -30,6 +31,7 @@ export default [
     internalLink,
     externalLink,
     pageSEO,
+    pageLayout,
     contentBlock,
     simpleInternalAction,
     simpleExternalAction,

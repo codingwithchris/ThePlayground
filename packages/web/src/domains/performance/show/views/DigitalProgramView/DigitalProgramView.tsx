@@ -2,6 +2,16 @@ import React from 'react';
 
 import { Divider } from '@web/ui/core';
 import { DigitalProgramPageProps } from './types';
+import {
+    AlsoThisSeason,
+    DirectorNote,
+    Header,
+    InstagramCallout,
+    ShareCallout,
+    SponsorsHighlight,
+    SupportCallout,
+    TeamBioGallery,
+} from './components';
 
 // Program Nav
 // Title and welcome message
@@ -21,7 +31,10 @@ export const DigitalProgramView = ({
 }: DigitalProgramViewProps) => {
     return (
         <>
-            Hesdlfknasdfkjnasldijfnasoidufbaiosudfboiasufhaioshufiasuhdfiasuhfoiasuhfasofhiuasdfllo
+            <Header />
+            <DirectorNote />
+            <TeamBioGallery />
+            <AlsoThisSeason />
         </>
     );
 };

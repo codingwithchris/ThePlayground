@@ -1,30 +1,24 @@
-import {
-    GatsbyPageContext,
-    SanityDocument,
-    SanityImageData,
-    SanityImageDataWithAlt,
-} from '@web/shared/types';
+import { GatsbyPageContext, SanityDocument } from '@web/shared/types';
 import { SeasonReference } from '@web/domains/performance/season';
 import { Series } from '@web/domains/performance/series';
-import { TicketProvider } from '@web/domains/performance/ticketProvider';
-import { Location } from '@web/domains/performance/location';
+import { Artist, ARTIST_GROUP } from '@web/domains/performance/artist';
 
-import {
-    ShowAuthor,
-    ShowPerformance,
-    ShowDetail,
-    ShowNotice,
-    ShowPromo,
-} from '../../types';
+import { ShowAuthor, ShowPerformance, ShowPromo } from '../../types';
 import { SHOW_RATING } from '../../constants';
 
 /**
- * Types for our Single Show Page Template
+ * Types for our Digital Program View
  */
+
+interface ArtistBio {
+    role: string;
+    artist: Artist;
+    bio: any[];
+    group: ARTIST_GROUP;
+}
 
 export interface DigitalProgramPageProps extends SanityDocument {
     author: ShowAuthor;
-    heroImage: SanityImageData;
     performances: ShowPerformance[];
     season: SeasonReference;
     series: Series;
@@ -32,6 +26,12 @@ export interface DigitalProgramPageProps extends SanityDocument {
     runtimeMinutes: number;
     intermissionCount: number;
     promo?: ShowPromo;
+    artists: {
+        actors: ArtistBio[];
+        designers: ArtistBio[];
+        shadows: ArtistBio[];
+        crewMembers: ArtistBio[];
+    };
 }
 
 export interface DigitalProgramGatsbyContext extends GatsbyPageContext {

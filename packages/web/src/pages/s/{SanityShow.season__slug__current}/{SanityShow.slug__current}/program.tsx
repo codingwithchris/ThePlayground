@@ -70,6 +70,136 @@ export const showQuery = graphql`
     query showProgramData($id: String) {
         sanityShow(id: { eq: $id }) {
             title
+            author {
+                name
+            }
+            artists {
+                directors {
+                    role
+                    group
+                    bio {
+                        _rawChildren(resolveReferences: { maxDepth: 10 })
+                    }
+                    artist {
+                        firstName
+                        lastName
+                        middleName
+                        pronouns
+                        website
+                        instagram
+                        headshot {
+                            alt
+                            asset {
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    fit: FILLMAX
+                                    width: 100
+                                )
+                            }
+                        }
+                    }
+                }
+                actors {
+                    role
+                    group
+                    bio {
+                        _rawChildren(resolveReferences: { maxDepth: 10 })
+                    }
+                    artist {
+                        firstName
+                        lastName
+                        middleName
+                        pronouns
+                        website
+                        instagram
+                        headshot {
+                            alt
+                            asset {
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    fit: FILLMAX
+                                    width: 100
+                                )
+                            }
+                        }
+                    }
+                }
+                designers {
+                    role
+                    group
+                    bio {
+                        _rawChildren(resolveReferences: { maxDepth: 10 })
+                    }
+                    artist {
+                        firstName
+                        lastName
+                        middleName
+                        pronouns
+                        website
+                        instagram
+                        headshot {
+                            alt
+                            asset {
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    fit: FILLMAX
+                                    width: 100
+                                )
+                            }
+                        }
+                    }
+                }
+                crewMembers {
+                    role
+                    group
+                    bio {
+                        _rawChildren(resolveReferences: { maxDepth: 10 })
+                    }
+                    artist {
+                        firstName
+                        lastName
+                        middleName
+                        pronouns
+                        website
+                        instagram
+                        headshot {
+                            alt
+                            asset {
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    fit: FILLMAX
+                                    width: 100
+                                )
+                            }
+                        }
+                    }
+                }
+                shadows {
+                    role
+                    group
+                    bio {
+                        _rawChildren(resolveReferences: { maxDepth: 10 })
+                    }
+                    artist {
+                        firstName
+                        lastName
+                        middleName
+                        pronouns
+                        website
+                        instagram
+                        headshot {
+                            alt
+                            asset {
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    fit: FILLMAX
+                                    width: 100
+                                )
+                            }
+                        }
+                    }
+                }
+            }
 
             ## SEO Settings
             _createdAt

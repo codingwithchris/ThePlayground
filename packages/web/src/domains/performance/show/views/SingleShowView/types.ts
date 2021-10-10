@@ -19,7 +19,7 @@ import {
 import { SHOW_RATING } from '../../constants';
 
 /**
- * Types for our Single Show Page Template
+ * Types for our Single Show View
  */
 
 export interface ShowPageProps extends SanityDocument {
