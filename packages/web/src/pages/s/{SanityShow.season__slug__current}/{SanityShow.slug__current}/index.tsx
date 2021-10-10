@@ -1,50 +1,30 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 
-import { Divider } from '@web/ui/core';
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 
-import { SingleSeasonProvider } from '../../season/__context__';
-import { SingleShowProvider } from '../__context__';
-import { ShowPageProps, ShowPageGatsbyContext } from './types';
-
 import {
-    getTotalPerformanceCount,
-    getTotalTicketedPerformanceCount,
-    getTotalPWYWPerformanceCount,
-    hasRemainingPerformances,
-} from '../__lib__';
+    SingleShowProvider,
+    SingleShowView,
+    ShowPageProps,
+    ShowPageGatsbyContext,
+} from '@web/domains/performance/show';
 
-import {
-    Hero,
-    HealthNotice,
-    ActionBar,
-    Performances,
-    PerformanceStats,
-    TheStory,
-    TheTrailer,
-    Information,
-} from './components';
+import { SingleSeasonProvider } from '@web/domains/performance/season';
 
 const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
     ({ data, pageContext, location }) => {
         const { sanityShow: show } = data;
-        const { slug, seasonSlug, seasonURL } = pageContext;
+
+        // the gatsby API context automatically populates these variables names. That's why they are ugly
+        const { season__slug__current: seasonSlug, slug__current: slug } =
+            pageContext;
 
         const url = useCurrentURL(location.pathname);
         const metaImage = useGetMetaImage('show', show.seo.image);
-
-        const performanceCount = {
-            total: getTotalPerformanceCount(show.performances),
-            ticketed: getTotalTicketedPerformanceCount(show.performances),
-            pwyw: getTotalPWYWPerformanceCount(show.performances),
-            hasRemaining: hasRemainingPerformances(show.performances),
-        };
-
-        const ticketSectionRef = useRef<HTMLDivElement>(null);
 
         return (
             <SingleSeasonProvider slug={seasonSlug}>
@@ -69,60 +49,12 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             }}
                         />
                     )}
-                    <Hero
-                        title={show.title}
-                        author={show.author?.name}
-                        bgImage={{ image: show?.heroImage?.asset }}
-                        actionBar={
-                            <ActionBar
-                                ticketSectionRef={ticketSectionRef}
-                                hasRemainingPerformances={
-                                    performanceCount.hasRemaining
-                                }
-                            />
-                        }
-                    />
-                    <TheStory rawContent={show._rawDescription} />
-                    <Divider color="paper" />
-                    <Information
+                    <SingleShowView
+                        show={show}
                         url={url}
-                        runtime={{
-                            hours: show.runtimeHours,
-                            minutes: show.runtimeMinutes,
-                        }}
-                        intermissionCount={show.intermissionCount}
-                        location={show.location}
-                        series={show.series}
-                        rating={show.rating}
-                        triggerWarning={show.triggerWarning}
-                        contentAdvisory={show.contentAdvisory}
-                        effectsAdvisory={show.effectsAdvisory}
+                        slug={slug}
+                        seasonSlug={seasonSlug}
                     />
-                    <PerformanceStats performanceCount={performanceCount} />
-                    <div ref={ticketSectionRef}>
-                        <Performances
-                            healthNotice={
-                                show.healthNotice?.shouldDisplay && (
-                                    <HealthNotice
-                                        title={show.healthNotice.title}
-                                        rawContent={
-                                            show.healthNotice?._rawContent
-                                        }
-                                    />
-                                )
-                            }
-                            performances={show.performances}
-                            ticketProvider={show.ticketProvider}
-                            ticketLink={show.generalTicketLink}
-                        />
-                    </div>
-                    {show.promo?.trailer?.videoID && (
-                        <TheTrailer
-                            videoID={show.promo?.trailer?.videoID}
-                            credit={show.promo?.trailer?.credit}
-                            creditRole={show.promo.trailer.creditRole}
-                        />
-                    )}
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
             </SingleSeasonProvider>
@@ -130,8 +62,8 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
     };
 
 export const showQuery = graphql`
-    query showData($id: String!) {
-        sanityShow(_id: { eq: $id }) {
+    query showData($id: String) {
+        sanityShow(id: { eq: $id }) {
             # Toggles
             # toggles {
             #     isCollaboration

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BodyText, Tag, Icon } from '@web/ui/core';
 
-import { ShowDetail } from '../../../../types';
+import { ShowDetail } from '../../../../../types';
 import * as styled from './EffectsAdvisoryCard.styles';
 
 export const EffectsAdvisoryCard = ({

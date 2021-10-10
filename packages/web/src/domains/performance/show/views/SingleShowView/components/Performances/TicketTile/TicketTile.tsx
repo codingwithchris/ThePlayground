@@ -8,13 +8,13 @@ import {
     hasExternalTicketLink,
     hasExternalTickets,
     hasAvailableTicketOffer,
-} from '../../../../__lib__';
+} from '../../../../../__lib__';
 
 import {
     TICKET_TYPE_MESSAGE,
     TICKET_AVAILABILITY_MESSAGE,
-} from '../../../../constants';
-import { ShowPerformance } from '../../../../types';
+} from '../../../../../constants';
+import { ShowPerformance } from '../../../../../types';
 
 import { TicketOffer } from '../TicketOffer/TicketOffer';
 import { PerformanceFeatures } from '../PerformanceFeatures/PerformanceFeatures';

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { Icon, BodyText } from '@web/ui/core';
 import { spacing } from '@web/ui/tokens';
 
-import { ShowPerformance } from '../../../../types';
+import { ShowPerformance } from '../../../../../types';
 import {
     isGeneralAdmissionPerformance,
     isPreviewPerformance,
     hasTalkbackAfterPerformance,
     isPWYWPerformance,
-} from '../../../../__lib__';
+} from '../../../../../__lib__';
 
 const performanceFeatures = [
     {

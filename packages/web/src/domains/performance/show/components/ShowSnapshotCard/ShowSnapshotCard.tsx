@@ -50,6 +50,7 @@ export const ShowSnapshotCard = ({
     performances,
     rating,
     className,
+    ...props
 }: ShowSnapshotCardProps) => {
     const { get } = useGlobalPerformanceContext();
     const { path, status } = get.show(slug.current) || {};

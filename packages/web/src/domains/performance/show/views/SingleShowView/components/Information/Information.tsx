@@ -5,9 +5,9 @@ import { Location } from '@web/domains/performance/location';
 import { BodyText, Card, CardContent, Container } from '@web/ui/core';
 import { SocialShareModal } from '@web/ui/molecules';
 
-import { useSingleShowContext } from '../../../__context__';
-import { SHOW_RATING } from '../../../constants';
-import { ShowDetail } from '../../../types';
+import { useSingleShowContext } from '../../../../__context__';
+import { SHOW_RATING } from '../../../../constants';
+import { ShowDetail } from '../../../../types';
 
 import { ContentAdvisoryCard } from './ContentAdvisoryCard/ContentAdvisoryCard';
 import { TriggerWarningCard } from './TriggerWarningCard/TriggerWarningCard';

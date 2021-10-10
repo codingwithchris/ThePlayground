@@ -15,8 +15,8 @@ import {
     ShowDetail,
     ShowNotice,
     ShowPromo,
-} from '../types';
-import { SHOW_RATING } from '../constants';
+} from '../../types';
+import { SHOW_RATING } from '../../constants';
 
 /**
  * Types for our Single Show Page Template
@@ -47,7 +47,6 @@ export interface ShowPageProps extends SanityDocument {
 }
 
 export interface ShowPageGatsbyContext extends GatsbyPageContext {
-    seasonID: string;
-    seasonSlug: string;
-    seasonURL: string;
+    slug__current: string;
+    season__slug__current: string;
 }

@@ -8,7 +8,7 @@ import { Link } from '@web/domains/app/routing';
 import {
     getRemainingPerformanceCount,
     sortPastPerformancesToEnd,
-} from '../../../__lib__';
+} from '../../../../__lib__';
 
 import * as styled from './Performances.styles';
 import { TicketTile } from './TicketTile/TicketTile';
