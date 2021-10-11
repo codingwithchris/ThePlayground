@@ -31,9 +31,7 @@ const googleAnalyticsTrackingID = isProd
     ? process.env.GOOGLE_ANALYTICS_TRACKING_ID
     : process.env.GOOGLE_ANALYTICS_DEV_TRACKING_ID;
 
-const googleAdWordsTrackingID = isProd
-    ? process.env.GOOGLE_ADWORDS_TRACKING_ID
-    : undefined;
+const googleAdWordsTrackingID = process.env.GOOGLE_ADWORDS_TRACKING_ID;
 
 //  Todo: isNetlifyPreview (for deploy-preview and branch-deploy)
 //  Todo: isStaging (one we get a staging environment set up)
@@ -115,14 +113,13 @@ module.exports = {
                 trackingIds: [
                     googleAnalyticsTrackingID,
                     googleAdWordsTrackingID,
-                ].filter(Boolean),
+                ],
                 // This object gets passed directly to the gtag config command
                 // This config will be shared across all trackingIds
                 gtagConfig: {
                     // optimize_id: 'OPT_CONTAINER_ID',
                     // anonymize_ip: false,
-                    // cookie_expires: 0,
-                    send_page_view: true,
+                    cookie_expires: 0,
                 },
                 // This object is used for configuration specific to this plugin
                 pluginConfig: {
