@@ -37,7 +37,7 @@ export const DigitalProgramView = ({
                 author={show.author}
             />
             <DirectorNote content={show._rawDirectorsNote} />
-            <TeamBioGallery />
+            <TeamBioGallery artists={show.artists} />
             <AlsoThisSeason />
         </>
     );

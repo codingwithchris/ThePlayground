@@ -116,7 +116,7 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 100
+                                    width: 80
                                 )
                             }
                         }
@@ -141,7 +141,7 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 100
+                                    width: 80
                                 )
                             }
                         }
@@ -166,7 +166,7 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 100
+                                    width: 80
                                 )
                             }
                         }
@@ -191,7 +191,7 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 100
+                                    width: 80
                                 )
                             }
                         }
@@ -216,7 +216,7 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 100
+                                    width: 80
                                 )
                             }
                         }
