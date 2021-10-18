@@ -33,8 +33,6 @@ export const AlsoThisSeason = () => {
 
     const sortedShows = shows && sortShowsByDate(shows, 'ASC');
 
-    console.log(sortedShows);
-
     return (
         <StyledAlsoThisSeason bgColor="paperDark">
             <Container maxWidth="xs">
