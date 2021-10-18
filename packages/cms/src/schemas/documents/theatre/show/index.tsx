@@ -131,6 +131,7 @@ export const schema: DocumentCollection = {
 };
 
 export const objects = [
+    showObjects.artistReference,
     showObjects.artists,
     showObjects.healthNotice,
     showObjects.collaboration,

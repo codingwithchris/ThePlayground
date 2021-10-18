@@ -45,11 +45,32 @@ export const useQueryAllPerformanceData: RawPerformanceDataQuery = () => {
                     author {
                         name
                     }
+                    performances {
+                        status
+                        datetime
+                        isPWYW
+                    }
+                    series {
+                        identifier
+                        title
+                    }
                     season {
                         slug {
                             current
                         }
                     }
+                    cardImage {
+                        asset {
+                            gatsbyImageData(
+                                placeholder: BLURRED
+                                width: 600
+                                fit: FILL
+                            )
+                        }
+                        alt
+                    }
+                    teaser
+                    rating
                 }
             }
         }

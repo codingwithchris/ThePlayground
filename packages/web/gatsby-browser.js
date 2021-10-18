@@ -19,9 +19,9 @@ import {
 } from './src/shared/context';
 
 // Persist our core layout across the entire app
-export const wrapPageElement = ({ element, props }) => (
-    <Layout {...props}> {element} </Layout>
-);
+export const wrapPageElement = ({ element, props }) => {
+    return <Layout {...props}> {element} </Layout>;
+};
 
 export const wrapRootElement = ({ element }) => (
     <EnvironmentProvider>

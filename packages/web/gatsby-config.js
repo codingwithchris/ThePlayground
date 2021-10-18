@@ -73,6 +73,9 @@ module.exports = {
             resolve: `gatsby-plugin-netlify`,
             options: {
                 // Custom options currently not in use
+                mergeSecurityHeaders: false, // boolean to turn off the default security headers
+                mergeLinkHeaders: false, // boolean to turn off the default gatsby js headers
+                mergeCachingHeaders: false, // boolean to turn off the default caching headers
             },
         },
 

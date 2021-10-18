@@ -17,5 +17,5 @@ export interface SeasonPageProps extends SanityDocument {
 }
 
 export interface SeasonPageGatsbyContext extends GatsbyPageContext {
-    seasonURL: string;
+    slug__current: string;
 }

@@ -1,7 +1,7 @@
 import { LinkProps } from '@web/domains/app/routing';
 import { IconProps } from '@web/ui/core/media';
 
-export type ButtonSize = 's' | 'm';
+export type ButtonSize = 's' | 'm' | 'xs';
 
 export interface ButtonBaseProps extends LinkProps {
     size: ButtonSize;

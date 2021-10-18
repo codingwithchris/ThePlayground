@@ -16,14 +16,44 @@ export const schema: DocumentCollection = {
             validation: (Rule: any) => Rule.required(),
         },
         {
+            name: 'middleName',
+            title: 'Middle Name',
+            type: 'string',
+        },
+        {
             name: 'lastName',
             title: 'Last name',
             type: 'string',
             validation: (Rule: any) => Rule.required(),
         },
         {
+            name: 'pronouns',
+            title: 'Pronouns',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'He/Him', value: 'he/him' },
+                    { title: 'She/Her', value: 'she/her' },
+                    { title: 'They/Them', value: 'they/them' },
+                    { title: 'She/They', value: 'she/they' },
+                    { title: 'He/They', value: 'he/they' },
+                ],
+            },
+        },
+        {
+            name: 'instagram',
+            title: 'Instagram Profile',
+            type: 'url',
+        },
+        {
+            name: 'website',
+            title: 'Website',
+            type: 'url',
+        },
+        {
             name: 'headshot',
             title: 'Headshot',
+            description: '750x750px',
             type: 'imageWithFullMeta',
         },
     ],
@@ -36,7 +66,7 @@ export const schema: DocumentCollection = {
         prepare({ firstName, lastName, media }: any) {
             return {
                 title: `${firstName} ${lastName}`,
-                subtitle: 'something interesting here',
+                subtitle: `more info coming soon`,
                 media,
             };
         },

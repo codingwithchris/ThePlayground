@@ -10,6 +10,11 @@ import { ButtonBaseProps } from './ButtonBase.d';
  * @since 1.0.0
  */
 export const buttonSizes = {
+    xs: css`
+        /* Custom padding values make button fine-tuning and readability easier -- don't make a habit of this. */
+        padding: 4px 7px 3px 7px;
+        ${typography.bodyBold.xs};
+    `,
     s: css`
         /* Custom padding values make button fine-tuning and readability easier -- don't make a habit of this. */
         padding: 5px 12px 5px 12px;

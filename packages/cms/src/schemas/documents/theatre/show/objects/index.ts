@@ -1,5 +1,5 @@
 export { contentAdvisory, effectsAdvisory } from './advisories';
-export { artists } from './artists';
+export { artists, artistReference } from './artists';
 export { collaboration } from './collaboration';
 export { detailItem } from './details';
 export { healthNotice } from './notices';
