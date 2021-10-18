@@ -18,12 +18,15 @@ export const DirectorNote = ({ content }: DirectorsNoteProps) => {
                 <BodyText
                     className="label"
                     color="medium"
-                    size="xs"
+                    size="s"
                     weight="bold"
                 >
                     directors note
                 </BodyText>
-                <PortableText content={content} />
+                <PortableText
+                    content={content}
+                    config={{ block: { bodyText: { size: 'm' } } }}
+                />
             </Container>
         </StyledDirectorNote>
     );
