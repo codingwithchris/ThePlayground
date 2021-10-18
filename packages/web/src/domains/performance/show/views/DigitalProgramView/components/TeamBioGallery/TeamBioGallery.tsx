@@ -9,7 +9,7 @@ import { ArtistHighlight } from './ArtistHighlight/ArtistHighlight';
 
 const StyledBioGallery = styled(Section)`
     --gap: ${spacing.component.m};
-    padding: ${spacing.layout.m} 0;
+    padding: ${spacing.layout.l} 0;
 
     .intro-copy {
         .desktop {

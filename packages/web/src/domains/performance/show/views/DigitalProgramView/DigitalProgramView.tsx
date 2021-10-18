@@ -9,7 +9,7 @@ import {
     InstagramCallout,
     ShareCallout,
     SponsorsHighlight,
-    SupportCallout,
+    SpotifyCallout,
     TeamBioGallery,
 } from './components';
 
@@ -31,7 +31,7 @@ export const DigitalProgramView = ({
 }: DigitalProgramViewProps) => {
     return (
         <>
-            {show.artists.directors?.length > 0 && (
+            {show.artists?.directors?.length > 0 && (
                 <Header
                     title={show.title}
                     directors={show.artists.directors}
@@ -39,14 +39,23 @@ export const DigitalProgramView = ({
                 />
             )}
             {show._rawDirectorsNote?.length > 0 && (
-                <DirectorNote content={show._rawDirectorsNote} />
+                <>
+                    <DirectorNote content={show._rawDirectorsNote} />
+                    <Divider color="paper" />
+                </>
             )}
-            {(show.artists.actors ||
-                show.artists.crewMembers ||
-                show.artists.designers ||
-                show.artists.shadows) && (
-                <TeamBioGallery artists={show.artists} />
+            {(show.artists?.actors ||
+                show.artists?.crewMembers ||
+                show.artists?.designers ||
+                show.artists?.shadows) && (
+                <>
+                    <TeamBioGallery artists={show.artists} />
+                    <Divider color="neutralDark" />
+                </>
             )}
+            <SpotifyCallout />
+            <SponsorsHighlight />
+            <Divider color="paper" />
             <AlsoThisSeason />
         </>
     );

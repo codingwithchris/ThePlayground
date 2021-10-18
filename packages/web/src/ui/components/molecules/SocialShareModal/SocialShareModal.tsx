@@ -9,13 +9,17 @@ import {
     Modal,
     CloseOverlay,
     OutlineButton,
+    IconProps,
 } from '@web/ui/core';
+import { ButtonBaseProps } from '../../core/buttons/ButtonBase/ButtonBase';
 
 export const SocialShareModal: React.FC<ISocialShare> = ({
     title = 'Share this with some friends',
     shareButtonText = 'Share',
     socialShareText,
     shareURL,
+    buttonSize = 's',
+    buttonIconSize = 'xs',
 }) => {
     const [isOpen, setIsOpen, toggle] = useOverlay();
     const share = useSocialShare(shareURL, socialShareText);
@@ -26,10 +30,10 @@ export const SocialShareModal: React.FC<ISocialShare> = ({
     return (
         <>
             <OutlineButton
-                size="s"
+                size={buttonSize}
                 onClick={toggle}
                 color="tertiary"
-                startIcon={<Icon name="Share" size="xs" />}
+                startIcon={<Icon name="Share" size={buttonIconSize} />}
                 animateOnClick
             >
                 {shareButtonText}
@@ -87,4 +91,6 @@ export interface ISocialShare {
     title?: string;
     shareButtonText?: string;
     socialShareText: string;
+    buttonIconSize?: IconProps['size'];
+    buttonSize?: ButtonBaseProps['size'];
 }

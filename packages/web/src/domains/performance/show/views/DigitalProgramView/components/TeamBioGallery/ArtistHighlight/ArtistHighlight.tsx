@@ -139,7 +139,6 @@ export const ArtistHighlight = ({
     className,
 }: ArtistHighlightProps) => {
     const [isOpen, setIsOpen, toggle] = useOverlay();
-    console.log(artistBio);
 
     const { artist, role, _rawBio: bio } = artistBio;
 
