@@ -39,21 +39,8 @@ const SingleShowDigitalProgram: React.FC<
                     title={metaTitle}
                     description={metaDescription}
                     image={metaImage}
-                    hideSEO={show.seo.hide}
+                    hideSEO
                 />
-                {/* Do not output structured data if this page will be hidden from SEO */}
-                {show.seo.hide ? null : (
-                    <StructuredData
-                        pageSchemaData={{
-                            pageURL: url,
-                            title: metaTitle,
-                            description: metaDescription,
-                            image: metaImage,
-                            datePublished: show.seo.publishedAt,
-                            dateModified: show._updatedAt,
-                        }}
-                    />
-                )}
                 <DigitalProgramView
                     show={show}
                     url={url}
