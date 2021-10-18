@@ -14,7 +14,22 @@ import { composeArtistName } from '@web/domains/performance/artist';
 import { ShowAuthor } from '../../../../types';
 import { ArtistBio } from '../../types';
 
-export const StyledHeader = styled(Section)``;
+export const StyledHeader = styled(Section)`
+    padding: ${spacing.layout.s} 0 ${spacing.layout.xs} 0;
+
+    .logo {
+        margin-bottom: ${spacing.layout.s};
+        text-align: center;
+    }
+
+    .welcome {
+        margin-bottom: ${spacing.component.s};
+        text-align: center;
+    }
+    .show {
+        text-align: center;
+    }
+`;
 
 export const Header = ({ title, author, directors }: HeaderProps) => {
     const preparedDirectorData = directors.map(({ artist, role }) => ({
@@ -27,7 +42,7 @@ export const Header = ({ title, author, directors }: HeaderProps) => {
     }));
 
     const directedBy = preparedDirectorData
-        .map((director) => `${director.name} [${director.role}]`)
+        .map((director) => `${director.name}`)
         .join(' + ');
 
     return (
@@ -37,28 +52,28 @@ export const Header = ({ title, author, directors }: HeaderProps) => {
                     <Logo size="l" type="Lockup" color="light" />
                 </div>
                 <div className="welcome">
-                    <Heading color="medium" size="xs">
-                        Welcome to the Show
-                    </Heading>
+                    <BodyText color="medium" size="s" weight="bold">
+                        Welcome to...
+                    </BodyText>
                 </div>
                 <div className="show">
-                    <Heading
-                        size="s"
+                    <BodyText
+                        size="xl"
                         color="light"
-                        textTransform="uppercase"
                         className="title"
+                        weight="bold"
                     >
                         {title}
-                    </Heading>
-                    <BodyText size="l" color="medium" weight="bold">
+                    </BodyText>
+                    <BodyText size="m" color="medium">
                         by {author.name}
                     </BodyText>
                 </div>
-                <div className="directors">
+                {/* <div className="directors">
                     <BodyText size="s" color="light">
                         Directed by: {directedBy}
                     </BodyText>
-                </div>
+                </div> */}
             </Container>
         </StyledHeader>
     );

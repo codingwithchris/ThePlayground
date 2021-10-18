@@ -31,13 +31,22 @@ export const DigitalProgramView = ({
 }: DigitalProgramViewProps) => {
     return (
         <>
-            <Header
-                title={show.title}
-                directors={show.artists.directors}
-                author={show.author}
-            />
-            <DirectorNote content={show._rawDirectorsNote} />
-            <TeamBioGallery artists={show.artists} />
+            {show.artists.directors?.length > 0 && (
+                <Header
+                    title={show.title}
+                    directors={show.artists.directors}
+                    author={show.author}
+                />
+            )}
+            {show._rawDirectorsNote?.length > 0 && (
+                <DirectorNote content={show._rawDirectorsNote} />
+            )}
+            {(show.artists.actors ||
+                show.artists.crewMembers ||
+                show.artists.designers ||
+                show.artists.shadows) && (
+                <TeamBioGallery artists={show.artists} />
+            )}
             <AlsoThisSeason />
         </>
     );

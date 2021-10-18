@@ -8,7 +8,22 @@ import { DigitalProgramPageProps } from '../../types';
 import { ArtistHighlight } from './ArtistHighlight/ArtistHighlight';
 
 const StyledBioGallery = styled(Section)`
-    padding: ${spacing.layout.m};
+    --gap: ${spacing.component.m};
+    padding: ${spacing.layout.m} 0;
+
+    .intro-copy {
+        .desktop {
+            display: none;
+        }
+        ${breakpoints.m} {
+            .desktop {
+                display: inline-block;
+            }
+            .mobile {
+                display: none;
+            }
+        }
+    }
 
     .artist-group:not(:first-child) {
         margin-top: ${spacing.layout.m};
@@ -16,11 +31,20 @@ const StyledBioGallery = styled(Section)`
 
     .artist-list {
         display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: var(--gap);
+        margin-top: ${spacing.layout.xs};
+        ${breakpoints.s} {
+            flex-direction: row;
+        }
     }
 
     .artist-highlight {
-        flex: 1 0 auto;
-        flex-wrap: wrap;
+        flex: 1 0 100%;
+        ${breakpoints.s} {
+            flex: 0 0 calc(50% - (var(--gap) / 2));
+        }
     }
 `;
 
@@ -39,7 +63,11 @@ export const TeamBioGallery = ({ artists }: TeamBioGalleryProps) => {
     return (
         <StyledBioGallery bgColor="paperDark">
             <Container maxWidth="m">
-                {/* TODO: ADD TITLE & INTRO HERE */}
+                <BodyText color="light" size="m" className="intro-copy">
+                    <span className="desktop">Click</span>
+                    <span className="mobile">Tap</span> on an artist to view
+                    their bio.
+                </BodyText>
                 {artistsArray.map(([groupName, artistList]) => {
                     // Alphabetize the artists ?
                     // const alphabeticalArtistList = artistList.sort((a, b) =>

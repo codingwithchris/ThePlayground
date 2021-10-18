@@ -100,9 +100,7 @@ export const showQuery = graphql`
                 directors {
                     role
                     group
-                    bio {
-                        _rawChildren(resolveReferences: { maxDepth: 10 })
-                    }
+                    _rawBio(resolveReferences: { maxDepth: 10 })
                     artist {
                         firstName
                         lastName
@@ -116,7 +114,7 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 80
+                                    width: 500
                                 )
                             }
                         }
@@ -125,9 +123,7 @@ export const showQuery = graphql`
                 actors {
                     role
                     group
-                    bio {
-                        _rawChildren(resolveReferences: { maxDepth: 10 })
-                    }
+                    _rawBio(resolveReferences: { maxDepth: 10 })
                     artist {
                         firstName
                         lastName
@@ -141,7 +137,8 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 80
+
+                                    width: 500
                                 )
                             }
                         }
@@ -150,9 +147,7 @@ export const showQuery = graphql`
                 designers {
                     role
                     group
-                    bio {
-                        _rawChildren(resolveReferences: { maxDepth: 10 })
-                    }
+                    _rawBio(resolveReferences: { maxDepth: 10 })
                     artist {
                         firstName
                         lastName
@@ -166,7 +161,8 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 80
+
+                                    width: 500
                                 )
                             }
                         }
@@ -175,9 +171,7 @@ export const showQuery = graphql`
                 crewMembers {
                     role
                     group
-                    bio {
-                        _rawChildren(resolveReferences: { maxDepth: 10 })
-                    }
+                    _rawBio(resolveReferences: { maxDepth: 10 })
                     artist {
                         firstName
                         lastName
@@ -191,7 +185,8 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 80
+
+                                    width: 500
                                 )
                             }
                         }
@@ -200,9 +195,7 @@ export const showQuery = graphql`
                 shadows {
                     role
                     group
-                    bio {
-                        _rawChildren(resolveReferences: { maxDepth: 10 })
-                    }
+                    _rawBio(resolveReferences: { maxDepth: 10 })
                     artist {
                         firstName
                         lastName
@@ -216,7 +209,8 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 80
+
+                                    width: 500
                                 )
                             }
                         }

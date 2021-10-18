@@ -19,7 +19,7 @@ import { SHOW_RATING } from '../../constants';
 export interface ArtistBio {
     role: string;
     artist: Artist;
-    bio: any[];
+    _rawBio: any[];
     group: ARTIST_GROUP;
 }
 
