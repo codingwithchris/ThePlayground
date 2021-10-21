@@ -1,4 +1,6 @@
+import { zonedTimeToUtc } from 'date-fns-tz';
 import { compareAsc, compareDesc, parseISO, isPast } from 'date-fns';
+import { DEFAULT_TIMEZONE } from '../constants';
 import { Show, ShowPerformance } from '../types';
 
 /**
@@ -18,8 +20,8 @@ export const sortShowsByDate = <AnyShowType extends Show>(
             return 0;
         }
 
-        const dateA = parseISO(performanceA);
-        const dateB = parseISO(performanceB);
+        const dateA = zonedTimeToUtc(performanceA, DEFAULT_TIMEZONE);
+        const dateB = zonedTimeToUtc(performanceB, DEFAULT_TIMEZONE);
 
         return order === 'desc'
             ? compareDesc(dateA, dateB)
@@ -38,8 +40,8 @@ export const sortPastPerformancesToEnd = (
         const { datetime: performanceA } = a;
         const { datetime: performanceB } = b;
 
-        const dateA = parseISO(performanceA);
-        const dateB = parseISO(performanceB);
+        const dateA = zonedTimeToUtc(performanceA, DEFAULT_TIMEZONE);
+        const dateB = zonedTimeToUtc(performanceB, DEFAULT_TIMEZONE);
 
         // If the first date is not in the past, but the second date is, sort the past date last (moving them to the end of the array)
         if (!isPast(dateA) && isPast(dateB)) {

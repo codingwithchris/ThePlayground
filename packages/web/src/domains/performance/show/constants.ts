@@ -49,3 +49,6 @@ export enum PERFORMANCE_STATUS {
     CANCELLED = 'cancelled',
     SOLD_OUT = 'sold-out',
 }
+
+export const EST_TIMEZONE = 'America/New_York';
+export const DEFAULT_TIMEZONE = EST_TIMEZONE;

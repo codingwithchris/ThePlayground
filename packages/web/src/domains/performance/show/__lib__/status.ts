@@ -1,7 +1,8 @@
+import { zonedTimeToUtc } from 'date-fns-tz';
 import { parseISO, sub, isPast, isWithinInterval, isValid } from 'date-fns';
-import { SHOW_STATUS } from '../constants';
+import { DEFAULT_TIMEZONE, SHOW_STATUS } from '../constants';
 
-const now = new Date();
+const now = zonedTimeToUtc(new Date(), DEFAULT_TIMEZONE);
 
 /**
  * Determine if the show is in the past

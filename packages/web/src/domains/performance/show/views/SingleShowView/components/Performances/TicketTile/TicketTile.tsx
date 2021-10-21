@@ -1,7 +1,8 @@
 import React from 'react';
-import { parseISO, format } from 'date-fns';
+import { zonedTimeToUtc, format } from 'date-fns-tz';
 import { BodyText, Card, CardContent, CardActions, Tag } from '@web/ui/core';
 
+import { DEFAULT_TIMEZONE } from '@web/domains/performance/show';
 import {
     isAvailablePerformance,
     hasTicketTypeDefined,
@@ -73,7 +74,7 @@ export const TicketTile = (performance: TicketTileProps) => {
 
     const isAvailable = isAvailablePerformance(performance);
 
-    const rawDate = parseISO(datetime);
+    const rawDate = zonedTimeToUtc(datetime, DEFAULT_TIMEZONE);
     const date = format(rawDate, 'iii, MMM dd');
     const curtain = format(rawDate, 'h:mm a');
 
