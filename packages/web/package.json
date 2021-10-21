@@ -58,7 +58,7 @@
 		"start:clean": "npm run clean && gatsby develop",
 		"netlify:start": "npm run clean && netlify dev",
 		"netlify:build": "netlify build --context deploy-preview",
-		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages TZ='America/New_York'",
 		"serve": "npm run build && gatsby serve",
 		"empty-cache": "npm run clean",
 		"lint:js": "eslint . --cache --cache-location node_modules/.cache/eslint --ext js,jsx,ts,tsx",
