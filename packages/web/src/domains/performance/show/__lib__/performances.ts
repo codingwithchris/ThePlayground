@@ -1,4 +1,6 @@
-import { isPast, isValid, parseISO } from 'date-fns';
+import { isPast, isValid } from 'date-fns';
+import { zonedTimeToUtc } from 'date-fns-tz';
+import { DEFAULT_TIMEZONE } from '../constants';
 import { ShowPerformance } from '../types';
 import {
     hasValidExternalTickets,
@@ -29,7 +31,7 @@ export const isSoldOutPerformance = (performance: ShowPerformance) => {
  */
 export const isPastPerformance = (performance: ShowPerformance) => {
     const { datetime } = performance;
-    const date = parseISO(datetime);
+    const date = zonedTimeToUtc(datetime, DEFAULT_TIMEZONE);
     return isValid(date) && isPast(date);
 };
 

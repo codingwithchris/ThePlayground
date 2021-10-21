@@ -39,7 +39,7 @@ export const Performances: React.FC<PerformancesProps> = ({
 
     // TODO: Could be optimized to only run if there are performances remaining
     // ! This is causing a weird UI Bug :/ Disabling for now...
-    // const sortedPerformances = sortPastPerformancesToEnd([...performances]);
+    const sortedPerformances = sortPastPerformancesToEnd([...performances]);
 
     return (
         <styled.Performances
@@ -64,7 +64,7 @@ export const Performances: React.FC<PerformancesProps> = ({
                     </BodyText>
                 </div>
                 <ul className="performances-list">
-                    {performances.map((performance) => {
+                    {sortedPerformances.map((performance) => {
                         return (
                             <TicketTile
                                 {...performance}
