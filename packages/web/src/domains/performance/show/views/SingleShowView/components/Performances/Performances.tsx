@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { ShowPerformance } from '@web/domains/performance/show';
 import { Heading, BodyText, Container } from '@web/ui/core';
@@ -8,6 +8,7 @@ import { Link } from '@web/domains/app/routing';
 import {
     getRemainingPerformanceCount,
     sortPastPerformancesToEnd,
+    isPastPerformance,
 } from '../../../../__lib__';
 
 import * as styled from './Performances.styles';
@@ -19,19 +20,20 @@ export const Performances: React.FC<PerformancesProps> = ({
     ticketLink,
     healthNotice,
 }) => {
-    const remainingPerformances = getRemainingPerformanceCount(performances);
+    const remainingPerformancesCount =
+        getRemainingPerformanceCount(performances);
 
-    const chancesText = remainingPerformances === 1 ? 'chance' : 'chances';
+    const chancesText = remainingPerformancesCount === 1 ? 'chance' : 'chances';
 
-    const performancesTitleText = remainingPerformances
+    const performancesTitleText = remainingPerformancesCount
         ? 'Choose from available showtimes'
         : 'No available showtimes';
 
-    const performanceSubtitleText = remainingPerformances ? (
+    const performanceSubtitleText = remainingPerformancesCount ? (
         <>
             <span aria-hidden="true">[ </span>You have{' '}
-            <strong>{remainingPerformances}</strong> more {chancesText} to catch
-            the show<span aria-hidden="true"> ]</span>
+            <strong>{remainingPerformancesCount}</strong> more {chancesText} to
+            catch the show<span aria-hidden="true"> ]</span>
         </>
     ) : (
         `This one is in the books. You missed your chance to see it :/`
@@ -40,6 +42,11 @@ export const Performances: React.FC<PerformancesProps> = ({
     // TODO: Could be optimized to only run if there are performances remaining
     // ! This is causing a weird UI Bug :/ Disabling for now...
     // const sortedPerformances = sortPastPerformancesToEnd([...performances]);
+
+    // ! temporary -- only display available performances
+    const remainingPerformances = performances.filter(
+        (performance) => !isPastPerformance(performance)
+    );
 
     return (
         <styled.Performances
@@ -64,7 +71,7 @@ export const Performances: React.FC<PerformancesProps> = ({
                     </BodyText>
                 </div>
                 <ul className="performances-list">
-                    {performances.map((performance) => {
+                    {remainingPerformances.map((performance) => {
                         return (
                             <TicketTile
                                 {...performance}
