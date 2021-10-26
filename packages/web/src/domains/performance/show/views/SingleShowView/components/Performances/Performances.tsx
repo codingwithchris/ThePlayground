@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 import { ShowPerformance } from '@web/domains/performance/show';
-import { Heading, BodyText, Container } from '@web/ui/core';
+import { Heading, BodyText, Container, Icon, FillButton } from '@web/ui/core';
 import { TicketProvider } from '@web/domains/performance/ticketProvider';
 import { Link } from '@web/domains/app/routing';
 
@@ -26,8 +26,8 @@ export const Performances: React.FC<PerformancesProps> = ({
     const chancesText = remainingPerformancesCount === 1 ? 'chance' : 'chances';
 
     const performancesTitleText = remainingPerformancesCount
-        ? 'Choose from available showtimes'
-        : 'No available showtimes';
+        ? 'Tickets are still available'
+        : 'Tickets unavailable';
 
     const performanceSubtitleText = remainingPerformancesCount ? (
         <>
@@ -41,19 +41,15 @@ export const Performances: React.FC<PerformancesProps> = ({
 
     // TODO: Could be optimized to only run if there are performances remaining
     // ! This is causing a weird UI Bug :/ Disabling for now...
+    // ! This is due to statically generated code mismatching current time which is causing invariance and a ui glitch that is malforming HTML.
     // const sortedPerformances = sortPastPerformancesToEnd([...performances]);
-
-    // ! temporary -- only display available performances
-    const remainingPerformances = performances.filter(
-        (performance) => !isPastPerformance(performance)
-    );
 
     return (
         <styled.Performances
             performancesCount={performances.length}
             bgColor="paperDark"
         >
-            <Container>
+            <Container maxWidth="m">
                 {healthNotice && (
                     <div className="health-notice">{healthNotice}</div>
                 )}
@@ -70,7 +66,56 @@ export const Performances: React.FC<PerformancesProps> = ({
                         {performanceSubtitleText}
                     </BodyText>
                 </div>
-                <ul className="performances-list">
+
+                {remainingPerformancesCount &&
+                    ticketProvider?.name &&
+                    ticketLink && (
+                        <div className="get-tickets-callout">
+                            <Icon
+                                name="Ticket"
+                                size="xl"
+                                color="light"
+                                className="icon"
+                            />
+                            <BodyText
+                                color="light"
+                                size="l"
+                                weight="bold"
+                                className="lead"
+                            >
+                                You seriously don't want to miss this...
+                            </BodyText>
+                            <FillButton
+                                size="m"
+                                color="primary"
+                                to={ticketLink}
+                                className="button"
+                            >
+                                Get Your Tickets Now
+                            </FillButton>
+                            <BodyText
+                                size="s"
+                                color="light"
+                                className="ticket-provider"
+                            >
+                                Tickets are provided by{' '}
+                                <strong>{ticketProvider.name}</strong>. If for
+                                some reason you don't want to purchase tickets
+                                through the website or the website is having
+                                technical issues, you can call the box office at{' '}
+                                <Link
+                                    to={`tel:${ticketProvider.phone}`}
+                                    className="provider-phone"
+                                    noNewTab
+                                >
+                                    {ticketProvider.phone}
+                                </Link>
+                                .
+                            </BodyText>
+                        </div>
+                    )}
+                {/* TODO: FIX the code below and replace the static code up above */}
+                {/* <ul className="performances-list">
                     {remainingPerformances.map((performance) => {
                         return (
                             <TicketTile
@@ -107,7 +152,7 @@ export const Performances: React.FC<PerformancesProps> = ({
                             </em>
                         </BodyText>
                     </div>
-                )}
+                )} */}
             </Container>
         </styled.Performances>
     );

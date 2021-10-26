@@ -5,7 +5,9 @@ import {
     spacing,
     containerGutter,
     totalContainerGutter,
+    borders,
 } from '@web/ui/tokens';
+import { rgba } from 'polished';
 
 export const Performances = styled(Section)<{ performancesCount: number }>`
     --gutter-width: ${spacing.component.s};
@@ -104,8 +106,21 @@ export const Performances = styled(Section)<{ performancesCount: number }>`
         }
     }
 
+    .get-tickets-callout {
+        background-color: ${({ theme }) => theme.surfaces.paper};
+        border: 2px dashed ${({ theme }) => theme.surfaces.accentDark};
+        border-radius: ${borders.modalRadius};
+        box-shadow: ${rgba('#F25C05', 0.25)} 0px 4px 24px;
+        text-align: center;
+        padding: ${spacing.layout.s} ${spacing.component.l};
+
+        .button {
+            margin-top: ${spacing.layout.xs};
+        }
+    }
+
     .ticket-provider {
-        margin: ${spacing.layout.l} auto 0;
+        margin: ${spacing.layout.s} auto 0;
         max-width: 575px;
         text-align: center;
 

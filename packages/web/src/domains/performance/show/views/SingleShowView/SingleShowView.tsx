@@ -44,7 +44,7 @@ export const SingleShowView = ({
                 bgImage={{ image: show?.heroImage?.asset }}
                 actionBar={
                     <ActionBar
-                        ticketSectionRef={ticketSectionRef}
+                        ticketLink={show.generalTicketLink}
                         hasRemainingPerformances={performanceCount.hasRemaining}
                     />
                 }

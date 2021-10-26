@@ -10,7 +10,7 @@ const scrollToRef = (ref: React.RefObject<HTMLDivElement>) =>
     window.scroll({ top: ref?.current?.offsetTop, behavior: 'smooth' });
 
 export const ActionBar: React.FC<IActionBar> = ({
-    ticketSectionRef,
+    ticketLink,
     hasRemainingPerformances,
 }) => {
     const { currentShow } = useSingleShowContext();
@@ -19,13 +19,16 @@ export const ActionBar: React.FC<IActionBar> = ({
         <styled.ActionBar>
             <Container className="container">
                 <div className="tickets">
-                    {hasRemainingPerformances && (
+                    {ticketLink && hasRemainingPerformances && (
                         <FillButton
-                            onClick={() => scrollToRef(ticketSectionRef)}
+                            to={ticketLink}
                             size="s"
                             color="primary"
+                            startIcon={
+                                <Icon name="Ticket" size="xxs" color="light" />
+                            }
                         >
-                            Showtimes + Tix
+                            Tickets
                         </FillButton>
                     )}
                 </div>
@@ -44,6 +47,6 @@ export const ActionBar: React.FC<IActionBar> = ({
 };
 
 export interface IActionBar {
-    ticketSectionRef: React.RefObject<HTMLDivElement>;
+    ticketLink?: string;
     hasRemainingPerformances: boolean;
 }
