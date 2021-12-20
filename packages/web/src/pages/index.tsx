@@ -183,6 +183,7 @@ export const query = graphql`
                     openDate
                     performances {
                         isPWYW
+                        datetime
                     }
                     cardImage {
                         asset {
