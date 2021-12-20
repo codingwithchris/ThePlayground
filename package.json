@@ -19,7 +19,7 @@
     "cms:init": "cd packages/cms && sanity init",
     "cms:start": "cd packages/cms && npm run start",
     "cms:deploy": "cd packages/cms && npm run deploy",
-    "web:start": "export NODE_OPTIONS=--openssl-legacy-provider; cd packages/web && npm run start",
+    "web:start": "cd packages/web && npm run start",
     "web:start:clean": "cd packages/web && npm run start:clean",
     "web:build": "cd packages/web && npm run build",
     "web:serve": "cd packages/web && npm run serve",
