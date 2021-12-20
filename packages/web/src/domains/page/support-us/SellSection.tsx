@@ -65,14 +65,8 @@ export const SellSection = () => (
     <StyledSellSection bgColor="neutralLight">
         <Container maxWidth="m" className="intro">
             <BodyText size="xl" color="dark">
-                Dayton stakes its claim on innovation, right? So, how can we
-                ensure that innovation is continuing to be encouraged in our
-                artistic community?{' '}
-                <BodyText as="span" color="accent" weight="bold" size="xl">
-                    That’s where you come in.
-                </BodyText>
-                The Nerve is the next step in the evolution of theatre in
-                Dayton.
+                Strike a nerve with us. Join us on our mission to create a new
+                and exciting artistic community in Dayton.
             </BodyText>
         </Container>
         <Divider color="neutralDark" />

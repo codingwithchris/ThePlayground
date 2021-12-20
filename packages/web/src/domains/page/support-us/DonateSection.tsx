@@ -125,7 +125,7 @@ export const DonateSection = () => (
                         weight="bold"
                         className="cta"
                     >
-                        Do you have the nerve? Become a donor today.
+                        Become a donor today.
                     </BodyText>
                 </div>
             </div>

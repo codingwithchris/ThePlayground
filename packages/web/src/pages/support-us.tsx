@@ -45,7 +45,7 @@ const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
             >
                 <SimpleHero
                     title="Level Up"
-                    subTitle="Support Artistic Innovation in Dayton"
+                    subTitle="Support New Artistic Voices in Dayton"
                 />
                 <SellSection />
                 <DonateSection />
