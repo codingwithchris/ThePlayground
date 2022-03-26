@@ -1,7 +1,6 @@
 import { SanityImageDataWithAlt } from '@web/shared/types';
 
-import { SEOConfig } from '@web/shared/hooks';
-import { useConfigContext } from '@web/shared/context';
+import { useConfigContext, GlobalConfigs } from '@web/shared/context';
 
 /**
  * Retrieve a fallback meta image from the site config based on the content type
@@ -11,7 +10,7 @@ import { useConfigContext } from '@web/shared/context';
  */
 const getFallbackImage = (
     type: MetaImageContentType,
-    seoConfig: SEOConfig
+    seoConfig: GlobalConfigs['seo']
 ): SanityImageDataWithAlt => {
     switch (type) {
         case 'page':
