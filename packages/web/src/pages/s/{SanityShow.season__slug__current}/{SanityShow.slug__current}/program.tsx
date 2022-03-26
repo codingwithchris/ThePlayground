@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';

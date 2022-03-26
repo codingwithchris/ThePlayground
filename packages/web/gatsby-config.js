@@ -50,9 +50,8 @@ module.exports = {
         isDeployPreview,
         isProd,
     },
-    flags: {
-        PRESERVE_WEBPACK_CACHE: true,
-    },
+    // Really good ref article: https://jonsully.net/blog/trailing-slashes-and-gatsby/
+    trailingSlash: 'always',
     plugins: [
         /**
          * @link https://www.gatsbyjs.com/plugins/gatsby-plugin-typescript/
@@ -78,13 +77,6 @@ module.exports = {
                 mergeCachingHeaders: false, // boolean to turn off the default caching headers
             },
         },
-
-        /**
-         * Normalize our paths to not use trailing slashes
-         *
-         * @link https://www.gatsbyjs.com/plugins/gatsby-plugin-remove-trailing-slashes
-         */
-        `gatsby-plugin-remove-trailing-slashes`,
 
         /**
          * The official Sentry implementation for Gatsby

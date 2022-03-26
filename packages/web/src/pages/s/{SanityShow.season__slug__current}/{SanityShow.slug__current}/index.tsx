@@ -15,51 +15,52 @@ import {
 
 import { SingleSeasonProvider } from '@web/domains/performance/season';
 
-const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
-    ({ data, pageContext, location }) => {
-        const { sanityShow: show } = data;
+const SingleShowLanding: React.FC<
+    PageProps<PageData, ShowPageGatsbyContext>
+> = ({ data, pageContext, location }) => {
+    const { sanityShow: show } = data;
 
-        // the gatsby API context automatically populates these variables names. That's why they are ugly
-        const { season__slug__current: seasonSlug, slug__current: slug } =
-            pageContext;
+    // the gatsby API context automatically populates these variables names. That's why they are ugly
+    const { season__slug__current: seasonSlug, slug__current: slug } =
+        pageContext;
 
-        const url = useCurrentURL(location.pathname);
-        const metaImage = useGetMetaImage('show', show.seo.image);
+    const url = useCurrentURL(location.pathname);
+    const metaImage = useGetMetaImage('show', show.seo.image);
 
-        return (
-            <SingleSeasonProvider slug={seasonSlug}>
-                <SingleShowProvider slug={slug}>
-                    <PageBasicSEO
-                        url={url}
-                        title={show.seo.title}
-                        description={show.seo.description}
-                        image={metaImage}
-                        hideSEO={show.seo.hide}
+    return (
+        <SingleSeasonProvider slug={seasonSlug}>
+            <SingleShowProvider slug={slug}>
+                <PageBasicSEO
+                    url={url}
+                    title={show.seo.title}
+                    description={show.seo.description}
+                    image={metaImage}
+                    hideSEO={show.seo.hide}
+                />
+                {/* Do not output structured data if this page will be hidden from SEO */}
+                {show.seo.hide ? null : (
+                    <StructuredData
+                        pageSchemaData={{
+                            pageURL: url,
+                            title: show.seo.title,
+                            description: show.seo.description,
+                            image: metaImage,
+                            datePublished: show.seo.publishedAt,
+                            dateModified: show._updatedAt,
+                        }}
                     />
-                    {/* Do not output structured data if this page will be hidden from SEO */}
-                    {show.seo.hide ? null : (
-                        <StructuredData
-                            pageSchemaData={{
-                                pageURL: url,
-                                title: show.seo.title,
-                                description: show.seo.description,
-                                image: metaImage,
-                                datePublished: show.seo.publishedAt,
-                                dateModified: show._updatedAt,
-                            }}
-                        />
-                    )}
-                    <SingleShowView
-                        show={show}
-                        url={url}
-                        slug={slug}
-                        seasonSlug={seasonSlug}
-                    />
-                    <NewsSubscribeCTA />
-                </SingleShowProvider>
-            </SingleSeasonProvider>
-        );
-    };
+                )}
+                <SingleShowView
+                    show={show}
+                    url={url}
+                    slug={slug}
+                    seasonSlug={seasonSlug}
+                />
+                <NewsSubscribeCTA />
+            </SingleShowProvider>
+        </SingleSeasonProvider>
+    );
+};
 
 export const showQuery = graphql`
     query showData($id: String) {
