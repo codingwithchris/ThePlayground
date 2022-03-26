@@ -27,7 +27,7 @@ const isValidSlug = (slug: string) =>
 
 /**
  * Strip all leading and trailing slashes from slugs, then return the slug with
- * a single leading slash.
+ * a single leading and trailing slash.
  *
  * @link https://stackoverflow.com/questions/3840600/javascript-regular-expression-remove-first-and-last-slash
  *
@@ -43,7 +43,7 @@ export const normalizeSlug = (slug: string, validate = true) => {
     }
 
     const normalizedSlug = stripTrailingLeadingSlashes(slug);
-    return `/${normalizedSlug}`;
+    return `/${normalizedSlug}/`;
 };
 
 /**
