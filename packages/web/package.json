@@ -27,7 +27,7 @@
 		"gatsby-plugin-sharp": "^4.10.2 ",
 		"gatsby-plugin-sitemap": "^5.10.2",
 		"gatsby-plugin-styled-components": "^5.10.0",
-		"gatsby-plugin-typescript": "^3.5.0",
+		"gatsby-plugin-typescript": "^4.12.0-next.0",
 		"gatsby-source-filesystem": "^4.10.1",
 		"gatsby-source-sanity": "^7.3.2",
 		"gatsby-transformer-sharp": "^4.10.0",
@@ -54,7 +54,7 @@
 	},
 	"scripts": {
 		"clean": "gatsby clean",
-		"start": "export NODE_OPTIONS=--openssl-legacy-provider; gatsby develop",
+		"start": "gatsby develop",
 		"start:clean": "npm run clean && gatsby develop",
 		"netlify:start": "npm run clean && netlify dev",
 		"netlify:build": "netlify build --context deploy-preview",
