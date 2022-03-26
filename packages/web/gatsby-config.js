@@ -50,6 +50,7 @@ module.exports = {
         isDeployPreview,
         isProd,
     },
+    // Really good ref article: https://jonsully.net/blog/trailing-slashes-and-gatsby/
     trailingSlash: 'always',
     plugins: [
         /**
