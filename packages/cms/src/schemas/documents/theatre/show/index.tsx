@@ -142,6 +142,7 @@ export const objects = [
     showObjects.performance,
     showObjects.scriptAuthor,
     showObjects.selectors,
+    showObjects.soundtrack,
     showObjects.toggles,
     showObjects.trailer,
     showObjects.promo,
