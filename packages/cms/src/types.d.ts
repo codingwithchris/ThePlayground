@@ -21,12 +21,14 @@ export interface CreateDocumentReturn {
 interface PageDocument extends Document {
     maxSlugLength?: number;
     fieldsets?: unknown[];
+    groups?: Record<{ name: string; title: string }>[];
 }
 
 interface DocumentCollection extends Document {
     disableSEO?: boolean;
     initialValue?: unknown;
     fieldsets?: unknown[];
+    groups?: Record<{ name: string; title: string }>[];
     preview?: unknown;
     orderings?: unknown[];
 }

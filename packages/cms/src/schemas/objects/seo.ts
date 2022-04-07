@@ -8,10 +8,6 @@ export const pageSEO = {
     title: 'SEO Config',
     description: 'Optimize this document for search engines',
     type: 'object',
-    options: {
-        collapsible: true,
-        collapsed: true,
-    },
     fields: [
         {
             name: 'hide',
