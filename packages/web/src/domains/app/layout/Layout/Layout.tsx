@@ -21,7 +21,8 @@ const isProgram = (path: string) => {
         return false;
     }
 
-    const splitPathArray = path.split('/');
+    // Split into an array and remove empty strings resulting from trailing slashes
+    const splitPathArray = path.split('/').filter((item) => item !== '');
     const lastPathItem = splitPathArray[splitPathArray.length - 1];
 
     if (!lastPathItem) {
