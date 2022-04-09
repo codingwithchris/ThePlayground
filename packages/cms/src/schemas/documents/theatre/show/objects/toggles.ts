@@ -23,5 +23,15 @@ export const toggles = {
             type: 'boolean',
             validation: (Rule: any) => Rule.required(),
         },
+        {
+            title: 'Toggle » has Digital Program Page',
+            name: 'hasDigitalProgram',
+            description: 'Toggle on if this show has a digital program page',
+            type: 'boolean',
+            validation: (Rule: any) => Rule.required(),
+        },
     ],
+    initialValue: {
+        hasDigitalProgram: true,
+    },
 };
