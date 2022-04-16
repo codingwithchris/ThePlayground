@@ -3,6 +3,7 @@ import { ArrowLeft } from './defs/ArrowLeft';
 import { ArrowRight } from './defs/ArrowRight';
 import { ArrowUp } from './defs/ArrowUp';
 import { Brain } from './defs/Brain';
+import { Building } from './defs/Building';
 import { Calendar } from './defs/Calendar';
 import { Cancel } from './defs/Cancel';
 import { Checkmark } from './defs/Checkmark';
@@ -18,6 +19,7 @@ import { Envelope } from './defs/Envelope';
 import { Eye } from './defs/Eye';
 import { Facebook } from './defs/Facebook';
 import { FacebookAlt } from './defs/FacebookAlt';
+import { Fingerprint } from './defs/Fingerprint';
 import { Fire } from './defs/Fire';
 import { Github } from './defs/Github';
 import { Handshake } from './defs/Handshake';
@@ -31,12 +33,14 @@ import { MoneyComment } from './defs/MoneyComment';
 import { MapMarker } from './defs/MapMarker';
 import { NewTab } from './defs/NewTab';
 import { Next } from './defs/Next';
+import { Person } from './defs/Person';
 import { Previous } from './defs/Previous';
 import { Radiation } from './defs/Radiation';
 import { Rocket } from './defs/Rocket';
 import { Share } from './defs/Share';
 import { Spotify } from './defs/Spotify';
 import { Ticket } from './defs/Ticket';
+import { TheatreMasks } from './defs/TheatreMasks';
 import { TwitterAlt } from './defs/TwitterAlt';
 import { Warning } from './defs/Warning';
 import { Youtube } from './defs/Youtube';
@@ -47,6 +51,7 @@ export const availableIcons = {
     ArrowRight,
     ArrowUp,
     Brain,
+    Building,
     Calendar,
     Cancel,
     Checkmark,
@@ -62,6 +67,7 @@ export const availableIcons = {
     Eye,
     Facebook,
     FacebookAlt,
+    Fingerprint,
     Fire,
     Github,
     Handshake,
@@ -76,11 +82,13 @@ export const availableIcons = {
     NewTab,
     Next,
     Previous,
+    Person,
     Rocket,
     Radiation,
     Share,
     Spotify,
     Ticket,
+    TheatreMasks,
     TwitterAlt,
     Warning,
     Youtube,

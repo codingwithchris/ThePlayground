@@ -1,13 +1,13 @@
 import { GatsbyPageContext, SanityDocument } from '@web/shared/types';
-import { SeasonReference } from '@web/domains/performance/season';
 import { Series } from '@web/domains/performance/series';
 import { Artist, ARTIST_GROUP } from '@web/domains/performance/artist';
 
 import {
     ShowAuthor,
-    ShowPerformance,
     ShowPromo,
     ShowDetail,
+    ShowToggles,
+    ShowSponsors,
 } from '../../types';
 
 import { SHOW_RATING } from '../../constants';
@@ -25,6 +25,7 @@ export interface ArtistBio {
 
 export interface DigitalProgramPageProps extends SanityDocument {
     author: ShowAuthor;
+    toggles: ShowToggles;
     series: Series;
     runtimeHours: number;
     runtimeMinutes: number;
@@ -33,6 +34,8 @@ export interface DigitalProgramPageProps extends SanityDocument {
     triggerWarning?: string;
     contentAdvisory?: ShowDetail;
     _rawDirectorsNote: any[];
+    promo: ShowPromo;
+    sponsors: ShowSponsors;
     artists: {
         actors: ArtistBio[];
         crewMembers: ArtistBio[];

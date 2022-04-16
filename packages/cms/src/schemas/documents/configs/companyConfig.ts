@@ -85,11 +85,25 @@ export const schema: ConfigDocument = {
             name: 'emailTicketing',
             title: 'Email » Ticketing',
             type: 'string',
+            validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'emailAuditions',
             title: 'Email » Auditions',
             type: 'string',
+            validation: (Rule: any) => Rule.required(),
+        },
+        {
+            name: 'emailSponsorship',
+            title: 'Email » Sponsorship',
+            type: 'string',
+            validation: (Rule: any) => Rule.required(),
+        },
+        {
+            name: 'emailClasses',
+            title: 'Email » Classes',
+            type: 'string',
+            validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'city',
@@ -141,6 +155,12 @@ export const schema: ConfigDocument = {
                 Rule.required().uri({
                     scheme: ['https'],
                 }),
+        },
+        {
+            name: 'instagramUsername',
+            title: 'Instagram Username',
+            type: 'string',
+            validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'youtube',

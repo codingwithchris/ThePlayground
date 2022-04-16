@@ -1,8 +1,13 @@
-export const sponsorReference = {
-    name: 'sponsorReference',
+export const sponsorOfficialReference = {
+    name: 'sponsorOfficialReference',
     title: 'Sponsor Reference',
     type: 'object',
     fields: [
+        {
+            type: 'reference',
+            name: 'sponsor',
+            to: { type: 'sponsor' },
+        },
         {
             name: 'level',
             type: 'string',
@@ -12,26 +17,6 @@ export const sponsorReference = {
                     { title: '#BeBold', value: 'beBold' },
                     { title: '#BeGutsy', value: 'beGutsy' },
                     { title: '#BeAudacious', value: 'beAudacious' },
-                ],
-            },
-        },
-        {
-            name: 'name',
-            title: 'Name',
-            description:
-                'The name of the person or organization sponsoring the show.',
-            type: 'string',
-        },
-        {
-            name: 'type',
-            title: 'Type',
-            type: 'string',
-            options: {
-                layout: 'radio',
-                direction: 'horizontal',
-                list: [
-                    { title: 'Person', value: 'person' },
-                    { title: 'Company', value: 'company' },
                 ],
             },
         },
@@ -48,59 +33,45 @@ export const sponsorReference = {
                 ],
             },
         },
-        {
-            name: 'link',
-            title: 'Link',
-            type: 'url',
-        },
     ],
     preview: {
         select: {
-            name: 'name',
+            name: 'sponsor.name',
             level: 'level',
+            image: 'sponsor.image',
         },
-        prepare({ name, level }: any) {
+        prepare({ name, level, image }: any) {
             return {
                 title: name,
                 subtitle: level,
+                media: image,
             };
         },
     },
 };
 
-export const sponsorHighlight = {
-    name: 'sponsorHighlight',
+export const sponsorHighlightReference = {
+    name: 'sponsorHighlightReference',
     title: 'Sponsor Highlight',
     type: 'object',
     fields: [
         {
-            name: 'name',
-            title: 'Name',
+            type: 'reference',
+            name: 'sponsor',
+            to: { type: 'sponsor' },
+        },
+        {
+            name: 'content',
+            title: 'Content',
             description:
-                'The name of the person or organization sponsoring the show.',
-            type: 'string',
-        },
-        {
-            name: 'image',
-            type: 'imageWithAlt',
-            options: {
-                accept: ['.png', '.svg'],
-            },
-        },
-        {
-            name: 'description',
-            title: 'Description',
+                'A unique contribution this sponsor made (why are they being highlighted?)',
             type: 'contentBlock',
-        },
-        {
-            name: 'link',
-            title: 'Link',
-            type: 'url',
         },
     ],
     preview: {
         select: {
-            name: 'name',
+            name: 'sponsor.name',
+            image: 'sponsor.image',
         },
         prepare({ name, image }: any) {
             return {
@@ -109,4 +80,40 @@ export const sponsorHighlight = {
             };
         },
     },
+};
+
+export const showSponsors = {
+    name: 'showSponsors',
+    title: 'Sponsors',
+    description: 'Sponsors and supporters of this show.',
+    type: 'object',
+    options: {
+        collapsible: true,
+        collapsed: true,
+    },
+    fields: [
+        {
+            name: 'official',
+            title: 'Official Sponsors',
+            description:
+                'Sponsors who committed to a specific level of sponsorship',
+            type: 'array',
+            of: [{ type: 'sponsorOfficialReference' }],
+        },
+        {
+            name: 'highlight',
+            title: 'Sponsor Highlight',
+            description:
+                'Special callouts for sponsors we need to call extra attention to',
+            type: 'array',
+            of: [{ type: 'sponsorHighlightReference' }],
+        },
+        {
+            name: 'specialThanks',
+            title: 'Special Thanks',
+            description:
+                'Special thanks for donations or assistance that don\'t fall into typical "sponsorship" levels or highlights.',
+            type: 'contentBlock',
+        },
+    ],
 };

@@ -6,6 +6,7 @@ import { schema as seasonSchema } from './season';
 import { schema as organizationSchema } from './organization';
 import { schema as seriesSchema } from './series';
 import { schema as ticketProviderSchema } from './ticketProvider';
+import { schema as sponsorSchema } from './sponsor';
 
 export const theatreDocuments = [
     artistSchema,
@@ -15,6 +16,7 @@ export const theatreDocuments = [
     seriesSchema,
     showSchema,
     seasonSchema,
+    sponsorSchema,
 ];
 
 export const theatreObjects = [...showObjects];

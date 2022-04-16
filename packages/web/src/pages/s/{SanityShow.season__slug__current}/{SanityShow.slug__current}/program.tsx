@@ -39,14 +39,19 @@ const SingleShowDigitalProgram: React.FC<
                     title={metaTitle}
                     description={metaDescription}
                     image={metaImage}
-                    hideSEO
+                    hideSEO={!show.toggles.hasDigitalProgram}
                 />
-                <DigitalProgramView
-                    show={show}
-                    url={url}
-                    slug={slug}
-                    seasonSlug={seasonSlug}
-                />
+                {show.toggles.hasDigitalProgram ? (
+                    <DigitalProgramView
+                        show={show}
+                        url={url}
+                        slug={slug}
+                        seasonSlug={seasonSlug}
+                    />
+                ) : (
+                    <>no program available</>
+                )}
+
                 <NewsSubscribeCTA />
             </SingleShowProvider>
         </SingleSeasonProvider>
@@ -59,6 +64,10 @@ export const showQuery = graphql`
             title
             author {
                 name
+            }
+
+            toggles {
+                hasDigitalProgram
             }
 
             _rawDirectorsNote(resolveReferences: { maxDepth: 10 })
@@ -80,6 +89,14 @@ export const showQuery = graphql`
                 title
                 identifier
                 description
+            }
+
+            ## Get Promo Info
+            promo {
+                soundtrack {
+                    provider
+                    link
+                }
             }
 
             # Get all artist info for the show
@@ -203,6 +220,47 @@ export const showQuery = graphql`
                         }
                     }
                 }
+            }
+
+            ## Sponsors
+            sponsors {
+                official {
+                    sponsor {
+                        name
+                        link
+                        type
+                        image {
+                            alt
+                            asset {
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    fit: FILLMAX
+                                    width: 50
+                                )
+                            }
+                        }
+                    }
+                    level
+                    scope
+                }
+                highlight {
+                    sponsor {
+                        name
+                        link
+                        image {
+                            alt
+                            asset {
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    fit: FILLMAX
+                                    width: 300
+                                )
+                            }
+                        }
+                    }
+                    _rawContent(resolveReferences: { maxDepth: 10 })
+                }
+                _rawSpecialThanks(resolveReferences: { maxDepth: 10 })
             }
 
             ## SEO Settings

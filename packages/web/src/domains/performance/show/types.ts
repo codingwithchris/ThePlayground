@@ -2,6 +2,11 @@ import { SanityImageDataWithAlt, SanityImageData } from '@web/shared/types';
 import { SeasonReference } from '@web/domains/performance/season';
 import { Series } from '@web/domains/performance/series';
 import {
+    Sponsor,
+    SPONSORSHIP_LEVEL,
+    SPONSORSHIP_SCOPE,
+} from '@web/domains/performance/sponsor';
+import {
     SHOW_STATUS,
     SHOW_RATING,
     PERFORMANCE_TICKET_TYPE,
@@ -56,6 +61,33 @@ export interface ShowPromo {
         };
         creditRole?: string;
     };
+    soundtrack?: {
+        provider: 'spotify';
+        link: string;
+    };
+}
+
+export interface ShowToggles {
+    hasDigitalProgram: boolean;
+    isCollaboration: boolean;
+    isHiddenFromWebsite: boolean;
+}
+
+export interface ShowSponsorOfficial {
+    sponsor: Sponsor;
+    scope: SPONSORSHIP_SCOPE;
+    level: SPONSORSHIP_LEVEL;
+}
+
+export interface ShowSponsorHighlight {
+    sponsor: Sponsor;
+    _rawContent: any[];
+}
+
+export interface ShowSponsors {
+    official?: ShowSponsorOfficial[];
+    highlight?: ShowSponsorHighlight[];
+    _rawSpecialThanks: any[];
 }
 
 /**
@@ -80,6 +112,7 @@ export interface Show {
     heroImage?: SanityImageData;
     generalTicketLink?: string;
     healthNotice?: ShowNotice;
+    sponsors: ShowSponsors;
     // In some instances, we will want the full path to the show to be available so we can easily allow navigation directly to it
     path?: string;
     status?: SHOW_STATUS;

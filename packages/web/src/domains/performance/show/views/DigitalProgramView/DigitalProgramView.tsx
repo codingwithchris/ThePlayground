@@ -6,22 +6,12 @@ import {
     AlsoThisSeason,
     DirectorNote,
     Header,
-    InstagramCallout,
-    ShareCallout,
+    SupportUsCTA,
     SponsorsHighlight,
+    SponsorsShowcase,
     SpotifyCallout,
     TeamBioGallery,
 } from './components';
-
-// Program Nav
-// Title and welcome message
-// Directors, actors, designers, crew
-// instagram hashtag
-// tell your friends
-// other shows this season
-// support us
-// sound track
-// trailer
 
 export const DigitalProgramView = ({
     show,
@@ -32,11 +22,7 @@ export const DigitalProgramView = ({
     return (
         <>
             {show.artists?.directors?.length > 0 && (
-                <Header
-                    title={show.title}
-                    directors={show.artists.directors}
-                    author={show.author}
-                />
+                <Header title={show.title} author={show.author} />
             )}
             {show._rawDirectorsNote?.length > 0 && (
                 <>
@@ -53,8 +39,17 @@ export const DigitalProgramView = ({
                     <Divider color="neutralDark" />
                 </>
             )}
-            <SpotifyCallout />
+            {show.promo.soundtrack?.provider === 'spotify' &&
+                show.promo.soundtrack.link && (
+                    <SpotifyCallout playlistLink={show.promo.soundtrack.link} />
+                )}
             <SponsorsHighlight />
+            {(show.sponsors?.official ||
+                show.sponsors?.highlight ||
+                show.sponsors?._rawSpecialThanks) && (
+                <SponsorsShowcase sponsors={show.sponsors} />
+            )}
+            <SupportUsCTA />
             <Divider color="paper" />
             <AlsoThisSeason />
         </>

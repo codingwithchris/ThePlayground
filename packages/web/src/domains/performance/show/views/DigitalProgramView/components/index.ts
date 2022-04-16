@@ -4,5 +4,7 @@ export * from './Header/Header';
 export * from './InstagramCallout/InstagramCallout';
 export * from './ShareCallout/ShareCallout';
 export * from './SpotifyCallout/SpotifyCallout';
+export * from './SponsorsShowcase/SponsorsShowcase';
 export * from './SponsorsHighlight/SponsorsHighlight';
+export * from './SupportUsCTA/SupportUsCTA';
 export * from './TeamBioGallery/TeamBioGallery';

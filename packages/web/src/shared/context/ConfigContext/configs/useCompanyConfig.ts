@@ -11,12 +11,15 @@ export const useCompanyConfig = (): CompanyConfig => {
                 city
                 ein
                 emailAuditions
+                emailClasses
                 emailGeneral
+                emailSponsorship
                 emailTicketing
                 facebook
                 foundingDate
                 github
                 instagram
+                instagramUsername
                 legacyLegalName
                 legacyName
                 legacyWebsite
@@ -58,10 +61,13 @@ export interface CompanyConfig {
     emailAuditions: string;
     emailGeneral: string;
     emailTicketing: string;
+    emailSponsorship: string;
+    emailClasses: string;
     facebook: string;
     foundingDate: string;
     github: string;
     instagram: string;
+    instagramUsername: string;
     legacyLegalName: string;
     legacyName: string;
     legacyWebsite: string;
