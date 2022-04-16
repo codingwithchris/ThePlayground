@@ -15,7 +15,7 @@ import { performances } from './fields/performance';
 import promo from './fields/promo';
 import season from './fields/season';
 import selectors from './fields/selectors';
-import sponsors from './fields/sponsors';
+import { sponsors } from './fields/sponsors';
 import toggles from './fields/toggles';
 import series from './fields/series';
 
@@ -84,6 +84,7 @@ export const schema: DocumentCollection = {
         collaboration,
         artists,
         promo,
+        sponsors,
         performances,
     ],
     initialValue: {
@@ -142,6 +143,8 @@ export const objects = [
     showObjects.performance,
     showObjects.scriptAuthor,
     showObjects.selectors,
+    showObjects.sponsorReference,
+    showObjects.sponsorHighlight,
     showObjects.soundtrack,
     showObjects.toggles,
     showObjects.trailer,

@@ -9,3 +9,4 @@ export { scriptAuthor } from './scriptAuthor';
 export { tickets } from './tickets';
 export { toggles } from './toggles';
 export { selectors } from './selectors';
+export { sponsorHighlight, sponsorReference } from './sponsors';

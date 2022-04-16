@@ -1,44 +1,7 @@
-export const sponsorReference = {
-    name: 'sponsorReference',
-    title: 'Sponsor Reference',
-    type: 'object',
-    fields: [
-        {
-            name: 'level',
-            type: 'string',
-            options: {
-                list: [
-                    { title: '#BeGritty', value: 'beGritty' },
-                    { title: '#BeBold', value: 'beBold' },
-                    { title: '#BeGutsy', value: 'beGutsy' },
-                    { title: '#BeAudacious', value: 'beAudacious' },
-                ],
-            },
-        },
-        {
-            type: 'reference',
-            name: 'sponsor',
-            to: { type: 'sponsor' },
-        },
-    ],
-    preview: {
-        select: {
-            name: 'sponsor.name',
-            level: 'sponsor.level',
-        },
-        prepare({ name, level }: any) {
-            return {
-                title: name,
-                subtitle: level,
-            };
-        },
-    },
-};
-
 export const sponsors = {
     name: 'showSponsors',
     title: 'Sponsors',
-    description: '',
+    description: 'Sponsors and supporters of this show.',
     type: 'object',
     options: {
         collapsible: true,
@@ -48,8 +11,25 @@ export const sponsors = {
         {
             name: 'sponsors',
             title: 'Sponsors',
+            description:
+                'Sponsors who committed to a specific level of sponsorship',
             type: 'array',
             of: [{ type: 'sponsorReference' }],
+        },
+        {
+            name: 'highlights',
+            title: 'Sponsor Highlights',
+            description:
+                'Special sponsor callouts for sponsors we need to call extra attention to',
+            type: 'array',
+            of: [{ type: 'sponsorHighlight' }],
+        },
+        {
+            name: 'specialThanks',
+            title: 'Special Thanks',
+            description:
+                'Special thanks for donations or assistance that don\'t fall into typical "sponsorship" levels.',
+            type: 'contentBlock',
         },
     ],
 };
