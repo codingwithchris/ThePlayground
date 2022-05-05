@@ -29,6 +29,13 @@ export const redirects: GatsbyNetlifyRedirect[] = [
         isPermanent: true,
     },
 
+    {
+        fromPath: '/tickets',
+        toPath: 'https://www.daytonlive.org/events/friend-art/',
+        statusCode: 307,
+        isPermanent: false,
+    },
+
     // Domain-level redirects
     // ...blogRedirects,
     // ...seasonRedirects,
