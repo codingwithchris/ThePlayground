@@ -169,11 +169,14 @@ export const ArtistHighlight = ({
                     >
                         <CardContent className="content" verticalSpacing="m">
                             <div className="artist-media">
-                                <BrandImage
-                                    className="artist-image"
-                                    image={artist.headshot.asset}
-                                    alt={artist.headshot.alt}
-                                />
+                                {artist.headshot?.asset &&
+                                    artist.headshot?.alt && (
+                                        <BrandImage
+                                            className="artist-image"
+                                            image={artist.headshot.asset}
+                                            alt={artist.headshot.alt}
+                                        />
+                                    )}
                             </div>
                             <div className="artist-content">
                                 <div className="name-group">
@@ -194,11 +197,13 @@ export const ArtistHighlight = ({
                 ) : (
                     <CardContent className="content" verticalSpacing="m">
                         <div className="artist-media">
-                            <BrandImage
-                                className="artist-image"
-                                image={artist.headshot.asset}
-                                alt={artist.headshot.alt}
-                            />
+                            {artist.headshot?.asset && artist.headshot?.alt && (
+                                <BrandImage
+                                    className="artist-image"
+                                    image={artist.headshot.asset}
+                                    alt={artist.headshot.alt}
+                                />
+                            )}
                         </div>
                         <div className="artist-content">
                             <div className="name-group">
@@ -231,10 +236,12 @@ export const ArtistHighlight = ({
                 className="modal"
             >
                 <div className="artist-header">
-                    <BrandImage
-                        image={artist.headshot.asset}
-                        alt={artist.headshot.alt}
-                    />
+                    {artist.headshot?.asset && artist.headshot?.alt && (
+                        <BrandImage
+                            image={artist.headshot.asset}
+                            alt={artist.headshot.alt}
+                        />
+                    )}
                     <div className="artist-info">
                         <BodyText
                             size="l"
