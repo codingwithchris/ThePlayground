@@ -7,7 +7,6 @@ import {
     DirectorNote,
     Header,
     SupportUsCTA,
-    SponsorsHighlight,
     SponsorsShowcase,
     SpotifyCallout,
     TeamBioGallery,
@@ -43,7 +42,6 @@ export const DigitalProgramView = ({
                 show.promo.soundtrack.link && (
                     <SpotifyCallout playlistLink={show.promo.soundtrack.link} />
                 )}
-            <SponsorsHighlight />
             {(show.sponsors?.official ||
                 show.sponsors?.highlight ||
                 show.sponsors?._rawSpecialThanks) && (
