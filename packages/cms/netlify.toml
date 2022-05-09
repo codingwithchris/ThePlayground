@@ -6,7 +6,7 @@
     # This is where we will look for package.json/.nvmrc/etc.
     command = "npm run build"
     # Ignore the build if there were no changes between the current commit and the previous commit
-    ignore = "git diff --quiet HEAD^ HEAD ./"
+    # ignore = "git diff --quiet HEAD^ HEAD ./"
 
 # Production context: all deploys from the Production branch set in your site's
 # deploy contexts will inherit these settings.
