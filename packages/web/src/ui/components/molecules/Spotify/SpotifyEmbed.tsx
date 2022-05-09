@@ -6,7 +6,7 @@ export const SpotifyEmbed = ({
     className,
 }: SpotifyEmbedProps) => {
     const linkParts = playlistLink.split('/').filter((part) => part !== '');
-    const playlistID = linkParts.at(-1);
+    const playlistID = linkParts[linkParts.length - 1];
 
     return (
         <styled.SpotifyEmbed className={className}>

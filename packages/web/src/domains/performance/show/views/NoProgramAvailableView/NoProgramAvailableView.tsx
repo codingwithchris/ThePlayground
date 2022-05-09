@@ -29,7 +29,7 @@ export const NoProgramAvailableView = () => {
     // Get the path of te "parent" show page, which is up one level from the program page
     const { pathname } = useLocation();
     const parts = pathname.split('/').filter((part) => part !== '');
-    const showPageSlug = parts.at(-2) || '';
+    const showPageSlug = parts[parts.length - 2] || '';
 
     const { get } = useGlobalPerformanceContext();
     const { path, title } = get.show(showPageSlug) || {};

@@ -34,7 +34,7 @@ const StyledSponsorHighlight = styled(Card)`
         border-top-left-radius: ${borders.modalRadius};
         border-top-right-radius: ${borders.modalRadius};
         padding: ${spacing.component.s};
-        flex: 1 0 auto;
+        flex: 200px 0 auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,6 +42,7 @@ const StyledSponsorHighlight = styled(Card)`
         img {
             border-top-left-radius: ${borders.modalRadius};
             border-top-right-radius: ${borders.modalRadius};
+            object-fit: contain !important;
             height: 150px;
             width: 100%;
         }
