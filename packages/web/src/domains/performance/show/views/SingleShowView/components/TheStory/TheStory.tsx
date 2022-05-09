@@ -33,7 +33,10 @@ export const TheStory = ({ rawContent }: TheStoryProps) => {
                 >
                     The Story
                 </GrittyHeading>
-                <PortableText content={rawContent} />
+                <PortableText
+                    content={rawContent}
+                    config={{ block: { bodyText: { size: 'm' } } }}
+                />
             </Container>
         </StyledStorySection>
     );

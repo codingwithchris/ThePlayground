@@ -40,10 +40,10 @@ export const NeighboringSeasons = () => {
                                 as="h3"
                                 weight="bold"
                             >
-                                No more previous seasons
+                                Welcome to the beginning
                             </BodyText>
                             <BodyText color="medium" size="xs">
-                                This was our first one :)
+                                This is where it all started :)
                             </BodyText>
                         </div>
                     )}

@@ -6,22 +6,13 @@ import {
     AlsoThisSeason,
     DirectorNote,
     Header,
-    InstagramCallout,
-    ShareCallout,
-    SponsorsHighlight,
+    LandAcknowledgement,
+    LicenseAgreementText,
+    SponsorsShowcase,
     SpotifyCallout,
+    SupportUsCTA,
     TeamBioGallery,
 } from './components';
-
-// Program Nav
-// Title and welcome message
-// Directors, actors, designers, crew
-// instagram hashtag
-// tell your friends
-// other shows this season
-// support us
-// sound track
-// trailer
 
 export const DigitalProgramView = ({
     show,
@@ -32,15 +23,17 @@ export const DigitalProgramView = ({
     return (
         <>
             {show.artists?.directors?.length > 0 && (
-                <Header
-                    title={show.title}
-                    directors={show.artists.directors}
-                    author={show.author}
-                />
+                <Header title={show.title} author={show.author} />
             )}
             {show._rawDirectorsNote?.length > 0 && (
                 <>
                     <DirectorNote content={show._rawDirectorsNote} />
+                    <Divider color="paper" />
+                </>
+            )}
+            {show.location.indigenousLandAcknowledgement && (
+                <>
+                    <LandAcknowledgement {...show.location} />
                     <Divider color="paper" />
                 </>
             )}
@@ -53,9 +46,26 @@ export const DigitalProgramView = ({
                     <Divider color="neutralDark" />
                 </>
             )}
-            <SpotifyCallout />
-            <SponsorsHighlight />
+            {show.promo.soundtrack?.provider === 'spotify' &&
+                show.promo.soundtrack.link && (
+                    <SpotifyCallout playlistLink={show.promo.soundtrack.link} />
+                )}
+            {(show.sponsors?.official ||
+                show.sponsors?.highlight ||
+                show.sponsors?._rawSpecialThanks) && (
+                <>
+                    <SponsorsShowcase sponsors={show.sponsors} />
+                    <Divider color="paper" />
+                </>
+            )}
+            <SupportUsCTA />
             <Divider color="paper" />
+            {show.license && show.license.length > 0 && (
+                <>
+                    <LicenseAgreementText text={show.license} />
+                    <Divider color="paper" />
+                </>
+            )}
             <AlsoThisSeason />
         </>
     );

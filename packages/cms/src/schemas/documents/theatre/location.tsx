@@ -38,6 +38,12 @@ export const schema: DocumentCollection = {
             type: 'geopoint',
         },
         {
+            name: 'indigenousLandAcknowledgement',
+            title: 'Indigenous Land Acknowledgement',
+            type: 'text',
+            rows: 4,
+        },
+        {
             name: 'directions',
             title: 'Directions',
             type: 'array',

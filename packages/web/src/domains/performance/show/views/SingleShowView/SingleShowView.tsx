@@ -11,14 +11,18 @@ import {
 } from '../../__lib__';
 
 import {
-    Hero,
-    HealthNotice,
     ActionBar,
+    HealthNotice,
+    Hero,
+    Information,
+    NeighboringShows,
     Performances,
     PerformanceStats,
+    Program,
+    TheArchives,
+    TheSound,
     TheStory,
     TheTrailer,
-    Information,
 } from './components';
 
 export const SingleShowView = ({
@@ -88,6 +92,24 @@ export const SingleShowView = ({
                     creditRole={show.promo.trailer.creditRole}
                 />
             )}
+            {show.promo?.soundtrack?.link && (
+                <>
+                    <Divider color="paper" />
+                    <TheSound
+                        playlistLink={show.promo.soundtrack.link}
+                        credit={show.promo.soundtrack.credit}
+                    />
+                </>
+            )}
+            {show.toggles.hasDigitalProgram && (
+                <>
+                    <Divider color="paperLight" />
+                    <Program />
+                </>
+            )}
+            <Divider color="paper" />
+            <NeighboringShows />
+            <TheArchives />
         </>
     );
 };

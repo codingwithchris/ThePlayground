@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, breakpoints } from '@web/ui/tokens';
+
+import { useConfigContext } from '@web/shared/context';
+
+import { spacing } from '@web/ui/tokens';
 import {
     Avatar,
-    Divider,
     Card,
     CardHeader,
     CardContent,
@@ -20,7 +22,10 @@ const StyledSpotifyCallout = styled(Section)`
     padding: ${spacing.layout.m} 0;
 `;
 
-export const SpotifyCallout = () => {
+export const SpotifyCallout: React.FC<SpotifyCalloutPros> = ({
+    playlistLink,
+}) => {
+    const { company } = useConfigContext();
     return (
         <StyledSpotifyCallout bgColor="paperDark">
             <Container maxWidth="xs">
@@ -47,14 +52,14 @@ export const SpotifyCallout = () => {
                     </CardContent>
                     <CardActions>
                         <FillButton
-                            to="https://open.spotify.com/playlist/0XO6XzjrklC2k5eMSoqs3g?si=ff783a52d73a409a"
+                            to={playlistLink}
                             size="xs"
                             color="tertiary"
                         >
                             Official Playlist
                         </FillButton>
                         <OutlineButton
-                            to="https://open.spotify.com/user/theplaygroundtheatre?si=a97c4fa039b34ceb"
+                            to={company.spotify}
                             size="xs"
                             color="tertiary"
                         >
@@ -66,3 +71,7 @@ export const SpotifyCallout = () => {
         </StyledSpotifyCallout>
     );
 };
+
+interface SpotifyCalloutPros {
+    playlistLink: string;
+}

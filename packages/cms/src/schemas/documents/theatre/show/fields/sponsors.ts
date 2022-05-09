@@ -1,1 +1,5 @@
-export default {};
+export default {
+    name: 'sponsors',
+    title: 'Sponsors',
+    type: 'showSponsors',
+};

@@ -3,26 +3,18 @@ import styled from 'styled-components';
 import { useOverlay } from '@web/shared/hooks';
 import { animation, borders, breakpoints, spacing } from '@web/ui/tokens';
 import { composeArtistName } from '@web/domains/performance/artist';
-import { Link } from '@web/domains/app/routing';
 import {
     BrandImage,
+    BrandImageProps,
     Card,
     CardContent,
     Divider,
-    CardActionArea,
-    CardActions,
     BodyText,
     Icon,
     Modal,
     CloseOverlay,
-    GhostButton,
-    OutlineButton,
-    TextButton,
     PortableText,
-    Tag,
-    IconButton,
 } from '@web/ui/core';
-
 import { ArtistBio } from '../../../types';
 
 const StyledArtistHighlight = styled(Card)`
@@ -44,6 +36,9 @@ const StyledArtistHighlight = styled(Card)`
     .artist-image {
         height: 80px;
         width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
             border: 2px solid ${({ theme }) => theme.surfaces.accent};
@@ -133,6 +128,18 @@ const StyledArtistModal = styled(Modal)`
     }
 `;
 
+const ArtistThumbnail = ({ image, alt }: BrandImageProps) => {
+    return image && alt ? (
+        <div className="artist-image">
+            <BrandImage image={image} alt={alt} />
+        </div>
+    ) : (
+        <div className="artist-image">
+            <Icon name="TheatreMasks" size="l" color="highlightExtra" />
+        </div>
+    );
+};
+
 // INSPO: Instagram
 export const ArtistHighlight = ({
     artistBio,
@@ -169,14 +176,10 @@ export const ArtistHighlight = ({
                     >
                         <CardContent className="content" verticalSpacing="m">
                             <div className="artist-media">
-                                {artist.headshot?.asset &&
-                                    artist.headshot?.alt && (
-                                        <BrandImage
-                                            className="artist-image"
-                                            image={artist.headshot.asset}
-                                            alt={artist.headshot.alt}
-                                        />
-                                    )}
+                                <ArtistThumbnail
+                                    image={artist.headshot?.asset}
+                                    alt={artist.headshot?.alt}
+                                />
                             </div>
                             <div className="artist-content">
                                 <div className="name-group">
@@ -197,13 +200,10 @@ export const ArtistHighlight = ({
                 ) : (
                     <CardContent className="content" verticalSpacing="m">
                         <div className="artist-media">
-                            {artist.headshot?.asset && artist.headshot?.alt && (
-                                <BrandImage
-                                    className="artist-image"
-                                    image={artist.headshot.asset}
-                                    alt={artist.headshot.alt}
-                                />
-                            )}
+                            <ArtistThumbnail
+                                image={artist.headshot?.asset}
+                                alt={artist.headshot?.alt}
+                            />
                         </div>
                         <div className="artist-content">
                             <div className="name-group">
@@ -236,10 +236,10 @@ export const ArtistHighlight = ({
                 className="modal"
             >
                 <div className="artist-header">
-                    {artist.headshot?.asset && artist.headshot?.alt && (
+                    {artist.headshot && (
                         <BrandImage
-                            image={artist.headshot.asset}
-                            alt={artist.headshot.alt}
+                            image={artist.headshot?.asset}
+                            alt={artist.headshot?.alt}
                         />
                     )}
                     <div className="artist-info">

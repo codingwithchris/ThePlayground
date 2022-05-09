@@ -1,18 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, breakpoints } from '@web/ui/tokens';
-import {
-    BodyText,
-    Icon,
-    Container,
-    Section,
-    Logo,
-    TextButton,
-    Heading,
-} from '@web/ui/core';
-import { composeArtistName } from '@web/domains/performance/artist';
+import { spacing } from '@web/ui/tokens';
+import { BodyText, Container, Section, Logo } from '@web/ui/core';
 import { ShowAuthor } from '../../../../types';
-import { ArtistBio } from '../../types';
 
 export const StyledHeader = styled(Section)`
     padding: ${spacing.layout.s} 0 ${spacing.layout.xs} 0;
@@ -31,20 +21,7 @@ export const StyledHeader = styled(Section)`
     }
 `;
 
-export const Header = ({ title, author, directors }: HeaderProps) => {
-    const preparedDirectorData = directors.map(({ artist, role }) => ({
-        role,
-        name: composeArtistName({
-            first: artist.firstName,
-            middle: artist.middleName,
-            last: artist.lastName,
-        }),
-    }));
-
-    const directedBy = preparedDirectorData
-        .map((director) => `${director.name}`)
-        .join(' + ');
-
+export const Header = ({ title, author }: HeaderProps) => {
     return (
         <StyledHeader>
             <Container>
@@ -69,11 +46,6 @@ export const Header = ({ title, author, directors }: HeaderProps) => {
                         by {author.name}
                     </BodyText>
                 </div>
-                {/* <div className="directors">
-                    <BodyText size="s" color="light">
-                        Directed by: {directedBy}
-                    </BodyText>
-                </div> */}
             </Container>
         </StyledHeader>
     );
@@ -82,5 +54,4 @@ export const Header = ({ title, author, directors }: HeaderProps) => {
 interface HeaderProps {
     title: string;
     author: ShowAuthor;
-    directors: ArtistBio[];
 }

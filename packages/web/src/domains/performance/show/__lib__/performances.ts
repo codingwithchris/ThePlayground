@@ -176,6 +176,11 @@ export const getRemainingPerformanceCount = (
 /**
  * The show has performances remaining
  */
-export const hasRemainingPerformances = (performances: ShowPerformance[]) => {
+export const hasRemainingPerformances = (
+    performances: ShowPerformance[] = []
+) => {
+    if (performances.length === 0) {
+        return false;
+    }
     return getRemainingPerformanceCount(performances) > 0;
 };

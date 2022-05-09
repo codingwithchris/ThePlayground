@@ -81,6 +81,7 @@ export default () =>
                             S.documentTypeListItem('artist'),
                             S.documentTypeListItem('location'),
                             S.documentTypeListItem('ticketProvider'),
+                            S.documentTypeListItem('sponsor'),
                             S.documentTypeListItem('organization'),
                         ])
                 ),

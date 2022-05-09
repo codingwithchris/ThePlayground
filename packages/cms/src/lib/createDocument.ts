@@ -49,6 +49,7 @@ export const createPageDocument: CreatePageDocument = ({
     disabledActions = [],
     maxSlugLength = 50,
     fieldsets,
+    groups,
     fields,
 }) => {
     const schema = {
@@ -58,6 +59,9 @@ export const createPageDocument: CreatePageDocument = ({
         type: 'document',
         __experimental_actions: getDocumentActions(disabledActions),
         fieldsets: fieldsets ? [...fieldsets] : [],
+        groups: groups
+            ? [...groups, { name: 'seo', title: 'SEO' }]
+            : [{ name: 'seo', title: 'SEO' }],
         fields: [
             {
                 name: 'title',
@@ -84,6 +88,7 @@ export const createPageDocument: CreatePageDocument = ({
                 name: 'seo',
                 title: 'SEO',
                 type: 'pageSEO',
+                group: 'seo',
             },
         ],
         seo: {
@@ -123,6 +128,7 @@ export const createDocumentCollection: CreateDocumentCollection = ({
     disabledActions = [],
     disableSEO = false,
     fieldsets,
+    groups,
     fields,
     initialValue,
     preview,
@@ -135,6 +141,9 @@ export const createDocumentCollection: CreateDocumentCollection = ({
         type: 'document',
         __experimental_actions: getDocumentActions(disabledActions),
         fieldsets: fieldsets ? [...fieldsets] : [],
+        groups: groups
+            ? [...groups, { name: 'seo', title: 'SEO' }]
+            : [{ name: 'seo', title: 'SEO' }],
         fields: disableSEO
             ? [...fields]
             : [
@@ -143,6 +152,7 @@ export const createDocumentCollection: CreateDocumentCollection = ({
                       name: 'seo',
                       title: 'SEO',
                       type: 'pageSEO',
+                      group: 'seo',
                   },
               ],
         initialValue,

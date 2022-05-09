@@ -14,17 +14,17 @@ export const HealthNotice = ({ title, rawContent }: HealthNoticeProps) => {
     return (
         <styled.HealthNotice
             variant="outlined"
-            borderColor="dangerLight"
+            borderColor="neutralDark"
             spacing={{ desktop: 'xl', mobile: 'm' }}
         >
             <CardHeader>
-                <Icon name="Covid" size="l" color="dangerLight" />
-                <Icon name="Mask" size="l" color="dangerLight" />
-                <BodyText size="m" weight="bold" color="danger">
+                {/* <Icon name="Covid" size="l" color="dangerLight" />
+                <Icon name="Mask" size="l" color="dangerLight" /> */}
+                <BodyText size="m" weight="bold" color="accentDark">
                     {title}
                 </BodyText>
             </CardHeader>
-            <Divider color="dangerLight" />
+            <Divider color="neutralDark" />
             <CardContent className="content">
                 <PortableText
                     content={rawContent}

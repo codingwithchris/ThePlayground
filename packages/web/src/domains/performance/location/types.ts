@@ -16,4 +16,5 @@ export interface Location {
     googleTitle?: string;
     address: Address;
     geolocation: GeoLocation;
+    indigenousLandAcknowledgement: string;
 }

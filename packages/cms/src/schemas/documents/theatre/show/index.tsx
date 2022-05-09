@@ -84,6 +84,7 @@ export const schema: DocumentCollection = {
         collaboration,
         artists,
         promo,
+        sponsors,
         performances,
     ],
     initialValue: {
@@ -142,6 +143,10 @@ export const objects = [
     showObjects.performance,
     showObjects.scriptAuthor,
     showObjects.selectors,
+    showObjects.sponsorOfficialReference,
+    showObjects.sponsorHighlightReference,
+    showObjects.showSponsors,
+    showObjects.soundtrack,
     showObjects.toggles,
     showObjects.trailer,
     showObjects.promo,

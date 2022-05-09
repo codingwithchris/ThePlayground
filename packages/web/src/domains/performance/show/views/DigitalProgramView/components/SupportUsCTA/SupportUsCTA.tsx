@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, breakpoints } from '@web/ui/tokens';
+import { spacing, borders } from '@web/ui/tokens';
+import { rgba } from 'polished';
 import {
     Card,
     CardHeader,
@@ -13,99 +14,39 @@ import {
     List,
     ListItem,
     Icon,
-    OutlineButton,
     FillButton,
-    Modal,
-    CloseOverlay,
 } from '@web/ui/core';
 import { SocialShareModal } from '@web/ui/molecules';
-import { useOverlay } from '@web/shared/hooks';
 import { useConfigContext } from '@web/shared/context';
 import { useSingleShowContext } from '@web/domains/performance/show';
 
-const StyledSponsors = styled(Section)`
-    padding: ${spacing.layout.m} 0;
-
-    .title {
-        margin-bottom: ${spacing.component.xl};
-    }
-
-    .sponsor-list {
-        margin-top: ${spacing.component.m};
-    }
-
-    .sponsor-level {
-        margin-top: ${spacing.component.xl};
-    }
-
+const StyledSupportUsCTA = styled(Section)`
     .support-us {
         margin-top: ${spacing.layout.m};
+        margin-bottom: ${spacing.layout.m};
     }
 
     .support-us-list {
         margin-top: ${spacing.component.m};
     }
+
+    .support-us-card {
+        border: 2px dashed ${({ theme }) => theme.surfaces.accentDark};
+        box-shadow: ${rgba('#F25C05', 0.25)} 0px 4px 24px;
+    }
 `;
 
-export const SponsorsHighlight = () => {
+export const SupportUsCTA = () => {
     const { links, company } = useConfigContext();
     const { currentShow } = useSingleShowContext();
 
     const fullShowURL = `${company.website}${currentShow?.path}`;
 
     return (
-        <StyledSponsors>
-            <Container className="sponsors" maxWidth="xs">
-                <BodyText
-                    size="s"
-                    color="medium"
-                    weight="bold"
-                    className="title"
-                >
-                    sponsors + support
-                </BodyText>
-                <div className="sponsor-level be-bold">
-                    <BodyText className="intro" size="m" color="light">
-                        We would like to thank our <strong>#BeBold</strong>{' '}
-                        sponsors for making this season possible.
-                    </BodyText>
-                    <List className="sponsor-list" itemSpacing="xxs">
-                        <ListItem className="sponsor">
-                            <Icon name="MoneyComment" size="xs" color="light" />
-                            <BodyText size="s" color="light" className="name">
-                                Amy Askins & Chris Shairbaum
-                            </BodyText>
-                        </ListItem>
-                        <ListItem className="sponsor">
-                            <Icon name="MoneyComment" size="xs" color="light" />
-                            <BodyText size="s" color="light" className="name">
-                                Mike and Trudy Scheiding
-                            </BodyText>
-                        </ListItem>
-                    </List>
-                </div>
-                <div className="sponsor-level donor">
-                    <BodyText className="intro" size="m" color="medium">
-                        A special thank you Dr. Jon Konicki and Dr. Bethany
-                        Schumacher from Konicki Schumacher Chiropractic for your
-                        donation.
-                    </BodyText>
-                </div>
-                <div className="sponsor-level donor">
-                    <BodyText className="intro" size="m" color="medium">
-                        Thank you to Sinclair Community College for providing
-                        the student desks.
-                    </BodyText>
-                </div>
-                <div className="sponsor-level donor">
-                    <BodyText className="intro" size="m" color="medium">
-                        Thank you to our friends at D2D for letting us barrow
-                        several set pieces.
-                    </BodyText>
-                </div>
-            </Container>
+        <StyledSupportUsCTA>
             <Container maxWidth="xs" className="support-us">
                 <Card
+                    className="support-us-card"
                     bgColor="paper"
                     borderColor="accent"
                     variant="outlined"
@@ -143,7 +84,8 @@ export const SponsorsHighlight = () => {
                                 />
                                 <BodyText size="s" color="medium">
                                     Snap a photo while you're here and tag{' '}
-                                    <strong>@nervetheatre</strong> on Instagram
+                                    <strong>{company.instagramUsername}</strong>{' '}
+                                    on Instagram
                                 </BodyText>
                             </ListItem>
                             <ListItem>
@@ -176,9 +118,7 @@ export const SponsorsHighlight = () => {
                                 <BodyText size="s" color="medium">
                                     Ask about becoming a season sponsor by
                                     emailing us at{' '}
-                                    <strong>
-                                        sponsorship@nervetheatre.org
-                                    </strong>
+                                    <strong>{company.emailSponsorship}</strong>
                                 </BodyText>
                             </ListItem>
                         </List>
@@ -202,6 +142,6 @@ export const SponsorsHighlight = () => {
                     </CardActions>
                 </Card>
             </Container>
-        </StyledSponsors>
+        </StyledSupportUsCTA>
     );
 };

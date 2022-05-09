@@ -85,11 +85,25 @@ export const schema: ConfigDocument = {
             name: 'emailTicketing',
             title: 'Email » Ticketing',
             type: 'string',
+            validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'emailAuditions',
             title: 'Email » Auditions',
             type: 'string',
+            validation: (Rule: any) => Rule.required(),
+        },
+        {
+            name: 'emailSponsorship',
+            title: 'Email » Sponsorship',
+            type: 'string',
+            validation: (Rule: any) => Rule.required(),
+        },
+        {
+            name: 'emailClasses',
+            title: 'Email » Classes',
+            type: 'string',
+            validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'city',
@@ -143,6 +157,12 @@ export const schema: ConfigDocument = {
                 }),
         },
         {
+            name: 'instagramUsername',
+            title: 'Instagram Username',
+            type: 'string',
+            validation: (Rule: any) => Rule.required(),
+        },
+        {
             name: 'youtube',
             title: 'Youtube Profile Link',
             type: 'string',
@@ -150,6 +170,13 @@ export const schema: ConfigDocument = {
                 Rule.required().uri({
                     scheme: ['https'],
                 }),
+        },
+        {
+            name: 'youtubeShowTrailers',
+            title: 'Youtube Show Trailers Playlist Link',
+            type: 'url',
+            scheme: 'https',
+            validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'twitter',

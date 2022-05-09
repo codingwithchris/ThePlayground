@@ -32,6 +32,35 @@ export const trailer = {
     ],
 };
 
+export const soundtrack = {
+    title: 'Soundtrack',
+    name: 'soundtrack',
+    type: 'object',
+    fields: [
+        {
+            name: 'provider',
+            title: 'Provider',
+            type: 'string',
+            options: {
+                layout: 'dropdown',
+                list: [{ title: 'Spotify', value: 'spotify' }],
+            },
+        },
+        {
+            name: 'link',
+            title: 'Link',
+            type: 'url',
+            scheme: 'https',
+            allowRelative: false,
+        },
+        {
+            name: 'credit',
+            title: 'Credit',
+            type: 'string',
+        },
+    ],
+};
+
 export const promo = {
     name: 'promo',
     title: 'Promo',
@@ -42,6 +71,10 @@ export const promo = {
         {
             type: 'trailer',
             name: 'trailer',
+        },
+        {
+            type: 'soundtrack',
+            name: 'soundtrack',
         },
     ],
 };
