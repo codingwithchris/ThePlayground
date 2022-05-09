@@ -25,7 +25,9 @@ export const DirectorNote = ({ content }: DirectorsNoteProps) => {
                 </BodyText>
                 <PortableText
                     content={content}
-                    config={{ block: { bodyText: { size: 'm' } } }}
+                    config={{
+                        block: { bodyText: { size: 'm', color: 'light' } },
+                    }}
                 />
             </Container>
         </StyledDirectorNote>
