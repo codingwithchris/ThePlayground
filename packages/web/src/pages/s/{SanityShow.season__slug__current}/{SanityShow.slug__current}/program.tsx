@@ -72,6 +72,15 @@ export const showQuery = graphql`
                 hasDigitalProgram
             }
 
+            location {
+                title
+                indigenousLandAcknowledgement
+                address {
+                    city
+                    state
+                }
+            }
+
             _rawDirectorsNote(resolveReferences: { maxDepth: 10 })
 
             # Warnings & Advisories

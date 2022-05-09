@@ -1,6 +1,7 @@
 import { GatsbyPageContext, SanityDocument } from '@web/shared/types';
 import { Series } from '@web/domains/performance/series';
 import { Artist, ARTIST_GROUP } from '@web/domains/performance/artist';
+import { Location } from '@web/domains/performance/location';
 
 import {
     ShowAuthor,
@@ -27,6 +28,7 @@ export interface DigitalProgramPageProps extends SanityDocument {
     license?: string;
     author: ShowAuthor;
     toggles: ShowToggles;
+    location: Location;
     series: Series;
     runtimeHours: number;
     runtimeMinutes: number;

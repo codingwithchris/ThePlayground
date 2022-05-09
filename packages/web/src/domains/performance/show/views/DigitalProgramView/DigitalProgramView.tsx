@@ -6,6 +6,7 @@ import {
     AlsoThisSeason,
     DirectorNote,
     Header,
+    LandAcknowledgement,
     LicenseAgreementText,
     SponsorsShowcase,
     SpotifyCallout,
@@ -27,6 +28,12 @@ export const DigitalProgramView = ({
             {show._rawDirectorsNote?.length > 0 && (
                 <>
                     <DirectorNote content={show._rawDirectorsNote} />
+                    <Divider color="paper" />
+                </>
+            )}
+            {show.location.indigenousLandAcknowledgement && (
+                <>
+                    <LandAcknowledgement {...show.location} />
                     <Divider color="paper" />
                 </>
             )}

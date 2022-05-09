@@ -41,6 +41,7 @@ import { Rocket } from './defs/Rocket';
 import { Share } from './defs/Share';
 import { Spotify } from './defs/Spotify';
 import { Ticket } from './defs/Ticket';
+import { Tree } from './defs/Tree';
 import { TheatreMasks } from './defs/TheatreMasks';
 import { TwitterAlt } from './defs/TwitterAlt';
 import { Warning } from './defs/Warning';
@@ -90,6 +91,7 @@ export const availableIcons = {
     Share,
     Spotify,
     Ticket,
+    Tree,
     TheatreMasks,
     TwitterAlt,
     Warning,
