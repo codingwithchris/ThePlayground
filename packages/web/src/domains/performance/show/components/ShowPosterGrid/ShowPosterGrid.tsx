@@ -8,15 +8,13 @@ import { ShowPoster } from '../ShowPoster/ShowPoster';
 import * as styled from './__styles';
 
 export const ShowPosterGrid: React.FC<ShowPosterGridProps> = ({ shows }) => {
-    /**
-     * Todo: 1. Sort shows based on performance dates
-     * Todo: 2. Turn sorting methodology into reuseable hook
-     */
-
     return (
         <styled.ShowPosterGrid>
-            <BodyText className="instructions" size="m" color="medium">
-                Select a show to see detailed information
+            <BodyText className="count" size="s" color="medium">
+                [ we've successfully produced {shows.length} shows to date ]
+            </BodyText>
+            <BodyText className="instructions" size="m" color="light">
+                Select a show below to see detailed information
             </BodyText>
             <div className="grid">
                 {shows.map((show) => {

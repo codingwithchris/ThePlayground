@@ -3,6 +3,7 @@ import { ArrowLeft } from './defs/ArrowLeft';
 import { ArrowRight } from './defs/ArrowRight';
 import { ArrowUp } from './defs/ArrowUp';
 import { Brain } from './defs/Brain';
+import { Book } from './defs/Book';
 import { Building } from './defs/Building';
 import { Calendar } from './defs/Calendar';
 import { Cancel } from './defs/Cancel';
@@ -51,6 +52,7 @@ export const availableIcons = {
     ArrowRight,
     ArrowUp,
     Brain,
+    Book,
     Building,
     Calendar,
     Cancel,

@@ -53,6 +53,11 @@ export const soundtrack = {
             scheme: 'https',
             allowRelative: false,
         },
+        {
+            name: 'credit',
+            title: 'Credit',
+            type: 'string',
+        },
     ],
 };
 

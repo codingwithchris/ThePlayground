@@ -64,6 +64,7 @@ export interface ShowPromo {
     soundtrack?: {
         provider: 'spotify';
         link: string;
+        credit: string;
     };
 }
 
@@ -81,6 +82,8 @@ export interface ShowSponsorOfficial {
 
 export interface ShowSponsorHighlight {
     sponsor: Sponsor;
+    specialLink?: string;
+    specialLinkText?: string;
     _rawContent: any[];
 }
 

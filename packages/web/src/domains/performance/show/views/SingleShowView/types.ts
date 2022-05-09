@@ -14,6 +14,7 @@ import {
     ShowPerformance,
     ShowDetail,
     ShowNotice,
+    ShowToggles,
     ShowPromo,
 } from '../../types';
 import { SHOW_RATING } from '../../constants';
@@ -29,6 +30,7 @@ export interface ShowPageProps extends SanityDocument {
     performances: ShowPerformance[];
     season: SeasonReference;
     series: Series;
+    toggles: ShowToggles;
     location: Location;
     _rawDescription: any[];
     openDate: string;

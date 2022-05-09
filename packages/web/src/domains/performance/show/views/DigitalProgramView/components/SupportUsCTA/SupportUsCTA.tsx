@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, breakpoints } from '@web/ui/tokens';
+import { spacing, borders } from '@web/ui/tokens';
+import { rgba } from 'polished';
 import {
     Card,
     CardHeader,
@@ -20,14 +21,18 @@ import { useConfigContext } from '@web/shared/context';
 import { useSingleShowContext } from '@web/domains/performance/show';
 
 const StyledSupportUsCTA = styled(Section)`
-    padding: ${spacing.layout.m} 0;
-
     .support-us {
         margin-top: ${spacing.layout.m};
+        margin-bottom: ${spacing.layout.m};
     }
 
     .support-us-list {
         margin-top: ${spacing.component.m};
+    }
+
+    .support-us-card {
+        border: 2px dashed ${({ theme }) => theme.surfaces.accentDark};
+        box-shadow: ${rgba('#F25C05', 0.25)} 0px 4px 24px;
     }
 `;
 
@@ -41,6 +46,7 @@ export const SupportUsCTA = () => {
         <StyledSupportUsCTA>
             <Container maxWidth="xs" className="support-us">
                 <Card
+                    className="support-us-card"
                     bgColor="paper"
                     borderColor="accent"
                     variant="outlined"

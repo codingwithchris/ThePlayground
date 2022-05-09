@@ -1,22 +1,27 @@
 import React from 'react';
 import { Link } from '@web/domains/app/routing';
-import { BodyText, Icon, Heading, Container } from '@web/ui/core';
-import { useSingleSeasonContext } from '../../../__context__';
+import { BodyText, Icon, Heading, Container, Tag } from '@web/ui/core';
+import { useSingleShowContext } from '../../../../__context__';
 
-import * as styled from './NeighboringSeasons.styles';
+import * as styled from './NeighboringShows.styles';
 
-export const NeighboringSeasons = () => {
-    const { previousSeason, nextSeason } = useSingleSeasonContext();
+export const NeighboringShows = () => {
+    const { previousShow, nextShow } = useSingleShowContext();
 
     return (
-        <styled.NeighboringSeasons bgColor="paperDark">
+        <styled.NeighboringShows bgColor="paperDark">
             <Container className="container" type="full" maxWidth="fluid">
                 <div className="previous">
-                    {previousSeason ? (
-                        <Link
-                            to={previousSeason.path}
-                            className="previous-link"
-                        >
+                    {previousShow ? (
+                        <Link to={previousShow.path} className="previous-link">
+                            <Tag
+                                text={`${previousShow.season.slug.current} season`}
+                                size="xs"
+                                color="medium"
+                                bgColor="paperDark"
+                                borderColor="neutralDark"
+                                className="tag"
+                            />
                             <Icon name="ArrowLeft" color="medium" size="m" />
                             <div className="content">
                                 <BodyText
@@ -25,10 +30,10 @@ export const NeighboringSeasons = () => {
                                     as="h3"
                                     weight="bold"
                                 >
-                                    Previous Season
+                                    Previous Show
                                 </BodyText>
                                 <BodyText color="medium" size="m">
-                                    {previousSeason.title}
+                                    {previousShow.title}
                                 </BodyText>
                             </div>
                         </Link>
@@ -50,19 +55,27 @@ export const NeighboringSeasons = () => {
                 </div>
 
                 <div className="next">
-                    {nextSeason ? (
-                        <Link to={nextSeason.path} className="next-link">
+                    {nextShow ? (
+                        <Link to={nextShow.path} className="next-link">
                             <div className="content">
+                                <Tag
+                                    text={`${nextShow.season.slug.current} season`}
+                                    size="xs"
+                                    color="medium"
+                                    bgColor="paperDark"
+                                    borderColor="neutralDark"
+                                    className="tag"
+                                />
                                 <BodyText
                                     color="light"
                                     size="l"
                                     as="h3"
                                     weight="bold"
                                 >
-                                    Next Season
+                                    Next Show
                                 </BodyText>
                                 <BodyText color="medium" size="m">
-                                    {nextSeason.title}
+                                    {nextShow.title}
                                 </BodyText>
                             </div>
                             <Icon name="ArrowRight" color="accent" size="m" />
@@ -75,7 +88,7 @@ export const NeighboringSeasons = () => {
                                 as="h3"
                                 weight="bold"
                             >
-                                Next Season
+                                Next Show
                             </BodyText>
                             <BodyText color="medium" size="xs">
                                 Coming Soon...
@@ -84,6 +97,6 @@ export const NeighboringSeasons = () => {
                     )}
                 </div>
             </Container>
-        </styled.NeighboringSeasons>
+        </styled.NeighboringShows>
     );
 };

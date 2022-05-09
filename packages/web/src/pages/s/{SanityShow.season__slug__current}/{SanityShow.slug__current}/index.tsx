@@ -66,9 +66,9 @@ export const showQuery = graphql`
     query showData($id: String) {
         sanityShow(id: { eq: $id }) {
             # Toggles
-            # toggles {
-            #     isCollaboration
-            # }
+            toggles {
+                hasDigitalProgram
+            }
 
             # # Selectors
             # selectors {
@@ -197,6 +197,10 @@ export const showQuery = graphql`
                         website
                     }
                     creditRole
+                }
+                soundtrack {
+                    link
+                    credit
                 }
             }
 

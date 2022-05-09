@@ -40,13 +40,13 @@ export const useCompanyConfig = (): CompanyConfig => {
                 }
                 name
                 spotify
-
                 state
                 stateCode
                 twitter
                 twitterUsername
                 website
                 youtube
+                youtubeShowTrailers
                 zip
             }
         }
@@ -82,5 +82,6 @@ export interface CompanyConfig {
     twitterUsername: string;
     website: string;
     youtube: string;
+    youtubeShowTrailers: string;
     zip: string;
 }

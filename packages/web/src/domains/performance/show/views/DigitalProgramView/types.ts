@@ -24,6 +24,7 @@ export interface ArtistBio {
 }
 
 export interface DigitalProgramPageProps extends SanityDocument {
+    license?: string;
     author: ShowAuthor;
     toggles: ShowToggles;
     series: Series;

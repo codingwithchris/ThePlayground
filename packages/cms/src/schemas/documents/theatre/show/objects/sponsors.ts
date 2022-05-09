@@ -1,3 +1,5 @@
+import { Description } from '../../../../../../../web/src/domains/performance/season/__template__/components/Description/Description.styles';
+
 export const sponsorOfficialReference = {
     name: 'sponsorOfficialReference',
     title: 'Sponsor Reference',
@@ -59,6 +61,18 @@ export const sponsorHighlightReference = {
             type: 'reference',
             name: 'sponsor',
             to: { type: 'sponsor' },
+        },
+        {
+            name: 'specialLink',
+            title: 'Special Link',
+            description:
+                'A link to use for this highlight other than the default sponsor website',
+            type: 'url',
+        },
+        {
+            name: 'specialLinkText',
+            title: 'Special Link Text',
+            type: 'string',
         },
         {
             name: 'content',

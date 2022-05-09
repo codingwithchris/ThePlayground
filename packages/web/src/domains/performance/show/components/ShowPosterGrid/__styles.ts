@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { breakpoints, spacing } from '@web/ui/tokens';
 
 export const ShowPosterGrid = styled.section`
+    .count {
+        padding-left: ${spacing.component.m};
+    }
     .instructions {
         margin-bottom: ${spacing.component.l};
         padding-left: ${spacing.component.m};

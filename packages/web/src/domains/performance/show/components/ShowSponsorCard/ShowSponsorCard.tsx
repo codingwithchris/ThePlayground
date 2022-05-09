@@ -9,7 +9,6 @@ import {
     Icon,
     AvailableIconName,
     Tag,
-    TextButton,
 } from '@web/ui/core';
 import {
     SPONSORSHIP_LEVEL_DISPLAY,
@@ -79,8 +78,13 @@ export const ShowSponsorCard = ({
                 </div>
                 {sponsor.link && (
                     <Link to={sponsor.link} className="sponsor-link">
-                        <BodyText color="light" size="xs">
-                            sponsor site {'>'}
+                        <BodyText
+                            className="sponsor-link__text"
+                            color="light"
+                            size="xs"
+                        >
+                            sponsor site
+                            <Icon name="ArrowRight" size="xxs" />
                         </BodyText>
                     </Link>
                 )}

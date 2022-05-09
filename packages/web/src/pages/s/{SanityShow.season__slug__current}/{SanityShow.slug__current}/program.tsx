@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
-import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
+import { PageBasicSEO } from '@web/domains/app/seo';
 
 import { NewsSubscribeCTA } from '@web/ui/molecules';
 
@@ -12,6 +12,7 @@ import {
     DigitalProgramPageProps,
     DigitalProgramGatsbyContext,
     DigitalProgramView,
+    NoProgramAvailableView,
 } from '@web/domains/performance/show/views';
 
 import { SingleSeasonProvider } from '@web/domains/performance/season';
@@ -49,7 +50,7 @@ const SingleShowDigitalProgram: React.FC<
                         seasonSlug={seasonSlug}
                     />
                 ) : (
-                    <>no program available</>
+                    <NoProgramAvailableView />
                 )}
 
                 <NewsSubscribeCTA />
@@ -65,6 +66,7 @@ export const showQuery = graphql`
             author {
                 name
             }
+            license
 
             toggles {
                 hasDigitalProgram
@@ -253,11 +255,13 @@ export const showQuery = graphql`
                                 gatsbyImageData(
                                     placeholder: BLURRED
                                     fit: FILLMAX
-                                    width: 300
+                                    width: 400
                                 )
                             }
                         }
                     }
+                    specialLink
+                    specialLinkText
                     _rawContent(resolveReferences: { maxDepth: 10 })
                 }
                 _rawSpecialThanks(resolveReferences: { maxDepth: 10 })

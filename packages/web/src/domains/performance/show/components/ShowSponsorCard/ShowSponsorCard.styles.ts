@@ -45,4 +45,14 @@ export const ShowSponsorCard = styled(Card)`
             opacity: 0.7;
         }
     }
+
+    .sponsor-link__text {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        > svg {
+            margin-left: ${spacing.component.xxs};
+        }
+    }
 `;

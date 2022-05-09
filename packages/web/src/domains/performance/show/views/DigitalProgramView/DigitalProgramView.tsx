@@ -6,9 +6,10 @@ import {
     AlsoThisSeason,
     DirectorNote,
     Header,
-    SupportUsCTA,
+    LicenseAgreementText,
     SponsorsShowcase,
     SpotifyCallout,
+    SupportUsCTA,
     TeamBioGallery,
 } from './components';
 
@@ -45,10 +46,19 @@ export const DigitalProgramView = ({
             {(show.sponsors?.official ||
                 show.sponsors?.highlight ||
                 show.sponsors?._rawSpecialThanks) && (
-                <SponsorsShowcase sponsors={show.sponsors} />
+                <>
+                    <SponsorsShowcase sponsors={show.sponsors} />
+                    <Divider color="paper" />
+                </>
             )}
             <SupportUsCTA />
             <Divider color="paper" />
+            {show.license && show.license.length > 0 && (
+                <>
+                    <LicenseAgreementText text={show.license} />
+                    <Divider color="paper" />
+                </>
+            )}
             <AlsoThisSeason />
         </>
     );

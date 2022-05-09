@@ -16,6 +16,12 @@ export default [
         rows: 4,
     },
     {
+        name: 'license',
+        title: 'License Agreement Text',
+        type: 'text',
+        rows: 4,
+    },
+    {
         name: 'description',
         title: 'Description',
         type: 'contentBlock',

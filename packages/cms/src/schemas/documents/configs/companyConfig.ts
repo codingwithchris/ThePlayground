@@ -172,6 +172,13 @@ export const schema: ConfigDocument = {
                 }),
         },
         {
+            name: 'youtubeShowTrailers',
+            title: 'Youtube Show Trailers Playlist Link',
+            type: 'url',
+            scheme: 'https',
+            validation: (Rule: any) => Rule.required(),
+        },
+        {
             name: 'twitter',
             title: 'Twitter Profile Link',
             type: 'string',
