@@ -31,7 +31,7 @@ export const LandAcknowledgement = ({
                     weight="bold"
                 >
                     <Icon name="Tree" size="m" />
-                    Indigenous Land Acknowledge
+                    Indigenous Land Acknowledgement
                 </BodyText>
                 <BodyText color="medium" size="s">
                     The land the {title} in {address.city}, {address.state} is
