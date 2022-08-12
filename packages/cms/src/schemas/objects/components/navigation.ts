@@ -24,7 +24,6 @@ export const navItem = {
                 { type: 'post' },
                 { type: 'blogPage' },
                 { type: 'archivePage' },
-                { type: 'supportUsPage' },
             ],
         },
         {
