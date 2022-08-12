@@ -52,8 +52,6 @@ const SingleShowDigitalProgram: React.FC<
                 ) : (
                     <NoProgramAvailableView />
                 )}
-
-                <NewsSubscribeCTA />
             </SingleShowProvider>
         </SingleSeasonProvider>
     );

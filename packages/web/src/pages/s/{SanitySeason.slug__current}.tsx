@@ -85,7 +85,6 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageGatsbyContext>> = ({
             )}
             <Divider color="paper" />
             <NeighboringSeasons />
-            <NewsSubscribeCTA />
         </SingleSeasonProvider>
     );
 };

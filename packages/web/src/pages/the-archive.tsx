@@ -32,7 +32,6 @@ const ArchivePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
         >
             <SimpleHero title={page.hero.title} subTitle={page.hero.subtitle} />
             <ShowPosterGrid shows={pastShows} />
-            <NewsSubscribeCTA />
         </PageTemplate>
     );
 };

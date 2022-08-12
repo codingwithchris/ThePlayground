@@ -56,7 +56,6 @@ const SingleShowLanding: React.FC<
                     slug={slug}
                     seasonSlug={seasonSlug}
                 />
-                <NewsSubscribeCTA />
             </SingleShowProvider>
         </SingleSeasonProvider>
     );

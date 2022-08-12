@@ -107,7 +107,6 @@ const PostLanding: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
                     />
                 ))}
             </Container>
-            <NewsSubscribeCTA />
         </>
     );
 };
