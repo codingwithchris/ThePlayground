@@ -4,13 +4,13 @@ import { breakpoints, grid, spacing } from '@web/ui/tokens';
 
 import { BodyText, Container, Section } from '@web/ui/core';
 
-const StyledLongDescriptionSection = styled(Section)`
+const StyledGoodbyeFarewellAmen = styled(Section)`
     padding: ${spacing.layout.l} 0;
 `;
 
-export const LongDescriptionSection: React.FC = () => {
+export const GoodbyeFarewellAmen: React.FC = () => {
     return (
-        <StyledLongDescriptionSection bgColor="default" className="">
+        <StyledGoodbyeFarewellAmen bgColor="default" className="">
             <Container maxWidth="s">
                 <BodyText size="m" color="light">
                     Hey friends, <br />
@@ -62,6 +62,6 @@ export const LongDescriptionSection: React.FC = () => {
                     <br /> Artistic Directors at The Nerve Theatre
                 </BodyText>
             </Container>
-        </StyledLongDescriptionSection>
+        </StyledGoodbyeFarewellAmen>
     );
 };

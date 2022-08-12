@@ -7,7 +7,7 @@
   "author": "Chris Hahn <chris+digital@chrishahn.me>",
   "license": "MIT",
   "scripts": {
-    "start": "sanity start --port=8888",
+    "start": "sanity start --port=4000",
     "build": "sanity build",
     "test": "sanity check",
     "deploy": "npm run deploy:sanity && npm run deploy:graphql",

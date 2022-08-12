@@ -9,15 +9,11 @@ import { BodyText, Icon, Logo } from '@web/ui/core';
 import * as styled from './__styles';
 
 export const FooterNav = (): JSX.Element => {
-    const { company, links } = useConfigContext();
+    const { links } = useConfigContext();
     const socialAccounts = useSocialProfiles();
     const activeClass = '--is-active';
 
     const menuItems = [
-        {
-            text: 'current season',
-            link: links.featuredSeason,
-        },
         {
             text: 'the archive',
             link: links.archivePage,
