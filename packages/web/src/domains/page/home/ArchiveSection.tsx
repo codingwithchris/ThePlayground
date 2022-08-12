@@ -55,8 +55,7 @@ export const ArchiveSection: React.FC = () => {
                     </span>
                 </Heading>
                 <BodyText color="medium" size="m" className="copy">
-                    Check out our past shows and discover why our brand of
-                    theatre will get under your skin.
+                    Check out our complete production archives
                 </BodyText>
                 <TextButton
                     color="primary"

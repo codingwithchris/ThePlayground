@@ -24,6 +24,7 @@ const HomePage: React.FC<PageProps<PageData, GatsbyPageContext>> = ({
             <GoodbyeFarewellAmen />
             <Divider color="paperLight" />
             <ArchiveSection />
+            <Divider color="paperLight" />
         </PageTemplate>
     );
 };
