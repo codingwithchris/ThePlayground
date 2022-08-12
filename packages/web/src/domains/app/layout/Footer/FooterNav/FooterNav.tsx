@@ -23,10 +23,6 @@ export const FooterNav = (): JSX.Element => {
             link: links.archivePage,
         },
         {
-            text: 'support us',
-            link: links.supportUsPage,
-        },
-        {
             text: 'our rebrand',
             link: links.getPost('the-playground-theatre-is-now-the-nerve'),
         },
@@ -34,14 +30,6 @@ export const FooterNav = (): JSX.Element => {
             text: 'our wsywat response',
             link: links.getPost('our-wsywat-response-plan'),
         },
-        // {
-        //     text: '2021/2022 auditions',
-        //     link: links.getPost('2021-2022-season-casting-call'),
-        // },
-        // {
-        //     text: 'about us',
-        //     link: links.about,
-        // },
     ];
 
     return (
@@ -144,36 +132,6 @@ export const FooterNav = (): JSX.Element => {
                             {company.emailGeneral}
                         </BodyText>
                     </div>
-                    {/* <ul>
-                        <li key="message">
-                            <Link
-                                to={links.contact}
-                                activeClassName={activeClass}
-                            >
-                                <BodyText
-                                    size="s"
-                                    color="medium"
-                                    weight="bold"
-                                >
-                                    send us a message
-                                </BodyText>
-                            </Link>
-                        </li>
-                        <li key="audition">
-                            <Link
-                                to={links.audition}
-                                activeClassName={activeClass}
-                            >
-                                <BodyText
-                                    size="s"
-                                    color="medium"
-                                    weight="bold"
-                                >
-                                    audition
-                                </BodyText>
-                            </Link>
-                        </li>
-                    </ul> */}
                 </div>
             </div>
         </styled.FooterNav>
