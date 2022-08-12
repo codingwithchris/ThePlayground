@@ -15,7 +15,6 @@ export const useCompanyConfig = (): CompanyConfig => {
                 emailGeneral
                 emailSponsorship
                 emailTicketing
-                facebook
                 foundingDate
                 github
                 instagram
@@ -63,7 +62,6 @@ export interface CompanyConfig {
     emailTicketing: string;
     emailSponsorship: string;
     emailClasses: string;
-    facebook: string;
     foundingDate: string;
     github: string;
     instagram: string;
