@@ -110,29 +110,6 @@ export const FooterNav = (): JSX.Element => {
                         ))}
                     </ul>
                 </div>
-                <div className="menu connect">
-                    <BodyText
-                        size="m"
-                        weight="bold"
-                        color="light"
-                        className="menu-title"
-                    >
-                        connect with us
-                    </BodyText>
-
-                    <div className="company">
-                        <BodyText size="s" color="medium">
-                            {company.name.toLowerCase()}
-                        </BodyText>
-                        <BodyText size="s" color="medium">
-                            {company.city.toLowerCase()},{' '}
-                            {company.state.toLowerCase()}
-                        </BodyText>
-                        <BodyText size="s" color="medium">
-                            {company.emailGeneral}
-                        </BodyText>
-                    </div>
-                </div>
             </div>
         </styled.FooterNav>
     );
