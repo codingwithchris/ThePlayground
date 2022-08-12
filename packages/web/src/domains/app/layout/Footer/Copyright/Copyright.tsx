@@ -2,23 +2,12 @@ import React from 'react';
 
 import { BodyText, Container } from '@web/ui/core';
 import { useConfigContext } from '@web/shared/context';
-import { Link } from '@web/domains/app/routing';
 
 import * as styled from './__styles';
 
-const LinkItem: React.FC<{ slug: string; text: string }> = ({ slug, text }) => (
-    <li>
-        <Link to={slug} activeClassName="--is-active">
-            <BodyText as="span" size="s" weight="bold" color="medium">
-                {text}
-            </BodyText>
-        </Link>
-    </li>
-);
-
 export const Copyright: React.FC = () => {
     const currentYear = new Date().getFullYear();
-    const { company, links } = useConfigContext();
+    const { company } = useConfigContext();
 
     return (
         <styled.Copyright>
@@ -27,27 +16,6 @@ export const Copyright: React.FC = () => {
                     &copy; {currentYear} {company.legalName} All rights
                     reserved.
                 </BodyText>
-                <ul className="links">
-                    {/* {links.privacyPolicyPage && (
-                        <LinkItem
-                            slug={links.privacyPolicyPage}
-                            text="privacy policy"
-                            key="privacy policy"
-                        />
-                    )}
-
-                    {links.termsPage && (
-                        <LinkItem
-                            slug={links.termsPage}
-                            text="terms & conditions"
-                            key="terms"
-                        />
-                    )} */}
-
-                    {/* {sitemap && (
-                        <LinkItem slug={sitemap} text="sitemap" key="sitemap" />
-                    )} */}
-                </ul>
             </Container>
         </styled.Copyright>
     );

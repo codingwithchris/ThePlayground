@@ -1,12 +1,12 @@
 import { useEnvironmentContext } from '@web/shared/context';
-import { CompanyConfig } from '@web/shared/hooks';
+import type { GlobalConfigs } from '@web/shared/context';
 
 /**
  * https://schema.org/WebSite
  *
  * @param config The configuration object for the site
  */
-export const webSiteSchema = (config: CompanyConfig): string => {
+export const webSiteSchema = (config: GlobalConfigs['company']): string => {
     const siteURL = config.website;
     const { app } = useEnvironmentContext();
 

@@ -37,7 +37,7 @@ const StyledSupportUsCTA = styled(Section)`
 `;
 
 export const SupportUsCTA = () => {
-    const { links, company } = useConfigContext();
+    const { company } = useConfigContext();
     const { currentShow } = useSingleShowContext();
 
     const fullShowURL = `${company.website}${currentShow?.path}`;
@@ -132,13 +132,6 @@ export const SupportUsCTA = () => {
                             buttonSize="xs"
                             buttonIconSize="xxs"
                         />
-                        <FillButton
-                            to={links.supportUsPage}
-                            size="xs"
-                            color="primary"
-                        >
-                            Support Us Page
-                        </FillButton>
                     </CardActions>
                 </Card>
             </Container>

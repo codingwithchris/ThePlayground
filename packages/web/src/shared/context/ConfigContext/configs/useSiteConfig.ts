@@ -9,7 +9,6 @@ export const useSiteConfig = (): SiteConfig => {
             sanitySiteConfig(_id: { eq: "siteConfig" }) {
                 verificationGoogle
                 verificationBing
-                facebookAppID
             }
         }
     `);
@@ -20,5 +19,4 @@ export const useSiteConfig = (): SiteConfig => {
 export interface SiteConfig {
     verificationGoogle: string;
     verificationBing: string;
-    facebookAppID: string;
 }

@@ -11,7 +11,7 @@ export const ShowPosterGrid: React.FC<ShowPosterGridProps> = ({ shows }) => {
     return (
         <styled.ShowPosterGrid>
             <BodyText className="count" size="s" color="medium">
-                [ we've successfully produced {shows.length} shows to date ]
+                [ we successfully produced {shows.length} shows ]
             </BodyText>
             <BodyText className="instructions" size="m" color="light">
                 Select a show below to see detailed information

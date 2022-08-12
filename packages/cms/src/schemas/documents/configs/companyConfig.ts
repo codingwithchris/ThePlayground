@@ -130,15 +130,6 @@ export const schema: ConfigDocument = {
             validation: (Rule: any) => Rule.required().min(5).max(5),
         },
         {
-            name: 'facebook',
-            title: 'Facebook Profile Link',
-            type: 'string',
-            validation: (Rule: any) =>
-                Rule.required().uri({
-                    scheme: ['https'],
-                }),
-        },
-        {
             name: 'spotify',
             title: 'Spotify Profile Link',
             type: 'string',
@@ -178,21 +169,7 @@ export const schema: ConfigDocument = {
             scheme: 'https',
             validation: (Rule: any) => Rule.required(),
         },
-        {
-            name: 'twitter',
-            title: 'Twitter Profile Link',
-            type: 'string',
-            validation: (Rule: any) =>
-                Rule.required().uri({
-                    scheme: ['https'],
-                }),
-        },
-        {
-            name: 'twitterUsername',
-            title: 'Twitter Profile Name',
-            type: 'string',
-            validation: (Rule: any) => Rule.required(),
-        },
+
         {
             name: 'github',
             title: 'Github Profile Link',

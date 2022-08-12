@@ -7,12 +7,6 @@ export const schema: ConfigDocument = {
     disabledActions: ['create', 'delete'],
     fields: [
         {
-            name: 'featuredSeason',
-            title: 'Featured Season',
-            type: 'reference',
-            to: [{ type: 'season' }],
-        },
-        {
             name: 'showArchivePage',
             title: 'The Archive Page',
             type: 'reference',
@@ -23,12 +17,6 @@ export const schema: ConfigDocument = {
             title: 'Blog Page',
             type: 'reference',
             to: [{ type: 'blogPage' }],
-        },
-        {
-            name: 'supportUsPage',
-            title: 'Support Us Page',
-            type: 'reference',
-            to: [{ type: 'supportUsPage' }],
         },
         {
             name: 'sitemap',

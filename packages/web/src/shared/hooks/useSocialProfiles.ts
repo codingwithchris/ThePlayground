@@ -6,19 +6,9 @@ export const useSocialProfiles = (): SocialProfile[] => {
 
     return [
         {
-            name: 'facebook',
-            link: company.facebook,
-            iconName: 'Facebook',
-        },
-        {
             name: 'instagram',
             link: company.instagram,
             iconName: 'Instagram',
-        },
-        {
-            name: 'twitter',
-            link: company.twitter,
-            iconName: 'TwitterAlt',
         },
         {
             name: 'spotify',

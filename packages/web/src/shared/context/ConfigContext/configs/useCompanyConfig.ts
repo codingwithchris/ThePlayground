@@ -15,7 +15,6 @@ export const useCompanyConfig = (): CompanyConfig => {
                 emailGeneral
                 emailSponsorship
                 emailTicketing
-                facebook
                 foundingDate
                 github
                 instagram
@@ -42,8 +41,6 @@ export const useCompanyConfig = (): CompanyConfig => {
                 spotify
                 state
                 stateCode
-                twitter
-                twitterUsername
                 website
                 youtube
                 youtubeShowTrailers
@@ -63,7 +60,6 @@ export interface CompanyConfig {
     emailTicketing: string;
     emailSponsorship: string;
     emailClasses: string;
-    facebook: string;
     foundingDate: string;
     github: string;
     instagram: string;
@@ -78,8 +74,6 @@ export interface CompanyConfig {
     spotify: string;
     state: string;
     stateCode: string;
-    twitter: string;
-    twitterUsername: string;
     website: string;
     youtube: string;
     youtubeShowTrailers: string;

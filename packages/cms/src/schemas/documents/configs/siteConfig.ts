@@ -18,11 +18,5 @@ export const schema: ConfigDocument = {
             type: 'string',
             validation: (Rule: any) => Rule.required(),
         },
-        {
-            name: 'facebookAppID',
-            title: 'Facebook App ID',
-            type: 'string',
-            validation: (Rule: any) => Rule.required(),
-        },
     ],
 };

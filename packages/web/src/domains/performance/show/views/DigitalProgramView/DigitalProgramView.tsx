@@ -14,12 +14,7 @@ import {
     TeamBioGallery,
 } from './components';
 
-export const DigitalProgramView = ({
-    show,
-    slug,
-    seasonSlug,
-    url,
-}: DigitalProgramViewProps) => {
+export const DigitalProgramView = ({ show }: DigitalProgramViewProps) => {
     return (
         <>
             {show.artists?.directors?.length > 0 && (
