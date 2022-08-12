@@ -27,11 +27,6 @@ export const useLinkManifestConfig = (): LinkManifestConfig => {
                         current
                     }
                 }
-                supportUsPage {
-                    slug {
-                        current
-                    }
-                }
                 sitemap
             }
         }
@@ -47,7 +42,6 @@ export const useLinkManifestConfig = (): LinkManifestConfig => {
         ]),
         blogPage: normalizeSlug(links?.blogPage?.slug?.current),
         archivePage: normalizeSlug(links?.showArchivePage?.slug?.current),
-        supportUsPage: normalizeSlug(links?.supportUsPage?.slug?.current),
         sitemap: links?.sitemap,
         getShow: (season, show) =>
             season &&
@@ -66,7 +60,6 @@ export interface LinkManifestConfig {
     featuredSeason: string | undefined;
     blogPage: string | undefined;
     archivePage: string | undefined;
-    supportUsPage: string | undefined;
     sitemap: string;
     getShow: (season?: string, show?: string) => string | undefined;
     getSeason: (season?: string) => string | undefined;
