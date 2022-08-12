@@ -25,12 +25,6 @@ export const schema: ConfigDocument = {
             to: [{ type: 'blogPage' }],
         },
         {
-            name: 'supportUsPage',
-            title: 'Support Us Page',
-            type: 'reference',
-            to: [{ type: 'supportUsPage' }],
-        },
-        {
             name: 'sitemap',
             title: 'Sitemap',
             type: 'string',
