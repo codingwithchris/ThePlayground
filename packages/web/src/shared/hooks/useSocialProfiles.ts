@@ -11,11 +11,6 @@ export const useSocialProfiles = (): SocialProfile[] => {
             iconName: 'Instagram',
         },
         {
-            name: 'twitter',
-            link: company.twitter,
-            iconName: 'TwitterAlt',
-        },
-        {
             name: 'spotify',
             link: company.spotify,
             iconName: 'Spotify',

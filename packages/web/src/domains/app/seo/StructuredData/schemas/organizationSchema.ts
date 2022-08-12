@@ -1,11 +1,13 @@
-import { CompanyConfig } from '@web/shared/hooks';
+import type { GlobalConfigs } from '@web/shared/context';
 
 /**
  * https://schema.org/Organization
  *
  * @param config The configuration object for the site
  */
-export const organizationSchema = (config: CompanyConfig): string => {
+export const organizationSchema = (
+    config: GlobalConfigs['company']
+): string => {
     const siteURL = config.website;
 
     const schema = {
@@ -42,7 +44,6 @@ export const organizationSchema = (config: CompanyConfig): string => {
             },
         ],
         sameAs: [
-            config.facebook,
             config.instagram,
             config.spotify,
             config.youtube,
