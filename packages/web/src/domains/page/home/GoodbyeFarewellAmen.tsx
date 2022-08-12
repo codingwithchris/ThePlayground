@@ -1,17 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import { breakpoints, grid, spacing } from '@web/ui/tokens';
-
 import { BodyText, Container, Section } from '@web/ui/core';
+import goodbyeImage from '@web/assets/goodbye-farewell-amen.jpg';
 
 const StyledGoodbyeFarewellAmen = styled(Section)`
     padding: ${spacing.layout.xxl} 0 ${spacing.layout.l};
+
+    .image {
+        margin-bottom: ${spacing.layout.l};
+    }
 `;
 
 export const GoodbyeFarewellAmen: React.FC = () => {
     return (
         <StyledGoodbyeFarewellAmen bgColor="default" className="">
             <Container maxWidth="s">
+                <img
+                    className="image"
+                    src={goodbyeImage}
+                    alt="goodbye dayton"
+                    width={400}
+                    height={400}
+                />
                 <BodyText size="m" color="light">
                     Hey friends, <br />
                     <br />
