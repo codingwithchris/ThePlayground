@@ -79,26 +79,6 @@ module.exports = {
         },
 
         /**
-         * The official Sentry implementation for Gatsby
-         * @link https://docs.sentry.io/platforms/javascript/guides/gatsby/
-         */
-        // TODO - build custom tags with env variables (most likely will do this in gatsby-browser.js)
-        // https://docs.sentry.io/platforms/javascript/enriching-events/tags/
-        {
-            resolve: '@sentry/gatsby',
-            options: {
-                dsn: process.env.SENTRY_DSN,
-                environment,
-                // TODO: One day it would be nice to make this a more transparent reference
-                release: commitRef,
-                // A rate of 1 means all traces will be sent, so it's good for testing.
-                // In production, you'll likely want to either choose a lower rate or use `tracesSampler` instead (see below).
-                tracesSampleRate: 0.5,
-                enabled: !isDev,
-            },
-        },
-
-        /**
          * @link https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
          */
         {
